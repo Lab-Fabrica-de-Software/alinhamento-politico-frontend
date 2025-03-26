@@ -2,6 +2,11 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.4.
 
+## Story Book
+```bash
+ng run alinhamento_front:storybook
+```
+
 ## Development server
 
 To start a local development server, run:

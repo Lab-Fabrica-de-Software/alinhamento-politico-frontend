@@ -1,0 +1,29 @@
+<div class="card" [style.border-left]="'10px solid ' + (debateGroup?.color ?? '#f00')" >
+    <div class="row align-items-center">
+        <!-- Seção do texto -->
+        <div class="col-md-6">
+            <h5 class="fw-bold">{{debateGroup?.name}}</h5>
+            <p class="text-muted">
+                {{debateGroup?.description}}
+            </p>
+        </div>
+
+        <!-- Seção do número -->
+        <div class="col-md-2 text-start">
+            <span class="fs-4 fw-bold">{{debateGroup?.openDebates}}</span>
+        </div>
+
+        <!-- Seção do usuário -->
+        <div class="col-md-4 d-md-block d-none ">
+            <div class="row">
+                <div class="d-flex align-items-center justify-content-center mb-2">
+                    <img [src]="debateGroup?.lastContributionPhoto" alt="Gabriela Silva" class="rounded-circle user-image me-2" />
+                    <p class="fw-semibold mb-0">{{debateGroup?.lastContributionName}}</p>
+                </div>
+                <div class="d-flex align-items-center justify-content-center">
+                        <p class="fw-bold">{{debateGroup?.lastContributionDebateName}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

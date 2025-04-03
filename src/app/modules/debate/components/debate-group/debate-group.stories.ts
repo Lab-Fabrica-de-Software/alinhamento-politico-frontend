@@ -3,7 +3,7 @@ import { fn } from '@storybook/test';
 import {DebateGroupComponent} from './debate-group.component';
 
 export const ActionsData = {
-
+    onSelectDebateGroup: fn()
 };
 
 const meta: Meta<DebateGroupComponent> = {

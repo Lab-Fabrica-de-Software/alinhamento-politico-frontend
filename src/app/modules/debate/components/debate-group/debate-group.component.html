@@ -1,7 +1,7 @@
-<div class="card" [style.border-left]="'10px solid ' + (debateGroup?.color ?? '#f00')" >
+<div class="card" [style.border-left]="'10px solid ' + (debateGroup?.color ?? '#f00')"  (click)="onSelectGroup()">
     <div class="row align-items-center">
         <!-- Seção do texto -->
-        <div class="col-md-6">
+        <div class="col-md-6" >
             <h5 class="fw-bold">{{debateGroup?.name}}</h5>
             <p class="text-muted">
                 {{debateGroup?.description}}

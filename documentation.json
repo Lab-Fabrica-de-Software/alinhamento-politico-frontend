@@ -155,7 +155,7 @@
         },
         {
             "name": "DebateGroupComponent",
-            "id": "component-DebateGroupComponent-adab3852f9c206b4047bb5ba95cfe0541bc698f1ddbc82e54b985285af6dc36ed9c3f74f82641d0bc3a20b9c630af086a9382f807be79906a8217481782bd391",
+            "id": "component-DebateGroupComponent-1c57cbb98b686c01768b6a5677e14b94cb453c602a1e3a21a6490ca4a9090867ba2458a245b1ea446ae21bd11abab28db42a67bbd97bc6c7b45abc69b780359b",
             "file": "src/app/modules/debate/components/debate-group/debate-group.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -180,9 +180,29 @@
                     "decorators": []
                 }
             ],
-            "outputsClass": [],
+            "outputsClass": [
+                {
+                    "name": "onSelectDebateGroup",
+                    "defaultValue": "new EventEmitter<Number>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "EventEmitter"
+                }
+            ],
             "propertiesClass": [],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "onSelectGroup",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 18,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -192,13 +212,13 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\r\nimport { DebateGroup } from '../../../../core/models/debate-group';\r\n\r\n@Component({\r\n  selector: 'app-debate-group',\r\n  standalone: false,\r\n  templateUrl: './debate-group.component.html',\r\n  styleUrl: './debate-group.component.css'\r\n})\r\nexport class DebateGroupComponent {\r\n\r\n  @Input()\r\n  debateGroup?:DebateGroup;\r\n\r\n}\r\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\r\nimport { DebateGroup } from '../../../../core/models/debate-group';\r\n\r\n@Component({\r\n  selector: 'app-debate-group',\r\n  standalone: false,\r\n  templateUrl: './debate-group.component.html',\r\n  styleUrl: './debate-group.component.css'\r\n})\r\nexport class DebateGroupComponent {\r\n\r\n  @Input()\r\n  debateGroup?:DebateGroup;\r\n\r\n  @Output()\r\n  onSelectDebateGroup = new EventEmitter<Number>();\r\n\r\n  onSelectGroup(){\r\n    this.onSelectDebateGroup.emit(this.debateGroup?.id);\r\n  }\r\n\r\n}\r\n",
             "styleUrl": "./debate-group.component.css",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<div class=\"card\" [style.border-left]=\"'4px solid ' + (debateGroup?.color ?? '#f00')\" >\r\n    <div class=\"row align-items-center\">\r\n        <!-- Seção do texto -->\r\n        <div class=\"col-md-6\">\r\n            <h5 class=\"fw-bold\">{{debateGroup?.name}}</h5>\r\n            <p class=\"text-muted\">\r\n                {{debateGroup?.description}}\r\n            </p>\r\n        </div>\r\n\r\n        <!-- Seção do número -->\r\n        <div class=\"col-md-2 text-start\">\r\n            <span class=\"fs-4 fw-bold\">{{debateGroup?.openDebates}}</span>\r\n        </div>\r\n\r\n        <!-- Seção do usuário -->\r\n        <div class=\"col-md-4 d-md-block d-none \">\r\n            <div class=\"row\">\r\n                <div class=\"d-flex align-items-center justify-content-center mb-2\">\r\n                    <img [src]=\"debateGroup?.lastContributionPhoto\" alt=\"Gabriela Silva\" class=\"rounded-circle user-image me-2\" />\r\n                    <p class=\"fw-semibold mb-0\">{{debateGroup?.lastContributionName}}</p>\r\n                </div>\r\n                <div class=\"d-flex align-items-center justify-content-center\">\r\n                        <p class=\"fw-bold\">{{debateGroup?.lastContributionDebateName}}</p>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</>"
+            "templateData": "<div class=\"card\" [style.border-left]=\"'10px solid ' + (debateGroup?.color ?? '#f00')\" >\r\n    <div class=\"row align-items-center\">\r\n        <!-- Seção do texto -->\r\n        <div class=\"col-md-6\" (click)=\"onSelectGroup()\">\r\n            <h5 class=\"fw-bold\">{{debateGroup?.name}}</h5>\r\n            <p class=\"text-muted\">\r\n                {{debateGroup?.description}}\r\n            </p>\r\n        </div>\r\n\r\n        <!-- Seção do número -->\r\n        <div class=\"col-md-2 text-start\">\r\n            <span class=\"fs-4 fw-bold\">{{debateGroup?.openDebates}}</span>\r\n        </div>\r\n\r\n        <!-- Seção do usuário -->\r\n        <div class=\"col-md-4 d-md-block d-none \">\r\n            <div class=\"row\">\r\n                <div class=\"d-flex align-items-center justify-content-center mb-2\">\r\n                    <img [src]=\"debateGroup?.lastContributionPhoto\" alt=\"Gabriela Silva\" class=\"rounded-circle user-image me-2\" />\r\n                    <p class=\"fw-semibold mb-0\">{{debateGroup?.lastContributionName}}</p>\r\n                </div>\r\n                <div class=\"d-flex align-items-center justify-content-center\">\r\n                        <p class=\"fw-bold\">{{debateGroup?.lastContributionDebateName}}</p>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
         },
         {
             "name": "HomeComponent",
@@ -451,7 +471,7 @@
                 "linktype": "component",
                 "name": "DebateGroupComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/4",
                 "status": "low"
             },
             {

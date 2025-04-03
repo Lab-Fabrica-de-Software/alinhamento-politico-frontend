@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DebateGroup } from '../../../../core/models/debate-group';
 
 @Component({
@@ -11,5 +11,12 @@ export class DebateGroupComponent {
 
   @Input()
   debateGroup?:DebateGroup;
+
+  @Output()
+  onSelectDebateGroup = new EventEmitter<Number>();
+
+  onSelectGroup(){
+    this.onSelectDebateGroup.emit(this.debateGroup?.id);
+  }
 
 }

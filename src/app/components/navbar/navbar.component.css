@@ -6,3 +6,8 @@
 .nav-link:hover {
     color: #adb5bd;
 }
+
+.form-select {
+    background-color: #14213d;
+    --bs-form-select-bg-img: none !important;
+  }

@@ -1,10 +1,13 @@
 <nav class="navbar navbar-expand-lg" style="background-color: #14213D;">
     <div class="container-fluid d-flex justify-content-between align-items-center m-0">
         <div class="d-flex column gap-2">
-            <a href="#">
-                <img src={{logo}} alt="logo" width="50" height="50">
+            <a href="/">
+                <img [src]="logo" alt="logo" width="50" height="50">
             </a>
-            <span class="text-white fs-6">Bússola<br>Eleitoral</span>
+            <div class="text-white fs-6 d-flex row">
+                <span>Bússola</span>
+                <span>Eleitoral</span>
+            </div>
         </div>
 
         <div class="align-items-center">
@@ -21,53 +24,42 @@
             </ul>
         </div>
 
-        <form class="d-flex align-items-center position-relative w-25" role="search">
+        <form class="d-flex align-items-center position-relative w-25">
             <input class="form-control ps-4 pe-5 py-1 rounded-pill border-0 bg-light fst-italic" type="search"
-                placeholder="Pesquisar" aria-label="Pesquisar">
+                placeholder="Pesquisar" aria-label="Pesquisar" name="searchInput" [(ngModel)]="searchInput">
 
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="position-absolute"
-                style="right: 15px; top: 50%; transform: translateY(-50%);" viewBox="0 0 16 16">
-                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 
-                       1.415-1.414l-3.85-3.85zm-5.242 1.106a5 5 0 1 1 
-                       0-10 5 5 0 0 1 0 10z" />
-            </svg>
+            <button class="position-absolute btn p-0 m-0 border-0 bg-transparent" style="right: 15px;" type="button" (click)="search()">
+                <i class="bi bi-search position-absolute"
+                style="top: 50%; transform: translate(-100% ,-50%); font-size: 20px; color: black;"></i>
+            </button>
+            
         </form>
 
         <div class="d-flex column-gap-2 align-items-center justify-content-center">
             <div class="position-relative d-inline-block me-4">
-                <!-- Ícone do sino (SVG que você mandou) -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#FCA311" class="bi bi-bell-fill"
-                    viewBox="0 0 16 16">
-                    <path
-                        d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901" />
-                </svg>
-                <span
-                    class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger text-dark text-opacity-50">
+                <button (click)="onRedirectNotifications()" class="btn p-0 m-0 border-0 bg-transparent">
+                    <i class="bi bi-bell-fill" style="font-size: 32px; color: #FCA311;"></i>
+                </button>
+
+                <span *ngIf="user.unreadNotifications > 0"
+                    class="position-absolute top-0 start-100 badge rounded-circle bg-danger text-dark text-opacity-75"
+                    style="transform: translate(-50%, -10%);">
                     {{user.unreadNotifications}}
                 </span>
             </div>
 
             <a href="#">
-                <img src={{user.photo}} alt="profilePicture" width="50" height="50" class="rounded-circle me-2">
+                <img [src]="user.photo" alt="profilePicture" width="50" height="50" class="rounded-circle me-2">
             </a>
             <div class="d-flex align-items-center position-relative">
-                <select class="form-select text-white border-0 pe-4 me-2" style="background-color: #14213D;">
-                    <option value="" hidden selected>{{user.name}}</option>
-                    <option value="option1">
-                        <a href="#">Opção 1</a>
-                    </option>
-                    <option value="option2">
-                        <a href="#">Opção 2</a>
-                    </option>
-                    <option value="option3">
-                        <a href="">Opção 3</a>
-                    </option>
+                <select class="form-select text-white border-0 pe-4 me-2" (change)="onSelectOption($event)">
+                    <option value="userName" hidden selected>{{user.name}}</option>
+                    <option value="/pagina1">Página 1</option>
+                    <option value="/pagina2">Página 2</option>
+                    <option value="/pagina3">Página 3</option>
                 </select>
-                <svg xmlns="http://www.w3.org/2000/svg" style="transform: scaleY(2)" width="16" height="16" fill="#FFF"
-                    class="bi bi-chevron-compact-down position-absolute end-0 me-2" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                        d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67" />
-                </svg>
+                <i class="bi bi-chevron-compact-down position-absolute end-0 me-2"
+                    style="transform: scaleY(2); font-size: 16px; color: #FFF;"></i>
             </div>
         </div>
     </div>

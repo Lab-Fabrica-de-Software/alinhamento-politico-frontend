@@ -95,6 +95,61 @@
             "kind": 171,
             "methods": [],
             "extends": []
+        },
+        {
+            "name": "User",
+            "id": "interface-User-5f90d8bb604980f2475f074a7c6465a43c12ec8d47c644eb2f769a88752afb43ddfd76065a05352efb7f4cb082fadcbb5b59b985f25f2fb864c12c8fb7da65f9",
+            "file": "src/app/core/models/user.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface User {\r\n    id: number,\r\n    name: string,\r\n    photo: string,\r\n    unreadNotifications: number\r\n}",
+            "properties": [
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "photo",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "unreadNotifications",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
         }
     ],
     "injectables": [],
@@ -218,7 +273,7 @@
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<div class=\"card\" [style.border-left]=\"'10px solid ' + (debateGroup?.color ?? '#f00')\"  (click)=\"onSelectGroup()\">\r\n    <div class=\"row align-items-center\">\r\n        <!-- Seção do texto -->\r\n        <div class=\"col-md-6\" >\r\n            <h5 class=\"fw-bold\">{{debateGroup?.name}}</h5>\r\n            <p class=\"text-muted\">\r\n                {{debateGroup?.description}}\r\n            </p>\r\n        </div>\r\n\r\n        <!-- Seção do número -->\r\n        <div class=\"col-md-2 text-start\">\r\n            <span class=\"fs-4 fw-bold\">{{debateGroup?.openDebates}}</span>\r\n        </div>\r\n\r\n        <!-- Seção do usuário -->\r\n        <div class=\"col-md-4 d-md-block d-none \">\r\n            <div class=\"row\">\r\n                <div class=\"d-flex align-items-center justify-content-center mb-2\">\r\n                    <img [src]=\"debateGroup?.lastContributionPhoto\" alt=\"Gabriela Silva\" class=\"rounded-circle user-image me-2\" />\r\n                    <p class=\"fw-semibold mb-0\">{{debateGroup?.lastContributionName}}</p>\r\n                </div>\r\n                <div class=\"d-flex align-items-center justify-content-center\">\r\n                        <p class=\"fw-bold\">{{debateGroup?.lastContributionDebateName}}</p>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
+            "templateData": "<div class=\"card\" [style.border-left]=\"'10px solid ' + (debateGroup?.color ?? '#f00')\"  (click)=\"onSelectGroup()\">\r\n    <div class=\"row align-items-center\">\r\n        <!-- Seção do texto -->\r\n        <div class=\"col-md-6\" >\r\n            <h5 class=\"fw-bold\">{{debateGroup?.name}}</h5>\r\n            <p class=\"text-muted\">\r\n                {{debateGroup?.description}}\r\n            </p>\r\n        </div>\r\n\r\n        <!-- Seção do número -->\r\n        <div class=\"col-md-2 text-start\">\r\n            <span class=\"fs-4 fw-bold\">{{debateGroup?.openDebates}}</span>\r\n        </div>\r\n\r\n        <!-- Seção do usuário -->\r\n        <div *ngIf=\"debateGroup?.openDebates !==0\" class=\"col-md-4 d-md-block d-none \">\r\n            <div class=\"row\">\r\n                <div class=\"d-flex align-items-center justify-content-center mb-2\">\r\n                    <img [src]=\"debateGroup?.lastContributionPhoto\" alt=\"Gabriela Silva\" class=\"rounded-circle user-image me-2\" />\r\n                    <p class=\"fw-semibold mb-0\">{{debateGroup?.lastContributionName}}</p>\r\n                </div>\r\n                <div class=\"d-flex align-items-center justify-content-center\">\r\n                        <p class=\"fw-bold\">{{debateGroup?.lastContributionDebateName}}</p>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
         },
         {
             "name": "HomeComponent",
@@ -257,18 +312,78 @@
             "stylesData": "",
             "extends": [],
             "templateData": "<p>home works!</p>\r\n"
+        },
+        {
+            "name": "NavbarComponent",
+            "id": "component-NavbarComponent-f0fa9f35b5ddab35c72e671bd57028df426bd6142ea2cacf45f0c122a94ef1e3411b2aeb95403e872140076f247c110eb74083b2dec669ac1f4c031c95f613cc",
+            "file": "src/app/components/navbar/navbar.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-navbar",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./navbar.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "user",
+                    "defaultValue": "{} as User",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "User",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "logo",
+                    "defaultValue": "\"\"",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\r\nimport { User } from \"../../core/models/user\";\r\n\r\n@Component({\r\n  selector: 'app-navbar',\r\n  standalone: false,\r\n  templateUrl: './navbar.component.html',\r\n  styleUrl: './navbar.component.css'\r\n})\r\nexport class NavbarComponent {\r\n  logo: string = \"\";\r\n\r\n  @Input()\r\n  user: User = {} as User;\r\n}\r\n",
+            "styleUrl": "./navbar.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<nav class=\"navbar navbar-expand-lg\" style=\"background-color: #14213D;\">\r\n    <div class=\"container-fluid d-flex justify-content-between align-items-center m-0\">\r\n        <div class=\"d-flex column-gap-4\">\r\n            <a href=\"#\">\r\n                <img src={{logo}} alt=\"logo\" width=\"50\" height=\"50\">\r\n            </a>\r\n            <span class=\"text-white fs-6\">Bússola<br>Eleitoral</span>\r\n        </div>\r\n\r\n        <div class=\"align-items-center\">\r\n            <ul class=\"list-unstyled mb-0 d-flex column-gap-4 align-items-center\">\r\n                <li class=\"fs-5\">\r\n                    <a class=\"text-white text-decoration-none\" href=\"#\">Início</a>\r\n                </li>\r\n                <li class=\"fs-5\">\r\n                    <a class=\"text-white text-decoration-none\" href=\"#\">Sobre</a>\r\n                </li>\r\n                <li class=\"fs-5\">\r\n                    <a class=\"text-white text-decoration-none\" href=\"#\">Notícias</a>\r\n                </li>\r\n            </ul>\r\n        </div>\r\n\r\n        <form class=\"d-flex align-items-center position-relative w-25\" role=\"search\">\r\n            <input class=\"form-control ps-4 pe-5 py-1 rounded-pill border-0 bg-light fst-italic\" type=\"search\"\r\n                placeholder=\"Pesquisar\" aria-label=\"Pesquisar\">\r\n\r\n            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" fill=\"black\" class=\"position-absolute\"\r\n                style=\"right: 15px; top: 50%; transform: translateY(-50%);\" viewBox=\"0 0 16 16\">\r\n                <path d=\"M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 \r\n                       1.415-1.414l-3.85-3.85zm-5.242 1.106a5 5 0 1 1 \r\n                       0-10 5 5 0 0 1 0 10z\" />\r\n            </svg>\r\n        </form>\r\n\r\n        <div class=\"d-flex column-gap-2 align-items-center justify-content-center\">\r\n            <div class=\"position-relative d-inline-block me-4\">\r\n                <!-- Ícone do sino (SVG que você mandou) -->\r\n                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" fill=\"#FCA311\" class=\"bi bi-bell-fill\"\r\n                    viewBox=\"0 0 16 16\">\r\n                    <path\r\n                        d=\"M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901\" />\r\n                </svg>\r\n                <span\r\n                    class=\"position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger text-dark text-opacity-50\">\r\n                    {{user.unreadNotifications}}\r\n                </span>\r\n            </div>\r\n\r\n            <a href=\"#\">\r\n                <img src={{user.photo}} alt=\"logo\" width=\"50\" height=\"50\" class=\"rounded-circle me-2\">\r\n            </a>\r\n            <p class=\"text-white mb-0\">{{user.name}}</p>\r\n            <svg xmlns=\"http://www.w3.org/2000/svg\" style=\"transform: scaleY(2)\" width=\"16\" height=\"16\" fill=\"#FFF\"\r\n                class=\"bi bi-chevron-compact-down\" viewBox=\"0 0 16 16\">\r\n                <path fill-rule=\"evenodd\"\r\n                    d=\"M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67\" />\r\n            </svg>\r\n        </div>\r\n    </div>\r\n</nav>"
         }
     ],
     "modules": [
         {
             "name": "AppModule",
-            "id": "module-AppModule-32444594e4a2fc23cbba018d1b621a0734efc30103571b90f815739b9157ab079ef2dfbc489ececd85e9565ccd6f38cb332e8939b124360b0e09c4215536e4cc",
+            "id": "module-AppModule-8bd871e47ea3f5c4c485e6c1c94c7754a5e59089cef98be1935839a1191fd35d515527ade4ba5a4069aa0969161426a68746b12a0ea08e1c7e97053400197bc8",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\n\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { AppComponent } from './app.component';\r\nimport { NgbModule } from '@ng-bootstrap/ng-bootstrap';\r\n\r\n@NgModule({\r\n  declarations: [\r\n    AppComponent\r\n  ],\r\n  imports: [\r\n    BrowserModule,\r\n    AppRoutingModule,\r\n    NgbModule\r\n  ],\r\n  providers: [],\r\n  bootstrap: [AppComponent]\r\n})\r\nexport class AppModule { }\r\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\n\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { AppComponent } from './app.component';\r\nimport { NgbModule } from '@ng-bootstrap/ng-bootstrap';\r\nimport { NavbarComponent } from './components/navbar/navbar.component';\r\n\r\n@NgModule({\r\n  declarations: [\r\n    AppComponent,\r\n    NavbarComponent\r\n  ],\r\n  imports: [\r\n    BrowserModule,\r\n    AppRoutingModule,\r\n    NgbModule\r\n  ],\r\n  providers: [],\r\n  bootstrap: [AppComponent]\r\n})\r\nexport class AppModule { }\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -279,6 +394,9 @@
                     "elements": [
                         {
                             "name": "AppComponent"
+                        },
+                        {
+                            "name": "NavbarComponent"
                         }
                     ]
                 },
@@ -346,13 +464,13 @@
         },
         {
             "name": "DebateModule",
-            "id": "module-DebateModule-83e46d1a636ec1917cb30b37cc14da10eef834d13179d7080320877510ceea68a7af8644f90d2b49deba51db7e88f6884cb8cff4dd2bc64111c9afb19c363a1c",
+            "id": "module-DebateModule-55fa12ab34bbc66e073f564fb34d1fa2e426c3013ae0c594b54ee35d0180cc78985e9a763f565ecb72b8901c3bf546b46c199dbb892ee9d9a0ad9bf1367218a2",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/modules/debate/debate.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\nimport { DebateRoutingModule } from './debate-routing.module';\r\nimport { HomeComponent } from './pages/home/home.component';\r\nimport { DebateGroupComponent } from './components/debate-group/debate-group.component';\r\n\r\n\r\n@NgModule({\r\n  declarations: [\n    HomeComponent,\n    DebateGroupComponent\n  ],\r\n  imports: [\r\n    CommonModule,\r\n    DebateRoutingModule\r\n  ]\r\n})\r\nexport class DebateModule { }\r\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\nimport { DebateRoutingModule } from './debate-routing.module';\r\nimport { HomeComponent } from './pages/home/home.component';\r\nimport { DebateGroupComponent } from './components/debate-group/debate-group.component';\r\n\r\n\r\n@NgModule({\r\n  declarations: [\r\n    HomeComponent,\r\n    DebateGroupComponent\r\n  ],\r\n  imports: [\r\n    CommonModule,\r\n    DebateRoutingModule\r\n  ]\r\n})\r\nexport class DebateModule { }\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -457,12 +575,30 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/components/navbar/navbar.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "NavbarComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/core/models/debate-group.ts",
                 "type": "interface",
                 "linktype": "interface",
                 "name": "DebateGroup",
                 "coveragePercent": 0,
                 "coverageCount": "0/9",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/models/user.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "User",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
                 "status": "low"
             },
             {

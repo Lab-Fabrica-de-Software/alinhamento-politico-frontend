@@ -4,13 +4,13 @@
             <a href="/">
                 <img [src]="logo" alt="logo" width="50" height="50">
             </a>
-            <div class="text-white fs-6 d-flex row">
-                <span>Bússola</span>
-                <span>Eleitoral</span>
+            <div class="text-white fs-6 d-none d-md-block">
+                <span class="d-block">Bússola</span>
+                <span class="d-block">Eleitoral</span>
             </div>
         </div>
 
-        <div class="align-items-center">
+        <div class="align-items-center d-none d-lg-block ">
             <ul class="list-unstyled mb-0 d-flex column-gap-4 align-items-center">
                 <li class="fs-5">
                     <a class="nav-link" href="#">Início</a>
@@ -24,7 +24,7 @@
             </ul>
         </div>
 
-        <form class="d-flex align-items-center position-relative w-25">
+        <form class="d-flex align-items-center position-relative col-8 col-sm-6 col-md-3 col-lg-2">
             <input class="form-control ps-4 pe-5 py-1 rounded-pill border-0 bg-light fst-italic" type="search"
                 placeholder="Pesquisar" aria-label="Pesquisar" name="searchInput" [(ngModel)]="searchInput">
 
@@ -32,11 +32,10 @@
                 <i class="bi bi-search position-absolute"
                 style="top: 50%; transform: translate(-100% ,-50%); font-size: 20px; color: black;"></i>
             </button>
-            
         </form>
 
         <div class="d-flex column-gap-2 align-items-center justify-content-center">
-            <div class="position-relative d-inline-block me-4">
+            <div class="notifications position-relative d-inline-block me-4 d-none d-md-block">
                 <button (click)="onRedirectNotifications()" class="btn p-0 m-0 border-0 bg-transparent">
                     <i class="bi bi-bell-fill" style="font-size: 32px; color: #FCA311;"></i>
                 </button>
@@ -48,11 +47,11 @@
                 </span>
             </div>
 
-            <a href="#">
+            <a class="d-none d-md-block" href="#">
                 <img [src]="user.photo" alt="profilePicture" width="50" height="50" class="rounded-circle me-2">
             </a>
-            <div class="d-flex align-items-center position-relative">
-                <select class="form-select text-white border-0 pe-4 me-2" (change)="onSelectOption($event)">
+            <div class="d-none d-sm-flex align-items-center position-relative">
+                <select class="form-select text-white fs-6 border-0 pe-4 me-2" role="button" (change)="onSelectOption($event)">
                     <option value="userName" hidden selected>{{user.name}}</option>
                     <option value="/pagina1">Página 1</option>
                     <option value="/pagina2">Página 2</option>

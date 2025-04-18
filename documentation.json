@@ -260,7 +260,7 @@
         },
         {
             "name": "SelectionDateRangeComponent",
-            "id": "component-SelectionDateRangeComponent-2849ca506bdb0757bc2a6ded193e27c3e93a0a046fb04efd6ea81b10e484ed52ff84f38c8000ba5847f170142f4bae9fe60e0191b873ebd6f33257acfbabea3d",
+            "id": "component-SelectionDateRangeComponent-58579c88d966349884bf6712e4fba5cc990117384c35f1c9e851caba9cd79d907ececfddb0ae74692a448cdb1a8c67b1e32cf53bfedba3865f8995c2e34a53e1",
             "file": "src/app/modules/debate/components/selection-date-range/selection-date-range.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -277,7 +277,30 @@
             "hostDirectives": [],
             "inputsClass": [],
             "outputsClass": [],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "endDate",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "NgbDateStruct | null",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
+                },
+                {
+                    "name": "startDate",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "NgbDateStruct | null",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                }
+            ],
             "methodsClass": [],
             "deprecated": false,
             "deprecationMessage": "",
@@ -288,13 +311,13 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-selection-date-range',\r\n  standalone: false,\r\n  templateUrl: './selection-date-range.component.html',\r\n  styleUrl: './selection-date-range.component.css'\r\n})\r\nexport class SelectionDateRangeComponent {\r\n\r\n}\r\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';\r\n\r\n@Component({\r\n  selector: 'app-selection-date-range',\r\n  standalone: false,\r\n  templateUrl: './selection-date-range.component.html',\r\n  styleUrl: './selection-date-range.component.css'\r\n})\r\nexport class SelectionDateRangeComponent {\r\n  startDate: NgbDateStruct | null = null;\r\n  endDate: NgbDateStruct | null = null;\r\n}\r\n",
             "styleUrl": "./selection-date-range.component.css",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<p>selection-date-range works!</p>\r\n"
+            "templateData": "<div class=\"d-flex flex-column gap-3\">\r\n    <div class=\"form-group\">\r\n      <label for=\"startDate\">Início</label>\r\n      <div class=\"input-group\">\r\n        <input\r\n          class=\"form-control\"\r\n          placeholder=\"Selecione a data de início\"\r\n          name=\"startDate\"\r\n          [(ngModel)]=\"startDate\"\r\n          ngbDatepicker\r\n          #start=\"ngbDatepicker\"\r\n        />\r\n        <button class=\"btn btn-outline-secondary\" (click)=\"start.toggle()\" type=\"button\">\r\n          <i class=\"bi bi-calendar\"></i>\r\n        </button>\r\n      </div>\r\n    </div>\r\n  \r\n    <div class=\"form-group\">\r\n      <label for=\"endDate\">Término</label>\r\n      <div class=\"input-group\">\r\n        <input\r\n          class=\"form-control\"\r\n          placeholder=\"Selecione a data de término\"\r\n          name=\"endDate\"\r\n          [(ngModel)]=\"endDate\"\r\n          ngbDatepicker\r\n          #end=\"ngbDatepicker\"\r\n        />\r\n        <button class=\"btn btn-outline-secondary\" (click)=\"end.toggle()\" type=\"button\">\r\n          <i class=\"bi bi-calendar\"></i>\r\n        </button>\r\n      </div>\r\n    </div>\r\n  </div>"
         }
     ],
     "modules": [
@@ -384,13 +407,13 @@
         },
         {
             "name": "DebateModule",
-            "id": "module-DebateModule-76b3b4fb63883556463ad349d5a7dc29aa38747c898e7e43198d08d34bd9c8dc1e1cc24b6218f1546d11ba32ce5deb395af21dbbd719e6ff729683fb32af472e",
+            "id": "module-DebateModule-7f5ebfa5ff55f818451007032177db5b41b3eb3f68acdffc46e392d2b8046bf41b51b40ba3fbd02e3ab28172558b55ff15d3bfa49559e221f5c300bcd143425d",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/modules/debate/debate.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\nimport { DebateRoutingModule } from './debate-routing.module';\r\nimport { HomeComponent } from './pages/home/home.component';\r\nimport { DebateGroupComponent } from './components/debate-group/debate-group.component';\r\nimport { SelectionDateRangeComponent } from './components/selection-date-range/selection-date-range.component';\r\n\r\n\r\n@NgModule({\r\n  declarations: [\r\n    HomeComponent,\r\n    DebateGroupComponent,\r\n    SelectionDateRangeComponent\r\n  ],\r\n  imports: [\r\n    CommonModule,\r\n    DebateRoutingModule\r\n  ]\r\n})\r\nexport class DebateModule { }\r\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { FormsModule } from '@angular/forms';\r\n\r\nimport { DebateRoutingModule } from './debate-routing.module';\r\nimport { HomeComponent } from './pages/home/home.component';\r\nimport { DebateGroupComponent } from './components/debate-group/debate-group.component';\r\nimport { SelectionDateRangeComponent } from './components/selection-date-range/selection-date-range.component';\r\n\r\nimport { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';\r\n\r\n\r\n@NgModule({\r\n  declarations: [\r\n    HomeComponent,\r\n    DebateGroupComponent,\r\n    SelectionDateRangeComponent\r\n  ],\r\n  imports: [\r\n    CommonModule,\r\n    DebateRoutingModule,\r\n    FormsModule,\r\n    NgbDatepickerModule\r\n  ]\r\n})\r\nexport class DebateModule { }\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -521,7 +544,7 @@
                 "linktype": "component",
                 "name": "SelectionDateRangeComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {

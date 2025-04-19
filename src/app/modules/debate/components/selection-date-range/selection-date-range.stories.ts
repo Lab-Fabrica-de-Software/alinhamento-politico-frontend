@@ -1,8 +1,9 @@
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 
 import { SelectionDateRangeComponent } from './selection-date-range.component';
-import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateParserFormatter, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { PtBrDateParserFormatter } from '../../../../core/shared/formatters/pt-br-date-parser-formatter';
 
 const meta: Meta<SelectionDateRangeComponent> = {
   title: 'SelectionDateRange',
@@ -15,6 +16,9 @@ const meta: Meta<SelectionDateRangeComponent> = {
   decorators: [
     moduleMetadata({
       imports: [NgbDatepickerModule, FormsModule],
+      providers: [
+        {provide: NgbDateParserFormatter, useClass: PtBrDateParserFormatter}
+      ]
     }),
   ],
 };

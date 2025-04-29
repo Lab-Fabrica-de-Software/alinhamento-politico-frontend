@@ -14,7 +14,7 @@
         </div>
 
         <!-- Seção do usuário -->
-        <div class="col-md-4 d-md-block d-none ">
+        <div *ngIf="debateGroup?.openDebates !==0" class="col-md-4 d-md-block d-none ">
             <div class="row">
                 <div class="d-flex align-items-center justify-content-center mb-2">
                     <img [src]="debateGroup?.lastContributionPhoto" alt="Gabriela Silva" class="rounded-circle user-image me-2" />

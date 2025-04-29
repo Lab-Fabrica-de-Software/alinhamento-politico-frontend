@@ -510,7 +510,7 @@
         {
             "name": "SelectionDateRangeComponent",
             "id": "component-SelectionDateRangeComponent-58579c88d966349884bf6712e4fba5cc990117384c35f1c9e851caba9cd79d907ececfddb0ae74692a448cdb1a8c67b1e32cf53bfedba3865f8995c2e34a53e1",
-            "file": "src/app/modules/debate/components/selection-date-range/selection-date-range.component.ts",
+            "file": "src/app/shared/selection-date-range/selection-date-range.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -656,13 +656,13 @@
         },
         {
             "name": "DebateModule",
-            "id": "module-DebateModule-7f5ebfa5ff55f818451007032177db5b41b3eb3f68acdffc46e392d2b8046bf41b51b40ba3fbd02e3ab28172558b55ff15d3bfa49559e221f5c300bcd143425d",
+            "id": "module-DebateModule-2a75ef18b07bcfafa35a221e2aeb0a5f69632bcd530289024113ba239b979a8028c5364896c5d6c127b07101db0b180259312d9432e7aeffbc30f0f1cd121015",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/modules/debate/debate.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { FormsModule } from '@angular/forms';\r\n\r\nimport { DebateRoutingModule } from './debate-routing.module';\r\nimport { HomeComponent } from './pages/home/home.component';\r\nimport { DebateGroupComponent } from './components/debate-group/debate-group.component';\r\nimport { SelectionDateRangeComponent } from './components/selection-date-range/selection-date-range.component';\r\n\r\nimport { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';\r\n\r\n\r\n@NgModule({\r\n  declarations: [\r\n    HomeComponent,\r\n    DebateGroupComponent,\r\n    SelectionDateRangeComponent\r\n  ],\r\n  imports: [\r\n    CommonModule,\r\n    DebateRoutingModule,\r\n    FormsModule,\r\n    NgbDatepickerModule\r\n  ]\r\n})\r\nexport class DebateModule { }\r\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { FormsModule } from '@angular/forms';\r\n\r\nimport { DebateRoutingModule } from './debate-routing.module';\r\nimport { HomeComponent } from './pages/home/home.component';\r\nimport { DebateGroupComponent } from './components/debate-group/debate-group.component';\r\nimport { SelectionDateRangeComponent } from '../../shared/selection-date-range/selection-date-range.component';\r\n\r\nimport { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';\r\n\r\n\r\n@NgModule({\r\n  declarations: [\r\n    HomeComponent,\r\n    DebateGroupComponent,\r\n    SelectionDateRangeComponent\r\n  ],\r\n  imports: [\r\n    CommonModule,\r\n    DebateRoutingModule,\r\n    FormsModule,\r\n    NgbDatepickerModule\r\n  ]\r\n})\r\nexport class DebateModule { }\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -850,15 +850,6 @@
                 "status": "low"
             },
             {
-                "filePath": "src/app/modules/debate/components/selection-date-range/selection-date-range.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "SelectionDateRangeComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/3",
-                "status": "low"
-            },
-            {
                 "filePath": "src/app/modules/debate/pages/home/home.component.ts",
                 "type": "component",
                 "linktype": "component",
@@ -874,6 +865,15 @@
                 "name": "NavbarComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/selection-date-range/selection-date-range.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SelectionDateRangeComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
                 "status": "low"
             }
         ]

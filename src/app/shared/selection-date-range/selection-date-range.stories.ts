@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { PtBrDateParserFormatter } from '../../core/shared/formatters/pt-br-date-parser-formatter';
 
 const meta: Meta<SelectionDateRangeComponent> = {
-  title: 'modules/shared/components/selectionDateRange',
+  title: 'modules/shared/components/selection-date-range',
   component: SelectionDateRangeComponent,
   //👇 Our exports that end in "Data" are not stories.
   excludeStories: /.*Data$/,
@@ -26,5 +26,5 @@ const meta: Meta<SelectionDateRangeComponent> = {
 export default meta;
 type Story = StoryObj<SelectionDateRangeComponent>;
 
-export const Default: Story = {
+export const SelectionDateRange: Story = {
 };

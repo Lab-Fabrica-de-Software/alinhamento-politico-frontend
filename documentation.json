@@ -244,7 +244,7 @@
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<p>debate-contribution works!</p>\r\n"
+            "templateData": "<div class=\"container\">\r\n    <form #contributionForm=\"ngForm\">\r\n        <div class=\"border border-black rounded-4 p-0\">\r\n            <div class=\"border-bottom border-black w-100\">\r\n                <button type=\"button\" class=\"btn btn-sm btn-light fw-bold ms-3\">N</button>\r\n                <button type=\"button\" class=\"btn btn-sm btn-light fst-italic\">I</button>\r\n                <button type=\"button\" class=\"btn btn-sm btn-light\">&#64;</button>\r\n            </div>\r\n            <textarea class=\"border-0 rounded-4 p-0 w-100 h-100\"></textarea>\r\n        </div>\r\n    </form>\r\n</div>\r\n"
         },
         {
             "name": "DebateGroupComponent",
@@ -559,13 +559,13 @@
         },
         {
             "name": "DebateModule",
-            "id": "module-DebateModule-0fa2d5d1c865fb1385e5b87d48482913487e1c7c7ae2d0b381c6973cfe4360dd61706b491726f1c6c72e0b58e210786e795beb7e3175e777f2a5f710b95f4bf7",
+            "id": "module-DebateModule-b5779f320e7e6c241ca60f73106e52859ea0cbfdb96b627c00e0509753ed9b1280bda70c0c915748895076ac50dbd3797408df082634f66c741eb5dd163596e2",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/modules/debate/debate.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\nimport { DebateRoutingModule } from './debate-routing.module';\r\nimport { HomeComponent } from './pages/home/home.component';\r\nimport { DebateGroupComponent } from './components/debate-group/debate-group.component';\r\nimport { DebateContributionComponent } from './components/debate-contribution/debate-contribution.component';\r\n\r\n\r\n@NgModule({\r\n  declarations: [\r\n    HomeComponent,\r\n    DebateGroupComponent,\r\n    DebateContributionComponent\r\n  ],\r\n  imports: [\r\n    CommonModule,\r\n    DebateRoutingModule\r\n  ]\r\n})\r\nexport class DebateModule { }\r\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { FormsModule } from '@angular/forms';\r\n\r\nimport { DebateRoutingModule } from './debate-routing.module';\r\nimport { HomeComponent } from './pages/home/home.component';\r\nimport { DebateGroupComponent } from './components/debate-group/debate-group.component';\r\nimport { DebateContributionComponent } from './components/debate-contribution/debate-contribution.component';\r\n\r\n\r\n@NgModule({\r\n  declarations: [\r\n    HomeComponent,\r\n    DebateGroupComponent,\r\n    DebateContributionComponent\r\n  ],\r\n  imports: [\r\n    CommonModule,\r\n    DebateRoutingModule,\r\n    FormsModule\r\n  ]\r\n})\r\nexport class DebateModule { }\r\n",
             "children": [
                 {
                     "type": "providers",

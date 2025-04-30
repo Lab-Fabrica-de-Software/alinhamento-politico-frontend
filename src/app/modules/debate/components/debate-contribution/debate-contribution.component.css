@@ -1,9 +1,17 @@
+.primary-90 {
+    color: rgba(20, 33, 61, 1);
+}
+
 .border-primary-80 {
     border-color: rgba(20, 33, 61, 0.8) !important;
 }
 
 .border-primary-50 {
     border-color: rgba(20, 33, 61, 0.5) !important;
+}
+
+.bg-gray {
+background-color: #e5e5e5;
 }
 
 .like-button:hover h2,

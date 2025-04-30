@@ -220,6 +220,61 @@
             "kind": 171,
             "methods": [],
             "extends": []
+        },
+        {
+            "name": "User",
+            "id": "interface-User-1c95d70ca77bc114533c4402f8a1801aa7a618d7150d29cd0a93e10d93a8930efc9fcab5ada36b47346df69d2c297dc93bdfcf95b460cf08760e80530426b997",
+            "file": "src/app/core/models/user.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface User {\n    id: number,\n    name: string,\n    photo: string,\n    unreadNotifications: number\n}",
+            "properties": [
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "photo",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "unreadNotifications",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
         }
     ],
     "injectables": [],
@@ -280,7 +335,7 @@
         },
         {
             "name": "DebateContributionComponent",
-            "id": "component-DebateContributionComponent-e64084ca1f126e0e4829c781bb2ff4700d0fc3c2b903b23214a5d900bfd028ba0a40f96ca115f21df02b56b9663b59a047c0361adfcd103247e9ef61e7566969",
+            "id": "component-DebateContributionComponent-099c29c84c49376171ed14763e98211a5459f9a1bc77da35e58dd3efa18ee3264c4c020cd57333b0ef7b24cb1907974b49ebb7d2fc15aa1599d7000e7bc3ad8d",
             "file": "src/app/modules/debate/components/debate-contribution/debate-contribution.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -303,10 +358,31 @@
                     "line": 12,
                     "type": "DebateContribution",
                     "decorators": []
+                },
+                {
+                    "name": "small",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "boolean",
+                    "decorators": []
                 }
             ],
             "outputsClass": [],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "showFullText",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 16
+                }
+            ],
             "methodsClass": [
                 {
                     "name": "like",
@@ -314,7 +390,17 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 14,
+                    "line": 27,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "toggleText",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 23,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -328,13 +414,24 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { DebateContribution } from '../../../../core/models/debate-contribution';\n\n@Component({\n  selector: 'app-debate-contribution',\n  standalone: false,\n  templateUrl: './debate-contribution.component.html',\n  styleUrl: './debate-contribution.component.css'\n})\nexport class DebateContributionComponent {\n  @Input()\n  debateContribution!: DebateContribution;\n\n  like() {\n    console.log('Like clicked');\n  }\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { DebateContribution } from '../../../../core/models/debate-contribution';\n\n@Component({\n  selector: 'app-debate-contribution',\n  standalone: false,\n  templateUrl: './debate-contribution.component.html',\n  styleUrl: './debate-contribution.component.css'\n})\nexport class DebateContributionComponent {\n  @Input()\n  debateContribution!: DebateContribution;\n  @Input()\n  small?: boolean = false;\n\n  showFullText: boolean = false;\n\n  get displayText(): string {\n    const text = this.debateContribution.text;\n    return this.showFullText || text.length <= 500 ? text : text.slice(0, 500) + '...';\n  }\n\n  toggleText(): void {\n    this.showFullText = !this.showFullText;\n  }\n\n  like() {\n    console.log('Like clicked');\n  }\n}\n",
             "styleUrl": "./debate-contribution.component.css",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<div class=\"card\" [ngClass]=\"{ 'politic-background': debateContribution.userParty }\">\n    <div class=\"d-flex flex-row justify-content-between align-items-center flex-wrap gap-3\">\n        <div class=\"d-flex flex-row align-items-center\">\n            <img *ngIf=\"debateContribution.userParty\" class=\"d-none d-md-flex me-4\" src=\"/public/tie.png\" alt=\"tie\" />\n\n            <img [src]=\"debateContribution.userPhoto\" [alt]=\"debateContribution.userName\" class=\"rounded-circle me-2\" />\n            <div class=\"d-flex flex-column\">\n                <span *ngIf=\"debateContribution.userParty\">\n                    {{debateContribution.userParty}} ({{debateContribution.userPosition}})\n                </span>\n                <div class=\"d-flex flex-row align-items-center gap-1\">\n                    <span class=\"m-0\">{{debateContribution.userName}}</span>\n                    <i class=\"bi bi-check-circle-fill\" *ngIf=\"debateContribution.userVerified\"></i>\n                </div>\n                <span class=\"text-muted form-text m-0\">{{debateContribution.openDate | date: 'dd/MM/yyyy'}}</span>\n            </div>\n        </div>\n\n        <div class=\"d-none d-md-flex flex-row align-items-center gap-3\">\n            <button class=\"bg-transparent border-0\" aria-label=\"Curtir contribuição\" (click)=\"like()\">\n                <i class=\"bi bi-hand-thumbs-up fs-4 me-2\"></i>\n                <span>{{debateContribution.likes}}</span>\n            </button>\n            <button class=\"bg-transparent border-0\" aria-label=\"Não curtir contribuição\" (click)=\"like()\">\n                <i class=\"bi bi-hand-thumbs-down fs-4 me-2\"></i>\n                <span>{{debateContribution.dislikes}}</span>\n            </button>\n        </div>\n    </div>\n\n    <div class=\"mt-4\">\n        <div class=\"d-flex flex-row align-items-center gap-2\">\n            <i class=\"fs-3\" [ngClass]=\"debateContribution.opinion ? 'bi bi-hand-thumbs-up-fill' : 'bi bi-hand-thumbs-down-fill' \"></i>\n            <h3 class=\"m-0\">\n                {{ debateContribution.opinion ? 'Apoia' : 'Não apoia' }}\n            </h3>\n        </div>\n        <p class=\"mt-4\">{{debateContribution.text}}</p>\n    </div>\n</div>"
+            "accessors": {
+                "displayText": {
+                    "name": "displayText",
+                    "getSignature": {
+                        "name": "displayText",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 18
+                    }
+                }
+            },
+            "templateData": "<div class=\"card\" [ngClass]=\"{ 'politic-background': debateContribution.userParty }\">\n    <div class=\"d-flex flex-row justify-content-between align-items-center flex-wrap gap-3\">\n        <div class=\"d-flex flex-row align-items-center\">\n            <img *ngIf=\"debateContribution.userParty && !small\" class=\"d-none d-md-flex me-4\" src=\"\" alt=\"Gravata\" />\n\n            <img [src]=\"debateContribution.userPhoto\" [alt]=\"debateContribution.userName\" class=\"rounded-circle me-2\" />\n            <div class=\"d-flex flex-column\">\n                <span *ngIf=\"debateContribution.userParty\">\n                    {{debateContribution.userParty}} ({{debateContribution.userPosition}})\n                </span>\n                <div class=\"d-flex flex-row align-items-center gap-1\">\n                    <span class=\"m-0\">{{debateContribution.userName}}</span>\n                    <i class=\"bi bi-check-circle-fill\" *ngIf=\"debateContribution.userVerified\"></i>\n                </div>\n                <span class=\"text-muted form-text m-0\">{{debateContribution.openDate | date: 'dd/MM/yyyy'}}</span>\n            </div>\n        </div>\n\n        <div class=\"d-flex flex-row align-items-center gap-3\">\n            <button class=\"bg-transparent border-0\" aria-label=\"Curtir contribuição\" (click)=\"like()\">\n                <i class=\"bi bi-hand-thumbs-up fs-4 me-2\"></i>\n                <span>{{debateContribution.likes}}</span>\n            </button>\n            <button class=\"bg-transparent border-0\" aria-label=\"Não curtir contribuição\" (click)=\"like()\">\n                <i class=\"bi bi-hand-thumbs-down fs-4 me-2\"></i>\n                <span>{{debateContribution.dislikes}}</span>\n            </button>\n        </div>\n    </div>\n\n    <div class=\"mt-4\">\n        <div class=\"d-flex flex-row align-items-center gap-2\">\n            <i class=\"fs-3\"\n                [ngClass]=\"debateContribution.opinion ? 'bi bi-hand-thumbs-up-fill' : 'bi bi-hand-thumbs-down-fill' \"></i>\n            <h3 class=\"m-0\">\n                {{ debateContribution.opinion ? 'Apoia' : 'Não apoia' }}\n            </h3>\n        </div>\n        <p class=\"mt-4\">\n            {{ displayText }}\n            <a *ngIf=\"debateContribution.text.length > 150\" (click)=\"toggleText()\" class=\"text-primary\"\n                style=\"cursor: pointer;\">\n                {{ showFullText ? 'Ler menos' : 'Ler mais' }}\n            </a>\n        </p>\n    </div>\n</div>"
         },
         {
             "name": "DebateGroupComponent",
@@ -440,18 +537,138 @@
             "stylesData": "",
             "extends": [],
             "templateData": "<p>home works!</p>\n"
+        },
+        {
+            "name": "NavbarComponent",
+            "id": "component-NavbarComponent-e5e7e77529e996c11720a0cc138f5c7a5864652788944f4f685bee1cdafa6e93197f7e0aab13d00e04209f64644a0ad2dc179b55383b0ef35eacab47573db541",
+            "file": "src/app/shared/navbar/navbar.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-navbar",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./navbar.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "user",
+                    "defaultValue": "{} as User",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "User",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "logo",
+                    "defaultValue": "\"\"",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                },
+                {
+                    "name": "searchInput",
+                    "defaultValue": "\"\"",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "onRedirectNotifications",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 21,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onSelectOption",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 25,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "search",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 17,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { User } from \"../../core/models/user\";\n\n@Component({\n  selector: 'app-navbar',\n  standalone: false,\n  templateUrl: './navbar.component.html',\n  styleUrl: './navbar.component.css'\n})\nexport class NavbarComponent {\n  logo = \"\";\n  searchInput = \"\";\n\n  @Input()\n  user: User = {} as User;\n\n  search() {\n    console.log(this.searchInput);\n  }\n\n  onRedirectNotifications () {\n    window.location.href = \"/notifications\";\n  }\n\n  onSelectOption(event: Event) {\n    const target = event.target as HTMLSelectElement;\n    const page = target.value;\n\n    if (!page) {\n      return;\n    }\n\n    window.location.href = page;\n  }\n}\n",
+            "styleUrl": "./navbar.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<nav class=\"navbar navbar-expand-lg\" style=\"background-color: #14213D;\">\n    <div class=\"container-fluid d-flex justify-content-between align-items-center m-0\">\n        <div class=\"d-flex column gap-2\">\n            <a href=\"/\">\n                <img [src]=\"logo\" alt=\"logo\" width=\"50\" height=\"50\">\n            </a>\n            <div class=\"text-white fs-6 d-none d-md-block\">\n                <span class=\"d-block\">Bússola</span>\n                <span class=\"d-block\">Eleitoral</span>\n            </div>\n        </div>\n\n        <div class=\"align-items-center d-none d-lg-block \">\n            <ul class=\"list-unstyled mb-0 d-flex column-gap-4 align-items-center\">\n                <li class=\"fs-5\">\n                    <a class=\"nav-link\" href=\"#\">Início</a>\n                </li>\n                <li class=\"fs-5\">\n                    <a class=\"nav-link\" href=\"#\">Sobre</a>\n                </li>\n                <li class=\"fs-5\">\n                    <a class=\"nav-link\" href=\"#\">Notícias</a>\n                </li>\n            </ul>\n        </div>\n\n        <form class=\"d-flex align-items-center position-relative col-8 col-sm-6 col-md-3 col-lg-2\">\n            <input class=\"form-control ps-4 pe-5 py-1 rounded-pill border-0 bg-light fst-italic\" type=\"search\"\n                placeholder=\"Pesquisar\" aria-label=\"Pesquisar\" name=\"searchInput\" [(ngModel)]=\"searchInput\">\n\n            <button class=\"position-absolute btn p-0 m-0 border-0 bg-transparent\" style=\"right: 15px;\" type=\"button\" (click)=\"search()\">\n                <i class=\"bi bi-search position-absolute\"\n                style=\"top: 50%; transform: translate(-100% ,-50%); font-size: 20px; color: black;\"></i>\n            </button>\n        </form>\n\n        <div class=\"d-flex column-gap-2 align-items-center justify-content-center\">\n            <div class=\"notifications position-relative d-inline-block me-4 d-none d-md-block\">\n                <button (click)=\"onRedirectNotifications()\" class=\"btn p-0 m-0 border-0 bg-transparent\">\n                    <i class=\"bi bi-bell-fill\" style=\"font-size: 32px; color: #FCA311;\"></i>\n                </button>\n\n                <span *ngIf=\"user.unreadNotifications > 0\"\n                    class=\"position-absolute top-0 start-100 badge rounded-circle bg-danger text-dark text-opacity-75\"\n                    style=\"transform: translate(-50%, -10%);\">\n                    {{user.unreadNotifications}}\n                </span>\n            </div>\n\n            <a class=\"d-none d-md-block\" href=\"#\">\n                <img [src]=\"user.photo\" alt=\"profilePicture\" width=\"50\" height=\"50\" class=\"rounded-circle me-2\">\n            </a>\n            <div class=\"d-none d-sm-flex align-items-center position-relative\">\n                <select class=\"form-select text-white fs-6 border-0 pe-4 me-2\" role=\"button\" (change)=\"onSelectOption($event)\">\n                    <option value=\"userName\" hidden selected>{{user.name}}</option>\n                    <option value=\"/pagina1\">Página 1</option>\n                    <option value=\"/pagina2\">Página 2</option>\n                    <option value=\"/pagina3\">Página 3</option>\n                </select>\n                <i class=\"bi bi-chevron-compact-down position-absolute end-0 me-2\"\n                    style=\"transform: scaleY(2); font-size: 16px; color: #FFF;\"></i>\n            </div>\n        </div>\n    </div>\n</nav>"
         }
     ],
     "modules": [
         {
             "name": "AppModule",
-            "id": "module-AppModule-8bbe185f956d8c00ae15a5bc3706681d30f2435055524990af2263f019d461aeff48380a7028a857bb5a2856bde994d9f777add321092fcb49b443eebc4e91e2",
+            "id": "module-AppModule-85db8d928b1a311cde81ee00d4bf7c65b9aba291b0489a479ba382b2f52b4296187be88550f83c47cc9194d16b69f20341c8faec734df87754c2f81b7c6d8ea2",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\n\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\nimport { NgbModule } from '@ng-bootstrap/ng-bootstrap';\nimport { DebateContributionComponent } from './modules/debate/components/debate-contribution/debate-contribution.component';\n\n@NgModule({\n  declarations: [\n    AppComponent,\n    DebateContributionComponent\n  ],\n  imports: [\n    BrowserModule,\n    AppRoutingModule,\n    NgbModule\n  ],\n  providers: [],\n  bootstrap: [AppComponent]\n})\nexport class AppModule { }\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\n\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\nimport { NgbModule } from '@ng-bootstrap/ng-bootstrap';\nimport { FormsModule } from '@angular/forms';\nimport { DebateContributionComponent } from './modules/debate/components/debate-contribution/debate-contribution.component';\n\n@NgModule({\n  declarations: [\n    AppComponent,\n    DebateContributionComponent\n  ],\n  imports: [\n    BrowserModule,\n    AppRoutingModule,\n    NgbModule,\n    FormsModule\n  ],\n  providers: [],\n  bootstrap: [AppComponent]\n})\nexport class AppModule { }\n",
             "children": [
                 {
                     "type": "providers",
@@ -612,6 +829,50 @@
                     "elements": []
                 }
             ]
+        },
+        {
+            "name": "SharedModule",
+            "id": "module-SharedModule-8d5cd7daa39ec52d411b07da3e4a596703c4752308fec610033253967d1bfcb6243a158905bf46487f86a2ccc001c9775c6da73eaeba979927f80c91ef21f06e",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/shared/shared.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { NavbarComponent } from './navbar/navbar.component';\n\n\n\n@NgModule({\n  declarations: [\n    NavbarComponent\n  ],\n  imports: [\n    CommonModule\n  ],\n  exports: [\n    NavbarComponent\n  ]\n})\nexport class SharedModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "NavbarComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "NavbarComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
         }
     ],
     "miscellaneous": [],
@@ -661,12 +922,21 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/core/models/user.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "User",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/modules/debate/components/debate-contribution/debate-contribution.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "DebateContributionComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
+                "coverageCount": "0/6",
                 "status": "low"
             },
             {
@@ -685,6 +955,15 @@
                 "name": "HomeComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/navbar/navbar.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "NavbarComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
                 "status": "low"
             }
         ]

@@ -4,8 +4,9 @@ export interface DebateContribution {
     userPhoto: string;
     userParty?: string;
     userPosition?: string;
+    userVerified?: boolean;
     openDate: Date;
-    Opion: boolean;
+    opinion: boolean;
     likes: number;
     dislikes: number;
     text: string;

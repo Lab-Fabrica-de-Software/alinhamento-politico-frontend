@@ -2,6 +2,131 @@
     "pipes": [],
     "interfaces": [
         {
+            "name": "DebateContribution",
+            "id": "interface-DebateContribution-b87b8dc7c16a0707b7456fdd2ff2cf5d7e588af5e5a637c34f0a0ad5154a36e96ace05adbb7601cf63c1c9826791b1cc4df8a0fb6aeebfad49e2a5c9fbb4ce72",
+            "file": "src/app/core/models/debate-contribution.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface DebateContribution {\n    id: number;\n    userName: string;\n    userPhoto: string;\n    userParty?: string;\n    userPosition?: string;\n    userVerified?: boolean;\n    openDate: Date;\n    opinion: boolean;\n    likes: number;\n    dislikes: number;\n    text: string;\n}",
+            "properties": [
+                {
+                    "name": "dislikes",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                },
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "likes",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 10
+                },
+                {
+                    "name": "openDate",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Date",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                },
+                {
+                    "name": "opinion",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                },
+                {
+                    "name": "text",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
+                },
+                {
+                    "name": "userName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "userParty",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 5
+                },
+                {
+                    "name": "userPhoto",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "userPosition",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 6
+                },
+                {
+                    "name": "userVerified",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 7
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
             "name": "DebateGroup",
             "id": "interface-DebateGroup-00437f6262fa1b6910a1ebfb6628d0e4d0746ef226f607e89430668acf36a85c9119359b2909456c275bde7dade8b7a684d84543e1b78b2416e0831082ed8df0",
             "file": "src/app/core/models/debate-group.ts",
@@ -155,7 +280,7 @@
         },
         {
             "name": "DebateContributionComponent",
-            "id": "component-DebateContributionComponent-f391589a5d31c35c386fc015fc87e01908c1571f3f22df6cd8ce6312e310e841ba87a7ca17ddf003ee1bd89c1aec7e957f019c2d9080fc4fb1ba5c6347b09256",
+            "id": "component-DebateContributionComponent-e64084ca1f126e0e4829c781bb2ff4700d0fc3c2b903b23214a5d900bfd028ba0a40f96ca115f21df02b56b9663b59a047c0361adfcd103247e9ef61e7566969",
             "file": "src/app/modules/debate/components/debate-contribution/debate-contribution.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -170,10 +295,30 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "debateContribution",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "DebateContribution",
+                    "decorators": []
+                }
+            ],
             "outputsClass": [],
             "propertiesClass": [],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "like",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 14,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -183,13 +328,13 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-debate-contribution',\n  standalone: false,\n  templateUrl: './debate-contribution.component.html',\n  styleUrl: './debate-contribution.component.css'\n})\nexport class DebateContributionComponent {\n\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { DebateContribution } from '../../../../core/models/debate-contribution';\n\n@Component({\n  selector: 'app-debate-contribution',\n  standalone: false,\n  templateUrl: './debate-contribution.component.html',\n  styleUrl: './debate-contribution.component.css'\n})\nexport class DebateContributionComponent {\n  @Input()\n  debateContribution!: DebateContribution;\n\n  like() {\n    console.log('Like clicked');\n  }\n}\n",
             "styleUrl": "./debate-contribution.component.css",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<p>debate-contribution works!</p>\n"
+            "templateData": "<div class=\"card\" [ngClass]=\"{ 'politic-background': debateContribution.userParty }\">\n    <div class=\"d-flex flex-row justify-content-between align-items-center flex-wrap gap-3\">\n        <div class=\"d-flex flex-row align-items-center\">\n            <img *ngIf=\"debateContribution.userParty\" class=\"d-none d-md-flex me-4\" src=\"/public/tie.png\" alt=\"tie\" />\n\n            <img [src]=\"debateContribution.userPhoto\" [alt]=\"debateContribution.userName\" class=\"rounded-circle me-2\" />\n            <div class=\"d-flex flex-column\">\n                <span *ngIf=\"debateContribution.userParty\">\n                    {{debateContribution.userParty}} ({{debateContribution.userPosition}})\n                </span>\n                <div class=\"d-flex flex-row align-items-center gap-1\">\n                    <span class=\"m-0\">{{debateContribution.userName}}</span>\n                    <i class=\"bi bi-check-circle-fill\" *ngIf=\"debateContribution.userVerified\"></i>\n                </div>\n                <span class=\"text-muted form-text m-0\">{{debateContribution.openDate | date: 'dd/MM/yyyy'}}</span>\n            </div>\n        </div>\n\n        <div class=\"d-none d-md-flex flex-row align-items-center gap-3\">\n            <button class=\"bg-transparent border-0\" aria-label=\"Curtir contribuição\" (click)=\"like()\">\n                <i class=\"bi bi-hand-thumbs-up fs-4 me-2\"></i>\n                <span>{{debateContribution.likes}}</span>\n            </button>\n            <button class=\"bg-transparent border-0\" aria-label=\"Não curtir contribuição\" (click)=\"like()\">\n                <i class=\"bi bi-hand-thumbs-down fs-4 me-2\"></i>\n                <span>{{debateContribution.dislikes}}</span>\n            </button>\n        </div>\n    </div>\n\n    <div class=\"mt-4\">\n        <div class=\"d-flex flex-row align-items-center gap-2\">\n            <i class=\"fs-3\" [ngClass]=\"debateContribution.opinion ? 'bi bi-hand-thumbs-up-fill' : 'bi bi-hand-thumbs-down-fill' \"></i>\n            <h3 class=\"m-0\">\n                {{ debateContribution.opinion ? 'Apoia' : 'Não apoia' }}\n            </h3>\n        </div>\n        <p class=\"mt-4\">{{debateContribution.text}}</p>\n    </div>\n</div>"
         },
         {
             "name": "DebateGroupComponent",
@@ -498,6 +643,15 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/core/models/debate-contribution.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "DebateContribution",
+                "coveragePercent": 0,
+                "coverageCount": "0/12",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/core/models/debate-group.ts",
                 "type": "interface",
                 "linktype": "interface",
@@ -512,7 +666,7 @@
                 "linktype": "component",
                 "name": "DebateContributionComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {

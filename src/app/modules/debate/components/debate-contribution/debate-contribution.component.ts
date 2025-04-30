@@ -9,5 +9,22 @@ import { DebateContribution } from '../../../../core/models/debate-contribution'
 })
 export class DebateContributionComponent {
   @Input()
-  debateContribution?:DebateContribution;
+  debateContribution!: DebateContribution;
+  @Input()
+  small?: boolean = false;
+
+  showFullText: boolean = false;
+
+  get displayText(): string {
+    const text = this.debateContribution.text;
+    return this.showFullText || text.length <= 500 ? text : text.slice(0, 500) + '...';
+  }
+
+  toggleText(): void {
+    this.showFullText = !this.showFullText;
+  }
+
+  like() {
+    console.log('Like clicked');
+  }
 }

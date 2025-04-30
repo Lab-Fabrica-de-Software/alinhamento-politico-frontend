@@ -335,7 +335,7 @@
         },
         {
             "name": "DebateContributionComponent",
-            "id": "component-DebateContributionComponent-099c29c84c49376171ed14763e98211a5459f9a1bc77da35e58dd3efa18ee3264c4c020cd57333b0ef7b24cb1907974b49ebb7d2fc15aa1599d7000e7bc3ad8d",
+            "id": "component-DebateContributionComponent-6c6dc78464ec56a3cac9cc2f1785219ed5d36ca544d402d876192dc70420c7a031040d74e0b117dbab16e4e384717c33ee441547466449fe17ab5d4d5cb36c4c",
             "file": "src/app/modules/debate/components/debate-contribution/debate-contribution.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -355,7 +355,7 @@
                     "name": "debateContribution",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 12,
+                    "line": 14,
                     "type": "DebateContribution",
                     "decorators": []
                 },
@@ -364,7 +364,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 14,
+                    "line": 16,
                     "type": "boolean",
                     "decorators": []
                 }
@@ -380,7 +380,18 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 16
+                    "line": 18
+                },
+                {
+                    "name": "tie",
+                    "defaultValue": "\"\"",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
                 }
             ],
             "methodsClass": [
@@ -390,7 +401,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 27,
+                    "line": 29,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -400,7 +411,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 23,
+                    "line": 25,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -414,7 +425,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { DebateContribution } from '../../../../core/models/debate-contribution';\n\n@Component({\n  selector: 'app-debate-contribution',\n  standalone: false,\n  templateUrl: './debate-contribution.component.html',\n  styleUrl: './debate-contribution.component.css'\n})\nexport class DebateContributionComponent {\n  @Input()\n  debateContribution!: DebateContribution;\n  @Input()\n  small?: boolean = false;\n\n  showFullText: boolean = false;\n\n  get displayText(): string {\n    const text = this.debateContribution.text;\n    return this.showFullText || text.length <= 500 ? text : text.slice(0, 500) + '...';\n  }\n\n  toggleText(): void {\n    this.showFullText = !this.showFullText;\n  }\n\n  like() {\n    console.log('Like clicked');\n  }\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { DebateContribution } from '../../../../core/models/debate-contribution';\n\n@Component({\n  selector: 'app-debate-contribution',\n  standalone: false,\n  templateUrl: './debate-contribution.component.html',\n  styleUrl: './debate-contribution.component.css'\n})\nexport class DebateContributionComponent {\n  tie = \"\"\n\n  @Input()\n  debateContribution!: DebateContribution;\n  @Input()\n  small?: boolean = false;\n\n  showFullText: boolean = false;\n\n  get displayText(): string {\n    const text = this.debateContribution.text;\n    return this.showFullText || text.length <= 500 ? text : text.slice(0, 500) + '...';\n  }\n\n  toggleText(): void {\n    this.showFullText = !this.showFullText;\n  }\n\n  like() {\n    console.log('Like clicked');\n  }\n}\n",
             "styleUrl": "./debate-contribution.component.css",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -427,11 +438,11 @@
                         "name": "displayText",
                         "type": "string",
                         "returnType": "string",
-                        "line": 18
+                        "line": 20
                     }
                 }
             },
-            "templateData": "<div class=\"card\" [ngClass]=\"{ 'politic-background': debateContribution.userParty }\">\n    <div class=\"d-flex flex-row justify-content-between align-items-center flex-wrap gap-3\">\n        <div class=\"d-flex flex-row align-items-center\">\n            <img *ngIf=\"debateContribution.userParty && !small\" class=\"d-none d-md-flex me-4\" src=\"\" alt=\"Gravata\" />\n\n            <img [src]=\"debateContribution.userPhoto\" [alt]=\"debateContribution.userName\" class=\"rounded-circle me-2\" />\n            <div class=\"d-flex flex-column\">\n                <span *ngIf=\"debateContribution.userParty\">\n                    {{debateContribution.userParty}} ({{debateContribution.userPosition}})\n                </span>\n                <div class=\"d-flex flex-row align-items-center gap-1\">\n                    <span class=\"m-0\">{{debateContribution.userName}}</span>\n                    <i class=\"bi bi-check-circle-fill\" *ngIf=\"debateContribution.userVerified\"></i>\n                </div>\n                <span class=\"text-muted form-text m-0\">{{debateContribution.openDate | date: 'dd/MM/yyyy'}}</span>\n            </div>\n        </div>\n\n        <div class=\"d-flex flex-row align-items-center gap-3\">\n            <button class=\"bg-transparent border-0\" aria-label=\"Curtir contribuição\" (click)=\"like()\">\n                <i class=\"bi bi-hand-thumbs-up fs-4 me-2\"></i>\n                <span>{{debateContribution.likes}}</span>\n            </button>\n            <button class=\"bg-transparent border-0\" aria-label=\"Não curtir contribuição\" (click)=\"like()\">\n                <i class=\"bi bi-hand-thumbs-down fs-4 me-2\"></i>\n                <span>{{debateContribution.dislikes}}</span>\n            </button>\n        </div>\n    </div>\n\n    <div class=\"mt-4\">\n        <div class=\"d-flex flex-row align-items-center gap-2\">\n            <i class=\"fs-3\"\n                [ngClass]=\"debateContribution.opinion ? 'bi bi-hand-thumbs-up-fill' : 'bi bi-hand-thumbs-down-fill' \"></i>\n            <h3 class=\"m-0\">\n                {{ debateContribution.opinion ? 'Apoia' : 'Não apoia' }}\n            </h3>\n        </div>\n        <p class=\"mt-4\">\n            {{ displayText }}\n            <a *ngIf=\"debateContribution.text.length > 150\" (click)=\"toggleText()\" class=\"text-primary\"\n                style=\"cursor: pointer;\">\n                {{ showFullText ? 'Ler menos' : 'Ler mais' }}\n            </a>\n        </p>\n    </div>\n</div>"
+            "templateData": "<div class=\"card\" [ngClass]=\"{ 'politic-background': debateContribution.userParty }\">\n    <div class=\"d-flex flex-row\">\n        <img *ngIf=\"debateContribution.userParty && !small\" class=\"d-none d-md-flex me-2 align-self-start\" style=\"width: 5rem;\" [src]=\"tie\"\n            alt=\"Gravata\" />\n\n        <div class=\"d-flex flex-row w-100 justify-content-between align-items-center flex-wrap gap-3\" style=\"margin-top: 16px;\">\n            <div class=\"d-flex flex-row align-items-center\">\n                <div class=\"d-flex flex-row align-items-center\">\n                    <img [src]=\"debateContribution.userPhoto\" [alt]=\"debateContribution.userName\"\n                        class=\"rounded-circle me-2\" style=\"margin-top: -10px;\" />\n                    <div class=\"d-flex flex-column\">\n                        <span *ngIf=\"debateContribution.userParty\">\n                            {{debateContribution.userParty}} ({{debateContribution.userPosition}})\n                        </span>\n                        <div class=\"d-flex flex-row align-items-center gap-1\">\n                            <span class=\"m-0\">{{debateContribution.userName}}</span>\n                            <i class=\"bi bi-check-circle-fill\" *ngIf=\"debateContribution.userVerified\"></i>\n                        </div>\n                        <span class=\"text-muted form-text m-0\">{{debateContribution.openDate | date:\n                            'dd/MM/yyyy'}}</span>\n                    </div>\n                </div>\n            </div>\n\n            <div class=\"d-flex flex-row align-items-center gap-3\">\n                <button class=\"bg-transparent border-0\" aria-label=\"Curtir contribuição\" (click)=\"like()\">\n                    <i class=\"bi bi-hand-thumbs-up fs-4 me-2\"></i>\n                    <span>{{debateContribution.likes}}</span>\n                </button>\n                <button class=\"bg-transparent border-0\" aria-label=\"Não curtir contribuição\" (click)=\"like()\">\n                    <i class=\"bi bi-hand-thumbs-down fs-4 me-2\"></i>\n                    <span>{{debateContribution.dislikes}}</span>\n                </button>\n            </div>\n        </div>\n    </div>\n\n    <div class=\"mt-4\">\n        <div class=\"d-flex flex-row align-items-center gap-2\">\n            <i class=\"fs-3\"\n                [ngClass]=\"debateContribution.opinion ? 'bi bi-hand-thumbs-up-fill' : 'bi bi-hand-thumbs-down-fill' \"></i>\n            <h3 class=\"m-0\">\n                {{ debateContribution.opinion ? 'Apoia' : 'Não apoia' }}\n            </h3>\n        </div>\n        <p class=\"mt-4\">\n            {{ displayText }}\n            <a *ngIf=\"debateContribution.text.length > 150\" (click)=\"toggleText()\" class=\"text-primary\"\n                style=\"cursor: pointer;\">\n                {{ showFullText ? 'Ler menos' : 'Ler mais' }}\n            </a>\n        </p>\n    </div>\n</div>"
         },
         {
             "name": "DebateGroupComponent",
@@ -936,7 +947,7 @@
                 "linktype": "component",
                 "name": "DebateContributionComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/6",
+                "coverageCount": "0/7",
                 "status": "low"
             },
             {

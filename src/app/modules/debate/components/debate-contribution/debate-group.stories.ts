@@ -29,6 +29,7 @@ export const Contribuição: Story = {
 
 export const ContribuiçãoPolítico: Story = {
   args: {
+    tie: "/tie.png",
     debateContribution: {
       id: 2,
       userName: 'Jorge Antunes',

@@ -8,6 +8,8 @@ import { DebateContribution } from '../../../../core/models/debate-contribution'
   styleUrl: './debate-contribution.component.css'
 })
 export class DebateContributionComponent {
+  tie = ""
+
   @Input()
   debateContribution!: DebateContribution;
   @Input()

@@ -1,8 +1,8 @@
 <div class="container">
     <form #contributionForm="ngForm">
         <h2 class="mb-3">Sua Contribuição:</h2>
-        <div class="col-8 mb-3 border border-black rounded-4 p-0 d-flex flex-column" style="height: 200px;">
-            <div class="border-bottom border-secondary w-100 py-1">
+        <div class="col-8 mb-3 border border-primary-80 rounded-4 p-0 d-flex flex-column" style="height: 200px;">
+            <div class="border-bottom border-primary-50 w-100 py-1">
                 <button type="button" class="btn btn-sm btn-light fw-bold ms-3">N</button>
                 <button type="button" class="btn btn-sm btn-light fst-italic">
                     <i class="bi bi-type-italic fs-6"></i>
@@ -16,7 +16,7 @@
         </div>
 
         <div class="col-8 justify-content-between d-flex flex-md-row">
-            <button class="like_dislike-button d-flex column-gap-2 align-items-center border-0"
+            <button class="like-button d-flex column-gap-2 align-items-center border-0"
             [ngClass]="{ active: isSupported === true, pulse: isPulsing.support }"
             (click)="setSupport(true)"
             >
@@ -24,7 +24,7 @@
                 <h2 class="pt-2 ms-1 mb-0 primary-90 fw-bold">Apoia</h2>
             </button>
 
-            <button class="like_dislike-button d-flex column-gap-2 align-items-center border-0"
+            <button class="dislike-button d-flex column-gap-2 align-items-center border-0"
             [ngClass]="{ active: isSupported === false, pulse: isPulsing.oppose }"
             (click)="setSupport(false)"
             >

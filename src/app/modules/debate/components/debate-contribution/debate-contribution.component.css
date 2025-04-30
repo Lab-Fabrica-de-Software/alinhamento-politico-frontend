@@ -1,5 +1,9 @@
+.bg-primary-100 {
+  background-color: rgba(20, 33, 61, 1);
+}
+
 .primary-90 {
-    color: rgba(20, 33, 61, 1);
+    color: rgba(20, 33, 61, 0.9);
 }
 
 .border-primary-80 {

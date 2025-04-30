@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-debate-contribution',
@@ -7,11 +7,32 @@ import { Component } from '@angular/core';
   styleUrl: './debate-contribution.component.css'
 })
 export class DebateContributionComponent {
+  
+  @ViewChild('editor') editorRef!: ElementRef<HTMLTextAreaElement>;
+
+  ngAfterViewInit() {
+    this.editorRef.nativeElement.addEventListener('mouseup', () => this.updateActiveStates());
+    this.editorRef.nativeElement.addEventListener('keyup', () => this.updateActiveStates());
+  }
+
+  isBold = false;
+  isItalic = false;
   isSupported: boolean | null = null;
   isPulsing = {
     support: false,
     oppose: false,
   };
+
+  updateActiveStates() {
+    this.isBold = document.queryCommandState('bold');
+    this.isItalic = document.queryCommandState('italic');
+  }
+
+  formatText(command: 'bold' | 'italic') {
+    document.execCommand(command, false);
+    this.updateActiveStates();
+    this.editorRef.nativeElement.focus();
+  }
 
   setSupport(value: boolean) {
     this.isSupported = value;

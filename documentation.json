@@ -210,7 +210,7 @@
         },
         {
             "name": "DebateContributionComponent",
-            "id": "component-DebateContributionComponent-5fbaeceb031c5b4e1264b36cdf34b918dd448184908dd675136399494ae8f63839c3b612367f1737e0c8c7fff3f185fab9962c49d6af2388f9cbc78e0d43d4c6",
+            "id": "component-DebateContributionComponent-446b07b7a4772cde25fbe5f64b26851f51f70d641510683268f8ecc0b53188e5edde6d0427082f39277b4629266f27b0579fb4dd9ab8a1132d0b4316a8662537",
             "file": "src/app/modules/debate/components/debate-contribution/debate-contribution.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -227,8 +227,107 @@
             "hostDirectives": [],
             "inputsClass": [],
             "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "isPulsing",
+                    "defaultValue": "{\r\n    support: false,\r\n    oppose: false,\r\n  }",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 13
+                },
+                {
+                    "name": "isSupported",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean | null",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
+                },
+                {
+                    "name": "textarea",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ElementRef<HTMLTextAreaElement>",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 10,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'editor'"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "formatText",
+                    "args": [
+                        {
+                            "name": "type",
+                            "type": "\"bold\" | \"italic\"",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 18,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "type",
+                            "type": "\"bold\" | \"italic\"",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "setSupport",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "boolean",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 43,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "boolean",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -238,13 +337,13 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-debate-contribution',\r\n  standalone: false,\r\n  templateUrl: './debate-contribution.component.html',\r\n  styleUrl: './debate-contribution.component.css'\r\n})\r\nexport class DebateContributionComponent {\r\n\r\n}\r\n",
+            "sourceCode": "import { Component, ElementRef, ViewChild } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-debate-contribution',\r\n  standalone: false,\r\n  templateUrl: './debate-contribution.component.html',\r\n  styleUrl: './debate-contribution.component.css'\r\n})\r\nexport class DebateContributionComponent {\r\n  @ViewChild('editor') textarea!: ElementRef<HTMLTextAreaElement>;\r\n\r\n  isSupported: boolean | null = null;\r\n  isPulsing = {\r\n    support: false,\r\n    oppose: false,\r\n  };\r\n\r\n  formatText(type: 'bold' | 'italic') {\r\n    const textarea = this.textarea.nativeElement;\r\n    const start = textarea.selectionStart;\r\n    const end = textarea.selectionEnd;\r\n    const selectedText = textarea.value.substring(start, end);\r\n\r\n    let formattedText = selectedText;\r\n    const wrapper = type === 'bold' ? '**' : '*';\r\n\r\n    // Se nada estiver selecionado, insere texto genérico\r\n    if (!selectedText) {\r\n      formattedText = `${wrapper}texto${wrapper}`;\r\n    } else {\r\n      // Se já estiver formatado, remove a formatação (toggle)\r\n      const isWrapped = selectedText.startsWith(wrapper) && selectedText.endsWith(wrapper);\r\n      formattedText = isWrapped\r\n        ? selectedText.slice(wrapper.length, -wrapper.length)\r\n        : `${wrapper}${selectedText}${wrapper}`;\r\n    }\r\n\r\n    // Substitui o texto selecionado ou insere onde o cursor estiver\r\n    textarea.setRangeText(formattedText, start, end, 'end');\r\n    textarea.focus();\r\n  }\r\n\r\n  setSupport(value: boolean) {\r\n    this.isSupported = value;\r\n\r\n    const key = value ? 'support' : 'oppose';\r\n    this.isPulsing[key] = true;\r\n\r\n    setTimeout(() => {\r\n      this.isPulsing[key] = false;\r\n    }, 300);\r\n  }\r\n}\r\n",
             "styleUrl": "./debate-contribution.component.css",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<div class=\"container\">\r\n    <form #contributionForm=\"ngForm\">\r\n        <h2 class=\"mb-3\">Sua Contribuição</h2>\r\n        <div class=\"col-8 border border-black rounded-4 p-0 d-flex flex-column\" style=\"height: 200px;\">\r\n            <div class=\"border-bottom border-secondary w-100 py-1\">\r\n                <button type=\"button\" class=\"btn btn-sm btn-light fw-bold ms-3\">N</button>\r\n                <button type=\"button\" class=\"btn btn-sm btn-light fst-italic\">\r\n                    <i class=\"bi bi-type-italic fs-6\"></i>\r\n                </button>\r\n                <button type=\"button\" class=\"btn btn-sm btn-light\">&#64;</button>\r\n            </div>\r\n\r\n            <textarea class=\"border-0 rounded-bottom-4 ps-4 pt-3 pe-4 pb-3 w-100 h-100 flex-grow-1 fs-6\"\r\n                style=\"resize: none; overflow-y: auto; outline: none;\">\r\n            </textarea>\r\n        </div>\r\n    </form>\r\n</div>"
+            "templateData": "<div class=\"container\">\r\n    <form #contributionForm=\"ngForm\">\r\n        <h2 class=\"mb-3\">Sua Contribuição:</h2>\r\n        <div class=\"col-8 mb-3 border border-primary-80 rounded-4 p-0 d-flex flex-column\" style=\"height: 200px;\">\r\n            <div class=\"border-bottom border-primary-50 w-100 py-1\">\r\n                <button type=\"button\" class=\"btn btn-sm btn-light fw-bold ms-3\" (click)=\"formatText('bold')\">N</button>\r\n                <button type=\"button\" class=\"btn btn-sm btn-light fst-italic\" (click)=\"formatText('italic')\">\r\n                    <i class=\"bi bi-type-italic fs-6\"></i>\r\n                </button>\r\n                <button type=\"button\" class=\"btn btn-sm btn-light\">&#64;</button>\r\n            </div>\r\n\r\n            <textarea #editor class=\"border-0 rounded-bottom-4 ps-4 pt-3 pe-4 pb-3 w-100 h-100 flex-grow-1 fs-6\"\r\n                style=\"resize: none; overflow-y: auto; outline: none;\">\r\n            </textarea>\r\n        </div>\r\n\r\n        <div class=\"col-8 mb-3 justify-content-between d-flex flex-md-row\">\r\n            <button class=\"like-button d-flex column-gap-2 align-items-center border-0\"\r\n            [ngClass]=\"{ active: isSupported === true, pulse: isPulsing.support }\"\r\n            (click)=\"setSupport(true)\"\r\n            >\r\n                <i class=\"bi bi-hand-thumbs-up-fill primary-90\" style=\"font-size: 3rem;\"></i>\r\n                <h2 class=\"pt-2 ms-1 mb-0 primary-90 fw-bold\">Apoia</h2>\r\n            </button>\r\n\r\n            <button class=\"dislike-button d-flex column-gap-2 align-items-center border-0\"\r\n            [ngClass]=\"{ active: isSupported === false, pulse: isPulsing.oppose }\"\r\n            (click)=\"setSupport(false)\"\r\n            >\r\n                <h2 class=\"pt-2 ms-1 mb-0 primary-90 fw-bold\">Não Apoia</h2>\r\n                <i class=\"bi bi-hand-thumbs-down-fill primary-90\" style=\"font-size: 3rem;\"></i>\r\n            </button>\r\n        </div>\r\n\r\n        <div>\r\n            <p class=\"fs-6 mb-3\">Políticos marcados nesse debate</p>\r\n            <div class=\"d-flex flex-row gap-4\">\r\n                <div class=\"d-flex flex-row align-items-center bg-gray me-3\">\r\n                    <button class=\"border-0 me-2 p-0 bg-gray\">\r\n                        <i class=\"bi bi-x fs-2\"></i>\r\n                    </button>\r\n                    <img class=\"rounded-circle me-1\" src=\"https://i.pravatar.cc/150?img=47\" alt=\"\" style=\"height: 24px; width: 24px;\">\r\n                    <p class=\"mb-0 pe-3\">Marta Oliveira (Deputada Federal)</p>\r\n                </div>\r\n                <div class=\"d-flex flex-row align-items-center bg-gray me-3\">\r\n                    <button class=\"border-0 me-2 p-0 bg-gray\">\r\n                        <i class=\"bi bi-x fs-2\"></i>\r\n                    </button>\r\n                    <img class=\"rounded-circle me-1\" src=\"https://i.pravatar.cc/150?img=59\" alt=\"\" style=\"height: 24px; width: 24px;\">\r\n                    <p class=\"mb-0 pe-3\">Carlos Augusto (Vereador)</p>\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n    </form>\r\n</div>"
         },
         {
             "name": "DebateGroupComponent",
@@ -740,7 +839,7 @@
                 "linktype": "component",
                 "name": "DebateContributionComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/6",
                 "status": "low"
             },
             {

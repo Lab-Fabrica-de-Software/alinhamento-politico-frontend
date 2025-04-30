@@ -19,3 +19,30 @@
 .secondary-30  { color: rgba(252, 163, 17, 0.3); }
 .secondary-20  { color: rgba(252, 163, 17, 0.2); }
 .secondary-10  { color: rgba(252, 163, 17, 0.1); }
+
+.like_dislike-button:hover h2,
+.like_dislike-button:hover i {
+    color: rgba(252, 163, 17, 0.9);
+}
+
+.like_dislike-button.active h2,
+.like_dislike-button.active i {
+    color: rgba(252, 163, 17, 0.9);
+}
+
+@keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .like_dislike-button.pulse {
+    animation: pulse 0.3s ease;
+  }
+  

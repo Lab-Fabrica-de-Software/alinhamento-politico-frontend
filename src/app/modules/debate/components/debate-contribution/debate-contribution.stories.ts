@@ -1,6 +1,7 @@
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { DebateContributionComponent } from './debate-contribution.component';
 import { FormsModule } from '@angular/forms';
+import { NgClass } from '@angular/common';
 
 const meta: Meta<DebateContributionComponent> = {
   title: 'modules/debate/components/debate-contribution',
@@ -9,7 +10,7 @@ const meta: Meta<DebateContributionComponent> = {
   tags: ['autodocs'],
   decorators: [
     moduleMetadata({
-      imports: [FormsModule]
+      imports: [FormsModule, NgClass]
     })
   ]
 };

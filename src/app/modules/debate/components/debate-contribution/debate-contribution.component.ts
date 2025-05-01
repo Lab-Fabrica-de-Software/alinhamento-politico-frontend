@@ -1,4 +1,5 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { User } from '../../../../core/models/user';
 
 @Component({
   selector: 'app-debate-contribution',
@@ -15,6 +16,10 @@ export class DebateContributionComponent {
     this.editorRef.nativeElement.addEventListener('keyup', () => this.updateActiveStates());
   }
 
+  @Input()
+  markedPoliticians: User[] = [];
+
+  contributionText: string = '';
   isBold = false;
   isItalic = false;
   isSupported: boolean | null = null;
@@ -43,5 +48,11 @@ export class DebateContributionComponent {
     setTimeout(() => {
       this.isPulsing[key] = false;
     }, 300);
+  }
+
+  showText() {
+    console.log(this.contributionText);
+    console.log(this.isSupported);
+    console.log(this.markedPoliticians);
   }
 }

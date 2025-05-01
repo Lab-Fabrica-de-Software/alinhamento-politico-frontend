@@ -98,12 +98,12 @@
         },
         {
             "name": "User",
-            "id": "interface-User-5f90d8bb604980f2475f074a7c6465a43c12ec8d47c644eb2f769a88752afb43ddfd76065a05352efb7f4cb082fadcbb5b59b985f25f2fb864c12c8fb7da65f9",
+            "id": "interface-User-58a30721d057ae0fb04d1c9d0b8b117bf1f94e36a8711d959871763024261afb4240468688a31e606d6a760682807ef9de69bce5d3ab49ebe16a5216fd4444ed",
             "file": "src/app/core/models/user.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export interface User {\r\n    id: number,\r\n    name: string,\r\n    photo: string,\r\n    unreadNotifications: number\r\n}",
+            "sourceCode": "export interface User {\r\n    id: number,\r\n    name: string,\r\n    photo: string,\r\n    unreadNotifications?: number,\r\n    politicalPosition?: string\r\n}",
             "properties": [
                 {
                     "name": "id",
@@ -136,12 +136,22 @@
                     "line": 4
                 },
                 {
+                    "name": "politicalPosition",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 6
+                },
+                {
                     "name": "unreadNotifications",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
                     "indexKey": "",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 5
                 }
@@ -210,7 +220,7 @@
         },
         {
             "name": "DebateContributionComponent",
-            "id": "component-DebateContributionComponent-90825e0b06c131df6d749c41b7907b99a6b05a8d71f9baf787b99fda04e97494d2cbe343791bebfa19cd5076e997af1387ae33cbb91689ffc02fc6f6cf00b822",
+            "id": "component-DebateContributionComponent-dbb71b986e938a60d5a655c2b1adaa172c915c0e37faa8c566c5dd9595e4272bdbd5812aacab0420873ae91e7a93c459f10e29e51155c842c1442a11a6f0c71e",
             "file": "src/app/modules/debate/components/debate-contribution/debate-contribution.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -225,9 +235,30 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "markedPoliticians",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "User[]",
+                    "decorators": []
+                }
+            ],
             "outputsClass": [],
             "propertiesClass": [
+                {
+                    "name": "contributionText",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 22
+                },
                 {
                     "name": "editorRef",
                     "deprecated": false,
@@ -236,7 +267,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 11,
+                    "line": 12,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -256,7 +287,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 18
+                    "line": 23
                 },
                 {
                     "name": "isItalic",
@@ -267,7 +298,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 19
+                    "line": 24
                 },
                 {
                     "name": "isPulsing",
@@ -278,7 +309,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 21
+                    "line": 26
                 },
                 {
                     "name": "isSupported",
@@ -289,7 +320,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 20
+                    "line": 25
                 }
             ],
             "methodsClass": [
@@ -306,7 +337,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 31,
+                    "line": 36,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -327,7 +358,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 13,
+                    "line": 14,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -344,7 +375,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 37,
+                    "line": 42,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -360,12 +391,22 @@
                     ]
                 },
                 {
+                    "name": "showText",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 53,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
                     "name": "updateActiveStates",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 26,
+                    "line": 31,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -379,13 +420,13 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ElementRef, ViewChild } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-debate-contribution',\r\n  standalone: false,\r\n  templateUrl: './debate-contribution.component.html',\r\n  styleUrl: './debate-contribution.component.css'\r\n})\r\nexport class DebateContributionComponent {\r\n  \r\n  @ViewChild('editor') editorRef!: ElementRef<HTMLTextAreaElement>;\r\n\r\n  ngAfterViewInit() {\r\n    this.editorRef.nativeElement.addEventListener('mouseup', () => this.updateActiveStates());\r\n    this.editorRef.nativeElement.addEventListener('keyup', () => this.updateActiveStates());\r\n  }\r\n\r\n  isBold = false;\r\n  isItalic = false;\r\n  isSupported: boolean | null = null;\r\n  isPulsing = {\r\n    support: false,\r\n    oppose: false,\r\n  };\r\n\r\n  updateActiveStates() {\r\n    this.isBold = document.queryCommandState('bold');\r\n    this.isItalic = document.queryCommandState('italic');\r\n  }\r\n\r\n  formatText(command: 'bold' | 'italic') {\r\n    document.execCommand(command, false);\r\n    this.updateActiveStates();\r\n    this.editorRef.nativeElement.focus();\r\n  }\r\n\r\n  setSupport(value: boolean) {\r\n    this.isSupported = value;\r\n\r\n    const key = value ? 'support' : 'oppose';\r\n    this.isPulsing[key] = true;\r\n\r\n    setTimeout(() => {\r\n      this.isPulsing[key] = false;\r\n    }, 300);\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, ElementRef, Input, ViewChild } from '@angular/core';\r\nimport { User } from '../../../../core/models/user';\r\n\r\n@Component({\r\n  selector: 'app-debate-contribution',\r\n  standalone: false,\r\n  templateUrl: './debate-contribution.component.html',\r\n  styleUrl: './debate-contribution.component.css'\r\n})\r\nexport class DebateContributionComponent {\r\n  \r\n  @ViewChild('editor') editorRef!: ElementRef<HTMLTextAreaElement>;\r\n\r\n  ngAfterViewInit() {\r\n    this.editorRef.nativeElement.addEventListener('mouseup', () => this.updateActiveStates());\r\n    this.editorRef.nativeElement.addEventListener('keyup', () => this.updateActiveStates());\r\n  }\r\n\r\n  @Input()\r\n  markedPoliticians: User[] = [];\r\n\r\n  contributionText: string = '';\r\n  isBold = false;\r\n  isItalic = false;\r\n  isSupported: boolean | null = null;\r\n  isPulsing = {\r\n    support: false,\r\n    oppose: false,\r\n  };\r\n\r\n  updateActiveStates() {\r\n    this.isBold = document.queryCommandState('bold');\r\n    this.isItalic = document.queryCommandState('italic');\r\n  }\r\n\r\n  formatText(command: 'bold' | 'italic') {\r\n    document.execCommand(command, false);\r\n    this.updateActiveStates();\r\n    this.editorRef.nativeElement.focus();\r\n  }\r\n\r\n  setSupport(value: boolean) {\r\n    this.isSupported = value;\r\n\r\n    const key = value ? 'support' : 'oppose';\r\n    this.isPulsing[key] = true;\r\n\r\n    setTimeout(() => {\r\n      this.isPulsing[key] = false;\r\n    }, 300);\r\n  }\r\n\r\n  showText() {\r\n    console.log(this.contributionText);\r\n    console.log(this.isSupported);\r\n    console.log(this.markedPoliticians);\r\n  }\r\n}\r\n",
             "styleUrl": "./debate-contribution.component.css",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<div class=\"container\">\r\n    <form #contributionForm=\"ngForm\">\r\n        <h2 class=\"mb-3\">Sua Contribuição:</h2>\r\n        <div class=\"col-8 mb-3 border border-primary-80 rounded-4 p-0 d-flex flex-column\" style=\"height: 200px;\">\r\n            <div class=\"border-bottom border-primary-50 w-100 py-1\">\r\n                <button type=\"button\" class=\"btn btn-sm btn-light fs-6 fw-bold ms-3\"\r\n                [ngClass]=\"{ 'bg-primary-100 text-white': isBold }\"\r\n                (click)=\"formatText('bold')\"\r\n                >N</button>\r\n                <button type=\"button\" class=\"btn btn-sm btn-light fst-italic\"\r\n                [ngClass]=\"{ 'bg-primary-100 text-white': isItalic }\"\r\n                (click)=\"formatText('italic')\"\r\n                >\r\n                    <i class=\"bi bi-type-italic fs-6\"></i>\r\n                </button>\r\n                <button type=\"button\" class=\"btn btn-sm btn-light fs-6\">&#64;</button>\r\n            </div>\r\n\r\n            <div #editor contenteditable=\"true\" class=\"border-0 rounded-bottom-4 ps-4 pt-3 pe-4 pb-3 w-100 h-100 flex-grow-1 fs-6\"\r\n                style=\"resize: none; overflow-y: auto; outline: none;\">\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"col-8 mb-3 justify-content-between d-flex flex-md-row\">\r\n            <button class=\"like-button d-flex column-gap-2 align-items-center border-0\"\r\n            [ngClass]=\"{ active: isSupported === true, pulse: isPulsing.support }\"\r\n            (click)=\"setSupport(true)\"\r\n            >\r\n                <i class=\"bi bi-hand-thumbs-up-fill primary-90\" style=\"font-size: 3rem;\"></i>\r\n                <h2 class=\"pt-2 ms-1 mb-0 primary-90 fw-bold\">Apoia</h2>\r\n            </button>\r\n\r\n            <button class=\"dislike-button d-flex column-gap-2 align-items-center border-0\"\r\n            [ngClass]=\"{ active: isSupported === false, pulse: isPulsing.oppose }\"\r\n            (click)=\"setSupport(false)\"\r\n            >\r\n                <h2 class=\"pt-2 ms-1 mb-0 primary-90 fw-bold\">Não Apoia</h2>\r\n                <i class=\"bi bi-hand-thumbs-down-fill primary-90\" style=\"font-size: 3rem;\"></i>\r\n            </button>\r\n        </div>\r\n\r\n        <div>\r\n            <p class=\"fs-6 mb-3\">Políticos marcados nesse debate</p>\r\n            <div class=\"d-flex flex-row gap-4\">\r\n                <div class=\"d-flex flex-row align-items-center bg-gray me-3\">\r\n                    <button class=\"border-0 me-2 p-0 bg-gray\">\r\n                        <i class=\"bi bi-x fs-2\"></i>\r\n                    </button>\r\n                    <img class=\"rounded-circle me-1\" src=\"https://i.pravatar.cc/150?img=47\" alt=\"\" style=\"height: 24px; width: 24px;\">\r\n                    <p class=\"mb-0 pe-3\">Marta Oliveira (Deputada Federal)</p>\r\n                </div>\r\n                <div class=\"d-flex flex-row align-items-center bg-gray me-3\">\r\n                    <button class=\"border-0 me-2 p-0 bg-gray\">\r\n                        <i class=\"bi bi-x fs-2\"></i>\r\n                    </button>\r\n                    <img class=\"rounded-circle me-1\" src=\"https://i.pravatar.cc/150?img=59\" alt=\"\" style=\"height: 24px; width: 24px;\">\r\n                    <p class=\"mb-0 pe-3\">Carlos Augusto (Vereador)</p>\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n    </form>\r\n</div>"
+            "templateData": "<div class=\"container d-flex justify-content-center\">\r\n    <form #contributionForm=\"ngForm\">\r\n        <h2 class=\"mb-3\">Sua Contribuição:</h2>\r\n        <div class=\"col-8 mb-3 border border-primary-80 rounded-4 p-0 d-flex flex-column\" style=\"height: 200px;\">\r\n            <div class=\"border-bottom border-primary-50 w-100 py-1\">\r\n                <button type=\"button\" class=\"btn btn-sm btn-light fs-6 fw-bold ms-3\"\r\n                [ngClass]=\"{ 'bg-primary-100 text-white': isBold }\"\r\n                (click)=\"formatText('bold')\"\r\n                >N</button>\r\n                <button type=\"button\" class=\"btn btn-sm btn-light fst-italic\"\r\n                [ngClass]=\"{ 'bg-primary-100 text-white': isItalic }\"\r\n                (click)=\"formatText('italic')\"\r\n                >\r\n                    <i class=\"bi bi-type-italic fs-6\"></i>\r\n                </button>\r\n                <button type=\"button\" class=\"btn btn-sm btn-light fs-6\">&#64;</button>\r\n            </div>\r\n\r\n            <div #editor \r\n            contenteditable=\"true\" \r\n            (input)=\"contributionText = editorRef.nativeElement.innerHTML\"\r\n            class=\"border-0 rounded-bottom-4 ps-4 pt-3 pe-4 pb-3 w-100 h-100 flex-grow-1 fs-6\"\r\n            style=\"resize: none; overflow-y: auto; outline: none;\">\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"col-8 mb-3 justify-content-between d-flex flex-md-row\">\r\n            <button class=\"like-button d-flex column-gap-2 align-items-center border-0\"\r\n            [ngClass]=\"{ active: isSupported === true, pulse: isPulsing.support }\"\r\n            (click)=\"setSupport(true)\"\r\n            >\r\n                <i class=\"bi bi-hand-thumbs-up-fill primary-90\" style=\"font-size: 3rem;\"></i>\r\n                <h2 class=\"pt-2 ms-1 mb-0 primary-90 fw-bold\">Apoia</h2>\r\n            </button>\r\n\r\n            <button class=\"dislike-button d-flex column-gap-2 align-items-center border-0\"\r\n            [ngClass]=\"{ active: isSupported === false, pulse: isPulsing.oppose }\"\r\n            (click)=\"setSupport(false)\"\r\n            >\r\n                <h2 class=\"pt-2 ms-1 mb-0 primary-90 fw-bold\">Não Apoia</h2>\r\n                <i class=\"bi bi-hand-thumbs-down-fill primary-90\" style=\"font-size: 3rem;\"></i>\r\n            </button>\r\n        </div>\r\n\r\n        <div class=\"mb-5\">\r\n            <p class=\"fs-6 mb-3\">Políticos marcados nesse debate</p>\r\n            <div class=\"col-8 d-flex flex-row flex-wrap gap-4\">\r\n                <div *ngFor=\"let politician of markedPoliticians\" class=\"d-flex flex-row align-items-center bg-gray me-3\">\r\n                    <button class=\"border-0 me-2 p-0 bg-gray\">\r\n                        <i class=\"bi bi-x fs-2\"></i>\r\n                    </button>\r\n                    <img class=\"rounded-circle me-1\" src={{politician.photo}} alt=\"\" style=\"height: 24px; width: 24px;\">\r\n                    <p class=\"mb-0 pe-3\" style=\"font-size: 0.8rem;\">{{politician.name}} ({{politician.politicalPosition}})</p>\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"col-8 d-flex justify-content-center\">\r\n            <button (click)=\"showText()\" class=\"submit-button col-4 bg-green p-2 border-0 rounded-4 text-white fs-3\">Criar Contribuição</button>\r\n        </div>\r\n    </form>\r\n</div>"
         },
         {
             "name": "DebateGroupComponent",
@@ -872,7 +913,7 @@
                 "linktype": "interface",
                 "name": "User",
                 "coveragePercent": 0,
-                "coverageCount": "0/5",
+                "coverageCount": "0/6",
                 "status": "low"
             },
             {
@@ -881,7 +922,7 @@
                 "linktype": "component",
                 "name": "DebateContributionComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/10",
+                "coverageCount": "0/13",
                 "status": "low"
             },
             {

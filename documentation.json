@@ -210,7 +210,7 @@
         },
         {
             "name": "DebateContributionComponent",
-            "id": "component-DebateContributionComponent-446b07b7a4772cde25fbe5f64b26851f51f70d641510683268f8ecc0b53188e5edde6d0427082f39277b4629266f27b0579fb4dd9ab8a1132d0b4316a8662537",
+            "id": "component-DebateContributionComponent-90825e0b06c131df6d749c41b7907b99a6b05a8d71f9baf787b99fda04e97494d2cbe343791bebfa19cd5076e997af1387ae33cbb91689ffc02fc6f6cf00b822",
             "file": "src/app/modules/debate/components/debate-contribution/debate-contribution.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -229,6 +229,47 @@
             "outputsClass": [],
             "propertiesClass": [
                 {
+                    "name": "editorRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ElementRef<HTMLTextAreaElement>",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 11,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'editor'"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                },
+                {
+                    "name": "isBold",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                },
+                {
+                    "name": "isItalic",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 19
+                },
+                {
                     "name": "isPulsing",
                     "defaultValue": "{\r\n    support: false,\r\n    oppose: false,\r\n  }",
                     "deprecated": false,
@@ -237,7 +278,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 13
+                    "line": 21
                 },
                 {
                     "name": "isSupported",
@@ -248,26 +289,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 12
-                },
-                {
-                    "name": "textarea",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "ElementRef<HTMLTextAreaElement>",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 10,
-                    "decorators": [
-                        {
-                            "name": "ViewChild",
-                            "stringifiedArguments": "'editor'"
-                        }
-                    ],
-                    "modifierKind": [
-                        170
-                    ]
+                    "line": 20
                 }
             ],
             "methodsClass": [
@@ -275,7 +297,7 @@
                     "name": "formatText",
                     "args": [
                         {
-                            "name": "type",
+                            "name": "command",
                             "type": "\"bold\" | \"italic\"",
                             "deprecated": false,
                             "deprecationMessage": ""
@@ -284,12 +306,12 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 18,
+                    "line": 31,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "name": "type",
+                            "name": "command",
                             "type": "\"bold\" | \"italic\"",
                             "deprecated": false,
                             "deprecationMessage": "",
@@ -298,6 +320,16 @@
                             }
                         }
                     ]
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 13,
+                    "deprecated": false,
+                    "deprecationMessage": ""
                 },
                 {
                     "name": "setSupport",
@@ -312,7 +344,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 43,
+                    "line": 37,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -326,6 +358,16 @@
                             }
                         }
                     ]
+                },
+                {
+                    "name": "updateActiveStates",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 26,
+                    "deprecated": false,
+                    "deprecationMessage": ""
                 }
             ],
             "deprecated": false,
@@ -337,13 +379,13 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ElementRef, ViewChild } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-debate-contribution',\r\n  standalone: false,\r\n  templateUrl: './debate-contribution.component.html',\r\n  styleUrl: './debate-contribution.component.css'\r\n})\r\nexport class DebateContributionComponent {\r\n  @ViewChild('editor') textarea!: ElementRef<HTMLTextAreaElement>;\r\n\r\n  isSupported: boolean | null = null;\r\n  isPulsing = {\r\n    support: false,\r\n    oppose: false,\r\n  };\r\n\r\n  formatText(type: 'bold' | 'italic') {\r\n    const textarea = this.textarea.nativeElement;\r\n    const start = textarea.selectionStart;\r\n    const end = textarea.selectionEnd;\r\n    const selectedText = textarea.value.substring(start, end);\r\n\r\n    let formattedText = selectedText;\r\n    const wrapper = type === 'bold' ? '**' : '*';\r\n\r\n    // Se nada estiver selecionado, insere texto genérico\r\n    if (!selectedText) {\r\n      formattedText = `${wrapper}texto${wrapper}`;\r\n    } else {\r\n      // Se já estiver formatado, remove a formatação (toggle)\r\n      const isWrapped = selectedText.startsWith(wrapper) && selectedText.endsWith(wrapper);\r\n      formattedText = isWrapped\r\n        ? selectedText.slice(wrapper.length, -wrapper.length)\r\n        : `${wrapper}${selectedText}${wrapper}`;\r\n    }\r\n\r\n    // Substitui o texto selecionado ou insere onde o cursor estiver\r\n    textarea.setRangeText(formattedText, start, end, 'end');\r\n    textarea.focus();\r\n  }\r\n\r\n  setSupport(value: boolean) {\r\n    this.isSupported = value;\r\n\r\n    const key = value ? 'support' : 'oppose';\r\n    this.isPulsing[key] = true;\r\n\r\n    setTimeout(() => {\r\n      this.isPulsing[key] = false;\r\n    }, 300);\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, ElementRef, ViewChild } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-debate-contribution',\r\n  standalone: false,\r\n  templateUrl: './debate-contribution.component.html',\r\n  styleUrl: './debate-contribution.component.css'\r\n})\r\nexport class DebateContributionComponent {\r\n  \r\n  @ViewChild('editor') editorRef!: ElementRef<HTMLTextAreaElement>;\r\n\r\n  ngAfterViewInit() {\r\n    this.editorRef.nativeElement.addEventListener('mouseup', () => this.updateActiveStates());\r\n    this.editorRef.nativeElement.addEventListener('keyup', () => this.updateActiveStates());\r\n  }\r\n\r\n  isBold = false;\r\n  isItalic = false;\r\n  isSupported: boolean | null = null;\r\n  isPulsing = {\r\n    support: false,\r\n    oppose: false,\r\n  };\r\n\r\n  updateActiveStates() {\r\n    this.isBold = document.queryCommandState('bold');\r\n    this.isItalic = document.queryCommandState('italic');\r\n  }\r\n\r\n  formatText(command: 'bold' | 'italic') {\r\n    document.execCommand(command, false);\r\n    this.updateActiveStates();\r\n    this.editorRef.nativeElement.focus();\r\n  }\r\n\r\n  setSupport(value: boolean) {\r\n    this.isSupported = value;\r\n\r\n    const key = value ? 'support' : 'oppose';\r\n    this.isPulsing[key] = true;\r\n\r\n    setTimeout(() => {\r\n      this.isPulsing[key] = false;\r\n    }, 300);\r\n  }\r\n}\r\n",
             "styleUrl": "./debate-contribution.component.css",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<div class=\"container\">\r\n    <form #contributionForm=\"ngForm\">\r\n        <h2 class=\"mb-3\">Sua Contribuição:</h2>\r\n        <div class=\"col-8 mb-3 border border-primary-80 rounded-4 p-0 d-flex flex-column\" style=\"height: 200px;\">\r\n            <div class=\"border-bottom border-primary-50 w-100 py-1\">\r\n                <button type=\"button\" class=\"btn btn-sm btn-light fw-bold ms-3\" (click)=\"formatText('bold')\">N</button>\r\n                <button type=\"button\" class=\"btn btn-sm btn-light fst-italic\" (click)=\"formatText('italic')\">\r\n                    <i class=\"bi bi-type-italic fs-6\"></i>\r\n                </button>\r\n                <button type=\"button\" class=\"btn btn-sm btn-light\">&#64;</button>\r\n            </div>\r\n\r\n            <textarea #editor class=\"border-0 rounded-bottom-4 ps-4 pt-3 pe-4 pb-3 w-100 h-100 flex-grow-1 fs-6\"\r\n                style=\"resize: none; overflow-y: auto; outline: none;\">\r\n            </textarea>\r\n        </div>\r\n\r\n        <div class=\"col-8 mb-3 justify-content-between d-flex flex-md-row\">\r\n            <button class=\"like-button d-flex column-gap-2 align-items-center border-0\"\r\n            [ngClass]=\"{ active: isSupported === true, pulse: isPulsing.support }\"\r\n            (click)=\"setSupport(true)\"\r\n            >\r\n                <i class=\"bi bi-hand-thumbs-up-fill primary-90\" style=\"font-size: 3rem;\"></i>\r\n                <h2 class=\"pt-2 ms-1 mb-0 primary-90 fw-bold\">Apoia</h2>\r\n            </button>\r\n\r\n            <button class=\"dislike-button d-flex column-gap-2 align-items-center border-0\"\r\n            [ngClass]=\"{ active: isSupported === false, pulse: isPulsing.oppose }\"\r\n            (click)=\"setSupport(false)\"\r\n            >\r\n                <h2 class=\"pt-2 ms-1 mb-0 primary-90 fw-bold\">Não Apoia</h2>\r\n                <i class=\"bi bi-hand-thumbs-down-fill primary-90\" style=\"font-size: 3rem;\"></i>\r\n            </button>\r\n        </div>\r\n\r\n        <div>\r\n            <p class=\"fs-6 mb-3\">Políticos marcados nesse debate</p>\r\n            <div class=\"d-flex flex-row gap-4\">\r\n                <div class=\"d-flex flex-row align-items-center bg-gray me-3\">\r\n                    <button class=\"border-0 me-2 p-0 bg-gray\">\r\n                        <i class=\"bi bi-x fs-2\"></i>\r\n                    </button>\r\n                    <img class=\"rounded-circle me-1\" src=\"https://i.pravatar.cc/150?img=47\" alt=\"\" style=\"height: 24px; width: 24px;\">\r\n                    <p class=\"mb-0 pe-3\">Marta Oliveira (Deputada Federal)</p>\r\n                </div>\r\n                <div class=\"d-flex flex-row align-items-center bg-gray me-3\">\r\n                    <button class=\"border-0 me-2 p-0 bg-gray\">\r\n                        <i class=\"bi bi-x fs-2\"></i>\r\n                    </button>\r\n                    <img class=\"rounded-circle me-1\" src=\"https://i.pravatar.cc/150?img=59\" alt=\"\" style=\"height: 24px; width: 24px;\">\r\n                    <p class=\"mb-0 pe-3\">Carlos Augusto (Vereador)</p>\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n    </form>\r\n</div>"
+            "templateData": "<div class=\"container\">\r\n    <form #contributionForm=\"ngForm\">\r\n        <h2 class=\"mb-3\">Sua Contribuição:</h2>\r\n        <div class=\"col-8 mb-3 border border-primary-80 rounded-4 p-0 d-flex flex-column\" style=\"height: 200px;\">\r\n            <div class=\"border-bottom border-primary-50 w-100 py-1\">\r\n                <button type=\"button\" class=\"btn btn-sm btn-light fs-6 fw-bold ms-3\"\r\n                [ngClass]=\"{ 'bg-primary-100 text-white': isBold }\"\r\n                (click)=\"formatText('bold')\"\r\n                >N</button>\r\n                <button type=\"button\" class=\"btn btn-sm btn-light fst-italic\"\r\n                [ngClass]=\"{ 'bg-primary-100 text-white': isItalic }\"\r\n                (click)=\"formatText('italic')\"\r\n                >\r\n                    <i class=\"bi bi-type-italic fs-6\"></i>\r\n                </button>\r\n                <button type=\"button\" class=\"btn btn-sm btn-light fs-6\">&#64;</button>\r\n            </div>\r\n\r\n            <div #editor contenteditable=\"true\" class=\"border-0 rounded-bottom-4 ps-4 pt-3 pe-4 pb-3 w-100 h-100 flex-grow-1 fs-6\"\r\n                style=\"resize: none; overflow-y: auto; outline: none;\">\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"col-8 mb-3 justify-content-between d-flex flex-md-row\">\r\n            <button class=\"like-button d-flex column-gap-2 align-items-center border-0\"\r\n            [ngClass]=\"{ active: isSupported === true, pulse: isPulsing.support }\"\r\n            (click)=\"setSupport(true)\"\r\n            >\r\n                <i class=\"bi bi-hand-thumbs-up-fill primary-90\" style=\"font-size: 3rem;\"></i>\r\n                <h2 class=\"pt-2 ms-1 mb-0 primary-90 fw-bold\">Apoia</h2>\r\n            </button>\r\n\r\n            <button class=\"dislike-button d-flex column-gap-2 align-items-center border-0\"\r\n            [ngClass]=\"{ active: isSupported === false, pulse: isPulsing.oppose }\"\r\n            (click)=\"setSupport(false)\"\r\n            >\r\n                <h2 class=\"pt-2 ms-1 mb-0 primary-90 fw-bold\">Não Apoia</h2>\r\n                <i class=\"bi bi-hand-thumbs-down-fill primary-90\" style=\"font-size: 3rem;\"></i>\r\n            </button>\r\n        </div>\r\n\r\n        <div>\r\n            <p class=\"fs-6 mb-3\">Políticos marcados nesse debate</p>\r\n            <div class=\"d-flex flex-row gap-4\">\r\n                <div class=\"d-flex flex-row align-items-center bg-gray me-3\">\r\n                    <button class=\"border-0 me-2 p-0 bg-gray\">\r\n                        <i class=\"bi bi-x fs-2\"></i>\r\n                    </button>\r\n                    <img class=\"rounded-circle me-1\" src=\"https://i.pravatar.cc/150?img=47\" alt=\"\" style=\"height: 24px; width: 24px;\">\r\n                    <p class=\"mb-0 pe-3\">Marta Oliveira (Deputada Federal)</p>\r\n                </div>\r\n                <div class=\"d-flex flex-row align-items-center bg-gray me-3\">\r\n                    <button class=\"border-0 me-2 p-0 bg-gray\">\r\n                        <i class=\"bi bi-x fs-2\"></i>\r\n                    </button>\r\n                    <img class=\"rounded-circle me-1\" src=\"https://i.pravatar.cc/150?img=59\" alt=\"\" style=\"height: 24px; width: 24px;\">\r\n                    <p class=\"mb-0 pe-3\">Carlos Augusto (Vereador)</p>\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n    </form>\r\n</div>"
         },
         {
             "name": "DebateGroupComponent",
@@ -839,7 +881,7 @@
                 "linktype": "component",
                 "name": "DebateContributionComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/6",
+                "coverageCount": "0/10",
                 "status": "low"
             },
             {

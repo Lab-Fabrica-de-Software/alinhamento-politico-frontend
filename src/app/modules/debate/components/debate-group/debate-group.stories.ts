@@ -7,7 +7,7 @@ export const ActionsData = {
 };
 
 const meta: Meta<DebateGroupComponent> = {
-  title: 'modules/debate/components/Debate-Component',
+  title: 'modules/debate/components/debate-group',
   component: DebateGroupComponent,
   excludeStories: /.*Data$/,
   tags: ['autodocs'],

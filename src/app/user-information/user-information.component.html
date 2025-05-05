@@ -1,12 +1,12 @@
-<a href="" class="text-decoration-none text-dark">
+<a href="" class="text-decoration-none text-dark" [ngClass]="{'md': size === 'md', 'lg': size === 'lg', 'sm': size === 'sm'}">
     <div class="d-flex flex-row align-items-center">
-        <img [src]="user.photo" [alt]="user.name" class="rounded-circle me-2" />
+        <img [src]="user.photo" [alt]="user.name" class="rounded-circle me-2"/>
         <div class="d-flex" [ngClass]="{'flex-row gap-4': isHorizontal, 'flex-column': !isHorizontal}">
-            <span *ngIf="user.partyName">
+            <p *ngIf="user.partyId">
                 {{user.partyName}} ({{user.partyPosition}})
-            </span>
+            </p>
             <div class="d-flex flex-row align-items-center gap-1">
-                <span class="m-0"> {{isHorizontal ? 'Autor:' : ''}} {{user.name}}</span>
+                <p> {{isHorizontal ? 'Autor:' : ''}} {{user.name}}</p>
                 <i class="bi bi-check-circle-fill" *ngIf="user.verified"></i>
             </div>
             <div *ngIf="actionDate" class="d-flex flex-row align-items-center gap-1">

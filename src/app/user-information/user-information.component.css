@@ -1,5 +1,41 @@
-.user-image {
+p, span {
+    margin: 0;
+    padding: 0;
+}
+
+.sm p {
+    font-size: 0.8rem;
+}
+.sm img {
     width: 50px;
     height: 50px;
     object-fit: cover;
+}
+.sm span {
+    font-size: 0.7rem;
+}
+
+
+.md p {
+    font-size: 1rem;
+}
+.md img {
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
+}
+.md span {
+    font-size: 0.9rem;
+}
+
+.lg p {
+    font-size: 1.2rem;
+}
+.lg img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+.lg span {
+    font-size: 1rem;
 }

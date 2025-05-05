@@ -17,6 +17,9 @@ export class UserInformationComponent {
   @Input()
   isHorizontal: boolean = false;
 
+  @Input()
+  size: 'sm' | 'md' | 'lg' = 'md';
+
   get timePassed(): string | undefined {
     if (this.actionDate) {
       const now = new Date();

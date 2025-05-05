@@ -1,5 +1,6 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { User } from '../../../../core/models/user';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-debate-contribution',
@@ -8,7 +9,7 @@ import { User } from '../../../../core/models/user';
   styleUrl: './debate-contribution.component.css'
 })
 export class DebateContributionComponent {
-  
+
   @ViewChild('editor') editorRef!: ElementRef<HTMLTextAreaElement>;
 
   ngAfterViewInit() {
@@ -17,6 +18,7 @@ export class DebateContributionComponent {
   }
 
   @Input()
+  politicians: User[] = [];
   markedPoliticians: User[] = [];
 
   contributionText: string = '';
@@ -27,6 +29,7 @@ export class DebateContributionComponent {
     support: false,
     oppose: false,
   };
+  showSelectBox = false;
 
   updateActiveStates() {
     this.isBold = document.queryCommandState('bold');
@@ -50,9 +53,34 @@ export class DebateContributionComponent {
     }, 300);
   }
 
-  showText() {
-    console.log(this.contributionText);
-    console.log(this.isSupported);
-    console.log(this.markedPoliticians);
+  addMarkedPolitician(politician: User) {
+    this.markedPoliticians.push(politician);
+    this.politicians = this.politicians.filter((p) => p != politician);
+    this.showSelectBox = false;
+  }
+
+  removeMarkedPolitician(politician: User) {
+    this.markedPoliticians = this.markedPoliticians.filter((p) => p != politician);
+    this.politicians.push(politician);
+  }
+  
+  toggleSelectBox() {
+    this.showSelectBox = !this.showSelectBox;
+  }
+
+  submitContribution(form: NgForm) {
+    this.contributionText = '';
+    if (this.editorRef) {
+      this.editorRef.nativeElement.innerHTML = '';
+    }
+
+    this.politicians.push(...this.markedPoliticians);
+    this.markedPoliticians = [];
+  
+    this.isSupported = null;
+    this.isBold = false;
+    this.isItalic = false;
+  
+    form.resetForm();
   }
 }

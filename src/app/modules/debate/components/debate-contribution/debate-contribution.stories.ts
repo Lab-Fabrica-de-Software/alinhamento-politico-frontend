@@ -20,7 +20,7 @@ type Story = StoryObj<DebateContributionComponent>;
 
 export const DebateContribution: Story = {
   args: {
-    markedPoliticians: [
+    politicians: [
       {
         id: 1,
         name: "Marta Oliveira",
@@ -32,6 +32,16 @@ export const DebateContribution: Story = {
         name: "Carlos Augusto",
         photo: "https://i.pravatar.cc/150?img=59",
         politicalPosition: "Vereador"
+      },
+      { id: 3, 
+        name: 'Maria Silva', 
+        politicalPosition: 'Vereadora', 
+        photo: 'https://i.pravatar.cc/150?img=49' 
+      },
+      { id: 4, 
+        name: 'João Souza', 
+        politicalPosition: 'Deputado', 
+        photo: 'https://i.pravatar.cc/150?img=57' 
       }
     ]
   }

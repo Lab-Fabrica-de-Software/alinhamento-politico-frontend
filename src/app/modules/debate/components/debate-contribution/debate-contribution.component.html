@@ -2,41 +2,51 @@
     <form #contributionForm="ngForm" class="col-12 col-md-10 col-lg-8 d-flex flex-column justify-content-center">
         <h2 class="mb-3">Sua Contribuição:</h2>
         <div class="col-12 mb-3 border border-primary-80 rounded-4 p-0 d-flex flex-column" style="height: 200px;">
-            <div class="border-bottom border-primary-50 w-100 py-1">
+            <div class="border-bottom border-primary-50 w-100 py-1 d-flex flex-row">
                 <button type="button" class="btn btn-sm btn-light fs-6 fw-bold ms-3"
-                [ngClass]="{ 'bg-primary-100 text-white': isBold }"
-                (click)="formatText('bold')"
-                >N</button>
+                    [ngClass]="{ 'bg-primary-100 text-white': isBold }" 
+                    (click)="formatText('bold')">
+                    N
+                </button>
                 <button type="button" class="btn btn-sm btn-light fst-italic"
-                [ngClass]="{ 'bg-primary-100 text-white': isItalic }"
-                (click)="formatText('italic')"
-                >
+                    [ngClass]="{ 'bg-primary-100 text-white': isItalic }" 
+                    (click)="formatText('italic')">
                     <i class="bi bi-type-italic fs-6"></i>
                 </button>
-                <button type="button" class="btn btn-sm btn-light fs-6">&#64;</button>
+                <div class="dropdown" [class.show]="showSelectBox">
+                    <button class="btn btn-sm btn-light fs-6" type="button" (click)="toggleSelectBox()">
+                      &#64;
+                    </button>
+                  
+                    <div class="dropdown-menu p-2 shadow" 
+                    [class.show]="showSelectBox" style="min-width: 250px; max-height: 300px; overflow-y: auto;">
+                      <input type="text" class="form-control mb-2" placeholder="Buscar político..." disabled>
+                  
+                      <div *ngFor="let politician of politicians"
+                           (click)="addMarkedPolitician(politician)"
+                           class="dropdown-item d-flex align-items-center gap-2">
+                        <img [src]="politician.photo" alt="" class="rounded-circle" style="width: 28px; height: 28px;">
+                        <span>{{politician.name}} ({{politician.politicalPosition}})</span>
+                      </div>
+                    </div>
+                  </div>
             </div>
 
-            <div #editor 
-            contenteditable="true" 
-            (input)="contributionText = editorRef.nativeElement.innerHTML"
-            class="border-0 rounded-bottom-4 ps-4 pt-3 pe-4 pb-3 w-100 h-100 flex-grow-1 fs-6"
-            style="resize: none; overflow-y: auto; outline: none;">
+            <div #editor contenteditable="true" (input)="contributionText = editorRef.nativeElement.innerHTML"
+                class="border-0 rounded-bottom-4 ps-4 pt-3 pe-4 pb-3 w-100 h-100 flex-grow-1 fs-6"
+                style="resize: none; overflow-y: auto; outline: none;">
             </div>
         </div>
 
         <div class="col-12 justify-content-between d-flex flex-md-row mb-3">
             <button class="like-button d-flex column-gap-2 align-items-center border-0"
-            [ngClass]="{ active: isSupported === true, pulse: isPulsing.support }"
-            (click)="setSupport(true)"
-            >
+                [ngClass]="{ active: isSupported === true, pulse: isPulsing.support }" (click)="setSupport(true)">
                 <i class="bi bi-hand-thumbs-up-fill primary-90" style="font-size: 3rem;"></i>
                 <h2 class="support-text pt-2 ms-1 mb-0 primary-90 fw-bold">Apoia</h2>
             </button>
 
             <button class="dislike-button d-flex column-gap-2 align-items-center border-0"
-            [ngClass]="{ active: isSupported === false, pulse: isPulsing.oppose }"
-            (click)="setSupport(false)"
-            >
+                [ngClass]="{ active: isSupported === false, pulse: isPulsing.oppose }" (click)="setSupport(false)">
                 <h2 class="support-text pt-2 ms-1 mb-0 primary-90 fw-bold">Não Apoia</h2>
                 <i class="bi bi-hand-thumbs-down-fill primary-90" style="font-size: 3rem;"></i>
             </button>
@@ -45,18 +55,24 @@
         <div class="mb-5">
             <p class="fs-6 mb-3">Políticos marcados nesse debate</p>
             <div class="col-12 d-flex flex-row flex-wrap gap-4">
-                <div *ngFor="let politician of markedPoliticians" class="d-flex flex-row align-items-center bg-gray me-3">
+                <div *ngFor="let politician of markedPoliticians"
+                    class="d-flex flex-row align-items-center bg-gray me-3">
                     <button class="border-0 me-2 p-0 bg-gray">
-                        <i class="bi bi-x fs-2"></i>
+                        <i class="bi bi-x fs-2"
+                        (click)="removeMarkedPolitician(politician)"
+                        ></i>
                     </button>
                     <img class="rounded-circle me-1" src={{politician.photo}} alt="" style="height: 24px; width: 24px;">
-                    <p class="mb-0 pe-3" style="font-size: 0.8rem;">{{politician.name}} ({{politician.politicalPosition}})</p>
+                    <p class="mb-0 pe-3" style="font-size: 0.8rem;">{{politician.name}}
+                        ({{politician.politicalPosition}})</p>
                 </div>
             </div>
         </div>
 
         <div class="col-12 d-flex justify-content-center">
-            <button (click)="showText()" class="submit-button bg-green px-4 py-2 border-0 rounded-4 text-white">Criar Contribuição</button>
+            <button class="submit-button bg-green px-4 py-2 border-0 rounded-4 text-white"
+            (click)="submitContribution(contributionForm)">
+            Criar Contribuição</button>
         </div>
     </form>
 </div>

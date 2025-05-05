@@ -4,12 +4,14 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import { ShareComponent } from './components/share/share.component';
 import { ShareButtonComponent } from './components/share-button/share-button.component';
+import { KeyWordsComponent } from './components/key-words/key-words.component';
 
 @NgModule({
   declarations: [
     NavbarComponent,
     ShareComponent,
-    ShareButtonComponent
+    ShareButtonComponent,
+    KeyWordsComponent
   ],
   imports: [
     CommonModule,

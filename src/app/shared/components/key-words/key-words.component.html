@@ -1,9 +1,11 @@
-<div class="container col-5">
+<div class="container col-3">
     <h1 class="fw-bold">Palavras Chaves</h1>
     <p class="category-text">Marque até 5 categorias relevantes ao seu debate</p>
     <div class="d-flex flex-row flex-wrap gap-3">
         <button *ngFor="let category of categories" 
-        class="btn border-primary-80 rounded-5 px-3 py-2">
+        class="btn btn-category border-primary-80 rounded-5 px-3 py-2"
+        [ngClass]="{'selected': isCategoryMarked(category)}"
+        (click)="toggleCategory(category)">
             {{category.name}}
         </button>
     </div>

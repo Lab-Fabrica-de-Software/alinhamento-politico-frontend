@@ -1,0 +1,18 @@
+<a href="" class="text-decoration-none text-dark" [ngClass]="{'md': size === 'md', 'lg': size === 'lg', 'sm': size === 'sm'}">
+    <div class="d-flex flex-row align-items-center">
+        <img [src]="user.photo" [alt]="user.name" class="rounded-circle me-2"/>
+        <div class="d-flex" [ngClass]="{'flex-row gap-4': isHorizontal, 'flex-column': !isHorizontal}">
+            <p *ngIf="user.partyId">
+                {{user.partyName}} ({{user.partyPosition}})
+            </p>
+            <div class="d-flex flex-row align-items-center gap-1">
+                <p> {{isHorizontal ? 'Autor:' : ''}} {{user.name}}</p>
+                <i class="bi bi-check-circle-fill" *ngIf="user.verified"></i>
+            </div>
+            <div *ngIf="actionDate" class="d-flex flex-row align-items-center gap-1">
+                <i *ngIf="isHorizontal" class="bi bi-calendar3"></i>
+                <span class="text-muted form-text m-0">{{timePassed}}</span>
+            </div>
+        </div>
+    </div>
+</a>

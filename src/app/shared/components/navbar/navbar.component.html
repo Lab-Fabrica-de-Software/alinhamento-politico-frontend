@@ -40,7 +40,7 @@
                     <i class="bi bi-bell-fill" style="font-size: 32px; color: #FCA311;"></i>
                 </button>
 
-                <span *ngIf="user.unreadNotifications > 0"
+                <span *ngIf="user.unreadNotifications"
                     class="position-absolute top-0 start-100 badge rounded-circle bg-danger text-dark text-opacity-75"
                     style="transform: translate(-50%, -10%);">
                     {{user.unreadNotifications}}

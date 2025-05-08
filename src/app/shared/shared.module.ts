@@ -4,12 +4,14 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import { ShareComponent } from './components/share/share.component';
 import { ShareButtonComponent } from './components/share-button/share-button.component';
+import { UserInformationComponent } from './components/user-information/user-information.component';
 
 @NgModule({
   declarations: [
     NavbarComponent,
     ShareComponent,
-    ShareButtonComponent
+    ShareButtonComponent,
+    UserInformationComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +20,8 @@ import { ShareButtonComponent } from './components/share-button/share-button.com
   exports: [
     NavbarComponent,
     ShareButtonComponent,
-    ShareComponent
+    ShareComponent,
+    UserInformationComponent
   ]
 })
 export class SharedModule { }

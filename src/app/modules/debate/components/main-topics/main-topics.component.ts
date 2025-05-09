@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { AIText } from '../../../../core/models/aiext';
+import { AIText } from '../../../../core/models/ai-text';
 
 @Component({
   selector: 'app-main-topics',

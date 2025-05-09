@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AIText } from '../../../../core/models/ai-text';
 
 @Component({
   selector: 'app-summary',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './summary.component.css'
 })
 export class SummaryComponent {
-
+  aiText: AIText | null = null;
 }

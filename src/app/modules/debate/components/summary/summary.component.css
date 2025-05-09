@@ -5,3 +5,19 @@
 .txt-blue {
     color: #0D6EFD;
 }
+
+.like-button:hover {
+    color: #198754;
+}
+
+.like-button.active  {
+    color: #198754;
+}
+
+.dislike-button:hover {
+    color: #DC3545;
+}
+
+.dislike-button.active {
+    color: #DC3545;
+}

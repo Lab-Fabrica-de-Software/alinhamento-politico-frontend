@@ -9,4 +9,9 @@ import { AIText } from '../../../../core/models/ai-text';
 })
 export class SummaryComponent {
   aiText: AIText | null = null;
+  isLiked: boolean | null = null;
+
+  setLike(value: boolean) {
+    this.isLiked = value;
+  }
 }

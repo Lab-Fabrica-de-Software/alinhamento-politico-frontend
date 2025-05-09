@@ -509,7 +509,7 @@
         },
         {
             "name": "SelectionDateRangeComponent",
-            "id": "component-SelectionDateRangeComponent-58579c88d966349884bf6712e4fba5cc990117384c35f1c9e851caba9cd79d907ececfddb0ae74692a448cdb1a8c67b1e32cf53bfedba3865f8995c2e34a53e1",
+            "id": "component-SelectionDateRangeComponent-9c249f22549a595b8122ab4171086b35a7105d684af4eea390e98e8856dcc50c98e93fb721bd7d8b0f31c77015eeefdca2126c50cb346667b5a1a85d053585dd",
             "file": "src/app/shared/selection-date-range/selection-date-range.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -517,7 +517,9 @@
             "outputs": [],
             "providers": [],
             "selector": "app-selection-date-range",
-            "styleUrls": [],
+            "styleUrls": [
+                "./selection-date-range.component.css"
+            ],
             "styles": [],
             "templateUrl": [
                 "./selection-date-range.component.html"
@@ -536,7 +538,29 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 12
+                    "line": 13
+                },
+                {
+                    "name": "maxEndDate",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "NgbDateStruct | null",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                },
+                {
+                    "name": "minEndDate",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "NgbDateStruct | null",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
                 },
                 {
                     "name": "startDate",
@@ -547,10 +571,74 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
+                    "line": 12
+                },
+                {
+                    "name": "today",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "NgbDateStruct",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
                     "line": 11
                 }
             ],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "compareDates",
+                    "args": [
+                        {
+                            "name": "a",
+                            "type": "NgbDateStruct",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "b",
+                            "type": "NgbDateStruct",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "number",
+                    "typeParameters": [],
+                    "line": 54,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "a",
+                            "type": "NgbDateStruct",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "b",
+                            "type": "NgbDateStruct",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "onStartDateChange",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 21,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -560,13 +648,43 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\nimport { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';\r\n\r\n@Component({\r\n  selector: 'app-selection-date-range',\r\n  standalone: false,\r\n  templateUrl: './selection-date-range.component.html',\r\n  styleUrl: './selection-date-range.component.css'\r\n})\r\nexport class SelectionDateRangeComponent {\r\n  startDate: NgbDateStruct | null = null;\r\n  endDate: NgbDateStruct | null = null;\r\n}\r\n",
-            "styleUrl": "./selection-date-range.component.css",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';\r\n\r\n@Component({\r\n  selector: 'app-selection-date-range',\r\n  standalone: false,\r\n  templateUrl: './selection-date-range.component.html',\r\n  styleUrls: ['./selection-date-range.component.css']\r\n})\r\nexport class SelectionDateRangeComponent {\r\n  today: NgbDateStruct;\r\n  startDate: NgbDateStruct | null = null;\r\n  endDate: NgbDateStruct | null = null;\r\n  minEndDate: NgbDateStruct | null = null;\r\n  maxEndDate: NgbDateStruct | null = null;\r\n\r\n  constructor(private calendar: NgbCalendar) {\r\n    this.today = this.calendar.getToday();\r\n  }\r\n\r\n  onStartDateChange() {\r\n    if (!this.startDate) {\r\n      this.minEndDate = null;\r\n      this.maxEndDate = null;\r\n      return;\r\n    }\r\n\r\n    const { year, month, day } = this.startDate;\r\n\r\n    const toDate = (d: Date): NgbDateStruct => ({\r\n      year: d.getFullYear(),\r\n      month: d.getMonth() + 1,\r\n      day: d.getDate()\r\n    });\r\n\r\n    const baseDate = new Date(year, month - 1, day);\r\n    const minEnd = new Date(baseDate);\r\n    minEnd.setDate(minEnd.getDate() + 15);\r\n\r\n    const maxEnd = new Date(baseDate);\r\n    maxEnd.setDate(maxEnd.getDate() + 90);\r\n\r\n    this.minEndDate = toDate(minEnd);\r\n    this.maxEndDate = toDate(maxEnd);\r\n\r\n    // Limpa a data de fim se estiver fora do intervalo\r\n    if (this.endDate &&\r\n        (this.compareDates(this.endDate, this.minEndDate) < 0 ||\r\n         this.compareDates(this.endDate, this.maxEndDate) > 0)) {\r\n      this.endDate = null;\r\n    }\r\n  }\r\n\r\n  compareDates(a: NgbDateStruct, b: NgbDateStruct): number {\r\n    const dateA = new Date(a.year, a.month - 1, a.day);\r\n    const dateB = new Date(b.year, b.month - 1, b.day);\r\n    return dateA.getTime() - dateB.getTime();\r\n  }\r\n}\r\n",
             "assetsDirs": [],
-            "styleUrlsData": "",
+            "styleUrlsData": [
+                {
+                    "data": "@import 'bootstrap-icons/font/bootstrap-icons.css';\r\n\r\n.form-control {\r\n    max-width: 250px;\r\n    border: 1px black solid;\r\n    max-height: 35px;\r\n  }\r\n\r\n  .form-container {\r\n    max-width: 200px;\r\n  }",
+                    "styleUrl": "./selection-date-range.component.css"
+                }
+            ],
             "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "calendar",
+                        "type": "NgbCalendar",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 15,
+                "jsdoctags": [
+                    {
+                        "name": "calendar",
+                        "type": "NgbCalendar",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
             "extends": [],
-            "templateData": "<div class=\"d-flex flex-column gap-3\">\r\n    <div>\r\n        <label for=\"startDate\" class=\"fs-2 fw-bold ms-2 mb-2\">Início</label>\r\n        <div class=\"form-container position-relative\">\r\n            <input class=\"form-control rounded-pill bg-light py-2\" name=\"startDate\" [(ngModel)]=\"startDate\"\r\n                ngbDatepicker #start=\"ngbDatepicker\" readonly (click)=\"start.toggle()\" />\r\n            <div class=\"position-absolute top-50 end-0 translate-middle-y pe-3\">\r\n                <i class=\"bi bi-calendar3\" style=\"font-size: 18px;\"></i>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n    <div>\r\n        <label for=\"endDate\" class=\"fs-2 fw-bold ms-2 mb-2\">Término</label>\r\n        <div class=\"form-container position-relative\">\r\n            <input class=\"form-control rounded-pill bg-light py-2\" name=\"endDate\" [(ngModel)]=\"endDate\" ngbDatepicker\r\n                #end=\"ngbDatepicker\" readonly (click)=\"end.toggle()\" />\r\n            <div class=\"position-absolute top-50 end-0 translate-middle-y pe-3\">\r\n                <i class=\"bi bi-calendar3\" style=\"font-size: 18px;\"></i>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
+            "templateData": "<div class=\"d-flex flex-column gap-3\">\r\n    <div>\r\n      <label for=\"startDate\" class=\"fs-2 fw-bold ms-2 mb-2\">Início</label>\r\n      <div class=\"form-container position-relative\">\r\n        <input\r\n          class=\"form-control rounded-pill bg-light py-2\"\r\n          name=\"startDate\"\r\n          [(ngModel)]=\"startDate\"\r\n          [minDate]=\"today\"\r\n          ngbDatepicker\r\n          #start=\"ngbDatepicker\"\r\n          readonly\r\n          (click)=\"start.toggle()\"\r\n          (ngModelChange)=\"onStartDateChange()\"\r\n        />\r\n        <div class=\"position-absolute top-50 end-0 translate-middle-y pe-3\">\r\n          <i class=\"bi bi-calendar3\" style=\"font-size: 18px;\"></i>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  \r\n    <div>\r\n      <label for=\"endDate\" class=\"fs-2 fw-bold ms-2 mb-2\">Término</label>\r\n      <div class=\"form-container position-relative\">\r\n        <input\r\n          class=\"form-control rounded-pill bg-light py-2\"\r\n          name=\"endDate\"\r\n          [(ngModel)]=\"endDate\"\r\n          [minDate]=\"minEndDate!\"\r\n          [maxDate]=\"maxEndDate!\"\r\n          [disabled]=\"!startDate\"\r\n          ngbDatepicker\r\n          #end=\"ngbDatepicker\"\r\n          readonly\r\n          (click)=\"end.toggle()\"\r\n        />\r\n        <div class=\"position-absolute top-50 end-0 translate-middle-y pe-3\">\r\n          <i class=\"bi bi-calendar3\" style=\"font-size: 18px;\"></i>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  "
         }
     ],
     "modules": [
@@ -873,7 +991,7 @@
                 "linktype": "component",
                 "name": "SelectionDateRangeComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
+                "coverageCount": "0/9",
                 "status": "low"
             }
         ]

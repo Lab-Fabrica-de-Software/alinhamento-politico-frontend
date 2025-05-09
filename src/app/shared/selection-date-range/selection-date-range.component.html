@@ -1,23 +1,43 @@
 <div class="d-flex flex-column gap-3">
     <div>
-        <label for="startDate" class="fs-2 fw-bold ms-2 mb-2">Início</label>
-        <div class="form-container position-relative">
-            <input class="form-control rounded-pill bg-light py-2" name="startDate" [(ngModel)]="startDate"
-                ngbDatepicker #start="ngbDatepicker" readonly (click)="start.toggle()" />
-            <div class="position-absolute top-50 end-0 translate-middle-y pe-3">
-                <i class="bi bi-calendar3" style="font-size: 18px;"></i>
-            </div>
+      <label for="startDate" class="fs-2 fw-bold ms-2 mb-2">Início</label>
+      <div class="form-container position-relative">
+        <input
+          class="form-control rounded-pill bg-light py-2"
+          name="startDate"
+          [(ngModel)]="startDate"
+          [minDate]="today"
+          ngbDatepicker
+          #start="ngbDatepicker"
+          readonly
+          (click)="start.toggle()"
+          (ngModelChange)="onStartDateChange()"
+        />
+        <div class="position-absolute top-50 end-0 translate-middle-y pe-3">
+          <i class="bi bi-calendar3" style="font-size: 18px;"></i>
         </div>
+      </div>
     </div>
-
+  
     <div>
-        <label for="endDate" class="fs-2 fw-bold ms-2 mb-2">Término</label>
-        <div class="form-container position-relative">
-            <input class="form-control rounded-pill bg-light py-2" name="endDate" [(ngModel)]="endDate" ngbDatepicker
-                #end="ngbDatepicker" readonly (click)="end.toggle()" />
-            <div class="position-absolute top-50 end-0 translate-middle-y pe-3">
-                <i class="bi bi-calendar3" style="font-size: 18px;"></i>
-            </div>
+      <label for="endDate" class="fs-2 fw-bold ms-2 mb-2">Término</label>
+      <div class="form-container position-relative">
+        <input
+          class="form-control rounded-pill bg-light py-2"
+          name="endDate"
+          [(ngModel)]="endDate"
+          [minDate]="minEndDate!"
+          [maxDate]="maxEndDate!"
+          [disabled]="!startDate"
+          ngbDatepicker
+          #end="ngbDatepicker"
+          readonly
+          (click)="end.toggle()"
+        />
+        <div class="position-absolute top-50 end-0 translate-middle-y pe-3">
+          <i class="bi bi-calendar3" style="font-size: 18px;"></i>
         </div>
+      </div>
     </div>
-</div>
+  </div>
+  

@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './debate-filter.component.css'
 })
 export class DebateFilterComponent {
+  searchInput: string = '';
 
+  search() {
+    console.log(this.searchInput);
+  }
 }

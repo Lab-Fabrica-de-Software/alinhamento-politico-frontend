@@ -1,9 +1,27 @@
 <div class="container">
-    <div class="d-flex flex-row justify-content-between border-bottom border-black" >
-        <h2 class="fw-bold">Debates</h2>
-        <div class="d-flex gap-4">
-            <button class="btn btn-primary rounded-5 px-5 py-0 h-75">Filtrar</button>
-            <button class="btn btn-success rounded-5 px-4 py-0 h-75">Criar debate</button>
+    <form>
+        <div class="d-flex flex-row justify-content-between border-bottom border-black mb-3">
+            <h2 class="fw-bold">Debates</h2>
+            <div class="d-flex gap-4">
+                <button class="btn btn-primary rounded-5 px-5 py-0 h-75">Filtrar</button>
+                <button class="btn btn-success rounded-5 px-4 py-0 h-75">Criar debate</button>
+            </div>
         </div>
-    </div>
+
+        <div class="d-flex align-items-center gap-4 col-7">
+            <p class="fs-4 p-0 m-0">Pesquisa</p>
+            <div class="position-relative w-100">
+                <input class="form-control ps-4 pe-5 py-1 rounded-pill border-black bg-light fst-italic w-100"
+                    type="search" placeholder="Pesquisar" aria-label="Pesquisar" name="searchInput"
+                    [(ngModel)]="searchInput" />
+
+                <button class="position-absolute btn p-0 m-0 border-0 bg-transparent"
+                    style="right: 15px; top: 50%; transform: translateY(-50%);" type="button" (click)="search()">
+                    <i class="bi bi-search" style="font-size: 20px; color: black;"></i>
+                </button>
+            </div>
+
+            <button class="btn btn-primary rounded-5 px-4 h-100">Pesquisar</button>
+        </div>
+    </form>
 </div>

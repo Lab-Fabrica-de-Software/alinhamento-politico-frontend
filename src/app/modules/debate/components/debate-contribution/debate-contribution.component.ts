@@ -18,8 +18,13 @@ export class DebateContributionComponent {
   }
 
   @Input()
-  politicians: User[] = [];
-  markedPoliticians: User[] = [];
+  allPoliticians: User[] = [];
+  followedPoliticians: User[] = [];
+
+  markedPoliticians: {
+    politician: User,
+    type: string
+  }[] = [];
 
   contributionText: string = '';
   isBold = false;
@@ -30,6 +35,29 @@ export class DebateContributionComponent {
     oppose: false,
   };
   showSelectBox = false;
+  searchTerm: string = '';
+
+get filteredPoliticians(): User[] {
+  const term = this.searchTerm.trim().toLowerCase();
+  
+  if (!term) {
+    return this.followedPoliticians;
+  }
+
+  const followedAndFiltered = this.followedPoliticians.filter(p =>
+    p.name.toLowerCase().includes(term)
+  );
+
+  const otherFiltered = this.allPoliticians.filter(p =>
+    !this.followedPoliticians.includes(p) && p.name.toLowerCase().includes(term)
+  );
+
+  return [...followedAndFiltered, ...otherFiltered];
+}
+
+  getPoliticianType(politician: User): string {
+    return this.followedPoliticians.includes(politician) ? 'followed' : 'all';
+  }
 
   updateActiveStates() {
     this.isBold = document.queryCommandState('bold');
@@ -53,34 +81,49 @@ export class DebateContributionComponent {
     }, 300);
   }
 
-  addMarkedPolitician(politician: User) {
-    this.markedPoliticians.push(politician);
-    this.politicians = this.politicians.filter((p) => p != politician);
+  addMarkedPolitician(politician: User, type: string) {
+    if (type === 'followed') {
+      this.markedPoliticians.push({ politician: politician, type: 'followed' });
+      this.followedPoliticians = this.followedPoliticians.filter((p) => p != politician);
+    } else {
+      this.markedPoliticians.push({ politician: politician, type: 'all' });
+      this.allPoliticians = this.allPoliticians.filter((p) => p != politician);
+    }
     this.showSelectBox = false;
   }
 
-  removeMarkedPolitician(politician: User) {
-    this.markedPoliticians = this.markedPoliticians.filter((p) => p != politician);
-    this.politicians.push(politician);
+  removeMarkedPolitician(politician: User, type: string) {
+    this.markedPoliticians = this.markedPoliticians.filter((p) => p.politician != politician);
+    if (type === 'followed') {
+      this.followedPoliticians.push(politician);
+    } else {
+      this.allPoliticians.push(politician);
+    }
   }
-  
+
   toggleSelectBox() {
     this.showSelectBox = !this.showSelectBox;
   }
 
   submitContribution(form: NgForm) {
+    console.log(this.markedPoliticians);
+
     this.contributionText = '';
     if (this.editorRef) {
       this.editorRef.nativeElement.innerHTML = '';
     }
+    const followedMarked = this.markedPoliticians.filter(p => p.type === 'followed');
+    const allMarked = this.markedPoliticians.filter(p => p.type === 'all');
 
-    this.politicians.push(...this.markedPoliticians);
+    this.followedPoliticians.push(...followedMarked.map(p => p.politician));
+    this.allPoliticians.push(...allMarked.map(p => p.politician));
+
     this.markedPoliticians = [];
-  
+
     this.isSupported = null;
     this.isBold = false;
     this.isItalic = false;
-  
+
     form.resetForm();
   }
 }

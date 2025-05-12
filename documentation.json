@@ -2,6 +2,51 @@
     "pipes": [],
     "interfaces": [
         {
+            "name": "AIText",
+            "id": "interface-AIText-4ed9503f8c943911cba1abeae68ae02ce011a8ebcbe405a6a65a1157a49bfed68d480a0cbf0a73eaa5ac5681f6f971f39069ad3b62e9bcaf7b27c8cf27356341",
+            "file": "src/app/core/models/aiext.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface AIText {\r\n    id: number,\r\n    supporters: string,\r\n    nonSupporters: string\r\n}",
+            "properties": [
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "nonSupporters",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "supporters",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
             "name": "DebateGroup",
             "id": "interface-DebateGroup-5d7e711bafb46588db661afe99689e9a9a86b6ed4a232eaa56850628bf3aabc21b9f9da349e1796afc9647475466c2a506c560c4bcad97e1d21d8abe58762fe0",
             "file": "src/app/core/models/debate-group.ts",
@@ -98,12 +143,12 @@
         },
         {
             "name": "User",
-            "id": "interface-User-58a30721d057ae0fb04d1c9d0b8b117bf1f94e36a8711d959871763024261afb4240468688a31e606d6a760682807ef9de69bce5d3ab49ebe16a5216fd4444ed",
+            "id": "interface-User-05e92604b1efac6cb0702287da95e827d34a7e977de069f906b382468bbaf8eae1cad1405e6debfc2cbcb05c256f70ce96e1ce66b4f7c1f1a35b6f7fdece4931",
             "file": "src/app/core/models/user.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export interface User {\r\n    id: number,\r\n    name: string,\r\n    photo: string,\r\n    unreadNotifications?: number,\r\n    politicalPosition?: string\r\n}",
+            "sourceCode": "export interface User {\r\n    id: number,\r\n    name: string,\r\n    photo: string,\r\n    verified?: boolean,\r\n    unreadNotifications?: number,\r\n    partyId?: number, \r\n    partyName?: string,\r\n    partyPosition?: string, \r\n}",
             "properties": [
                 {
                     "name": "id",
@@ -126,6 +171,36 @@
                     "line": 3
                 },
                 {
+                    "name": "partyId",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 7
+                },
+                {
+                    "name": "partyName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 8
+                },
+                {
+                    "name": "partyPosition",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 9
+                },
+                {
                     "name": "photo",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -136,20 +211,20 @@
                     "line": 4
                 },
                 {
-                    "name": "politicalPosition",
+                    "name": "unreadNotifications",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "string",
+                    "type": "number",
                     "indexKey": "",
                     "optional": true,
                     "description": "",
                     "line": 6
                 },
                 {
-                    "name": "unreadNotifications",
+                    "name": "verified",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "number",
+                    "type": "boolean",
                     "indexKey": "",
                     "optional": true,
                     "description": "",
@@ -532,7 +607,7 @@
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<div class=\"d-flex justify-content-center px-3 py-5\">\r\n    <form #contributionForm=\"ngForm\" class=\"col-12 col-md-10 col-lg-8 d-flex flex-column justify-content-center\">\r\n        <h2 class=\"mb-3\">Sua Contribuição:</h2>\r\n        <div class=\"col-12 mb-3 border border-primary-80 rounded-4 p-0 d-flex flex-column\" style=\"height: 200px;\">\r\n            <div class=\"border-bottom border-primary-50 w-100 py-1 d-flex flex-row\">\r\n                <button type=\"button\" class=\"btn btn-sm btn-light fs-6 fw-bold ms-3\"\r\n                    [ngClass]=\"{ 'bg-primary-100 text-white': isBold }\" \r\n                    (click)=\"formatText('bold')\">\r\n                    N\r\n                </button>\r\n                <button type=\"button\" class=\"btn btn-sm btn-light fst-italic\"\r\n                    [ngClass]=\"{ 'bg-primary-100 text-white': isItalic }\" \r\n                    (click)=\"formatText('italic')\">\r\n                    <i class=\"bi bi-type-italic fs-6\"></i>\r\n                </button>\r\n                <div class=\"dropdown\" [class.show]=\"showSelectBox\">\r\n                    <button class=\"btn btn-sm btn-light fs-6\" type=\"button\" (click)=\"toggleSelectBox()\">\r\n                      &#64;\r\n                    </button>\r\n                  \r\n                    <div class=\"dropdown-menu p-2 shadow\" \r\n                    [class.show]=\"showSelectBox\" style=\"min-width: 250px; max-height: 300px; overflow-y: auto;\">\r\n                      <input type=\"text\" class=\"form-control mb-2\" placeholder=\"Buscar político...\" disabled>\r\n                  \r\n                      <div *ngFor=\"let politician of politicians\"\r\n                           (click)=\"addMarkedPolitician(politician)\"\r\n                           class=\"dropdown-item d-flex align-items-center gap-2\">\r\n                        <img [src]=\"politician.photo\" alt=\"\" class=\"rounded-circle\" style=\"width: 28px; height: 28px;\">\r\n                        <span>{{politician.name}} ({{politician.politicalPosition}})</span>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n            </div>\r\n\r\n            <div #editor contenteditable=\"true\" (input)=\"contributionText = editorRef.nativeElement.innerHTML\"\r\n                class=\"border-0 rounded-bottom-4 ps-4 pt-3 pe-4 pb-3 w-100 h-100 flex-grow-1 fs-6\"\r\n                style=\"resize: none; overflow-y: auto; outline: none;\">\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"col-12 justify-content-between d-flex flex-md-row mb-3\">\r\n            <button class=\"like-button d-flex column-gap-2 align-items-center border-0\"\r\n                [ngClass]=\"{ active: isSupported === true, pulse: isPulsing.support }\" (click)=\"setSupport(true)\">\r\n                <i class=\"bi bi-hand-thumbs-up-fill primary-90\" style=\"font-size: 3rem;\"></i>\r\n                <h2 class=\"support-text pt-2 ms-1 mb-0 primary-90 fw-bold\">Apoia</h2>\r\n            </button>\r\n\r\n            <button class=\"dislike-button d-flex column-gap-2 align-items-center border-0\"\r\n                [ngClass]=\"{ active: isSupported === false, pulse: isPulsing.oppose }\" (click)=\"setSupport(false)\">\r\n                <h2 class=\"support-text pt-2 ms-1 mb-0 primary-90 fw-bold\">Não Apoia</h2>\r\n                <i class=\"bi bi-hand-thumbs-down-fill primary-90\" style=\"font-size: 3rem;\"></i>\r\n            </button>\r\n        </div>\r\n\r\n        <div class=\"mb-5\">\r\n            <p class=\"fs-6 mb-3\">Políticos marcados nesse debate</p>\r\n            <div class=\"col-12 d-flex flex-row flex-wrap gap-4\">\r\n                <div *ngFor=\"let politician of markedPoliticians\"\r\n                    class=\"d-flex flex-row align-items-center bg-gray me-3\">\r\n                    <button class=\"border-0 me-2 p-0 bg-gray\">\r\n                        <i class=\"bi bi-x fs-2\"\r\n                        (click)=\"removeMarkedPolitician(politician)\"\r\n                        ></i>\r\n                    </button>\r\n                    <img class=\"rounded-circle me-1\" src={{politician.photo}} alt=\"\" style=\"height: 24px; width: 24px;\">\r\n                    <p class=\"mb-0 pe-3\" style=\"font-size: 0.8rem;\">{{politician.name}}\r\n                        ({{politician.politicalPosition}})</p>\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"col-12 d-flex justify-content-center\">\r\n            <button class=\"submit-button bg-green px-4 py-2 border-0 rounded-4 text-white\"\r\n            (click)=\"submitContribution(contributionForm)\">\r\n            Criar Contribuição</button>\r\n        </div>\r\n    </form>\r\n</div>"
+            "templateData": "<div class=\"d-flex justify-content-center px-3 py-5\">\r\n    <form #contributionForm=\"ngForm\" class=\"col-12 col-md-10 col-lg-8 d-flex flex-column justify-content-center\">\r\n        <h2 class=\"mb-3\">Sua Contribuição:</h2>\r\n        <div class=\"col-12 mb-3 border border-primary-80 rounded-4 p-0 d-flex flex-column\" style=\"height: 200px;\">\r\n            <div class=\"border-bottom border-primary-50 w-100 py-1 d-flex flex-row\">\r\n                <button type=\"button\" class=\"btn btn-sm btn-light fs-6 fw-bold ms-3\"\r\n                    [ngClass]=\"{ 'bg-primary-100 text-white': isBold }\" \r\n                    (click)=\"formatText('bold')\">\r\n                    N\r\n                </button>\r\n                <button type=\"button\" class=\"btn btn-sm btn-light fst-italic\"\r\n                    [ngClass]=\"{ 'bg-primary-100 text-white': isItalic }\" \r\n                    (click)=\"formatText('italic')\">\r\n                    <i class=\"bi bi-type-italic fs-6\"></i>\r\n                </button>\r\n                <div class=\"dropdown\" [class.show]=\"showSelectBox\">\r\n                    <button class=\"btn btn-sm btn-light fs-6\" type=\"button\" (click)=\"toggleSelectBox()\">\r\n                      &#64;\r\n                    </button>\r\n                  \r\n                    <div class=\"dropdown-menu p-2 shadow\" \r\n                    [class.show]=\"showSelectBox\" style=\"min-width: 250px; max-height: 300px; overflow-y: auto;\">\r\n                      <input type=\"text\" class=\"form-control mb-2\" placeholder=\"Buscar político...\" disabled>\r\n                  \r\n                      <div *ngFor=\"let politician of politicians\"\r\n                           (click)=\"addMarkedPolitician(politician)\"\r\n                           class=\"dropdown-item d-flex align-items-center gap-2\">\r\n                        <img [src]=\"politician.photo\" alt=\"\" class=\"rounded-circle\" style=\"width: 28px; height: 28px;\">\r\n                        <span>{{politician.name}} ({{politician.partyPosition}})</span>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n            </div>\r\n\r\n            <div #editor contenteditable=\"true\" (input)=\"contributionText = editorRef.nativeElement.innerHTML\"\r\n                class=\"border-0 rounded-bottom-4 ps-4 pt-3 pe-4 pb-3 w-100 h-100 flex-grow-1 fs-6\"\r\n                style=\"resize: none; overflow-y: auto; outline: none;\">\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"col-12 justify-content-between d-flex flex-md-row mb-3\">\r\n            <button class=\"like-button d-flex column-gap-2 align-items-center border-0\"\r\n                [ngClass]=\"{ active: isSupported === true, pulse: isPulsing.support }\" (click)=\"setSupport(true)\">\r\n                <i class=\"bi bi-hand-thumbs-up-fill primary-90\" style=\"font-size: 3rem;\"></i>\r\n                <h2 class=\"support-text pt-2 ms-1 mb-0 primary-90 fw-bold\">Apoia</h2>\r\n            </button>\r\n\r\n            <button class=\"dislike-button d-flex column-gap-2 align-items-center border-0\"\r\n                [ngClass]=\"{ active: isSupported === false, pulse: isPulsing.oppose }\" (click)=\"setSupport(false)\">\r\n                <h2 class=\"support-text pt-2 ms-1 mb-0 primary-90 fw-bold\">Não Apoia</h2>\r\n                <i class=\"bi bi-hand-thumbs-down-fill primary-90\" style=\"font-size: 3rem;\"></i>\r\n            </button>\r\n        </div>\r\n\r\n        <div class=\"mb-5\">\r\n            <p class=\"fs-6 mb-3\">Políticos marcados nesse debate</p>\r\n            <div class=\"col-12 d-flex flex-row flex-wrap gap-4\">\r\n                <div *ngFor=\"let politician of markedPoliticians\"\r\n                    class=\"d-flex flex-row align-items-center bg-gray me-3\">\r\n                    <button class=\"border-0 me-2 p-0 bg-gray\">\r\n                        <i class=\"bi bi-x fs-2\"\r\n                        (click)=\"removeMarkedPolitician(politician)\"\r\n                        ></i>\r\n                    </button>\r\n                    <img class=\"rounded-circle me-1\" src={{politician.photo}} alt=\"\" style=\"height: 24px; width: 24px;\">\r\n                    <p class=\"mb-0 pe-3\" style=\"font-size: 0.8rem;\">{{politician.name}}\r\n                        ({{politician.partyPosition}})</p>\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"col-12 d-flex justify-content-center\">\r\n            <button class=\"submit-button bg-green px-4 py-2 border-0 rounded-4 text-white\"\r\n            (click)=\"submitContribution(contributionForm)\">\r\n            Criar Contribuição</button>\r\n        </div>\r\n    </form>\r\n</div>"
         },
         {
             "name": "DebateGroupComponent",
@@ -640,9 +715,57 @@
             "templateData": "<p>home works!</p>\r\n"
         },
         {
+            "name": "MainTopicsComponent",
+            "id": "component-MainTopicsComponent-b79330c91bfa4ca2a8185357e7868883e82e1a0702a4917c3a0dda1ec348ddca57d443d0ed485fcf8669f22542d433dfe2a8b662fafdc1e4176a41a643fc55d8",
+            "file": "src/app/modules/debate/components/main-topics/main-topics.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-main-topics",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./main-topics.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "aiText",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "AIText | null",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\r\nimport { AIText } from '../../../../core/models/aiext';\r\n\r\n@Component({\r\n  selector: 'app-main-topics',\r\n  standalone: false,\r\n  templateUrl: './main-topics.component.html',\r\n  styleUrl: './main-topics.component.css'\r\n})\r\nexport class MainTopicsComponent {\r\n  @Input()\r\n  aiText: AIText | null = null;\r\n}\r\n",
+            "styleUrl": "./main-topics.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div class=\"container col-12 col-md-6 col-lg-4\">\r\n    <h1 class=\"title fw-bold\">Pontos Principais</h1>\r\n    <div class=\"d-flex flex-row align-items-center mb-4\">\r\n        <i class=\"bi bi-stars txt-blue me-1 fs-4\"></i>\r\n        <p class=\"m-0\">Gerado por IA</p>\r\n    </div>\r\n\r\n    <div class=\"mb-4\">\r\n        <h2>Apoiadores:</h2>\r\n        <p>\r\n            {{aiText?.supporters}}\r\n        </p>\r\n    </div>\r\n\r\n    <div>\r\n        <h2>Não Apoiadores:</h2>\r\n        <p>\r\n            {{aiText?.nonSupporters}}\r\n        </p>\r\n    </div>\r\n</div>"
+        },
+        {
             "name": "NavbarComponent",
-            "id": "component-NavbarComponent-2816291d323dc56906631ab58b662cd5b04c0c6707a41ffbe48cad18f07ba46f01ccdf5748300d38fb99a36599b0152d9a9eb70ac20f802b3f34f8b2b249a9a5",
-            "file": "src/app/shared/navbar/navbar.component.ts",
+            "id": "component-NavbarComponent-768eefcb6df06bfea135f9ef4f543a731ce95e8ecefa176f2cb760cdc789eff533c3d998e022639f1aa4da4fbbb5e2d47992e6749835eb0caa60e2bcfd22ae2e",
+            "file": "src/app/shared/components/navbar/navbar.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -751,25 +874,248 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\r\nimport { User } from \"../../core/models/user\";\r\n\r\n@Component({\r\n  selector: 'app-navbar',\r\n  standalone: false,\r\n  templateUrl: './navbar.component.html',\r\n  styleUrl: './navbar.component.css'\r\n})\r\nexport class NavbarComponent {\r\n  logo = \"\";\r\n  searchInput = \"\";\r\n\r\n  @Input()\r\n  user: User = {} as User;\r\n\r\n  search() {\r\n    console.log(this.searchInput);\r\n  }\r\n\r\n  onRedirectNotifications () {\r\n    window.location.href = \"/notifications\";\r\n  }\r\n\r\n  onSelectOption(event: Event) {\r\n    const target = event.target as HTMLSelectElement;\r\n    const page = target.value;\r\n\r\n    if (!page) {\r\n      return;\r\n    }\r\n\r\n    window.location.href = page;\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\r\nimport { User } from \"../../../core/models/user\";\r\n\r\n@Component({\r\n  selector: 'app-navbar',\r\n  standalone: false,\r\n  templateUrl: './navbar.component.html',\r\n  styleUrl: './navbar.component.css'\r\n})\r\nexport class NavbarComponent {\r\n  logo = \"\";\r\n  searchInput = \"\";\r\n\r\n  @Input()\r\n  user: User = {} as User;\r\n\r\n  search() {\r\n    console.log(this.searchInput);\r\n  }\r\n\r\n  onRedirectNotifications () {\r\n    window.location.href = \"/notifications\";\r\n  }\r\n\r\n  onSelectOption(event: Event) {\r\n    const target = event.target as HTMLSelectElement;\r\n    const page = target.value;\r\n\r\n    if (!page) {\r\n      return;\r\n    }\r\n\r\n    window.location.href = page;\r\n  }\r\n}\r\n",
             "styleUrl": "./navbar.component.css",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<nav class=\"navbar navbar-expand-lg\" style=\"background-color: #14213D;\">\r\n    <div class=\"container-fluid d-flex justify-content-between align-items-center m-0\">\r\n        <div class=\"d-flex column gap-2\">\r\n            <a href=\"/\">\r\n                <img [src]=\"logo\" alt=\"logo\" width=\"50\" height=\"50\">\r\n            </a>\r\n            <div class=\"text-white fs-6 d-none d-md-block\">\r\n                <span class=\"d-block\">Bússola</span>\r\n                <span class=\"d-block\">Eleitoral</span>\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"align-items-center d-none d-lg-block \">\r\n            <ul class=\"list-unstyled mb-0 d-flex column-gap-4 align-items-center\">\r\n                <li class=\"fs-5\">\r\n                    <a class=\"nav-link\" href=\"#\">Início</a>\r\n                </li>\r\n                <li class=\"fs-5\">\r\n                    <a class=\"nav-link\" href=\"#\">Sobre</a>\r\n                </li>\r\n                <li class=\"fs-5\">\r\n                    <a class=\"nav-link\" href=\"#\">Notícias</a>\r\n                </li>\r\n            </ul>\r\n        </div>\r\n\r\n        <form class=\"d-flex align-items-center position-relative col-8 col-sm-6 col-md-3 col-lg-2\">\r\n            <input class=\"form-control ps-4 pe-5 py-1 rounded-pill border-0 bg-light fst-italic\" type=\"search\"\r\n                placeholder=\"Pesquisar\" aria-label=\"Pesquisar\" name=\"searchInput\" [(ngModel)]=\"searchInput\">\r\n\r\n            <button class=\"position-absolute btn p-0 m-0 border-0 bg-transparent\" style=\"right: 15px;\" type=\"button\" (click)=\"search()\">\r\n                <i class=\"bi bi-search position-absolute\"\r\n                style=\"top: 50%; transform: translate(-100% ,-50%); font-size: 20px; color: black;\"></i>\r\n            </button>\r\n        </form>\r\n\r\n        <div class=\"d-flex column-gap-2 align-items-center justify-content-center\">\r\n            <div class=\"notifications position-relative d-inline-block me-4 d-none d-md-block\">\r\n                <button (click)=\"onRedirectNotifications()\" class=\"btn p-0 m-0 border-0 bg-transparent\">\r\n                    <i class=\"bi bi-bell-fill\" style=\"font-size: 32px; color: #FCA311;\"></i>\r\n                </button>\r\n\r\n                <span *ngIf=\"user.unreadNotifications > 0\"\r\n                    class=\"position-absolute top-0 start-100 badge rounded-circle bg-danger text-dark text-opacity-75\"\r\n                    style=\"transform: translate(-50%, -10%);\">\r\n                    {{user.unreadNotifications}}\r\n                </span>\r\n            </div>\r\n\r\n            <a class=\"d-none d-md-block\" href=\"#\">\r\n                <img [src]=\"user.photo\" alt=\"profilePicture\" width=\"50\" height=\"50\" class=\"rounded-circle me-2\">\r\n            </a>\r\n            <div class=\"d-none d-sm-flex align-items-center position-relative\">\r\n                <select class=\"form-select text-white fs-6 border-0 pe-4 me-2\" role=\"button\" (change)=\"onSelectOption($event)\">\r\n                    <option value=\"userName\" hidden selected>{{user.name}}</option>\r\n                    <option value=\"/pagina1\">Página 1</option>\r\n                    <option value=\"/pagina2\">Página 2</option>\r\n                    <option value=\"/pagina3\">Página 3</option>\r\n                </select>\r\n                <i class=\"bi bi-chevron-compact-down position-absolute end-0 me-2\"\r\n                    style=\"transform: scaleY(2); font-size: 16px; color: #FFF;\"></i>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</nav>"
+            "templateData": "<nav class=\"navbar navbar-expand-lg\" style=\"background-color: #14213D;\">\r\n    <div class=\"container-fluid d-flex justify-content-between align-items-center m-0\">\r\n        <div class=\"d-flex column gap-2\">\r\n            <a href=\"/\">\r\n                <img [src]=\"logo\" alt=\"logo\" width=\"50\" height=\"50\">\r\n            </a>\r\n            <div class=\"text-white fs-6 d-none d-md-block\">\r\n                <span class=\"d-block\">Bússola</span>\r\n                <span class=\"d-block\">Eleitoral</span>\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"align-items-center d-none d-lg-block \">\r\n            <ul class=\"list-unstyled mb-0 d-flex column-gap-4 align-items-center\">\r\n                <li class=\"fs-5\">\r\n                    <a class=\"nav-link\" href=\"#\">Início</a>\r\n                </li>\r\n                <li class=\"fs-5\">\r\n                    <a class=\"nav-link\" href=\"#\">Sobre</a>\r\n                </li>\r\n                <li class=\"fs-5\">\r\n                    <a class=\"nav-link\" href=\"#\">Notícias</a>\r\n                </li>\r\n            </ul>\r\n        </div>\r\n\r\n        <form class=\"d-flex align-items-center position-relative col-8 col-sm-6 col-md-3 col-lg-2\">\r\n            <input class=\"form-control ps-4 pe-5 py-1 rounded-pill border-0 bg-light fst-italic\" type=\"search\"\r\n                placeholder=\"Pesquisar\" aria-label=\"Pesquisar\" name=\"searchInput\" [(ngModel)]=\"searchInput\">\r\n\r\n            <button class=\"position-absolute btn p-0 m-0 border-0 bg-transparent\" style=\"right: 15px;\" type=\"button\" (click)=\"search()\">\r\n                <i class=\"bi bi-search position-absolute\"\r\n                style=\"top: 50%; transform: translate(-100% ,-50%); font-size: 20px; color: black;\"></i>\r\n            </button>\r\n        </form>\r\n\r\n        <div class=\"d-flex column-gap-2 align-items-center justify-content-center\">\r\n            <div class=\"notifications position-relative d-inline-block me-4 d-none d-md-block\">\r\n                <button (click)=\"onRedirectNotifications()\" class=\"btn p-0 m-0 border-0 bg-transparent\">\r\n                    <i class=\"bi bi-bell-fill\" style=\"font-size: 32px; color: #FCA311;\"></i>\r\n                </button>\r\n\r\n                <span *ngIf=\"user.unreadNotifications\"\r\n                    class=\"position-absolute top-0 start-100 badge rounded-circle bg-danger text-dark text-opacity-75\"\r\n                    style=\"transform: translate(-50%, -10%);\">\r\n                    {{user.unreadNotifications}}\r\n                </span>\r\n            </div>\r\n\r\n            <a class=\"d-none d-md-block\" href=\"#\">\r\n                <img [src]=\"user.photo\" alt=\"profilePicture\" width=\"50\" height=\"50\" class=\"rounded-circle me-2\">\r\n            </a>\r\n            <div class=\"d-none d-sm-flex align-items-center position-relative\">\r\n                <select class=\"form-select text-white fs-6 border-0 pe-4 me-2\" role=\"button\" (change)=\"onSelectOption($event)\">\r\n                    <option value=\"userName\" hidden selected>{{user.name}}</option>\r\n                    <option value=\"/pagina1\">Página 1</option>\r\n                    <option value=\"/pagina2\">Página 2</option>\r\n                    <option value=\"/pagina3\">Página 3</option>\r\n                </select>\r\n                <i class=\"bi bi-chevron-compact-down position-absolute end-0 me-2\"\r\n                    style=\"transform: scaleY(2); font-size: 16px; color: #FFF;\"></i>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</nav>"
+        },
+        {
+            "name": "ShareButtonComponent",
+            "id": "component-ShareButtonComponent-e5d555d7fc715d566c10a1294d5e7106c81abbdf3f248485681d0c9780f78d1c105e4c7d6a08ef02d093acdd328f73a19c9a59ef909f31b9b040720345ea61ce",
+            "file": "src/app/shared/components/share-button/share-button.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-share-button",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./share-button.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "color",
+                    "defaultValue": "'#000'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "'1rem'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "modalService",
+                    "defaultValue": "inject(NgbModal)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 16,
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "open",
+                    "args": [
+                        {
+                            "name": "content",
+                            "type": "TemplateRef<any>",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 18,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "content",
+                            "type": "TemplateRef<any>",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, inject, Input, TemplateRef } from '@angular/core';\r\n\r\nimport { NgbModal } from '@ng-bootstrap/ng-bootstrap';\r\n\r\n@Component({\r\n  selector: 'app-share-button',\r\n  standalone: false,\r\n  templateUrl: './share-button.component.html',\r\n  styleUrl: './share-button.component.css'\r\n})\r\nexport class ShareButtonComponent {\r\n\t\r\n  @Input() size?: string = '1rem';\r\n  @Input() color?: string = '#000';\r\n\r\n  private modalService = inject(NgbModal);\r\n\r\n\topen(content: TemplateRef<any>) {\r\n\t\tthis.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', centered: true })\r\n\t}\r\n}\r\n",
+            "styleUrl": "./share-button.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<ng-template #content let-modal>\r\n\t<div class=\"modal-header\">\r\n\t\t<h4 class=\"modal-title\" id=\"modal-basic-title\">Compartilhamento</h4>\r\n\t\t<button type=\"button\" class=\"btn-close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\"></button>\r\n\t</div>\r\n\t<div class=\"modal-body\">\r\n\t\t<div class=\"d-flex flex-row gap-5 pt-3 flex-wrap justify-content-center\">\r\n            <a href=\"#\">\r\n                <i class=\"bi bi-whatsapp\" style=\"color: #198754; font-size: 3rem;\"></i>\r\n            </a>\r\n            <a href=\"#\">\r\n                <i class=\"bi bi-facebook\" style=\"color: #0D6EFD; font-size: 3rem;\"></i>\r\n            </a>\r\n            <a href=\"#\">\r\n                <i class=\"bi bi-instagram\" style=\"color: #000; font-size: 3rem;\"></i>\r\n            </a>\r\n            <a href=\"#\">\r\n                <i class=\"bi bi-telegram\" style=\"color: #259DE8; font-size: 3rem;\"></i>\r\n            </a>\r\n        </div>\r\n\t</div>\r\n</ng-template>\r\n\r\n<i class=\"bi bi-share-fill\" style=\"cursor: pointer;\" [style]=\"'font-size: ' + size + '; color: ' + color\" (click)=\"open(content)\"></i>\r\n"
+        },
+        {
+            "name": "ShareComponent",
+            "id": "component-ShareComponent-eebdc21b6616ba671d189eea8195785b7e7dcb24e42024f21546fd43a23d905a047fcb8e54f4a615a79f075d0b520b0da2c1c5ca7def5ea284421c7ea5cb0978",
+            "file": "src/app/shared/components/share/share.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-share",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./share.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-share',\r\n  standalone: false,\r\n  templateUrl: './share.component.html',\r\n  styleUrl: './share.component.css'\r\n})\r\nexport class ShareComponent {\r\n\r\n}\r\n",
+            "styleUrl": "./share.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div class=\"border px-4 py-2 rounded-3\">\r\n    <p class=\"fs-4 fw-bold\">Compartilhamento</p>\r\n\r\n    <div class=\"d-flex flex-row gap-5 border-top pt-3 flex-wrap justify-content-center\">\r\n        <a href=\"#\">\r\n            <i class=\"bi bi-whatsapp\" style=\"color: #198754; font-size: 3rem;\"></i>\r\n        </a>\r\n        <a href=\"#\">\r\n            <i class=\"bi bi-facebook\" style=\"color: #0D6EFD; font-size: 3rem;\"></i>\r\n        </a>\r\n        <a href=\"#\">\r\n            <i class=\"bi bi-instagram\" style=\"color: #000; font-size: 3rem;\"></i>\r\n        </a>\r\n        <a href=\"#\">\r\n            <i class=\"bi bi-telegram\" style=\"color: #259DE8; font-size: 3rem;\"></i>\r\n        </a>\r\n    </div>\r\n</div>"
+        },
+        {
+            "name": "UserInformationComponent",
+            "id": "component-UserInformationComponent-1d21d93fad61848703449849c74a41cdc190807cc07a31066d6ae1602294c948cb8b89cdafdfc2dc17b7d95a047896c18228d1649209a9c34e6f5f776e6aa911",
+            "file": "src/app/shared/components/user-information/user-information.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-user-information",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./user-information.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "actionDate",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "Date",
+                    "decorators": []
+                },
+                {
+                    "name": "isHorizontal",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "'md'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21,
+                    "type": "\"sm\" | \"md\" | \"lg\"",
+                    "decorators": []
+                },
+                {
+                    "name": "user",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "User",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core'\r\nimport { User } from '../../../core/models/user'\r\n\r\n@Component({\r\n  selector: 'app-user-information',\r\n  standalone: false,\r\n  templateUrl: './user-information.component.html',\r\n  styleUrl: './user-information.component.css'\r\n})\r\nexport class UserInformationComponent {\r\n  @Input()\r\n  user!: User;\r\n\r\n  @Input()\r\n  actionDate?: Date;\r\n\r\n  @Input()\r\n  isHorizontal: boolean = false;\r\n\r\n  @Input()\r\n  size: 'sm' | 'md' | 'lg' = 'md';\r\n\r\n  get timePassed(): string | undefined {\r\n    if (this.actionDate) {\r\n      const now = new Date();\r\n      const diffMs = now.getTime() - this.actionDate.getTime();\r\n      const diffMins = Math.floor(diffMs / (1000 * 60));\r\n      const diffHours = Math.floor(diffMins / 60);\r\n      const diffDays = Math.floor(diffHours / 24);\r\n      const diffMonths = now.getMonth() - this.actionDate.getMonth() +\r\n        (12 * (now.getFullYear() - this.actionDate.getFullYear()));\r\n\r\n      if (diffMins < 60) {\r\n        return `Há ${diffMins} minuto${diffMins === 1 ? '' : 's'}`;\r\n      }\r\n      if (diffHours < 24) {\r\n        return `Há ${diffHours} hora${diffHours === 1 ? '' : 's'}`;\r\n      }\r\n      if (diffDays < 30) {\r\n        return `Há ${diffDays} dia${diffDays === 1 ? '' : 's'}`;\r\n      }\r\n      if (now.getFullYear() === this.actionDate.getFullYear()) {\r\n        return `Há ${diffMonths} m${diffMonths === 1 ? 'ê' : 'e'}s${diffMonths === 1 ? '' : 'es'}`;\r\n      }\r\n\r\n      return this.actionDate.toLocaleDateString('pt-BR', {\r\n        year: 'numeric',\r\n        month: '2-digit',\r\n        day: '2-digit',\r\n      });\r\n    }\r\n\r\n    return undefined;\r\n  }\r\n}\r\n",
+            "styleUrl": "./user-information.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "accessors": {
+                "timePassed": {
+                    "name": "timePassed",
+                    "getSignature": {
+                        "name": "timePassed",
+                        "type": "",
+                        "returnType": "string | undefined",
+                        "line": 23
+                    }
+                }
+            },
+            "templateData": "<a href=\"\" class=\"text-decoration-none text-dark\" [ngClass]=\"{'md': size === 'md', 'lg': size === 'lg', 'sm': size === 'sm'}\">\r\n    <div class=\"d-flex flex-row align-items-center\">\r\n        <img [src]=\"user.photo\" [alt]=\"user.name\" class=\"rounded-circle me-2\"/>\r\n        <div class=\"d-flex\" [ngClass]=\"{'flex-row gap-4': isHorizontal, 'flex-column': !isHorizontal}\">\r\n            <p *ngIf=\"user.partyId\">\r\n                {{user.partyName}} ({{user.partyPosition}})\r\n            </p>\r\n            <div class=\"d-flex flex-row align-items-center gap-1\">\r\n                <p> {{isHorizontal ? 'Autor:' : ''}} {{user.name}}</p>\r\n                <i class=\"bi bi-check-circle-fill\" *ngIf=\"user.verified\"></i>\r\n            </div>\r\n            <div *ngIf=\"actionDate\" class=\"d-flex flex-row align-items-center gap-1\">\r\n                <i *ngIf=\"isHorizontal\" class=\"bi bi-calendar3\"></i>\r\n                <span class=\"text-muted form-text m-0\">{{timePassed}}</span>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</a>"
         }
     ],
     "modules": [
         {
             "name": "AppModule",
-            "id": "module-AppModule-ad4329578c0b10d75faec772351b403d9f74306e673c1d8a20fd80c0f93c9cb14d132daf80d717529bcd6f0710e6fb58e8aee7097d98494467cd330b78a877ed",
+            "id": "module-AppModule-0f95bfd8cd2374d32690c47bcaa4ccb1de58c64bc57da1063936aba57a0c0bb1ee8d9ff78f61794e8a31144b11d14da45aaf1339390887c3becb7d69b5b22f47",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\n\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { AppComponent } from './app.component';\r\nimport { NgbModule } from '@ng-bootstrap/ng-bootstrap';\r\nimport { FormsModule } from '@angular/forms';\r\n\r\n@NgModule({\r\n  declarations: [\r\n    AppComponent\r\n  ],\r\n  imports: [\r\n    BrowserModule,\r\n    AppRoutingModule,\r\n    NgbModule,\r\n    FormsModule\r\n  ],\r\n  providers: [],\r\n  bootstrap: [AppComponent]\r\n})\r\nexport class AppModule { }\r\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\n\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { AppComponent } from './app.component';\r\nimport { NgbModule } from '@ng-bootstrap/ng-bootstrap';\r\n\r\n@NgModule({\r\n  declarations: [\r\n    AppComponent\r\n  ],\r\n  imports: [\r\n    BrowserModule,\r\n    AppRoutingModule,\r\n    NgbModule,\r\n  ],\r\n  providers: [],\r\n  bootstrap: [AppComponent]\r\n})\r\nexport class AppModule { }\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -847,13 +1193,13 @@
         },
         {
             "name": "DebateModule",
-            "id": "module-DebateModule-b5779f320e7e6c241ca60f73106e52859ea0cbfdb96b627c00e0509753ed9b1280bda70c0c915748895076ac50dbd3797408df082634f66c741eb5dd163596e2",
+            "id": "module-DebateModule-c89d9dd9fa8efe67955efb0d705ea7e67fe568efe2d3594402d9bf71cf2347a5987599f2f84acd51862c0ad4024a2e394148a44e76bf8205f4fde69580dfba08",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/modules/debate/debate.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { FormsModule } from '@angular/forms';\r\n\r\nimport { DebateRoutingModule } from './debate-routing.module';\r\nimport { HomeComponent } from './pages/home/home.component';\r\nimport { DebateGroupComponent } from './components/debate-group/debate-group.component';\r\nimport { DebateContributionComponent } from './components/debate-contribution/debate-contribution.component';\r\n\r\n\r\n@NgModule({\r\n  declarations: [\r\n    HomeComponent,\r\n    DebateGroupComponent,\r\n    DebateContributionComponent\r\n  ],\r\n  imports: [\r\n    CommonModule,\r\n    DebateRoutingModule,\r\n    FormsModule\r\n  ]\r\n})\r\nexport class DebateModule { }\r\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { FormsModule } from '@angular/forms';\r\n\r\nimport { DebateRoutingModule } from './debate-routing.module';\r\nimport { HomeComponent } from './pages/home/home.component';\r\nimport { DebateGroupComponent } from './components/debate-group/debate-group.component';\r\nimport { DebateContributionComponent } from './components/debate-contribution/debate-contribution.component';\r\nimport { MainTopicsComponent } from './components/main-topics/main-topics.component';\r\n\r\n\r\n@NgModule({\r\n  declarations: [\r\n    HomeComponent,\r\n    DebateGroupComponent,\r\n    DebateContributionComponent,\r\n    MainTopicsComponent\r\n  ],\r\n  imports: [\r\n    CommonModule,\r\n    DebateRoutingModule,\r\n    FormsModule\r\n  ]\r\n})\r\nexport class DebateModule { }\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -870,6 +1216,9 @@
                         },
                         {
                             "name": "HomeComponent"
+                        },
+                        {
+                            "name": "MainTopicsComponent"
                         }
                     ]
                 },
@@ -933,13 +1282,13 @@
         },
         {
             "name": "SharedModule",
-            "id": "module-SharedModule-e06031db1c055ec35624e5aff64c6e1533cfe5c4f1bc5592583548318108b52995e194e50240ad09ef5009105aed9e6ec9667bde5e12b5b59060345f8cecbae7",
+            "id": "module-SharedModule-2096342aed989e64f15b2f81257dc56b75f8493903dc30d24b378a955b1d2d4d0e63d034c2b326c33573bce5295f7ad9b279c9c3823f2c2aeb9f872745f79748",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/shared/shared.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { NavbarComponent } from './navbar/navbar.component';\r\n\r\n\r\n\r\n@NgModule({\r\n  declarations: [\r\n    NavbarComponent\r\n  ],\r\n  imports: [\r\n    CommonModule\r\n  ],\r\n  exports: [\r\n    NavbarComponent\r\n  ]\r\n})\r\nexport class SharedModule { }\r\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { NavbarComponent } from './components/navbar/navbar.component';\r\nimport { FormsModule } from '@angular/forms';\r\nimport { ShareComponent } from './components/share/share.component';\r\nimport { ShareButtonComponent } from './components/share-button/share-button.component';\r\nimport { UserInformationComponent } from './components/user-information/user-information.component';\r\n\r\n@NgModule({\r\n  declarations: [\r\n    NavbarComponent,\r\n    ShareComponent,\r\n    ShareButtonComponent,\r\n    UserInformationComponent\r\n  ],\r\n  imports: [\r\n    CommonModule,\r\n    FormsModule\r\n  ],\r\n  exports: [\r\n    NavbarComponent,\r\n    ShareButtonComponent,\r\n    ShareComponent,\r\n    UserInformationComponent\r\n  ]\r\n})\r\nexport class SharedModule { }\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -950,6 +1299,15 @@
                     "elements": [
                         {
                             "name": "NavbarComponent"
+                        },
+                        {
+                            "name": "ShareButtonComponent"
+                        },
+                        {
+                            "name": "ShareComponent"
+                        },
+                        {
+                            "name": "UserInformationComponent"
                         }
                     ]
                 },
@@ -962,6 +1320,15 @@
                     "elements": [
                         {
                             "name": "NavbarComponent"
+                        },
+                        {
+                            "name": "ShareButtonComponent"
+                        },
+                        {
+                            "name": "ShareComponent"
+                        },
+                        {
+                            "name": "UserInformationComponent"
                         }
                     ]
                 },
@@ -1005,6 +1372,15 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/core/models/aiext.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "AIText",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/core/models/debate-group.ts",
                 "type": "interface",
                 "linktype": "interface",
@@ -1019,7 +1395,7 @@
                 "linktype": "interface",
                 "name": "User",
                 "coveragePercent": 0,
-                "coverageCount": "0/6",
+                "coverageCount": "0/9",
                 "status": "low"
             },
             {
@@ -1041,6 +1417,15 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/modules/debate/components/main-topics/main-topics.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "MainTopicsComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/modules/debate/pages/home/home.component.ts",
                 "type": "component",
                 "linktype": "component",
@@ -1050,12 +1435,39 @@
                 "status": "low"
             },
             {
-                "filePath": "src/app/shared/navbar/navbar.component.ts",
+                "filePath": "src/app/shared/components/navbar/navbar.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "NavbarComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/share-button/share-button.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ShareButtonComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/share/share.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ShareComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/user-information/user-information.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "UserInformationComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
                 "status": "low"
             }
         ]

@@ -20,27 +20,89 @@ type Story = StoryObj<DebateContributionComponent>;
 
 export const DebateContribution: Story = {
   args: {
-    politicians: [
+    allPoliticians: [
+      {
+        id: 1,
+        name: "Jailson Mendes",
+        photo: "https://i.pravatar.cc/150?img=18",
+        partyPosition: "Senador"
+      },
+      {
+        id: 2,
+        name: "Juliana Rocha",
+        photo: "https://i.pravatar.cc/150?img=16",
+        partyPosition: "Deputada Estadual"
+      },
+      {
+        id: 3,
+        name: "Bruno Tavares",
+        photo: "https://i.pravatar.cc/150?img=33",
+        partyPosition: "Prefeito"
+      },
+      {
+        id: 4,
+        name: "Larissa Monteiro",
+        photo: "https://i.pravatar.cc/150?img=35",
+        partyPosition: "Senadora"
+      },
+      {
+        id: 5,
+        name: "Eduardo Lima",
+        photo: "https://i.pravatar.cc/150?img=64",
+        partyPosition: "Deputado Federal"
+      },
+      {
+        id: 6,
+        name: "Camila Farias",
+        photo: "https://i.pravatar.cc/150?img=26",
+        partyPosition: "Vereadora"
+      },
+      {
+        id: 7,
+        name: "Felipe Barros",
+        photo: "https://i.pravatar.cc/150?img=63",
+        partyPosition: "Governador"
+      },
+      {
+        id: 8,
+        name: "Patrícia Nogueira",
+        photo: "https://i.pravatar.cc/150?img=21",
+        partyPosition: "Deputada Estadual"
+      },
+      {
+        id: 9,
+        name: "André Gomes",
+        photo: "https://i.pravatar.cc/150?img=51",
+        partyPosition: "Vereador"
+      },
+      {
+        id: 10,
+        name: "Vanessa Martins",
+        photo: "https://i.pravatar.cc/150?img=32",
+        partyPosition: "Prefeita"
+      }
+    ], 
+    followedPoliticians: [
       {
         id: 1,
         name: "Marta Oliveira",
         photo: "https://i.pravatar.cc/150?img=47",
-        politicalPosition: "Deputada Federal"
+        partyPosition: "Deputada Federal"
       },
       {
         id: 2,
         name: "Carlos Augusto",
         photo: "https://i.pravatar.cc/150?img=59",
-        politicalPosition: "Vereador"
+        partyPosition: "Vereador"
       },
       { id: 3, 
         name: 'Maria Silva', 
-        politicalPosition: 'Vereadora', 
+        partyPosition: 'Vereadora', 
         photo: 'https://i.pravatar.cc/150?img=49' 
       },
       { id: 4, 
         name: 'João Souza', 
-        politicalPosition: 'Deputado', 
+        partyPosition: 'Deputado', 
         photo: 'https://i.pravatar.cc/150?img=57' 
       }
     ]

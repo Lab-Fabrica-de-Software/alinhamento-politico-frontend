@@ -4,32 +4,32 @@
         <div class="col-12 mb-3 border border-primary-80 rounded-4 p-0 d-flex flex-column" style="height: 200px;">
             <div class="border-bottom border-primary-50 w-100 py-1 d-flex flex-row">
                 <button type="button" class="btn btn-sm btn-light fs-6 fw-bold ms-3"
-                    [ngClass]="{ 'bg-primary-100 text-white': isBold }" 
-                    (click)="formatText('bold')">
+                    [ngClass]="{ 'bg-primary-100 text-white': isBold }" (click)="formatText('bold')">
                     N
                 </button>
                 <button type="button" class="btn btn-sm btn-light fst-italic"
-                    [ngClass]="{ 'bg-primary-100 text-white': isItalic }" 
-                    (click)="formatText('italic')">
+                    [ngClass]="{ 'bg-primary-100 text-white': isItalic }" (click)="formatText('italic')">
                     <i class="bi bi-type-italic fs-6"></i>
                 </button>
                 <div class="dropdown" [class.show]="showSelectBox">
                     <button class="btn btn-sm btn-light fs-6" type="button" (click)="toggleSelectBox()">
-                      &#64;
+                        &#64;
                     </button>
-                  
-                    <div class="dropdown-menu p-2 shadow" 
-                    [class.show]="showSelectBox" style="min-width: 250px; max-height: 300px; overflow-y: auto;">
-                      <input type="text" class="form-control mb-2" placeholder="Buscar político..." disabled>
-                  
-                      <div *ngFor="let politician of politicians"
-                           (click)="addMarkedPolitician(politician)"
-                           class="dropdown-item d-flex align-items-center gap-2">
-                        <img [src]="politician.photo" alt="" class="rounded-circle" style="width: 28px; height: 28px;">
-                        <span>{{politician.name}} ({{politician.politicalPosition}})</span>
-                      </div>
+
+                    <div class="dropdown-menu p-2 shadow" [class.show]="showSelectBox"
+                        style="min-width: 250px; max-height: 300px; overflow-y: auto;">
+                        <input type="text" name="search" class="form-control mb-2" placeholder="Buscar político..." [(ngModel)]="searchTerm">
+
+
+                        <div *ngFor="let politician of filteredPoliticians"
+                            (click)="addMarkedPolitician(politician, getPoliticianType(politician))"
+                            class="dropdown-item d-flex align-items-center gap-2">
+                            <img [src]="politician.photo" alt="" class="rounded-circle"
+                                style="width: 28px; height: 28px;">
+                            <span>{{politician.name}} ({{politician.partyPosition}})</span>
+                        </div>
                     </div>
-                  </div>
+                </div>
             </div>
 
             <div #editor contenteditable="true" (input)="contributionText = editorRef.nativeElement.innerHTML"
@@ -53,26 +53,26 @@
         </div>
 
         <div class="mb-5">
-            <p class="fs-6 mb-3">Políticos marcados nesse debate</p>
+            <p *ngIf="markedPoliticians.length >= 1" class="fs-6 mb-3">Políticos marcados nesse debate</p>
             <div class="col-12 d-flex flex-row flex-wrap gap-4">
-                <div *ngFor="let politician of markedPoliticians"
+                <div *ngFor="let politicianObject of markedPoliticians"
                     class="d-flex flex-row align-items-center bg-gray me-3">
                     <button class="border-0 me-2 p-0 bg-gray">
                         <i class="bi bi-x fs-2"
-                        (click)="removeMarkedPolitician(politician)"
-                        ></i>
+                            (click)="removeMarkedPolitician(politicianObject.politician, politicianObject.type)"></i>
                     </button>
-                    <img class="rounded-circle me-1" src={{politician.photo}} alt="" style="height: 24px; width: 24px;">
-                    <p class="mb-0 pe-3" style="font-size: 0.8rem;">{{politician.name}}
-                        ({{politician.politicalPosition}})</p>
+                    <img class="rounded-circle me-1" src={{politicianObject.politician.photo}} alt=""
+                        style="height: 24px; width: 24px;">
+                    <p class="mb-0 pe-3" style="font-size: 0.8rem;">{{politicianObject.politician.name}}
+                        ({{politicianObject.politician.partyPosition}})</p>
                 </div>
             </div>
         </div>
 
         <div class="col-12 d-flex justify-content-center">
             <button class="submit-button bg-green px-4 py-2 border-0 rounded-4 text-white"
-            (click)="submitContribution(contributionForm)">
-            Criar Contribuição</button>
+                (click)="submitContribution(contributionForm)">
+                Criar Contribuição</button>
         </div>
     </form>
 </div>

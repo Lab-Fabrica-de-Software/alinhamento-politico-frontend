@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Category } from '../../../core/models/category';
+import { KeyWord } from '../../../core/models/keyword';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-key-words',
@@ -9,27 +10,55 @@ import { Category } from '../../../core/models/category';
 })
 export class KeyWordsComponent {
   @Input()
-  categories: Category[] = [];
+  keywords: KeyWord[] = [];
 
-  markedCategories: Category[] = [];
+  markedKeywords: KeyWord[] = [];
+  newKeyword: string = '';
 
-  addMarkedCategory(category: Category) {
-    this.markedCategories.push(category);
+  constructor(private modalService: NgbModal) { }
+
+  addMarkedKeyword(keyword: KeyWord) {
+    this.markedKeywords.push(keyword);
   }
 
-  removeMarkedCategory(category: Category) {
-    this.markedCategories = this.markedCategories.filter((c) => c !== category);
+  removeMarkedKeyword(keyword: KeyWord) {
+    this.markedKeywords = this.markedKeywords.filter((c) => c !== keyword);
   }
 
-  toggleCategory(category: Category) {
-    if (this.isCategoryMarked(category)) {
-      this.removeMarkedCategory(category);
-    } else if (this.markedCategories.length < 5) {
-      this.addMarkedCategory(category);
+  toggleKeyword(keyword: KeyWord) {
+    if (this.isKeywordMarked(keyword)) {
+      this.removeMarkedKeyword(keyword);
+    } else if (this.markedKeywords.length < 5) {
+      this.addMarkedKeyword(keyword);
     }
   }
-  
-  isCategoryMarked(category: Category): boolean {
-    return this.markedCategories.includes(category);
+
+  isKeywordMarked(keyword: KeyWord): boolean {
+    return this.markedKeywords.includes(keyword);
+  }
+
+  openAddKeywordModal(content: any) {
+    this.newKeyword = '';
+    this.modalService.open(content, { centered: true });
+  }
+
+  verifySameKeyword(name: string): boolean {
+    return this.keywords.some(k => k.name === name.trim());
+  }
+
+  addKeyword(modalRef: any) {
+    if (this.verifySameKeyword(this.newKeyword)) {
+      alert("Essa palavra-chave já existe");
+    } else {
+      const lastKeyword = this.keywords.at(-1);
+      const newId = lastKeyword ? lastKeyword.id + 1 : 1;
+
+      this.keywords.push({
+        id: newId,
+        name: this.newKeyword.trim()
+      });
+      
+      modalRef.close();
+    }
   }
 }

@@ -1,11 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { KeyWordsComponent } from './key-words.component';
+import { FormsModule } from '@angular/forms';
+import { moduleMetadata } from '@storybook/angular';
 
 const meta: Meta<KeyWordsComponent> = {
   title: 'shared/components/key-words',
   component: KeyWordsComponent,
   excludeStories: /.*Data$/,
   tags: ['autodocs'],
+  decorators: [
+  moduleMetadata({
+    imports: [FormsModule],
+  }),
+]
 };
 
 export default meta;
@@ -13,7 +20,7 @@ type Story = StoryObj<KeyWordsComponent>;
 
 export const KeyWords: Story = {
     args: {
-      categories: [
+      keywords: [
         {
           id: 1,
           name: 'mollis'
@@ -47,7 +54,7 @@ export const KeyWords: Story = {
           name: 'mauris'
         },
         {
-          id: 8,
+          id: 9,
           name: 'faubicus'
         },
         {

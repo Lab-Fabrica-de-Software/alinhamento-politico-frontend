@@ -2,5 +2,9 @@ export interface User {
     id: number,
     name: string,
     photo: string,
-    unreadNotifications: number
+    verified?: boolean,
+    unreadNotifications?: number,
+    partyId?: number, 
+    partyName?: string,
+    partyPosition?: string, 
 }

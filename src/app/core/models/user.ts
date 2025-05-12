@@ -2,6 +2,9 @@ export interface User {
     id: number,
     name: string,
     photo: string,
+    verified?: boolean,
     unreadNotifications?: number,
-    politicalPosition?: string
+    partyId?: number, 
+    partyName?: string,
+    partyPosition?: string, 
 }

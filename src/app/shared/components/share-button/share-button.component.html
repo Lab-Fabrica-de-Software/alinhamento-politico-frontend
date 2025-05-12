@@ -1,0 +1,24 @@
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Compartilhamento</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<div class="d-flex flex-row gap-5 pt-3 flex-wrap justify-content-center">
+            <a href="#">
+                <i class="bi bi-whatsapp" style="color: #198754; font-size: 3rem;"></i>
+            </a>
+            <a href="#">
+                <i class="bi bi-facebook" style="color: #0D6EFD; font-size: 3rem;"></i>
+            </a>
+            <a href="#">
+                <i class="bi bi-instagram" style="color: #000; font-size: 3rem;"></i>
+            </a>
+            <a href="#">
+                <i class="bi bi-telegram" style="color: #259DE8; font-size: 3rem;"></i>
+            </a>
+        </div>
+	</div>
+</ng-template>
+
+<i class="bi bi-share-fill" style="cursor: pointer;" [style]="'font-size: ' + size + '; color: ' + color" (click)="open(content)"></i>

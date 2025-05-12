@@ -3,7 +3,7 @@ import { fn } from '@storybook/test';
 import { NavbarComponent } from './navbar.component';
 
 const meta: Meta<NavbarComponent> = {
-  title: 'modules/shared/components/navbar',
+  title: 'shared/components/Navbar',
   component: NavbarComponent,
   excludeStories: /.*Data$/,
   tags: ['autodocs'],

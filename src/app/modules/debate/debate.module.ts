@@ -6,13 +6,15 @@ import { DebateRoutingModule } from './debate-routing.module';
 import { HomeComponent } from './pages/home/home.component';
 import { DebateGroupComponent } from './components/debate-group/debate-group.component';
 import { DebateContributionComponent } from './components/debate-contribution/debate-contribution.component';
+import { MainTopicsComponent } from './components/main-topics/main-topics.component';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
     DebateGroupComponent,
-    DebateContributionComponent
+    DebateContributionComponent,
+    MainTopicsComponent
   ],
   imports: [
     CommonModule,

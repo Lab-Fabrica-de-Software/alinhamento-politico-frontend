@@ -11,14 +11,14 @@
                     [ngClass]="{ 'bg-primary-100 text-white': isItalic }" (click)="formatText('italic')">
                     <i class="bi bi-type-italic fs-6"></i>
                 </button>
-                <div class="dropdown" [class.show]="showSelectBox">
+                <div class="dropdown position-relative" [class.show]="showSelectBox">
                     <button class="btn btn-sm btn-light fs-6" type="button" (click)="toggleSelectBox()">
                         &#64;
                     </button>
 
-                    <div class="dropdown-menu p-2 shadow" [class.show]="showSelectBox"
+                    <div class="dropdown-menu dropdown-politician p-2 shadow" [class.show]="showSelectBox"
                         style="min-width: 250px; max-height: 300px; overflow-y: auto;">
-                        <input type="text" name="search" class="form-control mb-2" placeholder="Buscar político..." [(ngModel)]="searchTerm">
+                        <input type="text" name="search" class="form-control border-primary-80 mb-2" placeholder="Buscar político..." [(ngModel)]="searchTerm">
 
 
                         <div *ngFor="let politician of filteredPoliticians"

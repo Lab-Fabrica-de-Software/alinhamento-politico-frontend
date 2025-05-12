@@ -102,4 +102,18 @@
   .submit-button {
     font-size: 1rem !important;
   }
+
+  .dropdown-politician {
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-25%) !important;
+  }
+}
+
+@media (max-width: 400px) {
+    .dropdown-politician {
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-40%) !important;
+  }
 }

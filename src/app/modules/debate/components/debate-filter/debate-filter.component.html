@@ -8,8 +8,8 @@
             </div>
         </div>
 
-        <div class="d-flex align-items-center gap-4 col-7">
-            <p class="fs-4 p-0 m-0">Pesquisa</p>
+        <div class="d-flex align-items-center gap-4 mb-3 col-7">
+            <p class="fs-4 m-0">Pesquisa</p>
             <div class="position-relative w-100">
                 <input class="form-control ps-4 pe-5 py-1 rounded-pill border-black bg-light fst-italic w-100"
                     type="search" placeholder="Pesquisar" aria-label="Pesquisar" name="searchInput"
@@ -23,5 +23,10 @@
 
             <button class="btn btn-primary rounded-5 px-4 h-100">Pesquisar</button>
         </div>
+
+        <button type="button" class="d-flex flex-row align-items-center gap-2 border-0 p-0" (click)="toggleAdvanced()">
+            <p class="fs-4 m-0 text-start">Filtro Avançado</p>
+            <i class="bi fs-1" [ngClass]="isAdvanced ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+        </button>
     </form>
 </div>

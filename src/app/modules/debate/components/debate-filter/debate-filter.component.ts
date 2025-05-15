@@ -8,6 +8,11 @@ import { Component } from '@angular/core';
 })
 export class DebateFilterComponent {
   searchInput: string = '';
+  isAdvanced: boolean = false;
+
+  toggleAdvanced() {
+    this.isAdvanced = !this.isAdvanced;
+  }
 
   search() {
     console.log(this.searchInput);

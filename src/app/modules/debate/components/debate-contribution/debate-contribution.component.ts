@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DebateContribution } from '../../../../core/models/debate-contribution';
 
 @Component({
@@ -8,14 +8,34 @@ import { DebateContribution } from '../../../../core/models/debate-contribution'
   styleUrl: './debate-contribution.component.css'
 })
 export class DebateContributionComponent {
-  tie = ""
-
   @Input()
   debateContribution!: DebateContribution;
   @Input()
   small?: boolean = false;
 
+  @Output()
+  reaction = new EventEmitter<string>();
+
+  tie = ""
   showFullText: boolean = false;
+
+  onClickReact(reaction: "up" | "down" | undefined) {
+    const currentReaction = this.debateContribution.userReaction;
+
+    if (currentReaction === reaction) {
+      this.reaction.emit(undefined);
+      if (reaction === "up") this.debateContribution.ups--;
+      if (reaction === "down") this.debateContribution.downs--;
+      this.debateContribution.userReaction = undefined;
+    } else {
+      if (currentReaction === "up") this.debateContribution.ups--;
+      if (currentReaction === "down") this.debateContribution.downs--;
+      if (reaction === "up") this.debateContribution.ups++;
+      if (reaction === "down") this.debateContribution.downs++;
+      this.reaction.emit(reaction);
+      this.debateContribution.userReaction = reaction;
+    }
+  }
 
   get displayText(): string {
     const text = this.debateContribution.text;
@@ -24,9 +44,5 @@ export class DebateContributionComponent {
 
   toggleText(): void {
     this.showFullText = !this.showFullText;
-  }
-
-  like() {
-    console.log('Like clicked');
   }
 }

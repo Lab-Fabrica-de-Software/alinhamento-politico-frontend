@@ -7,7 +7,8 @@ export interface DebateContribution {
     userVerified?: boolean;
     openDate: Date;
     opinion: boolean;
-    likes: number;
-    dislikes: number;
+    ups: number;
+    downs: number;
     text: string;
+    userReaction: 'up' | 'down' | undefined;
 }

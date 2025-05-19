@@ -1,0 +1,18 @@
+.bg-gray {
+    background-color: #E5E5E5;
+}
+
+.border-primary-80 {
+    border-color: rgba(20, 33, 61, 0.8);
+}
+
+.custom-select {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  background-image: none !important;
+}
+
+.select-item:hover {
+    background-color: #E5E5E5;
+}

@@ -11,7 +11,7 @@
         <div class="d-flex align-items-center gap-4 mb-3 col-7">
             <p class="fs-4 m-0">Pesquisa</p>
             <div class="position-relative w-100">
-                <input class="form-control ps-4 pe-5 py-1 rounded-pill border-black bg-light fst-italic w-100"
+                <input class="form-control bg-gray ps-4 pe-5 py-1 rounded-pill border-primary-80 fst-italic w-100"
                     type="search" placeholder="Pesquisar" aria-label="Pesquisar" name="searchInput"
                     [(ngModel)]="searchInput" />
 
@@ -24,9 +24,21 @@
             <button class="btn btn-primary rounded-5 px-4 h-100">Pesquisar</button>
         </div>
 
-        <button type="button" class="d-flex flex-row align-items-center gap-2 border-0 p-0" (click)="toggleAdvanced()">
+        <button type="button" class="d-flex flex-row align-items-center gap-2 border-0 p-0 mb-3" (click)="toggleAdvanced()">
             <p class="fs-4 m-0 text-start">Filtro Avançado</p>
             <i class="bi fs-1" [ngClass]="isAdvanced ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
         </button>
+
+        <div *ngIf="isAdvanced">
+            <div class="d-flex flex-row align-items-center gap-3">
+                <p class="m-0">Tópico</p>
+                <div class="position-relative col-3">
+                    <select name="selec-topics" class="form-select custom-select bg-gray pe-5 border-primary-80 rounded-4 ps-3 py-1">
+                        <option *ngFor="let topic of topics" [value]="topic.name" class="select-item">{{ topic.name }}</option>
+                    </select>
+                    <i class="bi bi-chevron-down position-absolute top-50 translate-middle-y end-0 me-3"></i>
+                </div>
+            </div>
+        </div>
     </form>
 </div>

@@ -27,4 +27,7 @@ export default meta;
 type Story = StoryObj<SelectionDateRangeComponent>;
 
 export const SelectionDateRange: Story = {
+  args: {
+    isFilter: false
+  }
 };

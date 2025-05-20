@@ -1,12 +1,15 @@
-<div class="d-flex flex-column gap-3">
-    <div>
-      <label for="startDate" class="fs-2 fw-bold ms-2 mb-2">Início</label>
+<div class="d-flex"
+[ngClass]="!isFilter ? 'flex-column gap-3' : 'flex-row gap-5' ">
+    <div [ngClass]="{'d-flex flex-row align-items-center gap-4 me-4' : isFilter }">
+      <label for="startDate"
+      [ngClass]="!isFilter ? 'fs-2 fw-bold ms-2 mb-2' : 'fs-5 fw-normal' ">Início</label>
       <div class="form-container position-relative">
         <input
           class="form-control rounded-pill bg-light py-2"
           name="startDate"
           [(ngModel)]="startDate"
-          [minDate]="today"
+          [minDate]="isFilter ? minStartDate : today"
+          [maxDate]="maxStartDate!"
           ngbDatepicker
           #start="ngbDatepicker"
           readonly
@@ -19,8 +22,9 @@
       </div>
     </div>
   
-    <div>
-      <label for="endDate" class="fs-2 fw-bold ms-2 mb-2">Término</label>
+    <div [ngClass]="{'d-flex flex-row align-items-center gap-4' : isFilter }">
+      <label for="endDate"
+      [ngClass]="!isFilter ? 'fs-2 fw-bold ms-2 mb-2' : 'fs-5 fw-normal' ">Término</label>
       <div class="form-container position-relative">
         <input
           class="form-control rounded-pill bg-light py-2"

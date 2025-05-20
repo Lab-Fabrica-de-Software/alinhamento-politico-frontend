@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -9,13 +9,30 @@ import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 })
 export class SelectionDateRangeComponent {
   today: NgbDateStruct;
+  minStartDate: NgbDateStruct;
   startDate: NgbDateStruct | null = null;
   endDate: NgbDateStruct | null = null;
   minEndDate: NgbDateStruct | null = null;
   maxEndDate: NgbDateStruct | null = null;
 
+  @Input()
+  isFilter: boolean = false;
+
   constructor(private calendar: NgbCalendar) {
     this.today = this.calendar.getToday();
+
+    const minDate = new Date(this.today.year, this.today.month - 1, this.today.day);
+    minDate.setDate(minDate.getDate() - 90);
+
+    this.minStartDate = {
+      year: minDate.getFullYear(),
+      month: minDate.getMonth() + 1,
+      day: minDate.getDate()
+    };
+  }
+
+  get maxStartDate(): NgbDateStruct | null {
+    return this.isFilter ? this.today : null;
   }
 
   onStartDateChange() {
@@ -44,8 +61,8 @@ export class SelectionDateRangeComponent {
     this.maxEndDate = toDate(maxEnd);
 
     if (this.endDate &&
-        (this.compareDates(this.endDate, this.minEndDate) < 0 ||
-         this.compareDates(this.endDate, this.maxEndDate) > 0)) {
+      (this.compareDates(this.endDate, this.minEndDate) < 0 ||
+        this.compareDates(this.endDate, this.maxEndDate) > 0)) {
       this.endDate = null;
     }
   }

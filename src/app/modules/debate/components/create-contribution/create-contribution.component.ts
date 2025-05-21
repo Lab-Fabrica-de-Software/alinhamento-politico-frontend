@@ -3,12 +3,12 @@ import { User } from '../../../../core/models/user';
 import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-debate-contribution',
+  selector: 'app-create-contribution',
   standalone: false,
-  templateUrl: './debate-contribution.component.html',
-  styleUrl: './debate-contribution.component.css'
+  templateUrl: './create-contribution.component.html',
+  styleUrl: './create-contribution.component.css'
 })
-export class DebateContributionComponent {
+export class CreateContributionComponent {
 
   @ViewChild('editor') editorRef!: ElementRef<HTMLTextAreaElement>;
 

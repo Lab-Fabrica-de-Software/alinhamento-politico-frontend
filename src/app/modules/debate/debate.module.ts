@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { DebateRoutingModule } from './debate-routing.module';
 import { HomeComponent } from './pages/home/home.component';
 import { DebateGroupComponent } from './components/debate-group/debate-group.component';
-import { DebateContributionComponent } from './components/debate-contribution/debate-contribution.component';
+import { CreateContributionComponent } from './components/create-contribution/create-contribution.component';
 import { MainTopicsComponent } from './components/main-topics/main-topics.component';
 
 
@@ -13,7 +13,7 @@ import { MainTopicsComponent } from './components/main-topics/main-topics.compon
   declarations: [
     HomeComponent,
     DebateGroupComponent,
-    DebateContributionComponent,
+    CreateContributionComponent,
     MainTopicsComponent
   ],
   imports: [

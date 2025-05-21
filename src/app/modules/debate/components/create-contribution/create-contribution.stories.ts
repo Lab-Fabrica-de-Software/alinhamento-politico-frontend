@@ -1,11 +1,11 @@
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
-import { DebateContributionComponent } from './debate-contribution.component';
+import { CreateContributionComponent } from './create-contribution.component';
 import { FormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
 
-const meta: Meta<DebateContributionComponent> = {
-  title: 'modules/debate/components/debate-contribution',
-  component: DebateContributionComponent,
+const meta: Meta<CreateContributionComponent> = {
+  title: 'modules/debate/components/create-contribution',
+  component: CreateContributionComponent,
   excludeStories: /.*Data$/,
   tags: ['autodocs'],
   decorators: [
@@ -16,9 +16,9 @@ const meta: Meta<DebateContributionComponent> = {
 };
 
 export default meta;
-type Story = StoryObj<DebateContributionComponent>;
+type Story = StoryObj<CreateContributionComponent>;
 
-export const DebateContribution: Story = {
+export const CreateContribution: Story = {
   args: {
     allPoliticians: [
       {

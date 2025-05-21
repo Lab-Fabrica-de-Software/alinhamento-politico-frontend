@@ -7,6 +7,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { DebateGroupComponent } from './components/debate-group/debate-group.component';
 import { CreateContributionComponent } from './components/create-contribution/create-contribution.component';
 import { MainTopicsComponent } from './components/main-topics/main-topics.component';
+import { DebateContributionComponent } from './components/debate-contribution/debate-contribution.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { MainTopicsComponent } from './components/main-topics/main-topics.compon
     HomeComponent,
     DebateGroupComponent,
     CreateContributionComponent,
-    MainTopicsComponent
+    MainTopicsComponent,
+    DebateContributionComponent
   ],
   imports: [
     CommonModule,

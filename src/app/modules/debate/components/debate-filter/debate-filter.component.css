@@ -2,6 +2,10 @@
     background-color: #E5E5E5;
 }
 
+.bg-secondary-80 {
+    background-color: rgba(252, 163, 17, 0.8);
+}
+
 .border-primary-80 {
     border-color: rgba(20, 33, 61, 0.8);
 }

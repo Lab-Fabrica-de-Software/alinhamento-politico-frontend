@@ -11,11 +11,27 @@ import { KeyWord } from '../../../../core/models/keyword';
 export class DebateFilterComponent {
   searchInput: string = '';
   isAdvanced: boolean = false;
+  showSelectBox: boolean = false;
   topics: Topic[] = [];
   keywords: KeyWord[] = [];
+  markedKeywords: KeyWord[] = [];
 
   toggleAdvanced() {
     this.isAdvanced = !this.isAdvanced;
+  }
+
+  toggleSelectBox() {
+    this.showSelectBox = !this.showSelectBox;
+  }
+
+  addMarkedKeyword(keyword: KeyWord) {
+    this.markedKeywords.push(keyword);
+    this.keywords = this.keywords.filter((k) => k !== keyword);
+  }
+
+  removeMarkedKeyword(keyword: KeyWord) {
+    this.markedKeywords = this.markedKeywords.filter((k) => k !== keyword);
+    this.keywords.push(keyword);
   }
 
   search() {

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -15,8 +15,13 @@ export class SelectionDateRangeComponent {
   minEndDate: NgbDateStruct | null = null;
   maxEndDate: NgbDateStruct | null = null;
 
-  @Input()
-  isFilter: boolean = false;
+  @Input() isFilter: boolean = false;
+
+  @Output() 
+  startDateChange = new EventEmitter<NgbDateStruct | null>();
+
+  @Output() 
+  endDateChange = new EventEmitter<NgbDateStruct | null>();
 
   constructor(private calendar: NgbCalendar) {
     this.today = this.calendar.getToday();
@@ -36,6 +41,8 @@ export class SelectionDateRangeComponent {
   }
 
   onStartDateChange() {
+    this.startDateChange.emit(this.startDate);
+
     if (!this.startDate) {
       this.minEndDate = null;
       this.maxEndDate = null;
@@ -64,7 +71,12 @@ export class SelectionDateRangeComponent {
       (this.compareDates(this.endDate, this.minEndDate) < 0 ||
         this.compareDates(this.endDate, this.maxEndDate) > 0)) {
       this.endDate = null;
+      this.endDateChange.emit(null);
     }
+  }
+
+  onEndDateChange() {
+    this.endDateChange.emit(this.endDate);
   }
 
   compareDates(a: NgbDateStruct, b: NgbDateStruct): number {

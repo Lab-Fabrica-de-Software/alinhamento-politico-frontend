@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { KeyWord } from '../../../core/models/keyword';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -13,16 +13,27 @@ export class KeyWordsComponent {
   keywords: KeyWord[] = [];
 
   markedKeywords: KeyWord[] = [];
+
+  @Output() 
+  markedKeywordsChange = new EventEmitter<KeyWord[]>();
+
+
   newKeyword: string = '';
 
   constructor(private modalService: NgbModal) { }
 
+  private emitMarkedKeywords() {
+  this.markedKeywordsChange.emit(this.markedKeywords);
+}
+
   addMarkedKeyword(keyword: KeyWord) {
     this.markedKeywords.push(keyword);
+    this.emitMarkedKeywords();
   }
 
   removeMarkedKeyword(keyword: KeyWord) {
     this.markedKeywords = this.markedKeywords.filter((c) => c !== keyword);
+    this.emitMarkedKeywords();
   }
 
   toggleKeyword(keyword: KeyWord) {

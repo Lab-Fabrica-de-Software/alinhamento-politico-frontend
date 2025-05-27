@@ -509,7 +509,7 @@
         },
         {
             "name": "SelectionDateRangeComponent",
-            "id": "component-SelectionDateRangeComponent-ed48266211a41e7bb4275f6e3a676cbaa521fa9429f71330d96af03a8bc00c002c7c5eac52f75de743fa9974f79fc64a61d2ed079e6f6e0a719091746d8bcd3f",
+            "id": "component-SelectionDateRangeComponent-a60aae5c8fc49046698bc4bd1288d56243668278473b1e5fb589391bcc747ed0ccaff8e5999e81099174e7be9760b2650bfbc86bd854ab0fad506422319298e0",
             "file": "src/app/shared/selection-date-range/selection-date-range.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -532,12 +532,29 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
+                    "line": 18,
                     "type": "boolean",
                     "decorators": []
                 }
             ],
-            "outputsClass": [],
+            "outputsClass": [
+                {
+                    "name": "endDateChange",
+                    "defaultValue": "new EventEmitter<NgbDateStruct | null>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 24,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "startDateChange",
+                    "defaultValue": "new EventEmitter<NgbDateStruct | null>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21,
+                    "type": "EventEmitter"
+                }
+            ],
             "propertiesClass": [
                 {
                     "name": "endDate",
@@ -624,7 +641,7 @@
                     "optional": false,
                     "returnType": "number",
                     "typeParameters": [],
-                    "line": 70,
+                    "line": 82,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -649,12 +666,22 @@
                     ]
                 },
                 {
+                    "name": "onEndDateChange",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 78,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
                     "name": "onStartDateChange",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 38,
+                    "line": 43,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -668,11 +695,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\r\nimport { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';\r\n\r\n@Component({\r\n  selector: 'app-selection-date-range',\r\n  standalone: false,\r\n  templateUrl: './selection-date-range.component.html',\r\n  styleUrls: ['./selection-date-range.component.css']\r\n})\r\nexport class SelectionDateRangeComponent {\r\n  today: NgbDateStruct;\r\n  minStartDate: NgbDateStruct;\r\n  startDate: NgbDateStruct | null = null;\r\n  endDate: NgbDateStruct | null = null;\r\n  minEndDate: NgbDateStruct | null = null;\r\n  maxEndDate: NgbDateStruct | null = null;\r\n\r\n  @Input()\r\n  isFilter: boolean = false;\r\n\r\n  constructor(private calendar: NgbCalendar) {\r\n    this.today = this.calendar.getToday();\r\n\r\n    const minDate = new Date(this.today.year, this.today.month - 1, this.today.day);\r\n    minDate.setDate(minDate.getDate() - 90);\r\n\r\n    this.minStartDate = {\r\n      year: minDate.getFullYear(),\r\n      month: minDate.getMonth() + 1,\r\n      day: minDate.getDate()\r\n    };\r\n  }\r\n\r\n  get maxStartDate(): NgbDateStruct | null {\r\n    return this.isFilter ? this.today : null;\r\n  }\r\n\r\n  onStartDateChange() {\r\n    if (!this.startDate) {\r\n      this.minEndDate = null;\r\n      this.maxEndDate = null;\r\n      return;\r\n    }\r\n\r\n    const { year, month, day } = this.startDate;\r\n\r\n    const toDate = (d: Date): NgbDateStruct => ({\r\n      year: d.getFullYear(),\r\n      month: d.getMonth() + 1,\r\n      day: d.getDate()\r\n    });\r\n\r\n    const baseDate = new Date(year, month - 1, day);\r\n    const minEnd = new Date(baseDate);\r\n    minEnd.setDate(minEnd.getDate() + 15);\r\n\r\n    const maxEnd = new Date(baseDate);\r\n    maxEnd.setDate(maxEnd.getDate() + 90);\r\n\r\n    this.minEndDate = toDate(minEnd);\r\n    this.maxEndDate = toDate(maxEnd);\r\n\r\n    if (this.endDate &&\r\n      (this.compareDates(this.endDate, this.minEndDate) < 0 ||\r\n        this.compareDates(this.endDate, this.maxEndDate) > 0)) {\r\n      this.endDate = null;\r\n    }\r\n  }\r\n\r\n  compareDates(a: NgbDateStruct, b: NgbDateStruct): number {\r\n    const dateA = new Date(a.year, a.month - 1, a.day);\r\n    const dateB = new Date(b.year, b.month - 1, b.day);\r\n    return dateA.getTime() - dateB.getTime();\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\r\nimport { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';\r\n\r\n@Component({\r\n  selector: 'app-selection-date-range',\r\n  standalone: false,\r\n  templateUrl: './selection-date-range.component.html',\r\n  styleUrls: ['./selection-date-range.component.css']\r\n})\r\nexport class SelectionDateRangeComponent {\r\n  today: NgbDateStruct;\r\n  minStartDate: NgbDateStruct;\r\n  startDate: NgbDateStruct | null = null;\r\n  endDate: NgbDateStruct | null = null;\r\n  minEndDate: NgbDateStruct | null = null;\r\n  maxEndDate: NgbDateStruct | null = null;\r\n\r\n  @Input() isFilter: boolean = false;\r\n\r\n  @Output() \r\n  startDateChange = new EventEmitter<NgbDateStruct | null>();\r\n\r\n  @Output() \r\n  endDateChange = new EventEmitter<NgbDateStruct | null>();\r\n\r\n  constructor(private calendar: NgbCalendar) {\r\n    this.today = this.calendar.getToday();\r\n\r\n    const minDate = new Date(this.today.year, this.today.month - 1, this.today.day);\r\n    minDate.setDate(minDate.getDate() - 90);\r\n\r\n    this.minStartDate = {\r\n      year: minDate.getFullYear(),\r\n      month: minDate.getMonth() + 1,\r\n      day: minDate.getDate()\r\n    };\r\n  }\r\n\r\n  get maxStartDate(): NgbDateStruct | null {\r\n    return this.isFilter ? this.today : null;\r\n  }\r\n\r\n  onStartDateChange() {\r\n    this.startDateChange.emit(this.startDate);\r\n\r\n    if (!this.startDate) {\r\n      this.minEndDate = null;\r\n      this.maxEndDate = null;\r\n      return;\r\n    }\r\n\r\n    const { year, month, day } = this.startDate;\r\n\r\n    const toDate = (d: Date): NgbDateStruct => ({\r\n      year: d.getFullYear(),\r\n      month: d.getMonth() + 1,\r\n      day: d.getDate()\r\n    });\r\n\r\n    const baseDate = new Date(year, month - 1, day);\r\n    const minEnd = new Date(baseDate);\r\n    minEnd.setDate(minEnd.getDate() + 15);\r\n\r\n    const maxEnd = new Date(baseDate);\r\n    maxEnd.setDate(maxEnd.getDate() + 90);\r\n\r\n    this.minEndDate = toDate(minEnd);\r\n    this.maxEndDate = toDate(maxEnd);\r\n\r\n    if (this.endDate &&\r\n      (this.compareDates(this.endDate, this.minEndDate) < 0 ||\r\n        this.compareDates(this.endDate, this.maxEndDate) > 0)) {\r\n      this.endDate = null;\r\n      this.endDateChange.emit(null);\r\n    }\r\n  }\r\n\r\n  onEndDateChange() {\r\n    this.endDateChange.emit(this.endDate);\r\n  }\r\n\r\n  compareDates(a: NgbDateStruct, b: NgbDateStruct): number {\r\n    const dateA = new Date(a.year, a.month - 1, a.day);\r\n    const dateB = new Date(b.year, b.month - 1, b.day);\r\n    return dateA.getTime() - dateB.getTime();\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "@import 'bootstrap-icons/font/bootstrap-icons.css';\r\n\r\n.form-control {\r\n    max-width: 250px;\r\n    border: 1px black solid;\r\n    max-height: 35px;\r\n  }\r\n\r\n  .form-container {\r\n    max-width: 200px;\r\n  }",
+                    "data": ".form-control {\r\n  width: 100%;\r\n  border: 1px solid black;\r\n  padding: 0.5rem 1rem;\r\n  box-sizing: border-box;\r\n}\r\n\r\n.form-container {\r\n  width: 100%;\r\n}\r\n",
                     "styleUrl": "./selection-date-range.component.css"
                 }
             ],
@@ -690,7 +717,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 19,
+                "line": 24,
                 "jsdoctags": [
                     {
                         "name": "calendar",
@@ -711,11 +738,11 @@
                         "name": "maxStartDate",
                         "type": "",
                         "returnType": "NgbDateStruct | null",
-                        "line": 34
+                        "line": 39
                     }
                 }
             },
-            "templateData": "<div class=\"d-flex\"\r\n[ngClass]=\"!isFilter ? 'flex-column gap-3' : 'flex-row gap-5' \">\r\n    <div [ngClass]=\"{'d-flex flex-row align-items-center gap-4 me-4' : isFilter }\">\r\n      <label for=\"startDate\"\r\n      [ngClass]=\"!isFilter ? 'fs-2 fw-bold ms-2 mb-2' : 'fs-5 fw-normal' \">Início</label>\r\n      <div class=\"form-container position-relative\">\r\n        <input\r\n          class=\"form-control rounded-pill bg-light py-2\"\r\n          name=\"startDate\"\r\n          [(ngModel)]=\"startDate\"\r\n          [minDate]=\"isFilter ? minStartDate : today\"\r\n          [maxDate]=\"maxStartDate!\"\r\n          ngbDatepicker\r\n          #start=\"ngbDatepicker\"\r\n          readonly\r\n          (click)=\"start.toggle()\"\r\n          (ngModelChange)=\"onStartDateChange()\"\r\n        />\r\n        <div class=\"position-absolute top-50 end-0 translate-middle-y pe-3\">\r\n          <i class=\"bi bi-calendar3\" style=\"font-size: 18px;\"></i>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  \r\n    <div [ngClass]=\"{'d-flex flex-row align-items-center gap-4' : isFilter }\">\r\n      <label for=\"endDate\"\r\n      [ngClass]=\"!isFilter ? 'fs-2 fw-bold ms-2 mb-2' : 'fs-5 fw-normal' \">Término</label>\r\n      <div class=\"form-container position-relative\">\r\n        <input\r\n          class=\"form-control rounded-pill bg-light py-2\"\r\n          name=\"endDate\"\r\n          [(ngModel)]=\"endDate\"\r\n          [minDate]=\"minEndDate!\"\r\n          [maxDate]=\"maxEndDate!\"\r\n          [disabled]=\"!startDate\"\r\n          ngbDatepicker\r\n          #end=\"ngbDatepicker\"\r\n          readonly\r\n          (click)=\"end.toggle()\"\r\n        />\r\n        <div class=\"position-absolute top-50 end-0 translate-middle-y pe-3\">\r\n          <i class=\"bi bi-calendar3\" style=\"font-size: 18px;\"></i>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  "
+            "templateData": "<div class=\"row g-3 g-lg-4\" [ngClass]=\"{ 'flex-row': isFilter }\">\r\n\r\n  <!-- Campo de Início -->\r\n  <div \r\n    class=\"col-12 col-sm-6 col-md-6 col-lg-6\"\r\n    [ngClass]=\"{ 'd-flex flex-row align-items-center gap-4': isFilter }\">\r\n    \r\n    <label for=\"startDate\"\r\n           [ngClass]=\"!isFilter ? 'fs-2 fw-bold ms-2 mb-2 d-block' : 'fs-5 fw-normal me-2 mb-0'\">\r\n      Início\r\n    </label>\r\n    \r\n    <div class=\"form-container position-relative flex-grow-1 w-100\">\r\n      <input\r\n        class=\"form-control rounded-pill bg-light py-2\"\r\n        name=\"startDate\"\r\n        [(ngModel)]=\"startDate\"\r\n        [minDate]=\"isFilter ? minStartDate : today\"\r\n        [maxDate]=\"maxStartDate!\"\r\n        ngbDatepicker\r\n        #start=\"ngbDatepicker\"\r\n        readonly\r\n        (click)=\"start.toggle()\"\r\n        (ngModelChange)=\"onStartDateChange()\"\r\n      />\r\n      <div class=\"position-absolute top-50 end-0 translate-middle-y pe-3\">\r\n        <i class=\"bi bi-calendar3\" style=\"font-size: 18px;\"></i>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <!-- Campo de Término -->\r\n  <div \r\n    class=\"col-12 col-sm-6 col-md-6 col-lg-6\"\r\n    [ngClass]=\"{ 'd-flex flex-row align-items-center gap-4': isFilter }\">\r\n    \r\n    <label for=\"endDate\"\r\n           [ngClass]=\"!isFilter ? 'fs-2 fw-bold ms-2 mb-2 d-block' : 'fs-5 fw-normal me-2 mb-0'\">\r\n      Término\r\n    </label>\r\n    \r\n    <div class=\"form-container position-relative flex-grow-1 w-100\">\r\n      <input\r\n        class=\"form-control rounded-pill bg-light py-2\"\r\n        name=\"endDate\"\r\n        [(ngModel)]=\"endDate\"\r\n        [minDate]=\"minEndDate!\"\r\n        [maxDate]=\"maxEndDate!\"\r\n        [disabled]=\"!startDate\"\r\n        ngbDatepicker\r\n        #end=\"ngbDatepicker\"\r\n        readonly\r\n        (click)=\"end.toggle()\"\r\n        (ngModelChange)=\"onEndDateChange()\"\r\n      />\r\n      <div class=\"position-absolute top-50 end-0 translate-middle-y pe-3\">\r\n        <i class=\"bi bi-calendar3\" style=\"font-size: 18px;\"></i>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n</div>\r\n"
         }
     ],
     "modules": [
@@ -1022,7 +1049,7 @@
                 "linktype": "component",
                 "name": "SelectionDateRangeComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/11",
+                "coverageCount": "0/14",
                 "status": "low"
             }
         ]

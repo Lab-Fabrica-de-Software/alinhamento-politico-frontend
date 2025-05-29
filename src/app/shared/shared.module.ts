@@ -4,6 +4,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import { ShareComponent } from './components/share/share.component';
 import { ShareButtonComponent } from './components/share-button/share-button.component';
+import { UserInformationComponent } from './components/user-information/user-information.component';
 import { KeyWordsComponent } from './components/key-words/key-words.component';
 
 @NgModule({
@@ -11,7 +12,8 @@ import { KeyWordsComponent } from './components/key-words/key-words.component';
     NavbarComponent,
     ShareComponent,
     ShareButtonComponent,
-    KeyWordsComponent
+    UserInformationComponent,
+    KeyWordsComponent    
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,9 @@ import { KeyWordsComponent } from './components/key-words/key-words.component';
   exports: [
     NavbarComponent,
     ShareButtonComponent,
-    ShareComponent
+    ShareComponent,
+    UserInformationComponent,
+    KeyWordsComponent
   ]
 })
 export class SharedModule { }

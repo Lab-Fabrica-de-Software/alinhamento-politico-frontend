@@ -3,7 +3,7 @@ import { fn } from '@storybook/test';
 import { ShareButtonComponent } from './share-button.component';
 
 const meta: Meta<ShareButtonComponent> = {
-  title: 'shared/components/Share-Button-Component',
+  title: 'shared/components/Share-Button',
   component: ShareButtonComponent,
   excludeStories: /.*Data$/,
   tags: ['autodocs'],

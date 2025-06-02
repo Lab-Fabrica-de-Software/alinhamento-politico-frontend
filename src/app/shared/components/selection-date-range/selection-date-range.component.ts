@@ -15,7 +15,8 @@ export class SelectionDateRangeComponent {
   minEndDate: NgbDateStruct | null = null;
   maxEndDate: NgbDateStruct | null = null;
 
-  @Input() isFilter: boolean = false;
+  @Input() 
+  isHorizontal: boolean = false;
 
   @Output() 
   startDateChange = new EventEmitter<NgbDateStruct | null>();
@@ -37,7 +38,7 @@ export class SelectionDateRangeComponent {
   }
 
   get maxStartDate(): NgbDateStruct | null {
-    return this.isFilter ? this.today : null;
+    return this.isHorizontal ? this.today : null;
   }
 
   onStartDateChange() {

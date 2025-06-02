@@ -6,6 +6,7 @@ import { ShareComponent } from './components/share/share.component';
 import { ShareButtonComponent } from './components/share-button/share-button.component';
 import { UserInformationComponent } from './components/user-information/user-information.component';
 import { KeyWordsComponent } from './components/key-words/key-words.component';
+import { SelectionDateRangeComponent } from './components/selection-date-range/selection-date-range.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { KeyWordsComponent } from './components/key-words/key-words.component';
     ShareComponent,
     ShareButtonComponent,
     UserInformationComponent,
-    KeyWordsComponent    
+    KeyWordsComponent,
+    SelectionDateRangeComponent
   ],
   imports: [
     CommonModule,

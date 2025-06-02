@@ -3,12 +3,11 @@ import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { SelectionDateRangeComponent } from './selection-date-range.component';
 import { NgbDateParserFormatter, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
-import { PtBrDateParserFormatter } from '../../core/shared/formatters/pt-br-date-parser-formatter';
+import { PtBrDateParserFormatter } from '../../../core/shared/formatters/pt-br-date-parser-formatter';
 
 const meta: Meta<SelectionDateRangeComponent> = {
-  title: 'modules/shared/components/selection-date-range',
+  title: 'shared/components/Selection-Date-Range',
   component: SelectionDateRangeComponent,
-  //👇 Our exports that end in "Data" are not stories.
   excludeStories: /.*Data$/,
   tags: ['autodocs'],
   args: {
@@ -28,6 +27,12 @@ type Story = StoryObj<SelectionDateRangeComponent>;
 
 export const SelectionDateRange: Story = {
   args: {
-    isFilter: false
+    isHorizontal: false
   }
 };
+
+export const SelectionDateRangeHorizontal: Story = {
+  args: {
+    isHorizontal: true
+  }
+}

@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { moduleMetadata } from '@storybook/angular';
 
 const meta: Meta<KeyWordsComponent> = {
-  title: 'shared/components/key-words',
+  title: 'shared/components/Key-Words',
   component: KeyWordsComponent,
   excludeStories: /.*Data$/,
   tags: ['autodocs'],

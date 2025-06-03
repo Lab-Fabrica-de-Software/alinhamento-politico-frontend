@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { User } from '../../../../core/models/user';
 import { NgForm } from '@angular/forms';
 
@@ -12,19 +12,14 @@ export class CreateContributionComponent {
 
   @ViewChild('editor') editorRef!: ElementRef<HTMLTextAreaElement>;
 
-  ngAfterViewInit() {
-    this.editorRef.nativeElement.addEventListener('mouseup', () => this.updateActiveStates());
-    this.editorRef.nativeElement.addEventListener('keyup', () => this.updateActiveStates());
-  }
+  @Input() allPoliticians: User[] = [];
+  @Input() followedPoliticians: User[] = [];
 
-  @Input()
-  allPoliticians: User[] = [];
-
-  @Input()
-  followedPoliticians: User[] = [];
+  @Output() markedPoliticiansChange = new EventEmitter<User[]>();
+  @Output() contributionTextChange = new EventEmitter<string>();
+  @Output() supportChange = new EventEmitter<boolean | null>();
 
   markedPoliticians: User[] = [];
-
   originalFollowedIds: number[] = this.followedPoliticians.map(p => p.id);
   contributionText: string = '';
   isBold = false;
@@ -39,6 +34,11 @@ export class CreateContributionComponent {
 
   ngOnInit() {
     this.originalFollowedIds = this.followedPoliticians.map(p => p.id);
+  }
+  
+  ngAfterViewInit() {
+    this.editorRef.nativeElement.addEventListener('mouseup', () => this.updateActiveStates());
+    this.editorRef.nativeElement.addEventListener('keyup', () => this.updateActiveStates());
   }
 
   get filteredPoliticians(): User[] {
@@ -66,6 +66,7 @@ export class CreateContributionComponent {
 
   setSupport(value: boolean) {
     this.isSupported = value;
+    this.supportChange.emit(this.isSupported);
 
     const key = value ? 'support' : 'oppose';
     this.isPulsing[key] = true;
@@ -77,6 +78,7 @@ export class CreateContributionComponent {
 
   addMarkedPolitician(politician: User) {
     this.markedPoliticians.push(politician);
+    this.markedPoliticiansChange.emit(this.markedPoliticians);
 
     this.allPoliticians = this.allPoliticians.filter(p => p.id !== politician.id);
     this.followedPoliticians = this.followedPoliticians.filter(p => p.id !== politician.id);
@@ -85,6 +87,7 @@ export class CreateContributionComponent {
 
   removeMarkedPolitician(politician: User) {
     this.markedPoliticians = this.markedPoliticians.filter(p => p.id !== politician.id);
+    this.markedPoliticiansChange.emit(this.markedPoliticians);
 
     this.allPoliticians.push(politician);
 
@@ -92,10 +95,7 @@ export class CreateContributionComponent {
     if (wasFollowed) {
       this.followedPoliticians.push(politician);
     }
-
-    console.log(this.originalFollowedIds)
   }
-
 
   toggleSelectBox() {
     this.showSelectBox = !this.showSelectBox;
@@ -104,6 +104,10 @@ export class CreateContributionComponent {
   submitContribution(form: NgForm) {
     console.log(this.markedPoliticians);
     console.log(this.contributionText);
+
+    this.markedPoliticiansChange.emit(this.markedPoliticians);
+    this.contributionTextChange.emit(this.contributionText);
+    this.supportChange.emit(this.isSupported);
 
     this.contributionText = '';
     if (this.editorRef) {
@@ -114,7 +118,7 @@ export class CreateContributionComponent {
 
     const followedMarked = this.markedPoliticians.filter(p => this.originalFollowedIds.includes(p.id));
     this.followedPoliticians.push(...followedMarked);
-    
+
     this.markedPoliticians = [];
     this.isSupported = null;
     this.isBold = false;

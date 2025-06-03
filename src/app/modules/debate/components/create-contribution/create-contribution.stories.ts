@@ -2,6 +2,7 @@ import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { CreateContributionComponent } from './create-contribution.component';
 import { FormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
+import { action } from '@storybook/addon-actions';
 
 const meta: Meta<CreateContributionComponent> = {
   title: 'modules/debate/components/create-contribution',
@@ -127,6 +128,9 @@ export const CreateContribution: Story = {
         partyPosition: 'Deputado', 
         photo: 'https://i.pravatar.cc/150?img=57' 
       }
-    ]
+    ],
+    markedPoliticiansChange: action('markedPoliticiansChange'),
+    contributionTextChange: action('contributionTextChange'),
+    supportChange: action('supportChange'),
   }
 };

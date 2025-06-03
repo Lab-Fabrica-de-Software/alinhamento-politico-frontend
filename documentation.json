@@ -430,7 +430,7 @@
         },
         {
             "name": "CreateContributionComponent",
-            "id": "component-CreateContributionComponent-9ef9f89c88a7e14e383676d5b839cc6e1272b2dad3b1820b5754242e1edd2c5dda59f7250e18fb63d93df4653b6edcea38bbc0a52dda1b660b50b3c669eb2fb7",
+            "id": "component-CreateContributionComponent-4280ad9e2e332d6f430d9333f04115070b6ca73b4399a1be1659a06688bff873f545bb686d78b7782e34aba6534abde3bad13565f8b70458dc376c3e76ef588f",
             "file": "src/app/modules/debate/components/create-contribution/create-contribution.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -451,7 +451,7 @@
                     "defaultValue": "[]",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 21,
+                    "line": 15,
                     "type": "User[]",
                     "decorators": []
                 },
@@ -460,12 +460,37 @@
                     "defaultValue": "[]",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 24,
+                    "line": 16,
                     "type": "User[]",
                     "decorators": []
                 }
             ],
-            "outputsClass": [],
+            "outputsClass": [
+                {
+                    "name": "contributionTextChange",
+                    "defaultValue": "new EventEmitter<string>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "markedPoliticiansChange",
+                    "defaultValue": "new EventEmitter<User[]>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "supportChange",
+                    "defaultValue": "new EventEmitter<boolean | null>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "EventEmitter"
+                }
+            ],
             "propertiesClass": [
                 {
                     "name": "contributionText",
@@ -476,7 +501,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 29
+                    "line": 26
                 },
                 {
                     "name": "editorRef",
@@ -506,7 +531,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 30
+                    "line": 27
                 },
                 {
                     "name": "isItalic",
@@ -517,7 +542,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 31
+                    "line": 28
                 },
                 {
                     "name": "isPulsing",
@@ -528,7 +553,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 33
+                    "line": 30
                 },
                 {
                     "name": "isSupported",
@@ -539,7 +564,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 32
+                    "line": 29
                 },
                 {
                     "name": "markedPoliticians",
@@ -550,18 +575,18 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 26
+                    "line": 22
                 },
                 {
                     "name": "originalFollowedIds",
-                    "defaultValue": "this.followedPoliticians.map(p => p.id)",
+                    "defaultValue": "[]",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number[]",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 28
+                    "line": 24
                 },
                 {
                     "name": "searchTerm",
@@ -572,7 +597,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 38
+                    "line": 35
                 },
                 {
                     "name": "showSelectBox",
@@ -583,7 +608,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 37
+                    "line": 34
                 }
             ],
             "methodsClass": [
@@ -600,7 +625,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 78,
+                    "line": 79,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -649,7 +674,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 15,
+                    "line": 41,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -659,7 +684,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 40,
+                    "line": 37,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -676,7 +701,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 86,
+                    "line": 88,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -732,7 +757,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 105,
+                    "line": 102,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -753,7 +778,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 101,
+                    "line": 98,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -777,7 +802,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ElementRef, Input, ViewChild } from '@angular/core';\r\nimport { User } from '../../../../core/models/user';\r\nimport { NgForm } from '@angular/forms';\r\n\r\n@Component({\r\n  selector: 'app-create-contribution',\r\n  standalone: false,\r\n  templateUrl: './create-contribution.component.html',\r\n  styleUrl: './create-contribution.component.css'\r\n})\r\nexport class CreateContributionComponent {\r\n\r\n  @ViewChild('editor') editorRef!: ElementRef<HTMLTextAreaElement>;\r\n\r\n  ngAfterViewInit() {\r\n    this.editorRef.nativeElement.addEventListener('mouseup', () => this.updateActiveStates());\r\n    this.editorRef.nativeElement.addEventListener('keyup', () => this.updateActiveStates());\r\n  }\r\n\r\n  @Input()\r\n  allPoliticians: User[] = [];\r\n\r\n  @Input()\r\n  followedPoliticians: User[] = [];\r\n\r\n  markedPoliticians: User[] = [];\r\n\r\n  originalFollowedIds: number[] = this.followedPoliticians.map(p => p.id);\r\n  contributionText: string = '';\r\n  isBold = false;\r\n  isItalic = false;\r\n  isSupported: boolean | null = null;\r\n  isPulsing = {\r\n    support: false,\r\n    oppose: false,\r\n  };\r\n  showSelectBox = false;\r\n  searchTerm: string = '';\r\n\r\n  ngOnInit() {\r\n    this.originalFollowedIds = this.followedPoliticians.map(p => p.id);\r\n  }\r\n\r\n  get filteredPoliticians(): User[] {\r\n    const term = this.searchTerm.trim().toLowerCase();\r\n\r\n    if (!term) {\r\n      return this.followedPoliticians;\r\n    }\r\n\r\n    return this.allPoliticians.filter(p =>\r\n      p.name.toLowerCase().includes(term)\r\n    );\r\n  }\r\n\r\n  updateActiveStates() {\r\n    this.isBold = document.queryCommandState('bold');\r\n    this.isItalic = document.queryCommandState('italic');\r\n  }\r\n\r\n  formatText(command: 'bold' | 'italic') {\r\n    document.execCommand(command, false);\r\n    this.updateActiveStates();\r\n    this.editorRef.nativeElement.focus();\r\n  }\r\n\r\n  setSupport(value: boolean) {\r\n    this.isSupported = value;\r\n\r\n    const key = value ? 'support' : 'oppose';\r\n    this.isPulsing[key] = true;\r\n\r\n    setTimeout(() => {\r\n      this.isPulsing[key] = false;\r\n    }, 300);\r\n  }\r\n\r\n  addMarkedPolitician(politician: User) {\r\n    this.markedPoliticians.push(politician);\r\n\r\n    this.allPoliticians = this.allPoliticians.filter(p => p.id !== politician.id);\r\n    this.followedPoliticians = this.followedPoliticians.filter(p => p.id !== politician.id);\r\n    this.showSelectBox = false;\r\n  }\r\n\r\n  removeMarkedPolitician(politician: User) {\r\n    this.markedPoliticians = this.markedPoliticians.filter(p => p.id !== politician.id);\r\n\r\n    this.allPoliticians.push(politician);\r\n\r\n    // Adiciona de volta para os followed somente se ele era seguido originalmente\r\n    const wasFollowed = this.originalFollowedIds.includes(politician.id);\r\n    if (wasFollowed) {\r\n      this.followedPoliticians.push(politician);\r\n    }\r\n\r\n    console.log(this.originalFollowedIds)\r\n  }\r\n\r\n\r\n  toggleSelectBox() {\r\n    this.showSelectBox = !this.showSelectBox;\r\n  }\r\n\r\n  submitContribution(form: NgForm) {\r\n    console.log(this.markedPoliticians);\r\n    console.log(this.contributionText);\r\n\r\n    this.contributionText = '';\r\n    if (this.editorRef) {\r\n      this.editorRef.nativeElement.innerHTML = '';\r\n    }\r\n\r\n    // Restaura os políticos marcados\r\n    this.allPoliticians.push(...this.markedPoliticians);\r\n\r\n    // Restaura os que eram originalmente seguidos\r\n    const followedMarked = this.markedPoliticians.filter(p => this.originalFollowedIds.includes(p.id));\r\n    this.followedPoliticians.push(...followedMarked);\r\n\r\n    // Limpa marcados e edições\r\n    this.markedPoliticians = [];\r\n    this.isSupported = null;\r\n    this.isBold = false;\r\n    this.isItalic = false;\r\n\r\n    form.resetForm();\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';\r\nimport { User } from '../../../../core/models/user';\r\nimport { NgForm } from '@angular/forms';\r\n\r\n@Component({\r\n  selector: 'app-create-contribution',\r\n  standalone: false,\r\n  templateUrl: './create-contribution.component.html',\r\n  styleUrl: './create-contribution.component.css'\r\n})\r\nexport class CreateContributionComponent {\r\n\r\n  @ViewChild('editor') editorRef!: ElementRef<HTMLTextAreaElement>;\r\n\r\n  @Input() allPoliticians: User[] = [];\r\n  @Input() followedPoliticians: User[] = [];\r\n\r\n  @Output() markedPoliticiansChange = new EventEmitter<User[]>();\r\n  @Output() contributionTextChange = new EventEmitter<string>();\r\n  @Output() supportChange = new EventEmitter<boolean | null>();\r\n\r\n  markedPoliticians: User[] = [];\r\n\r\n  originalFollowedIds: number[] = [];\r\n\r\n  contributionText: string = '';\r\n  isBold = false;\r\n  isItalic = false;\r\n  isSupported: boolean | null = null;\r\n  isPulsing = {\r\n    support: false,\r\n    oppose: false,\r\n  };\r\n  showSelectBox = false;\r\n  searchTerm: string = '';\r\n\r\n  ngOnInit() {\r\n    this.originalFollowedIds = this.followedPoliticians.map(p => p.id);\r\n  }\r\n\r\n  ngAfterViewInit() {\r\n    this.editorRef.nativeElement.addEventListener('mouseup', () => this.updateActiveStates());\r\n    this.editorRef.nativeElement.addEventListener('keyup', () => this.updateActiveStates());\r\n  }\r\n\r\n  get filteredPoliticians(): User[] {\r\n    const term = this.searchTerm.trim().toLowerCase();\r\n\r\n    if (!term) return this.followedPoliticians;\r\n\r\n    return this.allPoliticians.filter(p =>\r\n      p.name.toLowerCase().includes(term)\r\n    );\r\n  }\r\n\r\n  updateActiveStates() {\r\n    this.isBold = document.queryCommandState('bold');\r\n    this.isItalic = document.queryCommandState('italic');\r\n  }\r\n\r\n  formatText(command: 'bold' | 'italic') {\r\n    document.execCommand(command, false);\r\n    this.updateActiveStates();\r\n    this.editorRef.nativeElement.focus();\r\n  }\r\n\r\n  setSupport(value: boolean) {\r\n    this.isSupported = value;\r\n    this.supportChange.emit(this.isSupported); // ✅ Emitir evento\r\n\r\n    const key = value ? 'support' : 'oppose';\r\n    this.isPulsing[key] = true;\r\n\r\n    setTimeout(() => {\r\n      this.isPulsing[key] = false;\r\n    }, 300);\r\n  }\r\n\r\n  addMarkedPolitician(politician: User) {\r\n    this.markedPoliticians.push(politician);\r\n    this.markedPoliticiansChange.emit(this.markedPoliticians); // ✅ Emitir evento\r\n\r\n    this.allPoliticians = this.allPoliticians.filter(p => p.id !== politician.id);\r\n    this.followedPoliticians = this.followedPoliticians.filter(p => p.id !== politician.id);\r\n    this.showSelectBox = false;\r\n  }\r\n\r\n  removeMarkedPolitician(politician: User) {\r\n    this.markedPoliticians = this.markedPoliticians.filter(p => p.id !== politician.id);\r\n    this.markedPoliticiansChange.emit(this.markedPoliticians); // ✅ Emitir evento\r\n\r\n    this.allPoliticians.push(politician);\r\n    if (this.originalFollowedIds.includes(politician.id)) {\r\n      this.followedPoliticians.push(politician);\r\n    }\r\n  }\r\n\r\n  toggleSelectBox() {\r\n    this.showSelectBox = !this.showSelectBox;\r\n  }\r\n\r\n  submitContribution(form: NgForm) {\r\n    this.contributionTextChange.emit(this.contributionText); // ✅ Emitir evento\r\n\r\n    // Reset states\r\n    this.contributionText = '';\r\n    if (this.editorRef) this.editorRef.nativeElement.innerHTML = '';\r\n\r\n    this.allPoliticians.push(...this.markedPoliticians);\r\n\r\n    const followedMarked = this.markedPoliticians.filter(p => this.originalFollowedIds.includes(p.id));\r\n    this.followedPoliticians.push(...followedMarked);\r\n\r\n    this.markedPoliticians = [];\r\n    this.markedPoliticiansChange.emit(this.markedPoliticians); // ✅ Emitir evento\r\n\r\n    this.isSupported = null;\r\n    this.supportChange.emit(this.isSupported); // ✅ Emitir evento\r\n\r\n    this.isBold = false;\r\n    this.isItalic = false;\r\n\r\n    form.resetForm();\r\n  }\r\n}\r\n",
             "styleUrl": "./create-contribution.component.css",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -790,7 +815,7 @@
                         "name": "filteredPoliticians",
                         "type": "[]",
                         "returnType": "User[]",
-                        "line": 44
+                        "line": 46
                     }
                 }
             },
@@ -1741,7 +1766,7 @@
                 "linktype": "component",
                 "name": "CreateContributionComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/22",
+                "coverageCount": "0/25",
                 "status": "low"
             },
             {

@@ -19,13 +19,13 @@ export class CreateContributionComponent {
 
   @Input()
   allPoliticians: User[] = [];
+
+  @Input()
   followedPoliticians: User[] = [];
 
-  markedPoliticians: {
-    politician: User,
-    type: string
-  }[] = [];
+  markedPoliticians: User[] = [];
 
+  originalFollowedIds: number[] = this.followedPoliticians.map(p => p.id);
   contributionText: string = '';
   isBold = false;
   isItalic = false;
@@ -37,26 +37,20 @@ export class CreateContributionComponent {
   showSelectBox = false;
   searchTerm: string = '';
 
-get filteredPoliticians(): User[] {
-  const term = this.searchTerm.trim().toLowerCase();
-  
-  if (!term) {
-    return this.followedPoliticians;
+  ngOnInit() {
+    this.originalFollowedIds = this.followedPoliticians.map(p => p.id);
   }
 
-  const followedAndFiltered = this.followedPoliticians.filter(p =>
-    p.name.toLowerCase().includes(term)
-  );
+  get filteredPoliticians(): User[] {
+    const term = this.searchTerm.trim().toLowerCase();
 
-  const otherFiltered = this.allPoliticians.filter(p =>
-    !this.followedPoliticians.includes(p) && p.name.toLowerCase().includes(term)
-  );
+    if (!term) {
+      return this.followedPoliticians;
+    }
 
-  return [...followedAndFiltered, ...otherFiltered];
-}
-
-  getPoliticianType(politician: User): string {
-    return this.followedPoliticians.includes(politician) ? 'followed' : 'all';
+    return this.allPoliticians.filter(p =>
+      p.name.toLowerCase().includes(term)
+    );
   }
 
   updateActiveStates() {
@@ -81,25 +75,27 @@ get filteredPoliticians(): User[] {
     }, 300);
   }
 
-  addMarkedPolitician(politician: User, type: string) {
-    if (type === 'followed') {
-      this.markedPoliticians.push({ politician: politician, type: 'followed' });
-      this.followedPoliticians = this.followedPoliticians.filter((p) => p != politician);
-    } else {
-      this.markedPoliticians.push({ politician: politician, type: 'all' });
-      this.allPoliticians = this.allPoliticians.filter((p) => p != politician);
-    }
+  addMarkedPolitician(politician: User) {
+    this.markedPoliticians.push(politician);
+
+    this.allPoliticians = this.allPoliticians.filter(p => p.id !== politician.id);
+    this.followedPoliticians = this.followedPoliticians.filter(p => p.id !== politician.id);
     this.showSelectBox = false;
   }
 
-  removeMarkedPolitician(politician: User, type: string) {
-    this.markedPoliticians = this.markedPoliticians.filter((p) => p.politician != politician);
-    if (type === 'followed') {
+  removeMarkedPolitician(politician: User) {
+    this.markedPoliticians = this.markedPoliticians.filter(p => p.id !== politician.id);
+
+    this.allPoliticians.push(politician);
+
+    const wasFollowed = this.originalFollowedIds.includes(politician.id);
+    if (wasFollowed) {
       this.followedPoliticians.push(politician);
-    } else {
-      this.allPoliticians.push(politician);
     }
+
+    console.log(this.originalFollowedIds)
   }
+
 
   toggleSelectBox() {
     this.showSelectBox = !this.showSelectBox;
@@ -107,19 +103,19 @@ get filteredPoliticians(): User[] {
 
   submitContribution(form: NgForm) {
     console.log(this.markedPoliticians);
+    console.log(this.contributionText);
 
     this.contributionText = '';
     if (this.editorRef) {
       this.editorRef.nativeElement.innerHTML = '';
     }
-    const followedMarked = this.markedPoliticians.filter(p => p.type === 'followed');
-    const allMarked = this.markedPoliticians.filter(p => p.type === 'all');
 
-    this.followedPoliticians.push(...followedMarked.map(p => p.politician));
-    this.allPoliticians.push(...allMarked.map(p => p.politician));
+    this.allPoliticians.push(...this.markedPoliticians);
 
+    const followedMarked = this.markedPoliticians.filter(p => this.originalFollowedIds.includes(p.id));
+    this.followedPoliticians.push(...followedMarked);
+    
     this.markedPoliticians = [];
-
     this.isSupported = null;
     this.isBold = false;
     this.isItalic = false;

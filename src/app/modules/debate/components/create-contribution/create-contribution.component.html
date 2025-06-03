@@ -22,7 +22,7 @@
 
 
                         <div *ngFor="let politician of filteredPoliticians"
-                            (click)="addMarkedPolitician(politician, getPoliticianType(politician))"
+                            (click)="addMarkedPolitician(politician)"
                             class="dropdown-item d-flex align-items-center gap-2">
                             <img [src]="politician.photo" alt="" class="rounded-circle"
                                 style="width: 28px; height: 28px;">
@@ -55,16 +55,16 @@
         <div class="mb-5">
             <p *ngIf="markedPoliticians.length >= 1" class="fs-6 mb-3">Políticos marcados nesse debate</p>
             <div class="col-12 d-flex flex-row flex-wrap gap-4">
-                <div *ngFor="let politicianObject of markedPoliticians"
+                <div *ngFor="let politician of markedPoliticians"
                     class="d-flex flex-row align-items-center bg-gray me-3">
                     <button class="border-0 me-2 p-0 bg-gray">
                         <i class="bi bi-x fs-2"
-                            (click)="removeMarkedPolitician(politicianObject.politician, politicianObject.type)"></i>
+                            (click)="removeMarkedPolitician(politician)"></i>
                     </button>
-                    <img class="rounded-circle me-1" src={{politicianObject.politician.photo}} alt=""
+                    <img class="rounded-circle me-1" src={{politician.photo}} alt=""
                         style="height: 24px; width: 24px;">
-                    <p class="mb-0 pe-3" style="font-size: 0.8rem;">{{politicianObject.politician.name}}
-                        ({{politicianObject.politician.partyPosition}})</p>
+                    <p class="mb-0 pe-3" style="font-size: 0.8rem;">{{politician.name}}
+                        ({{politician.partyPosition}})</p>
                 </div>
             </div>
         </div>

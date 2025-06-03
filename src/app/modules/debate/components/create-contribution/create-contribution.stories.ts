@@ -80,27 +80,49 @@ export const CreateContribution: Story = {
         name: "Vanessa Martins",
         photo: "https://i.pravatar.cc/150?img=32",
         partyPosition: "Prefeita"
-      }
-    ], 
-    followedPoliticians: [
+      },
       {
-        id: 1,
+        id: 11,
         name: "Marta Oliveira",
         photo: "https://i.pravatar.cc/150?img=47",
         partyPosition: "Deputada Federal"
       },
       {
-        id: 2,
+        id: 12,
         name: "Carlos Augusto",
         photo: "https://i.pravatar.cc/150?img=59",
         partyPosition: "Vereador"
       },
-      { id: 3, 
+      { id: 13, 
         name: 'Maria Silva', 
         partyPosition: 'Vereadora', 
         photo: 'https://i.pravatar.cc/150?img=49' 
       },
-      { id: 4, 
+      { id: 14, 
+        name: 'João Souza', 
+        partyPosition: 'Deputado', 
+        photo: 'https://i.pravatar.cc/150?img=57' 
+      }
+    ], 
+    followedPoliticians: [
+      {
+        id: 11,
+        name: "Marta Oliveira",
+        photo: "https://i.pravatar.cc/150?img=47",
+        partyPosition: "Deputada Federal"
+      },
+      {
+        id: 12,
+        name: "Carlos Augusto",
+        photo: "https://i.pravatar.cc/150?img=59",
+        partyPosition: "Vereador"
+      },
+      { id: 13, 
+        name: 'Maria Silva', 
+        partyPosition: 'Vereadora', 
+        photo: 'https://i.pravatar.cc/150?img=49' 
+      },
+      { id: 14, 
         name: 'João Souza', 
         partyPosition: 'Deputado', 
         photo: 'https://i.pravatar.cc/150?img=57' 

@@ -1,6 +1,6 @@
-import { Component, ElementRef, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, Output, EventEmitter, ViewChild, OnInit, AfterViewInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from '../../../../core/models/user';
-import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-create-contribution',
@@ -8,7 +8,7 @@ import { NgForm } from '@angular/forms';
   templateUrl: './create-contribution.component.html',
   styleUrl: './create-contribution.component.css'
 })
-export class CreateContributionComponent {
+export class CreateContributionComponent implements OnInit, AfterViewInit {
 
   @ViewChild('editor') editorRef!: ElementRef<HTMLTextAreaElement>;
 
@@ -19,23 +19,31 @@ export class CreateContributionComponent {
   @Output() contributionTextChange = new EventEmitter<string>();
   @Output() supportChange = new EventEmitter<boolean | null>();
 
+  contributionForm!: FormGroup;
+
   markedPoliticians: User[] = [];
-  originalFollowedIds: number[] = this.followedPoliticians.map(p => p.id);
-  contributionText: string = '';
+  originalFollowedIds: number[] = [];
+
   isBold = false;
   isItalic = false;
   isSupported: boolean | null = null;
-  isPulsing = {
-    support: false,
-    oppose: false,
+  isPulsing = { 
+    support: false, 
+    oppose: false 
   };
   showSelectBox = false;
   searchTerm: string = '';
 
+  constructor(private fb: FormBuilder) {}
+
   ngOnInit() {
     this.originalFollowedIds = this.followedPoliticians.map(p => p.id);
+
+    this.contributionForm = this.fb.group({
+      contributionText: ['', Validators.required],
+    });
   }
-  
+
   ngAfterViewInit() {
     this.editorRef.nativeElement.addEventListener('mouseup', () => this.updateActiveStates());
     this.editorRef.nativeElement.addEventListener('keyup', () => this.updateActiveStates());
@@ -43,7 +51,7 @@ export class CreateContributionComponent {
 
   get filteredPoliticians(): User[] {
     const term = this.searchTerm.trim().toLowerCase();
-
+    
     if (!term) {
       return this.followedPoliticians;
     }
@@ -90,9 +98,7 @@ export class CreateContributionComponent {
     this.markedPoliticiansChange.emit(this.markedPoliticians);
 
     this.allPoliticians.push(politician);
-
-    const wasFollowed = this.originalFollowedIds.includes(politician.id);
-    if (wasFollowed) {
+    if (this.originalFollowedIds.includes(politician.id)) {
       this.followedPoliticians.push(politician);
     }
   }
@@ -101,29 +107,21 @@ export class CreateContributionComponent {
     this.showSelectBox = !this.showSelectBox;
   }
 
-  submitContribution(form: NgForm) {
-    console.log(this.markedPoliticians);
-    console.log(this.contributionText);
+  submitContribution() {
+    const contributionText = this.editorRef?.nativeElement.innerHTML || '';
 
     this.markedPoliticiansChange.emit(this.markedPoliticians);
-    this.contributionTextChange.emit(this.contributionText);
+    this.contributionTextChange.emit(contributionText);
     this.supportChange.emit(this.isSupported);
 
-    this.contributionText = '';
+    this.contributionForm.reset();
     if (this.editorRef) {
       this.editorRef.nativeElement.innerHTML = '';
     }
-
-    this.allPoliticians.push(...this.markedPoliticians);
-
-    const followedMarked = this.markedPoliticians.filter(p => this.originalFollowedIds.includes(p.id));
-    this.followedPoliticians.push(...followedMarked);
 
     this.markedPoliticians = [];
     this.isSupported = null;
     this.isBold = false;
     this.isItalic = false;
-
-    form.resetForm();
   }
 }

@@ -430,7 +430,7 @@
         },
         {
             "name": "CreateContributionComponent",
-            "id": "component-CreateContributionComponent-4280ad9e2e332d6f430d9333f04115070b6ca73b4399a1be1659a06688bff873f545bb686d78b7782e34aba6534abde3bad13565f8b70458dc376c3e76ef588f",
+            "id": "component-CreateContributionComponent-6b114a82fa25c8f8ca529a7cba752498e94fe7b89765cbac9975aa3cd82c79bda0483d07ec167dd74d6794a03c1062512bc1b1d1847b3676ee1916a119c8a7ff",
             "file": "src/app/modules/debate/components/create-contribution/create-contribution.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -493,15 +493,14 @@
             ],
             "propertiesClass": [
                 {
-                    "name": "contributionText",
-                    "defaultValue": "''",
+                    "name": "contributionForm",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "string",
+                    "type": "FormGroup",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 26
+                    "line": 22
                 },
                 {
                     "name": "editorRef",
@@ -546,7 +545,7 @@
                 },
                 {
                     "name": "isPulsing",
-                    "defaultValue": "{\r\n    support: false,\r\n    oppose: false,\r\n  }",
+                    "defaultValue": "{ support: false, oppose: false }",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "object",
@@ -575,7 +574,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 22
+                    "line": 24
                 },
                 {
                     "name": "originalFollowedIds",
@@ -586,7 +585,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 24
+                    "line": 25
                 },
                 {
                     "name": "searchTerm",
@@ -597,7 +596,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 35
+                    "line": 32
                 },
                 {
                     "name": "showSelectBox",
@@ -608,7 +607,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 34
+                    "line": 31
                 }
             ],
             "methodsClass": [
@@ -625,7 +624,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 79,
+                    "line": 77,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -653,7 +652,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 61,
+                    "line": 59,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -674,7 +673,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 41,
+                    "line": 44,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -684,7 +683,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 37,
+                    "line": 36,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -701,7 +700,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 88,
+                    "line": 86,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -729,7 +728,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 67,
+                    "line": 65,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -746,31 +745,13 @@
                 },
                 {
                     "name": "submitContribution",
-                    "args": [
-                        {
-                            "name": "form",
-                            "type": "NgForm",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
+                    "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 102,
+                    "line": 100,
                     "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "form",
-                            "type": "NgForm",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
+                    "deprecationMessage": ""
                 },
                 {
                     "name": "toggleSelectBox",
@@ -778,7 +759,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 98,
+                    "line": 96,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -788,7 +769,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 56,
+                    "line": 54,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -802,12 +783,42 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';\r\nimport { User } from '../../../../core/models/user';\r\nimport { NgForm } from '@angular/forms';\r\n\r\n@Component({\r\n  selector: 'app-create-contribution',\r\n  standalone: false,\r\n  templateUrl: './create-contribution.component.html',\r\n  styleUrl: './create-contribution.component.css'\r\n})\r\nexport class CreateContributionComponent {\r\n\r\n  @ViewChild('editor') editorRef!: ElementRef<HTMLTextAreaElement>;\r\n\r\n  @Input() allPoliticians: User[] = [];\r\n  @Input() followedPoliticians: User[] = [];\r\n\r\n  @Output() markedPoliticiansChange = new EventEmitter<User[]>();\r\n  @Output() contributionTextChange = new EventEmitter<string>();\r\n  @Output() supportChange = new EventEmitter<boolean | null>();\r\n\r\n  markedPoliticians: User[] = [];\r\n\r\n  originalFollowedIds: number[] = [];\r\n\r\n  contributionText: string = '';\r\n  isBold = false;\r\n  isItalic = false;\r\n  isSupported: boolean | null = null;\r\n  isPulsing = {\r\n    support: false,\r\n    oppose: false,\r\n  };\r\n  showSelectBox = false;\r\n  searchTerm: string = '';\r\n\r\n  ngOnInit() {\r\n    this.originalFollowedIds = this.followedPoliticians.map(p => p.id);\r\n  }\r\n\r\n  ngAfterViewInit() {\r\n    this.editorRef.nativeElement.addEventListener('mouseup', () => this.updateActiveStates());\r\n    this.editorRef.nativeElement.addEventListener('keyup', () => this.updateActiveStates());\r\n  }\r\n\r\n  get filteredPoliticians(): User[] {\r\n    const term = this.searchTerm.trim().toLowerCase();\r\n\r\n    if (!term) return this.followedPoliticians;\r\n\r\n    return this.allPoliticians.filter(p =>\r\n      p.name.toLowerCase().includes(term)\r\n    );\r\n  }\r\n\r\n  updateActiveStates() {\r\n    this.isBold = document.queryCommandState('bold');\r\n    this.isItalic = document.queryCommandState('italic');\r\n  }\r\n\r\n  formatText(command: 'bold' | 'italic') {\r\n    document.execCommand(command, false);\r\n    this.updateActiveStates();\r\n    this.editorRef.nativeElement.focus();\r\n  }\r\n\r\n  setSupport(value: boolean) {\r\n    this.isSupported = value;\r\n    this.supportChange.emit(this.isSupported); // ✅ Emitir evento\r\n\r\n    const key = value ? 'support' : 'oppose';\r\n    this.isPulsing[key] = true;\r\n\r\n    setTimeout(() => {\r\n      this.isPulsing[key] = false;\r\n    }, 300);\r\n  }\r\n\r\n  addMarkedPolitician(politician: User) {\r\n    this.markedPoliticians.push(politician);\r\n    this.markedPoliticiansChange.emit(this.markedPoliticians); // ✅ Emitir evento\r\n\r\n    this.allPoliticians = this.allPoliticians.filter(p => p.id !== politician.id);\r\n    this.followedPoliticians = this.followedPoliticians.filter(p => p.id !== politician.id);\r\n    this.showSelectBox = false;\r\n  }\r\n\r\n  removeMarkedPolitician(politician: User) {\r\n    this.markedPoliticians = this.markedPoliticians.filter(p => p.id !== politician.id);\r\n    this.markedPoliticiansChange.emit(this.markedPoliticians); // ✅ Emitir evento\r\n\r\n    this.allPoliticians.push(politician);\r\n    if (this.originalFollowedIds.includes(politician.id)) {\r\n      this.followedPoliticians.push(politician);\r\n    }\r\n  }\r\n\r\n  toggleSelectBox() {\r\n    this.showSelectBox = !this.showSelectBox;\r\n  }\r\n\r\n  submitContribution(form: NgForm) {\r\n    this.contributionTextChange.emit(this.contributionText); // ✅ Emitir evento\r\n\r\n    // Reset states\r\n    this.contributionText = '';\r\n    if (this.editorRef) this.editorRef.nativeElement.innerHTML = '';\r\n\r\n    this.allPoliticians.push(...this.markedPoliticians);\r\n\r\n    const followedMarked = this.markedPoliticians.filter(p => this.originalFollowedIds.includes(p.id));\r\n    this.followedPoliticians.push(...followedMarked);\r\n\r\n    this.markedPoliticians = [];\r\n    this.markedPoliticiansChange.emit(this.markedPoliticians); // ✅ Emitir evento\r\n\r\n    this.isSupported = null;\r\n    this.supportChange.emit(this.isSupported); // ✅ Emitir evento\r\n\r\n    this.isBold = false;\r\n    this.isItalic = false;\r\n\r\n    form.resetForm();\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, ElementRef, Input, Output, EventEmitter, ViewChild, OnInit, AfterViewInit } from '@angular/core';\r\nimport { FormBuilder, FormGroup, Validators } from '@angular/forms';\r\nimport { User } from '../../../../core/models/user';\r\n\r\n@Component({\r\n  selector: 'app-create-contribution',\r\n  standalone: false,\r\n  templateUrl: './create-contribution.component.html',\r\n  styleUrl: './create-contribution.component.css'\r\n})\r\nexport class CreateContributionComponent implements OnInit, AfterViewInit {\r\n\r\n  @ViewChild('editor') editorRef!: ElementRef<HTMLTextAreaElement>;\r\n\r\n  @Input() allPoliticians: User[] = [];\r\n  @Input() followedPoliticians: User[] = [];\r\n\r\n  @Output() markedPoliticiansChange = new EventEmitter<User[]>();\r\n  @Output() contributionTextChange = new EventEmitter<string>();\r\n  @Output() supportChange = new EventEmitter<boolean | null>();\r\n\r\n  contributionForm!: FormGroup;\r\n\r\n  markedPoliticians: User[] = [];\r\n  originalFollowedIds: number[] = [];\r\n\r\n  isBold = false;\r\n  isItalic = false;\r\n  isSupported: boolean | null = null;\r\n  isPulsing = { support: false, oppose: false };\r\n  showSelectBox = false;\r\n  searchTerm: string = '';\r\n\r\n  constructor(private fb: FormBuilder) {}\r\n\r\n  ngOnInit() {\r\n    this.originalFollowedIds = this.followedPoliticians.map(p => p.id);\r\n\r\n    this.contributionForm = this.fb.group({\r\n      contributionText: ['', Validators.required],\r\n    });\r\n  }\r\n\r\n  ngAfterViewInit() {\r\n    this.editorRef.nativeElement.addEventListener('mouseup', () => this.updateActiveStates());\r\n    this.editorRef.nativeElement.addEventListener('keyup', () => this.updateActiveStates());\r\n  }\r\n\r\n  get filteredPoliticians(): User[] {\r\n    const term = this.searchTerm.trim().toLowerCase();\r\n    return !term ? this.followedPoliticians : this.allPoliticians.filter(p => p.name.toLowerCase().includes(term));\r\n  }\r\n\r\n  updateActiveStates() {\r\n    this.isBold = document.queryCommandState('bold');\r\n    this.isItalic = document.queryCommandState('italic');\r\n  }\r\n\r\n  formatText(command: 'bold' | 'italic') {\r\n    document.execCommand(command, false);\r\n    this.updateActiveStates();\r\n    this.editorRef.nativeElement.focus();\r\n  }\r\n\r\n  setSupport(value: boolean) {\r\n    this.isSupported = value;\r\n    this.supportChange.emit(this.isSupported);\r\n\r\n    const key = value ? 'support' : 'oppose';\r\n    this.isPulsing[key] = true;\r\n\r\n    setTimeout(() => {\r\n      this.isPulsing[key] = false;\r\n    }, 300);\r\n  }\r\n\r\n  addMarkedPolitician(politician: User) {\r\n    this.markedPoliticians.push(politician);\r\n    this.markedPoliticiansChange.emit(this.markedPoliticians);\r\n\r\n    this.allPoliticians = this.allPoliticians.filter(p => p.id !== politician.id);\r\n    this.followedPoliticians = this.followedPoliticians.filter(p => p.id !== politician.id);\r\n    this.showSelectBox = false;\r\n  }\r\n\r\n  removeMarkedPolitician(politician: User) {\r\n    this.markedPoliticians = this.markedPoliticians.filter(p => p.id !== politician.id);\r\n    this.markedPoliticiansChange.emit(this.markedPoliticians);\r\n\r\n    this.allPoliticians.push(politician);\r\n    if (this.originalFollowedIds.includes(politician.id)) {\r\n      this.followedPoliticians.push(politician);\r\n    }\r\n  }\r\n\r\n  toggleSelectBox() {\r\n    this.showSelectBox = !this.showSelectBox;\r\n  }\r\n\r\n  submitContribution() {\r\n    const contributionText = this.editorRef?.nativeElement.innerHTML || '';\r\n\r\n    this.markedPoliticiansChange.emit(this.markedPoliticians);\r\n    this.contributionTextChange.emit(contributionText);\r\n    this.supportChange.emit(this.isSupported);\r\n\r\n    this.contributionForm.reset();\r\n    if (this.editorRef) {\r\n      this.editorRef.nativeElement.innerHTML = '';\r\n    }\r\n\r\n    this.allPoliticians.push(...this.markedPoliticians);\r\n    const followedMarked = this.markedPoliticians.filter(p => this.originalFollowedIds.includes(p.id));\r\n    this.followedPoliticians.push(...followedMarked);\r\n\r\n    this.markedPoliticians = [];\r\n    this.isSupported = null;\r\n    this.isBold = false;\r\n    this.isItalic = false;\r\n  }\r\n}\r\n",
             "styleUrl": "./create-contribution.component.css",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "fb",
+                        "type": "FormBuilder",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 32,
+                "jsdoctags": [
+                    {
+                        "name": "fb",
+                        "type": "FormBuilder",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
             "extends": [],
+            "implements": [
+                "OnInit",
+                "AfterViewInit"
+            ],
             "accessors": {
                 "filteredPoliticians": {
                     "name": "filteredPoliticians",
@@ -815,11 +826,11 @@
                         "name": "filteredPoliticians",
                         "type": "[]",
                         "returnType": "User[]",
-                        "line": 46
+                        "line": 49
                     }
                 }
             },
-            "templateData": "<div class=\"d-flex justify-content-center px-3 py-5\">\r\n    <form #contributionForm=\"ngForm\" class=\"col-12 col-md-10 col-lg-8 d-flex flex-column justify-content-center\">\r\n        <h2 class=\"mb-3\">Sua Contribuição:</h2>\r\n        <div class=\"col-12 mb-3 border border-primary-80 rounded-4 p-0 d-flex flex-column\" style=\"height: 200px;\">\r\n            <div class=\"border-bottom border-primary-50 w-100 py-1 d-flex flex-row\">\r\n                <button type=\"button\" class=\"btn btn-sm btn-light fs-6 fw-bold ms-3\"\r\n                    [ngClass]=\"{ 'bg-primary-100 text-white': isBold }\" (click)=\"formatText('bold')\">\r\n                    N\r\n                </button>\r\n                <button type=\"button\" class=\"btn btn-sm btn-light fst-italic\"\r\n                    [ngClass]=\"{ 'bg-primary-100 text-white': isItalic }\" (click)=\"formatText('italic')\">\r\n                    <i class=\"bi bi-type-italic fs-6\"></i>\r\n                </button>\r\n                <div class=\"dropdown position-relative\" [class.show]=\"showSelectBox\">\r\n                    <button class=\"btn btn-sm btn-light fs-6\" type=\"button\" (click)=\"toggleSelectBox()\">\r\n                        &#64;\r\n                    </button>\r\n\r\n                    <div class=\"dropdown-menu dropdown-politician p-2 shadow\" [class.show]=\"showSelectBox\"\r\n                        style=\"min-width: 250px; max-height: 300px; overflow-y: auto;\">\r\n                        <input type=\"text\" name=\"search\" class=\"form-control border-primary-80 mb-2\" placeholder=\"Buscar político...\" [(ngModel)]=\"searchTerm\">\r\n\r\n\r\n                        <div *ngFor=\"let politician of filteredPoliticians\"\r\n                            (click)=\"addMarkedPolitician(politician)\"\r\n                            class=\"dropdown-item d-flex align-items-center gap-2\">\r\n                            <img [src]=\"politician.photo\" alt=\"\" class=\"rounded-circle\"\r\n                                style=\"width: 28px; height: 28px;\">\r\n                            <span>{{politician.name}} ({{politician.partyPosition}})</span>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n\r\n            <div #editor contenteditable=\"true\" (input)=\"contributionText = editorRef.nativeElement.innerHTML\"\r\n                class=\"border-0 rounded-bottom-4 ps-4 pt-3 pe-4 pb-3 w-100 h-100 flex-grow-1 fs-6\"\r\n                style=\"resize: none; overflow-y: auto; outline: none;\">\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"col-12 justify-content-between d-flex flex-md-row mb-3\">\r\n            <button class=\"like-button d-flex column-gap-2 align-items-center border-0\"\r\n                [ngClass]=\"{ active: isSupported === true, pulse: isPulsing.support }\" (click)=\"setSupport(true)\">\r\n                <i class=\"bi bi-hand-thumbs-up-fill primary-90\" style=\"font-size: 3rem;\"></i>\r\n                <h2 class=\"support-text pt-2 ms-1 mb-0 primary-90 fw-bold\">Apoia</h2>\r\n            </button>\r\n\r\n            <button class=\"dislike-button d-flex column-gap-2 align-items-center border-0\"\r\n                [ngClass]=\"{ active: isSupported === false, pulse: isPulsing.oppose }\" (click)=\"setSupport(false)\">\r\n                <h2 class=\"support-text pt-2 ms-1 mb-0 primary-90 fw-bold\">Não Apoia</h2>\r\n                <i class=\"bi bi-hand-thumbs-down-fill primary-90\" style=\"font-size: 3rem;\"></i>\r\n            </button>\r\n        </div>\r\n\r\n        <div class=\"mb-5\">\r\n            <p *ngIf=\"markedPoliticians.length >= 1\" class=\"fs-6 mb-3\">Políticos marcados nesse debate</p>\r\n            <div class=\"col-12 d-flex flex-row flex-wrap gap-4\">\r\n                <div *ngFor=\"let politician of markedPoliticians\"\r\n                    class=\"d-flex flex-row align-items-center bg-gray me-3\">\r\n                    <button class=\"border-0 me-2 p-0 bg-gray\">\r\n                        <i class=\"bi bi-x fs-2\"\r\n                            (click)=\"removeMarkedPolitician(politician)\"></i>\r\n                    </button>\r\n                    <img class=\"rounded-circle me-1\" src={{politician.photo}} alt=\"\"\r\n                        style=\"height: 24px; width: 24px;\">\r\n                    <p class=\"mb-0 pe-3\" style=\"font-size: 0.8rem;\">{{politician.name}}\r\n                        ({{politician.partyPosition}})</p>\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"col-12 d-flex justify-content-center\">\r\n            <button class=\"submit-button bg-green px-4 py-2 border-0 rounded-4 text-white\"\r\n                (click)=\"submitContribution(contributionForm)\">\r\n                Criar Contribuição</button>\r\n        </div>\r\n    </form>\r\n</div>"
+            "templateData": "<div class=\"d-flex justify-content-center px-3 py-5\">\r\n    <form [formGroup]=\"contributionForm\" class=\"col-12 col-md-10 col-lg-8 d-flex flex-column justify-content-center\">\r\n        <h2 class=\"mb-3\">Sua Contribuição:</h2>\r\n        <div class=\"col-12 mb-3 border border-primary-80 rounded-4 p-0 d-flex flex-column\" style=\"height: 200px;\">\r\n            <div class=\"border-bottom border-primary-50 w-100 py-1 d-flex flex-row\">\r\n                <button type=\"button\" class=\"btn btn-sm btn-light fs-6 fw-bold ms-3\"\r\n                    [ngClass]=\"{ 'bg-primary-100 text-white': isBold }\" (click)=\"formatText('bold')\">\r\n                    N\r\n                </button>\r\n                <button type=\"button\" class=\"btn btn-sm btn-light fst-italic\"\r\n                    [ngClass]=\"{ 'bg-primary-100 text-white': isItalic }\" (click)=\"formatText('italic')\">\r\n                    <i class=\"bi bi-type-italic fs-6\"></i>\r\n                </button>\r\n                <div class=\"dropdown position-relative\" [class.show]=\"showSelectBox\">\r\n                    <button class=\"btn btn-sm btn-light fs-6\" type=\"button\" (click)=\"toggleSelectBox()\">\r\n                        &#64;\r\n                    </button>\r\n\r\n                    <div class=\"dropdown-menu dropdown-politician p-2 shadow\" [class.show]=\"showSelectBox\"\r\n                        style=\"min-width: 250px; max-height: 300px; overflow-y: auto;\">\r\n                        <input type=\"text\" name=\"search\" class=\"form-control border-primary-80 mb-2\" placeholder=\"Buscar político...\" [(ngModel)]=\"searchTerm\">\r\n\r\n                        <div *ngFor=\"let politician of filteredPoliticians\"\r\n                            (click)=\"addMarkedPolitician(politician)\"\r\n                            class=\"dropdown-item d-flex align-items-center gap-2\">\r\n                            <img [src]=\"politician.photo\" alt=\"\" class=\"rounded-circle\"\r\n                                style=\"width: 28px; height: 28px;\">\r\n                            <span>{{politician.name}} ({{politician.partyPosition}})</span>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n\r\n            <div #editor contenteditable=\"true\" (input)=\"contributionForm.get('contributionText')?.setValue(editorRef.nativeElement.innerHTML)\"\r\n                class=\"border-0 rounded-bottom-4 ps-4 pt-3 pe-4 pb-3 w-100 h-100 flex-grow-1 fs-6\"\r\n                style=\"resize: none; overflow-y: auto; outline: none;\">\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"col-12 justify-content-between d-flex flex-md-row mb-3\">\r\n            <button class=\"like-button d-flex column-gap-2 align-items-center border-0\"\r\n                [ngClass]=\"{ active: isSupported === true, pulse: isPulsing.support }\" (click)=\"setSupport(true)\">\r\n                <i class=\"bi bi-hand-thumbs-up-fill primary-90\" style=\"font-size: 3rem;\"></i>\r\n                <h2 class=\"support-text pt-2 ms-1 mb-0 primary-90 fw-bold\">Apoia</h2>\r\n            </button>\r\n\r\n            <button class=\"dislike-button d-flex column-gap-2 align-items-center border-0\"\r\n                [ngClass]=\"{ active: isSupported === false, pulse: isPulsing.oppose }\" (click)=\"setSupport(false)\">\r\n                <h2 class=\"support-text pt-2 ms-1 mb-0 primary-90 fw-bold\">Não Apoia</h2>\r\n                <i class=\"bi bi-hand-thumbs-down-fill primary-90\" style=\"font-size: 3rem;\"></i>\r\n            </button>\r\n        </div>\r\n\r\n        <div class=\"mb-5\">\r\n            <p *ngIf=\"markedPoliticians.length >= 1\" class=\"fs-6 mb-3\">Políticos marcados nesse debate</p>\r\n            <div class=\"col-12 d-flex flex-row flex-wrap gap-4\">\r\n                <div *ngFor=\"let politician of markedPoliticians\"\r\n                    class=\"d-flex flex-row align-items-center bg-gray me-3\">\r\n                    <button class=\"border-0 me-2 p-0 bg-gray\">\r\n                        <i class=\"bi bi-x fs-2\"\r\n                            (click)=\"removeMarkedPolitician(politician)\"></i>\r\n                    </button>\r\n                    <img class=\"rounded-circle me-1\" src={{politician.photo}} alt=\"\"\r\n                        style=\"height: 24px; width: 24px;\">\r\n                    <p class=\"mb-0 pe-3\" style=\"font-size: 0.8rem;\">{{politician.name}}\r\n                        ({{politician.partyPosition}})</p>\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"col-12 d-flex justify-content-center\">\r\n            <button class=\"submit-button bg-green px-4 py-2 border-0 rounded-4 text-white\"\r\n                (click)=\"submitContribution()\">\r\n                Criar Contribuição</button>\r\n        </div>\r\n    </form>\r\n</div>"
         },
         {
             "name": "DebateContributionComponent",
@@ -1543,13 +1554,13 @@
         },
         {
             "name": "DebateModule",
-            "id": "module-DebateModule-cc0bee4e0bb3fd6acaf71b4e5350df4f094f582298e38016dd63fbc1b57ea671878893d0a585284c753a411317de7602001dbf1d2063095244e32a8fa30f9ca3",
+            "id": "module-DebateModule-a38da224d9927e3f68d0a1fb34b4d1efaa78e64b79837e878a48f93e59c4bf104c0dfc7a2ebe236aa7f353b381f1bc3f71a1e5df47d68911b2cc9c97b69399ab",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/modules/debate/debate.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { FormsModule } from '@angular/forms';\r\n\r\nimport { DebateRoutingModule } from './debate-routing.module';\r\nimport { HomeComponent } from './pages/home/home.component';\r\nimport { DebateGroupComponent } from './components/debate-group/debate-group.component';\r\nimport { CreateContributionComponent } from './components/create-contribution/create-contribution.component';\r\nimport { MainTopicsComponent } from './components/main-topics/main-topics.component';\r\nimport { DebateContributionComponent } from './components/debate-contribution/debate-contribution.component';\r\n\r\n\r\n@NgModule({\r\n  declarations: [\r\n    HomeComponent,\r\n    DebateGroupComponent,\r\n    CreateContributionComponent,\r\n    MainTopicsComponent,\r\n    DebateContributionComponent\r\n  ],\r\n  imports: [\r\n    CommonModule,\r\n    DebateRoutingModule,\r\n    FormsModule\r\n  ]\r\n})\r\nexport class DebateModule { }\r\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\r\n\r\nimport { DebateRoutingModule } from './debate-routing.module';\r\nimport { HomeComponent } from './pages/home/home.component';\r\nimport { DebateGroupComponent } from './components/debate-group/debate-group.component';\r\nimport { CreateContributionComponent } from './components/create-contribution/create-contribution.component';\r\nimport { MainTopicsComponent } from './components/main-topics/main-topics.component';\r\nimport { DebateContributionComponent } from './components/debate-contribution/debate-contribution.component';\r\n\r\n\r\n@NgModule({\r\n  declarations: [\r\n    HomeComponent,\r\n    DebateGroupComponent,\r\n    CreateContributionComponent,\r\n    MainTopicsComponent,\r\n    DebateContributionComponent\r\n  ],\r\n  imports: [\r\n    CommonModule,\r\n    DebateRoutingModule,\r\n    FormsModule,\r\n    ReactiveFormsModule\r\n  ]\r\n})\r\nexport class DebateModule { }\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -1766,7 +1777,7 @@
                 "linktype": "component",
                 "name": "CreateContributionComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/25",
+                "coverageCount": "0/26",
                 "status": "low"
             },
             {

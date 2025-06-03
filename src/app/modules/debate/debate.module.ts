@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { DebateRoutingModule } from './debate-routing.module';
 import { HomeComponent } from './pages/home/home.component';
@@ -21,7 +21,8 @@ import { DebateContributionComponent } from './components/debate-contribution/de
   imports: [
     CommonModule,
     DebateRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class DebateModule { }

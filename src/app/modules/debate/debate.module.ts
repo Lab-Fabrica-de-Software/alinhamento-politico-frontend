@@ -8,6 +8,7 @@ import { DebateGroupComponent } from './components/debate-group/debate-group.com
 import { CreateContributionComponent } from './components/create-contribution/create-contribution.component';
 import { MainTopicsComponent } from './components/main-topics/main-topics.component';
 import { DebateContributionComponent } from './components/debate-contribution/debate-contribution.component';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { DebateContributionComponent } from './components/debate-contribution/de
     CommonModule,
     DebateRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class DebateModule { }

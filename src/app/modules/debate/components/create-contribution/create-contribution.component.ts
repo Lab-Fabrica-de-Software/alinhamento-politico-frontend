@@ -8,9 +8,7 @@ import { User } from '../../../../core/models/user';
   templateUrl: './create-contribution.component.html',
   styleUrl: './create-contribution.component.css'
 })
-export class CreateContributionComponent implements OnInit, AfterViewInit {
-
-  @ViewChild('editor') editorRef!: ElementRef<HTMLTextAreaElement>;
+export class CreateContributionComponent implements OnInit {
 
   @Input() allPoliticians: User[] = [];
   @Input() followedPoliticians: User[] = [];
@@ -44,11 +42,6 @@ export class CreateContributionComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngAfterViewInit() {
-    this.editorRef.nativeElement.addEventListener('mouseup', () => this.updateActiveStates());
-    this.editorRef.nativeElement.addEventListener('keyup', () => this.updateActiveStates());
-  }
-
   get filteredPoliticians(): User[] {
     const term = this.searchTerm.trim().toLowerCase();
     
@@ -59,17 +52,6 @@ export class CreateContributionComponent implements OnInit, AfterViewInit {
     return this.allPoliticians.filter(p =>
       p.name.toLowerCase().includes(term)
     );
-  }
-
-  updateActiveStates() {
-    this.isBold = document.queryCommandState('bold');
-    this.isItalic = document.queryCommandState('italic');
-  }
-
-  formatText(command: 'bold' | 'italic') {
-    document.execCommand(command, false);
-    this.updateActiveStates();
-    this.editorRef.nativeElement.focus();
   }
 
   setSupport(value: boolean) {
@@ -108,16 +90,9 @@ export class CreateContributionComponent implements OnInit, AfterViewInit {
   }
 
   submitContribution() {
-    const contributionText = this.editorRef?.nativeElement.innerHTML || '';
 
     this.markedPoliticiansChange.emit(this.markedPoliticians);
-    this.contributionTextChange.emit(contributionText);
     this.supportChange.emit(this.isSupported);
-
-    this.contributionForm.reset();
-    if (this.editorRef) {
-      this.editorRef.nativeElement.innerHTML = '';
-    }
 
     this.markedPoliticians = [];
     this.isSupported = null;

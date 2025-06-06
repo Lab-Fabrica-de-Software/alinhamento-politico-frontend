@@ -1,26 +1,25 @@
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
-import { CreateContributionComponent } from './create-contribution.component';
+import { TextEditorComponent } from './text-editor.component';
 import { FormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
-import { action } from '@storybook/addon-actions';
-import { SharedModule } from '../../../../shared/shared.module';
+import { QuillModule } from 'ngx-quill';
 
-const meta: Meta<CreateContributionComponent> = {
-  title: 'modules/debate/components/create-contribution',
-  component: CreateContributionComponent,
+const meta: Meta<TextEditorComponent> = {
+  title: 'modules/debate/components/text-editor',
+  component: TextEditorComponent,
   excludeStories: /.*Data$/,
   tags: ['autodocs'],
   decorators: [
     moduleMetadata({
-      imports: [FormsModule, NgClass, SharedModule]
+      imports: [FormsModule, NgClass, QuillModule.forRoot()]
     })
   ]
 };
 
 export default meta;
-type Story = StoryObj<CreateContributionComponent>;
+type Story = StoryObj<TextEditorComponent>;
 
-export const CreateContribution: Story = {
+export const TextEditor: Story = {
   args: {
     allPoliticians: [
       {
@@ -130,8 +129,5 @@ export const CreateContribution: Story = {
         photo: 'https://i.pravatar.cc/150?img=57' 
       }
     ],
-    markedPoliticiansChange: action('markedPoliticiansChange'),
-    contributionTextChange: action('contributionTextChange'),
-    supportChange: action('supportChange'),
   }
 };

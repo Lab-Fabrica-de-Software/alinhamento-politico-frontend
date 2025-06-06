@@ -2,8 +2,11 @@
     <form [formGroup]="contributionForm" class="col-12 col-md-10 col-lg-8 d-flex flex-column justify-content-center">
         <h2 class="mb-3">Sua Contribuição:</h2>
         <div class="w-100 mb-3">
-            <app-text-editor [allPoliticians]="allPoliticians"
-                [followedPoliticians]="followedPoliticians"></app-text-editor>
+            <app-text-editor #editorComponent 
+                [allPoliticians]="allPoliticians"
+                [followedPoliticians]="followedPoliticians" 
+                (markedPoliticiansChange)="handleMarkedPoliticiansChange($event)"
+                (contributionTextChange)="handleContributionTextChange($event)"></app-text-editor>
         </div>
 
 
@@ -27,7 +30,7 @@
                 <div *ngFor="let politician of markedPoliticians"
                     class="d-flex flex-row align-items-center bg-gray me-3">
                     <button class="border-0 me-2 p-0 bg-gray">
-                        <i class="bi bi-x fs-2" (click)="removeMarkedPolitician(politician)"></i>
+                        <i class="bi bi-x fs-2" (click)="editorComponent.removeMarkedPolitician(politician)"></i>
                     </button>
                     <img class="rounded-circle me-1" src={{politician.photo}} alt="" style="height: 24px; width: 24px;">
                     <p class="mb-0 pe-3" style="font-size: 0.8rem;">{{politician.name}}

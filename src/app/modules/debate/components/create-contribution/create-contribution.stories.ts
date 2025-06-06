@@ -130,8 +130,8 @@ export const CreateContribution: Story = {
         photo: 'https://i.pravatar.cc/150?img=57' 
       }
     ],
-    markedPoliticiansChange: action('markedPoliticiansChange'),
-    contributionTextChange: action('contributionTextChange'),
-    supportChange: action('supportChange'),
+    submitMarkedPoliticians: action('submitMarkedPoliticians'),
+    submitContributionText: action('submitContributionText'),
+    submitSupport: action('submitSupport'),
   }
 };

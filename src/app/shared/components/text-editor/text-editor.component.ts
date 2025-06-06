@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild, OnDestroy, OnInit } from '@angular/core';
 import { ChangeDetectorRef } from '@angular/core';
 import { User } from '../../../core/models/user';
 
@@ -8,43 +8,10 @@ import { User } from '../../../core/models/user';
   templateUrl: './text-editor.component.html',
   styleUrl: './text-editor.component.css'
 })
-export class TextEditorComponent implements AfterViewInit, OnDestroy { // Implement OnDestroy
-  @ViewChild('editor', { static: true }) editor!: ElementRef;
+export class TextEditorComponent implements OnInit, AfterViewInit, OnDestroy {
   dropdownPosition: { top?: string; left?: string } = {};
-  buttonReady = false;
 
-  constructor(private elem: ElementRef, private cdr: ChangeDetectorRef) { }
-
-  ngAfterViewInit() {
-    // Polling até o botão ser carregado pelo Quill
-    const interval = setInterval(() => {
-      const markBtn = this.elem.nativeElement.querySelector('.ql-politicianTag') as HTMLElement;
-
-      if (markBtn && !this.buttonReady) {
-        this.buttonReady = true;
-        markBtn.innerText = '@';
-
-        markBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          this.toggleSelectBox();
-        });
-
-        clearInterval(interval);
-      }
-    }, 50);
-
-    // Add resize listener
-    window.addEventListener('resize', this.onWindowResize.bind(this));
-  }
-
-  ngOnDestroy() {
-    // Remove resize listener to prevent memory leaks
-    window.removeEventListener('resize', this.onWindowResize.bind(this));
-  }
-
-  htmlText = '';
-  hasFocus = false;
+  editorText = '';
 
   @Input() allPoliticians: User[] = [];
   @Input() followedPoliticians: User[] = [];
@@ -58,10 +25,45 @@ export class TextEditorComponent implements AfterViewInit, OnDestroy { // Implem
   showSelectBox = false;
   searchTerm: string = '';
 
+  resizeListener = this.onWindowResize.bind(this);
+
+  constructor(private elem: ElementRef, private cdr: ChangeDetectorRef) { }
+
+
+  ngOnInit() {
+    window.addEventListener('resize', this.resizeListener);
+    this.originalFollowedIds = this.followedPoliticians.map(p => p.id);
+  }
+
+  ngAfterViewInit() {
+    // Polling até o botão ser carregado pelo Quill
+    const interval = setInterval(() => {
+      const markBtn = this.elem.nativeElement.querySelector('.ql-politicianTag') as HTMLElement;
+
+      if (markBtn) {
+        markBtn.innerText = '@';
+
+        markBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          this.toggleSelectBox();
+        });
+
+        clearInterval(interval);
+      }
+    }, 50);
+
+    window.addEventListener('resize', this.onWindowResize.bind(this));
+  }
+
+  ngOnDestroy() {
+    window.removeEventListener('resize', this.resizeListener);
+  }
+
   toggleSelectBox() {
     this.showSelectBox = !this.showSelectBox;
 
-    this.cdr.detectChanges(); // força renderização imediata do dropdown
+    this.cdr.detectChanges();
 
     if (this.showSelectBox) {
       setTimeout(() => {
@@ -70,7 +72,6 @@ export class TextEditorComponent implements AfterViewInit, OnDestroy { // Implem
     }
   }
 
-  // New method to update dropdown position
   private updateDropdownPosition() {
     const button = document.querySelector('.ql-politicianTag') as HTMLElement;
 
@@ -80,17 +81,20 @@ export class TextEditorComponent implements AfterViewInit, OnDestroy { // Implem
         top: `${rect.bottom + 5}px`,
         left: `${rect.left}px`
       };
-      this.cdr.detectChanges(); // atualiza com a posição correta
+      this.cdr.detectChanges();
     }
   }
 
-  // Handle window resize event
   onWindowResize() {
     if (this.showSelectBox) {
       this.updateDropdownPosition();
     }
   }
 
+  emitTextChange(value: string) {
+    this.editorText = value;
+    this.contributionTextChange.emit(value);
+  }
 
   get filteredPoliticians(): User[] {
     const term = this.searchTerm.trim().toLowerCase();
@@ -117,8 +121,12 @@ export class TextEditorComponent implements AfterViewInit, OnDestroy { // Implem
     this.markedPoliticians = this.markedPoliticians.filter(p => p.id !== politician.id);
     this.markedPoliticiansChange.emit(this.markedPoliticians);
 
-    this.allPoliticians.push(politician);
-    if (this.originalFollowedIds.includes(politician.id)) {
+    if (!this.allPoliticians.find(p => p.id === politician.id)) {
+      this.allPoliticians.push(politician);
+    }
+
+    if (this.originalFollowedIds.includes(politician.id) &&
+      !this.followedPoliticians.find(p => p.id === politician.id)) {
       this.followedPoliticians.push(politician);
     }
   }

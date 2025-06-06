@@ -1,8 +1,10 @@
-<quill-editor #editor class="w-100 h-100" [(ngModel)]="htmlText" placeholder="Escreva sua contribuição..."
+<quill-editor #editor class="w-100 h-100" 
+  [(ngModel)]="editorText" 
+  (ngModelChange)="emitTextChange($event)"
+  placeholder="Escreva sua contribuição..."
   [modules]="quillConfig">
 </quill-editor>
 
-<!-- dropdown fixo na tela -->
 <div *ngIf="showSelectBox" class="dropdown-politician shadow bg-white rounded p-2" [ngStyle]="dropdownPosition"
   (click)="$event.stopPropagation()">
 

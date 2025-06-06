@@ -2,10 +2,6 @@
   border-color: rgba(20, 33, 61, 0.8) !important;
 }
 
-.border-primary-50 {
-  border-color: rgba(20, 33, 61, 0.5) !important;
-}
-
 ::ng-deep .ql-toolbar.ql-snow {
   border: none !important;
   border-bottom: 1px solid rgba(20, 33, 61, 0.5) !important;
@@ -41,12 +37,6 @@
 
 ::ng-deep .ql-editor {
   padding: 0;
-}
-
-::ng-deep .ql-toolbar .ql-underline,
-::ng-deep .ql-toolbar .ql-header,
-::ng-deep .ql-toolbar .ql-list {
-  display: none !important;
 }
 
 ::ng-deep .ql-politicianTag {

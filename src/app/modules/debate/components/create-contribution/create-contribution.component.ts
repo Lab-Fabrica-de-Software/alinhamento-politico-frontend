@@ -13,50 +13,35 @@ export class CreateContributionComponent implements OnInit {
   @Input() allPoliticians: User[] = [];
   @Input() followedPoliticians: User[] = [];
 
-  @Output() markedPoliticiansChange = new EventEmitter<User[]>();
-  @Output() contributionTextChange = new EventEmitter<string>();
-  @Output() supportChange = new EventEmitter<boolean | null>();
+  @Output() submitMarkedPoliticians = new EventEmitter<User[]>();
+  @Output() submitContributionText = new EventEmitter<string>();
+  @Output() submitSupport = new EventEmitter<boolean | null>();
 
   contributionForm!: FormGroup;
 
   markedPoliticians: User[] = [];
-  originalFollowedIds: number[] = [];
 
+  contributionText = '';
   isBold = false;
   isItalic = false;
   isSupported: boolean | null = null;
-  isPulsing = { 
-    support: false, 
-    oppose: false 
+  isPulsing = {
+    support: false,
+    oppose: false
   };
   showSelectBox = false;
   searchTerm: string = '';
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.originalFollowedIds = this.followedPoliticians.map(p => p.id);
-
     this.contributionForm = this.fb.group({
       contributionText: ['', Validators.required],
     });
   }
 
-  get filteredPoliticians(): User[] {
-    const term = this.searchTerm.trim().toLowerCase();
-    
-    if (!term) {
-      return this.followedPoliticians;
-    }
-
-    return this.allPoliticians.filter(p =>
-      p.name.toLowerCase().includes(term)
-    );
-  }
-
   setSupport(value: boolean) {
     this.isSupported = value;
-    this.supportChange.emit(this.isSupported);
 
     const key = value ? 'support' : 'oppose';
     this.isPulsing[key] = true;
@@ -66,33 +51,18 @@ export class CreateContributionComponent implements OnInit {
     }, 300);
   }
 
-  addMarkedPolitician(politician: User) {
-    this.markedPoliticians.push(politician);
-    this.markedPoliticiansChange.emit(this.markedPoliticians);
-
-    this.allPoliticians = this.allPoliticians.filter(p => p.id !== politician.id);
-    this.followedPoliticians = this.followedPoliticians.filter(p => p.id !== politician.id);
-    this.showSelectBox = false;
+  handleMarkedPoliticiansChange(politicians: User[]) {
+    this.markedPoliticians = politicians;
   }
 
-  removeMarkedPolitician(politician: User) {
-    this.markedPoliticians = this.markedPoliticians.filter(p => p.id !== politician.id);
-    this.markedPoliticiansChange.emit(this.markedPoliticians);
-
-    this.allPoliticians.push(politician);
-    if (this.originalFollowedIds.includes(politician.id)) {
-      this.followedPoliticians.push(politician);
-    }
-  }
-
-  toggleSelectBox() {
-    this.showSelectBox = !this.showSelectBox;
+  handleContributionTextChange(text: string) {
+    this.contributionText = text;
   }
 
   submitContribution() {
-
-    this.markedPoliticiansChange.emit(this.markedPoliticians);
-    this.supportChange.emit(this.isSupported);
+    this.submitContributionText.emit(this.contributionText);
+    this.submitMarkedPoliticians.emit(this.markedPoliticians);
+    this.submitSupport.emit(this.isSupported);
 
     this.markedPoliticians = [];
     this.isSupported = null;

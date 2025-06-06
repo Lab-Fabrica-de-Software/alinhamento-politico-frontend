@@ -8,7 +8,7 @@
 <div *ngIf="showSelectBox" class="dropdown-politician shadow bg-white rounded p-2" [ngStyle]="dropdownPosition"
   (click)="$event.stopPropagation()">
 
-  <input type="text" name="search" class="form-control mb-2 border-primary-80" placeholder="Buscar político..."
+  <input type="text" name="search" class="form-control mb-2 border-primary-50" placeholder="Buscar político..."
     [(ngModel)]="searchTerm" />
 
   <div *ngFor="let politician of filteredPoliticians" (click)="addMarkedPolitician(politician)"

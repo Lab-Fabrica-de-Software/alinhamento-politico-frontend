@@ -22,6 +22,10 @@
   background-color: #198754;
 }
 
+.like-button, .dislike-button {
+  background: none;
+}
+
 .like-button:hover h2,
 .like-button:hover i {
   color: #198754;
@@ -40,10 +44,6 @@
 .dislike-button.active h2,
 .dislike-button.active i {
   color: #DC3545;
-}
-
-.submit-button:hover {
-  background-color: rgba(25, 135, 84, 0.9);
 }
 
 @keyframes pulse {
@@ -70,6 +70,10 @@
 
 .submit-button {
   font-size: 1.5rem !important;
+}
+
+.submit-button:hover {
+  background-color: rgba(25, 135, 84, 0.9);
 }
 
 .dropdown-menu.show {

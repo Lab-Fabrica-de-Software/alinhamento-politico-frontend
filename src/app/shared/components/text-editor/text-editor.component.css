@@ -2,6 +2,11 @@
   border-color: rgba(20, 33, 61, 0.8) !important;
 }
 
+.border-primary-50 {
+  border-color: rgba(20, 33, 61, 0.5) !important;
+}
+
+
 ::ng-deep .ql-toolbar.ql-snow {
   border: none !important;
   border-bottom: 1px solid rgba(20, 33, 61, 0.5) !important;
@@ -42,7 +47,7 @@
 ::ng-deep .ql-politicianTag {
   display: flex !important;
   text-align: center;
-  color: rgb(69,68,69);
+  color: rgb(69, 68, 69);
   padding-bottom: 5px !important;
 }
 
@@ -65,9 +70,26 @@
   overflow-y: auto;
   z-index: 9999;
   position: fixed;
+  border: 1px solid rgba(20, 33, 61, 0.8);
 }
 
 .dropdown-item:hover {
   cursor: pointer;
   background-color: #E5E5E5;
+}
+
+@media (max-width: 540px) {
+  .dropdown-politician {
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-25%) !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .dropdown-politician {
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-40%) !important;
+  }
 }

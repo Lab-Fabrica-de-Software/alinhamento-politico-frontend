@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/angular';
 import { MainTopicsComponent } from './main-topics.component';
 
 const meta: Meta<MainTopicsComponent> = {
-  title: 'modules/debate/components/main-topics',
+  title: 'modules/debate/components/Main-Topics',
   component: MainTopicsComponent,
   excludeStories: /.*Data$/,
   tags: ['autodocs']

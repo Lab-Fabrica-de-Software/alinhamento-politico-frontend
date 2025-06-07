@@ -1,0 +1,55 @@
+<div class="d-flex"
+     [ngClass]="!isFilter ? 'flex-column gap-3 col-12 col-sm-8 col-md-6 col-lg-4' : 'flex-row gap-5 flex-wrap' ">
+  
+  <!-- Campo de Início -->
+  <div [ngClass]="{'d-flex flex-row align-items-center gap-4 me-4' : isFilter, 'w-100': !isFilter }">
+    <label for="startDate"
+           [ngClass]="!isFilter ? 'fs-2 fw-bold ms-2 mb-2' : 'fs-5 fw-normal' ">
+      Início
+    </label>
+    <div class="w-100 position-relative flex-grow-1">
+      <input
+        class="form-control rounded-pill bg-light py-2"
+        name="startDate"
+        [(ngModel)]="startDate"
+        [minDate]="isFilter ? minStartDate : today"
+        [maxDate]="maxStartDate!"
+        ngbDatepicker
+        #start="ngbDatepicker"
+        readonly
+        (click)="start.toggle()"
+        (ngModelChange)="onStartDateChange()"
+      />
+      <div class="position-absolute top-50 end-0 translate-middle-y pe-3">
+        <i class="bi bi-calendar3 fs-5"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Campo de Término -->
+  <div [ngClass]="{'d-flex flex-row align-items-center gap-4' : isFilter, 'w-100': !isFilter }">
+    <label for="endDate"
+           [ngClass]="!isFilter ? 'fs-2 fw-bold ms-2 mb-2' : 'fs-5 fw-normal' ">
+      Término
+    </label>
+    <div class="form-container position-relative flex-grow-1">
+      <input
+        class="form-control rounded-pill bg-light py-2"
+        name="endDate"
+        [(ngModel)]="endDate"
+        [minDate]="minEndDate!"
+        [maxDate]="maxEndDate!"
+        [disabled]="!startDate"
+        ngbDatepicker
+        #end="ngbDatepicker"
+        readonly
+        (click)="end.toggle()"
+        (ngModelChange)="onEndDateChange()"
+      />
+      <div class="position-absolute top-50 end-0 translate-middle-y pe-3">
+        <i class="bi bi-calendar3 fs-5"></i>
+      </div>
+    </div>
+  </div>
+
+</div>

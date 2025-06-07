@@ -5,8 +5,10 @@ import { FormsModule } from '@angular/forms';
 import { DebateRoutingModule } from './debate-routing.module';
 import { HomeComponent } from './pages/home/home.component';
 import { DebateGroupComponent } from './components/debate-group/debate-group.component';
+import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { MainTopicsComponent } from './components/main-topics/main-topics.component';
 import { DebateFilterComponent } from './components/debate-filter/debate-filter.component';
+import { DebateContributionComponent } from './components/debate-contribution/debate-contribution.component';
 
 
 @NgModule({
@@ -14,12 +16,14 @@ import { DebateFilterComponent } from './components/debate-filter/debate-filter.
     HomeComponent,
     DebateGroupComponent,
     MainTopicsComponent,
-    DebateFilterComponent
+    DebateFilterComponent,
+    DebateContributionComponent
   ],
   imports: [
     CommonModule,
     DebateRoutingModule,
-    FormsModule
+    FormsModule,
+    NgbDatepickerModule
   ]
 })
 export class DebateModule { }

@@ -5,13 +5,17 @@ import { FormsModule } from '@angular/forms';
 import { ShareComponent } from './components/share/share.component';
 import { ShareButtonComponent } from './components/share-button/share-button.component';
 import { UserInformationComponent } from './components/user-information/user-information.component';
+import { KeyWordsComponent } from './components/key-words/key-words.component';
+import { SelectionDateRangeComponent } from './components/selection-date-range/selection-date-range.component';
 
 @NgModule({
   declarations: [
     NavbarComponent,
     ShareComponent,
     ShareButtonComponent,
-    UserInformationComponent
+    UserInformationComponent,
+    KeyWordsComponent,
+    SelectionDateRangeComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +25,8 @@ import { UserInformationComponent } from './components/user-information/user-inf
     NavbarComponent,
     ShareButtonComponent,
     ShareComponent,
-    UserInformationComponent
+    UserInformationComponent,
+    KeyWordsComponent
   ]
 })
 export class SharedModule { }

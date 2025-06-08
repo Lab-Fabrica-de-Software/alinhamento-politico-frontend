@@ -20,3 +20,8 @@
 .select-item:hover {
     background-color: #E5E5E5;
 }
+
+.list-group-item:hover {
+    background-color: #0d6efd;
+    color: white;
+}

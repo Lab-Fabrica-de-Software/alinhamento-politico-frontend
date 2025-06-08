@@ -13,13 +13,14 @@ export class DebateFilterComponent {
   @Input() topics: Topic[] = [];
   @Input() keywords: KeyWord[] = [];
 
+  @Output() submitSearchInput = new EventEmitter<string>();
   @Output() submitSelectedTopic = new EventEmitter<Topic | null>();
   @Output() submitStartDate = new EventEmitter<NgbDateStruct | null>();
   @Output() submitEndDate = new EventEmitter<NgbDateStruct | null>();
   @Output() submitmarkedKeywords = new EventEmitter<KeyWord[] | null>();
   @Output() submitMinContributions = new EventEmitter<number | null>();
 
-  searchInput: string = '';
+  searchInput: string | null = null;
   isAdvanced: boolean = false;
   showSelectBox: boolean = false;
   selectedTopic: Topic | null = null;
@@ -52,7 +53,6 @@ export class DebateFilterComponent {
 
   handleStartDateChange(startDate: NgbDateStruct | null) {
     this.startDate = startDate;
-
   }
 
   handleEndDateChange(endDate: NgbDateStruct | null) {
@@ -60,12 +60,8 @@ export class DebateFilterComponent {
   }
 
   submit() {
-    console.log(this.selectedTopic);
-    console.log(this.markedKeywords);
-    console.log(this.startDate);
-    console.log(this.endDate);
-    console.log(this.minContributions);
     
+    this.submitSearchInput.emit(this.searchInput!);
     this.submitSelectedTopic.emit(this.selectedTopic);
     this.submitStartDate.emit(this.startDate);
     this.submitEndDate.emit(this.endDate);

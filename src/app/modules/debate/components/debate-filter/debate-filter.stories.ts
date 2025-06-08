@@ -4,6 +4,8 @@ import { SharedModule } from '../../../../shared/shared.module';
 import { moduleMetadata } from '@storybook/angular';
 import { action } from '@storybook/addon-actions';
 import { FormsModule } from '@angular/forms';
+import { NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
+import { PtBrDateParserFormatter } from '../../../../core/shared/formatters/pt-br-date-parser-formatter';
 
 const meta: Meta<DebateFilterComponent> = {
   title: 'modules/debate/components/Debate-Filter',
@@ -12,7 +14,10 @@ const meta: Meta<DebateFilterComponent> = {
   tags: ['autodocs'],
   decorators: [
     moduleMetadata({
-      imports: [SharedModule, FormsModule]
+      imports: [SharedModule, FormsModule],
+      providers: [
+              {provide: NgbDateParserFormatter, useClass: PtBrDateParserFormatter}
+            ]
     })
   ]
 };
@@ -67,7 +72,11 @@ export const DebateFilter: Story = {
         name: 'Amet'
       },
     ],
-    handleStartDateChange: action('handleStartDateChange'),
-    handleEndDateChange: action('handleEndDateChange')
+    submitSearchInput: action('submitSearchInput'),
+    submitSelectedTopic: action('submitSelectedTopic'),
+    submitStartDate: action('submitStartDate'),
+    submitEndDate: action('submitEndDate'),
+    submitmarkedKeywords: action('submitmarkedKeywords'),
+    submitMinContributions: action('submitMinContributions')
   }
 };

@@ -3,7 +3,7 @@
         <div class="d-flex flex-row justify-content-between border-bottom border-black mb-3">
             <h2 class="fw-bold">Debates</h2>
             <div class="d-flex gap-4">
-                <button class="btn btn-primary rounded-pill px-5 py-0 h-75">Filtrar</button>
+                <button type="button" (click)="submit()" class="btn btn-primary rounded-pill px-5 py-0 h-75">Filtrar</button>
                 <button class="btn btn-success rounded-pill px-4 py-0 h-75">Criar debate</button>
             </div>
         </div>
@@ -36,8 +36,9 @@
                     <p class="m-0">Tópico</p>
                     <div class="position-relative" style="min-width: 200px;">
                         <select name="select-topics"
-                            class="form-select custom-select bg-gray pe-5 border-primary-80 rounded-pill ps-3 py-1">
-                            <option *ngFor="let topic of topics" [value]="topic.name" class="select-item">{{topic.name}}
+                            class="form-select custom-select bg-gray pe-5 border-primary-80 rounded-pill ps-3 py-1"
+                            [(ngModel)]="selectedTopic">
+                            <option *ngFor="let topic of topics" [ngValue]="topic" class="select-item">{{topic.name}}
                             </option>
                         </select>
                         <i class="bi bi-chevron-down position-absolute top-50 translate-middle-y end-0 me-3"></i>
@@ -73,7 +74,8 @@
                     <p class="m-0">Mínimo de contribuições</p>
                     <div class="position-relative" style="min-width: 200px;">
                         <select name="select-contributions"
-                            class="form-select custom-select bg-gray pe-5 border-primary-80 rounded-4 ps-3 py-1">
+                            class="form-select custom-select bg-gray pe-5 border-primary-80 rounded-4 ps-3 py-1"
+                            [(ngModel)]="minContributions">
                             <option [value]="1" class="select-item">1</option>
                             <option [value]="10" class="select-item">10</option>
                             <option [value]="50" class="select-item">50</option>
@@ -89,7 +91,7 @@
 
             <div class="d-flex flex-row gap-3">
                 <div *ngFor="let keyword of markedKeywords" class="bg-secondary-80 rounded-5 ps-2 pe-1 py-1">
-                    <div class="d-flex align-items-center gap-2">
+                    <div class="d-flex align-items-center gap-2 ms-2">
                         {{keyword.name}}
                         <button class="btn border-0 p-0" (click)="removeMarkedKeyword(keyword)">
                             <i class="bi bi-x fs-4"></i>

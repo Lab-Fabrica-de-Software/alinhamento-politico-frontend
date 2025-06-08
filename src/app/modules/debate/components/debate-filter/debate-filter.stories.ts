@@ -3,6 +3,7 @@ import { DebateFilterComponent } from './debate-filter.component';
 import { SharedModule } from '../../../../shared/shared.module';
 import { moduleMetadata } from '@storybook/angular';
 import { action } from '@storybook/addon-actions';
+import { FormsModule } from '@angular/forms';
 
 const meta: Meta<DebateFilterComponent> = {
   title: 'modules/debate/components/Debate-Filter',
@@ -11,7 +12,7 @@ const meta: Meta<DebateFilterComponent> = {
   tags: ['autodocs'],
   decorators: [
     moduleMetadata({
-      imports: [SharedModule]
+      imports: [SharedModule, FormsModule]
     })
   ]
 };

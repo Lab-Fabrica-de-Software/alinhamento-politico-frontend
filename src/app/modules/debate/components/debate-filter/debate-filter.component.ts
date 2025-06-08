@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Topic } from '../../../../core/models/topic';
 import { KeyWord } from '../../../../core/models/keyword';
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { end } from '@popperjs/core';
 
 @Component({
   selector: 'app-debate-filter',
@@ -9,10 +11,15 @@ import { KeyWord } from '../../../../core/models/keyword';
   styleUrl: './debate-filter.component.css'
 })
 export class DebateFilterComponent {
+  @Output() submitStartDate = new EventEmitter<NgbDateStruct | null>();
+  @Output() submitEndDate = new EventEmitter<NgbDateStruct | null>();
+
   searchInput: string = '';
   isAdvanced: boolean = false;
   showSelectBox: boolean = false;
   topics: Topic[] = [];
+  startDate: NgbDateStruct | null = null;
+  endDate: NgbDateStruct | null = null;
   keywords: KeyWord[] = [];
   markedKeywords: KeyWord[] = [];
 
@@ -36,5 +43,19 @@ export class DebateFilterComponent {
 
   search() {
     console.log(this.searchInput);
+  }
+
+  handleStartDateChange(startDate: NgbDateStruct | null) {
+    this.startDate = startDate;
+
+  }
+
+  handleEndDateChange(endDate: NgbDateStruct | null) {
+    this.endDate = endDate;
+  }
+
+  submit() {
+    this.submitStartDate.emit(this.startDate);
+    this.submitEndDate.emit(this.endDate);
   }
 }

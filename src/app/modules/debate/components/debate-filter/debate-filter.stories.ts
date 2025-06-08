@@ -1,11 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { DebateFilterComponent } from './debate-filter.component';
+import { SharedModule } from '../../../../shared/shared.module';
+import { moduleMetadata } from '@storybook/angular';
+import { action } from '@storybook/addon-actions';
 
 const meta: Meta<DebateFilterComponent> = {
-  title: 'modules/debate/components/debate-filter',
+  title: 'modules/debate/components/Debate-Filter',
   component: DebateFilterComponent,
   excludeStories: /.*Data$/,
-  tags: ['autodocs']
+  tags: ['autodocs'],
+  decorators: [
+    moduleMetadata({
+      imports: [SharedModule]
+    })
+  ]
 };
 
 export default meta;
@@ -57,6 +65,8 @@ export const DebateFilter: Story = {
         id: 5,
         name: 'Amet'
       },
-    ]
+    ],
+    handleStartDateChange: action('handleStartDateChange'),
+    handleEndDateChange: action('handleEndDateChange')
   }
 };

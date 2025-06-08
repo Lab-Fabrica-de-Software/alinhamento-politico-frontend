@@ -7,6 +7,7 @@ import { ShareButtonComponent } from './components/share-button/share-button.com
 import { UserInformationComponent } from './components/user-information/user-information.component';
 import { KeyWordsComponent } from './components/key-words/key-words.component';
 import { SelectionDateRangeComponent } from './components/selection-date-range/selection-date-range.component';
+import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -19,14 +20,16 @@ import { SelectionDateRangeComponent } from './components/selection-date-range/s
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    NgbDatepickerModule
   ],
   exports: [
     NavbarComponent,
     ShareButtonComponent,
     ShareComponent,
     UserInformationComponent,
-    KeyWordsComponent
+    KeyWordsComponent,
+    SelectionDateRangeComponent
   ]
 })
 export class SharedModule { }

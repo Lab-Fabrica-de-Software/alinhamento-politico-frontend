@@ -1,11 +1,19 @@
-import type { Meta, StoryObj } from '@storybook/angular';
+import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { AiTextComponent } from './ai-text.component';
+import { FormsModule } from '@angular/forms';
+import { action } from '@storybook/addon-actions';
 
 const meta: Meta<AiTextComponent> = {
     title: 'modules/debate/components/AiText',
     component: AiTextComponent,
     excludeStories: /.*Data$/,
-    tags: ['autodocs']
+    tags: ['autodocs'],
+  decorators: [
+    moduleMetadata({
+      imports: [FormsModule]
+    })
+  ]
+    
 };
 
 export default meta;
@@ -22,7 +30,7 @@ export const AiText: Story = {
                 <h3>Não apoiadores:</h3>\n
                 <p>Praesent consequat, eros quis varius feugiat, libero odio consectetur eros, ac pretium leo nibh in lorem. Nam vitae eros ac est placerat pellentesque quis in lacus. Morbi non commodo elit.</p>\n
 `,
-            feedback: false
-        }
+        },
+        aiFeedbackChange: action('aiFeedbackChange')
     }
 };

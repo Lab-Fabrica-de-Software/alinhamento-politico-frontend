@@ -1,5 +1,6 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AiText } from '../../../../core/models/ai-text';
+import { AiFeedback } from '../../../../core/models/ai-feedback';
 
 @Component({
   selector: 'app-ai-text',
@@ -9,10 +10,45 @@ import { AiText } from '../../../../core/models/ai-text';
 })
 export class AiTextComponent {
   @Input() aiText: AiText | null = null;
-  
-  @Output() isLiked: boolean | null = null;
+
+  @Output() aiFeedbackChange = new EventEmitter<AiFeedback | null>();
+
+  showModal: boolean = false;
+  aiFeedback: AiFeedback = {
+    id: 1,
+    aiTextId: 1,
+    feedback: null,
+    text: ''
+  };
+
+  get charCount(): number {
+    return this.aiFeedback.text?.length ?? 0;
+  }
 
   setLike(value: boolean) {
-    this.isLiked = value;
+    if (value) {
+      this.aiFeedback.feedback = true;
+      this.aiFeedback.text = '';
+      this.aiFeedbackChange.emit({ ...this.aiFeedback });
+    } else {
+      this.showModal = true;
+    }
+  }
+
+  autoResize(event: Event) {
+    const textarea = event.target as HTMLTextAreaElement;
+    textarea.style.height = 'auto';
+    textarea.style.height = `${textarea.scrollHeight}px`;
+  }
+
+  sendFeedback() {
+    this.aiFeedback.feedback = false;
+    this.aiFeedbackChange.emit({ ...this.aiFeedback });
+    this.closeModal();
+  }
+
+  closeModal() {
+    this.aiFeedback.text = '';
+    this.showModal = false;
   }
 }

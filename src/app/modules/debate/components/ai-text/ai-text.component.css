@@ -25,3 +25,14 @@
 .dislike-button.active {
     color: #DC3545;
 }
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1040;
+}
+
+textarea {
+  resize: none;
+}

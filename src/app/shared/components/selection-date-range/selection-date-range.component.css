@@ -1,5 +1,13 @@
+.bg-gray {
+  background-color:#E5E5E5;
+}
+
+.border-primary-80 {
+  border-color: rgba(20, 33, 61, 0.8) !important;
+}
+
 .form-control {
-  border: 1px solid black;
+  border: 1px solid;
   padding: 0.5rem 1rem;
   box-sizing: border-box;
 }

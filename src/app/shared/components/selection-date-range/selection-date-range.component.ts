@@ -15,14 +15,10 @@ export class SelectionDateRangeComponent {
   minEndDate: NgbDateStruct | null = null;
   maxEndDate: NgbDateStruct | null = null;
 
-  @Input() 
-  isHorizontal: boolean = false;
+  @Input() isHorizontal: boolean = false;
 
-  @Output() 
-  startDateChange = new EventEmitter<NgbDateStruct | null>();
-
-  @Output() 
-  endDateChange = new EventEmitter<NgbDateStruct | null>();
+  @Output() startDateChange = new EventEmitter<NgbDateStruct | null>();
+  @Output() endDateChange = new EventEmitter<NgbDateStruct | null>();
 
   constructor(private calendar: NgbCalendar) {
     this.today = this.calendar.getToday();
@@ -42,8 +38,6 @@ export class SelectionDateRangeComponent {
   }
 
   onStartDateChange() {
-    this.startDateChange.emit(this.startDate);
-
     if (!this.startDate) {
       this.minEndDate = null;
       this.maxEndDate = null;
@@ -74,6 +68,8 @@ export class SelectionDateRangeComponent {
       this.endDate = null;
       this.endDateChange.emit(null);
     }
+
+    this.startDateChange.emit(this.startDate);
   }
 
   onEndDateChange() {

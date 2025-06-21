@@ -8,23 +8,30 @@
 
     <div [innerHTML]="aiText?.text"></div>
 
-    <div class="mt-4 text-center">
+    <div class="mt-4 text-center" *ngIf="!hasFeedback">
         <p class="fw-semibold mb-1">Esse texto foi útil para você? Avalie abaixo.</p>
         <div>
-            <button class="like-button border-0" 
-            [ngClass]="{ active: aiFeedback.feedback === true}" 
-            (click)="setLike(true)">
+            <button class="like-button border-0"
+                (click)="setLike(true)">
                 <i class="fs-4"
-                [ngClass]="aiFeedback.feedback === true ? 'bi-hand-thumbs-up-fill' : 'bi-hand-thumbs-up'"></i>
+                    [ngClass]="aiFeedback?.feedback === true ? 'bi-hand-thumbs-up-fill' : 'bi-hand-thumbs-up'"></i>
             </button>
 
-            <button class="dislike-button border-0" 
-            [ngClass]="{ active: aiFeedback.feedback === false }" 
-            (click)="setLike(false)">
-                <i class="fs-4" 
-                [ngClass]="aiFeedback.feedback === false ? 'bi-hand-thumbs-down-fill' : 'bi-hand-thumbs-down'"></i>
+            <button class="dislike-button border-0"
+                (click)="setLike(false)">
+                <i class="fs-4"
+                    [ngClass]="aiFeedback?.feedback === false ? 'bi-hand-thumbs-down-fill' : 'bi-hand-thumbs-down'"></i>
             </button>
         </div>
+    </div>
+
+    <div class="mt-4 text-center" *ngIf="hasFeedback">
+        <p class="fw-semibold mb-2 text-success">
+            Obrigado pela avaliação!
+        </p>
+        <button class="btn btn-sm btn-primary rounded-pill" (click)="resetFeedback()">
+            Reavaliar
+        </button>
     </div>
 </div>
 
@@ -44,8 +51,8 @@
             <div class="modal-body pb-0">
                 <p>Digite abaixo o que você não gostou no resumo (máx. 500 caracteres):</p>
 
-                <textarea class="w-100 rounded-4 px-3 py-2" rows="3" [(ngModel)]="aiFeedback.text" (input)="autoResize($event)"
-                    maxlength="500" #textarea></textarea>
+                <textarea class="w-100 rounded-4 px-3 py-2" rows="3" [(ngModel)]="aiFeedback!.text"
+                    (input)="autoResize($event)" maxlength="500" #textarea></textarea>
 
 
                 <p class="text-end small mt-1" [ngClass]="{ 'text-danger': charCount > 450 }">
@@ -54,7 +61,8 @@
             </div>
 
             <div class="modal-footer border-0 justify-content-center">
-                <button type="button" class="btn btn-primary rounded-pill col-6 col-md-4" (click)="sendFeedback()">Enviar
+                <button type="button" class="btn btn-primary rounded-pill col-6 col-md-4"
+                    (click)="sendFeedback()">Enviar
                     avaliação</button>
             </div>
         </div>

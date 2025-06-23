@@ -1,0 +1,2154 @@
+{
+    "pipes": [],
+    "interfaces": [
+        {
+            "name": "AIText",
+            "id": "interface-AIText-7ab5c630b39ccbeb378c7534e46553d7ec1aac8949f0f88ca122b0916244f3ce1e165969f15378c65d86de1974e621fb093f1437c4d04d1c48656a1cb52324ee",
+            "file": "src/app/core/models/aiext.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface AIText {\n    id: number,\n    supporters: string,\n    nonSupporters: string\n}",
+            "properties": [
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "nonSupporters",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "supporters",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "DebateContribution",
+            "id": "interface-DebateContribution-2c0ee25ffe3f5d431c8e452effd33b417c0498442f066d26dec898eb4b40d3ff78e8e0263121a44a6459391769f898f6bcff23a52863bbd5e56e4b98e0d493c1",
+            "file": "src/app/core/models/debate-contribution.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface DebateContribution {\n    id: number;\n    userName: string;\n    userPhoto: string;\n    userParty?: string;\n    userPosition?: string;\n    userVerified?: boolean;\n    openDate: Date;\n    opinion: boolean;\n    ups: number;\n    downs: number;\n    text: string;\n    userReaction: 'up' | 'down' | undefined;\n}\n",
+            "properties": [
+                {
+                    "name": "downs",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                },
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "openDate",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Date",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                },
+                {
+                    "name": "opinion",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                },
+                {
+                    "name": "text",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
+                },
+                {
+                    "name": "ups",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 10
+                },
+                {
+                    "name": "userName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "userParty",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 5
+                },
+                {
+                    "name": "userPhoto",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "userPosition",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 6
+                },
+                {
+                    "name": "userReaction",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "\"up\" | \"down\" | undefined",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 13
+                },
+                {
+                    "name": "userVerified",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 7
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "DebateGroup",
+            "id": "interface-DebateGroup-00437f6262fa1b6910a1ebfb6628d0e4d0746ef226f607e89430668acf36a85c9119359b2909456c275bde7dade8b7a684d84543e1b78b2416e0831082ed8df0",
+            "file": "src/app/core/models/debate-group.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface DebateGroup {\n    id: number;\n    name: string;\n    description: string;\n    color: string;\n    openDebates: number;\n    lastContributionName: string;\n    lastContributionPhoto: string;\n    lastContributionDebateName: string;\n}",
+            "properties": [
+                {
+                    "name": "color",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                },
+                {
+                    "name": "description",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "lastContributionDebateName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                },
+                {
+                    "name": "lastContributionName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 7
+                },
+                {
+                    "name": "lastContributionPhoto",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                },
+                {
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "openDebates",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 6
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "User",
+            "id": "interface-User-9417a447464ab62fde5480ad73c7901c62ded40b760be20e11f83aadd72184561e9537d8aa6ec64f78d4aa1e853fd7a5f6e93ab28bb4ce865ea093a2cfbf4b18",
+            "file": "src/app/core/models/user.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface User {\n    id: number,\n    name: string,\n    photo: string,\n    verified?: boolean,\n    unreadNotifications?: number,\n    partyId?: number, \n    partyName?: string,\n    partyPosition?: string, \n}",
+            "properties": [
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "partyId",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 7
+                },
+                {
+                    "name": "partyName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 8
+                },
+                {
+                    "name": "partyPosition",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 9
+                },
+                {
+                    "name": "photo",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "unreadNotifications",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 6
+                },
+                {
+                    "name": "verified",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 5
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        }
+    ],
+    "injectables": [],
+    "guards": [],
+    "interceptors": [],
+    "classes": [],
+    "directives": [],
+    "components": [
+        {
+            "name": "AppComponent",
+            "id": "component-AppComponent-55e44c0ec0483cd61d1186bf5f80799ea718a55c25b1a6287b77645b714ea5f44f82b6d2855a073df75fa10e644d338202fa120fada8bc91313f217c6ea3b691",
+            "file": "src/app/app.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-root",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./app.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "title",
+                    "defaultValue": "'alinhamento_front'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 10
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  standalone: false,\n  styleUrl: './app.component.css'\n})\nexport class AppComponent {\n  title = 'alinhamento_front';\n}\n",
+            "styleUrl": "./app.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->\n<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->\n<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->\n<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->\n<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->\n<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->\n<!-- * * * * * * * to get started with your project! * * * * * * * -->\n<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->\n\n<style>\n  :host {\n    --bright-blue: oklch(51.01% 0.274 263.83);\n    --electric-violet: oklch(53.18% 0.28 296.97);\n    --french-violet: oklch(47.66% 0.246 305.88);\n    --vivid-pink: oklch(69.02% 0.277 332.77);\n    --hot-red: oklch(61.42% 0.238 15.34);\n    --orange-red: oklch(63.32% 0.24 31.68);\n\n    --gray-900: oklch(19.37% 0.006 300.98);\n    --gray-700: oklch(36.98% 0.014 302.71);\n    --gray-400: oklch(70.9% 0.015 304.04);\n\n    --red-to-pink-to-purple-vertical-gradient: linear-gradient(\n      180deg,\n      var(--orange-red) 0%,\n      var(--vivid-pink) 50%,\n      var(--electric-violet) 100%\n    );\n\n    --red-to-pink-to-purple-horizontal-gradient: linear-gradient(\n      90deg,\n      var(--orange-red) 0%,\n      var(--vivid-pink) 50%,\n      var(--electric-violet) 100%\n    );\n\n    --pill-accent: var(--bright-blue);\n\n    font-family: \"Inter\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto,\n      Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\",\n      \"Segoe UI Symbol\";\n    box-sizing: border-box;\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n  }\n\n  h1 {\n    font-size: 3.125rem;\n    color: var(--gray-900);\n    font-weight: 500;\n    line-height: 100%;\n    letter-spacing: -0.125rem;\n    margin: 0;\n    font-family: \"Inter Tight\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto,\n      Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\",\n      \"Segoe UI Symbol\";\n  }\n\n  p {\n    margin: 0;\n    color: var(--gray-700);\n  }\n\n  main {\n    width: 100%;\n    min-height: 100%;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    padding: 1rem;\n    box-sizing: inherit;\n    position: relative;\n  }\n\n  .angular-logo {\n    max-width: 9.2rem;\n  }\n\n  .content {\n    display: flex;\n    justify-content: space-around;\n    width: 100%;\n    max-width: 700px;\n    margin-bottom: 3rem;\n  }\n\n  .content h1 {\n    margin-top: 1.75rem;\n  }\n\n  .content p {\n    margin-top: 1.5rem;\n  }\n\n  .divider {\n    width: 1px;\n    background: var(--red-to-pink-to-purple-vertical-gradient);\n    margin-inline: 0.5rem;\n  }\n\n  .pill-group {\n    display: flex;\n    flex-direction: column;\n    align-items: start;\n    flex-wrap: wrap;\n    gap: 1.25rem;\n  }\n\n  .pill {\n    display: flex;\n    align-items: center;\n    --pill-accent: var(--bright-blue);\n    background: color-mix(in srgb, var(--pill-accent) 5%, transparent);\n    color: var(--pill-accent);\n    padding-inline: 0.75rem;\n    padding-block: 0.375rem;\n    border-radius: 2.75rem;\n    border: 0;\n    transition: background 0.3s ease;\n    font-family: var(--inter-font);\n    font-size: 0.875rem;\n    font-style: normal;\n    font-weight: 500;\n    line-height: 1.4rem;\n    letter-spacing: -0.00875rem;\n    text-decoration: none;\n  }\n\n  .pill:hover {\n    background: color-mix(in srgb, var(--pill-accent) 15%, transparent);\n  }\n\n  .pill-group .pill:nth-child(6n + 1) {\n    --pill-accent: var(--bright-blue);\n  }\n  .pill-group .pill:nth-child(6n + 2) {\n    --pill-accent: var(--french-violet);\n  }\n  .pill-group .pill:nth-child(6n + 3),\n  .pill-group .pill:nth-child(6n + 4),\n  .pill-group .pill:nth-child(6n + 5) {\n    --pill-accent: var(--hot-red);\n  }\n\n  .pill-group svg {\n    margin-inline-start: 0.25rem;\n  }\n\n  .social-links {\n    display: flex;\n    align-items: center;\n    gap: 0.73rem;\n    margin-top: 1.5rem;\n  }\n\n  .social-links path {\n    transition: fill 0.3s ease;\n    fill: var(--gray-400);\n  }\n\n  .social-links a:hover svg path {\n    fill: var(--gray-900);\n  }\n\n  @media screen and (max-width: 650px) {\n    .content {\n      flex-direction: column;\n      width: max-content;\n    }\n\n    .divider {\n      height: 1px;\n      width: 100%;\n      background: var(--red-to-pink-to-purple-horizontal-gradient);\n      margin-block: 1.5rem;\n    }\n  }\n</style>\n\n<main class=\"main\">\n  <div class=\"content\">\n    <div class=\"left-side\">\n      <svg\n        xmlns=\"http://www.w3.org/2000/svg\"\n        viewBox=\"0 0 982 239\"\n        fill=\"none\"\n        class=\"angular-logo\"\n      >\n        <g clip-path=\"url(#a)\">\n          <path\n            fill=\"url(#b)\"\n            d=\"M388.676 191.625h30.849L363.31 31.828h-35.758l-56.215 159.797h30.848l13.174-39.356h60.061l13.256 39.356Zm-65.461-62.675 21.602-64.311h1.227l21.602 64.311h-44.431Zm126.831-7.527v70.202h-28.23V71.839h27.002v20.374h1.392c2.782-6.71 7.2-12.028 13.255-15.956 6.056-3.927 13.584-5.89 22.503-5.89 8.264 0 15.465 1.8 21.684 5.318 6.137 3.518 10.964 8.673 14.319 15.382 3.437 6.71 5.074 14.81 4.992 24.383v76.175h-28.23v-71.92c0-8.019-2.046-14.237-6.219-18.819-4.173-4.5-9.819-6.791-17.102-6.791-4.91 0-9.328 1.063-13.174 3.272-3.846 2.128-6.792 5.237-9.001 9.328-2.046 4.009-3.191 8.918-3.191 14.728ZM589.233 239c-10.147 0-18.82-1.391-26.103-4.091-7.282-2.7-13.092-6.382-17.511-10.964-4.418-4.582-7.528-9.655-9.164-15.219l25.448-6.136c1.145 2.372 2.782 4.663 4.991 6.954 2.209 2.291 5.155 4.255 8.837 5.81 3.683 1.554 8.428 2.291 14.074 2.291 8.019 0 14.647-1.964 19.884-5.81 5.237-3.845 7.856-10.227 7.856-19.064v-22.665h-1.391c-1.473 2.946-3.601 5.892-6.383 9.001-2.782 3.109-6.464 5.645-10.965 7.691-4.582 2.046-10.228 3.109-17.101 3.109-9.165 0-17.511-2.209-25.039-6.545-7.446-4.337-13.42-10.883-17.757-19.474-4.418-8.673-6.628-19.473-6.628-32.565 0-13.091 2.21-24.301 6.628-33.383 4.419-9.082 10.311-15.955 17.839-20.7 7.528-4.746 15.874-7.037 25.039-7.037 7.037 0 12.846 1.145 17.347 3.518 4.582 2.373 8.182 5.236 10.883 8.51 2.7 3.272 4.746 6.382 6.137 9.327h1.554v-19.8h27.821v121.749c0 10.228-2.454 18.737-7.364 25.447-4.91 6.709-11.538 11.7-20.048 15.055-8.509 3.355-18.165 4.991-28.884 4.991Zm.245-71.266c5.974 0 11.047-1.473 15.302-4.337 4.173-2.945 7.446-7.118 9.573-12.519 2.21-5.482 3.274-12.027 3.274-19.637 0-7.609-1.064-14.155-3.274-19.8-2.127-5.646-5.318-10.064-9.491-13.255-4.174-3.11-9.329-4.746-15.384-4.746s-11.537 1.636-15.792 4.91c-4.173 3.272-7.365 7.772-9.492 13.418-2.128 5.727-3.191 12.191-3.191 19.392 0 7.2 1.063 13.745 3.273 19.228 2.127 5.482 5.318 9.736 9.573 12.764 4.174 3.027 9.41 4.582 15.629 4.582Zm141.56-26.51V71.839h28.23v119.786h-27.412v-21.273h-1.227c-2.7 6.709-7.119 12.191-13.338 16.446-6.137 4.255-13.747 6.382-22.748 6.382-7.855 0-14.81-1.718-20.783-5.237-5.974-3.518-10.72-8.591-14.075-15.382-3.355-6.709-5.073-14.891-5.073-24.464V71.839h28.312v71.921c0 7.609 2.046 13.664 6.219 18.083 4.173 4.5 9.655 6.709 16.365 6.709 4.173 0 8.183-.982 12.111-3.028 3.927-2.045 7.118-5.072 9.655-9.082 2.537-4.091 3.764-9.164 3.764-15.218Zm65.707-109.395v159.796h-28.23V31.828h28.23Zm44.841 162.169c-7.61 0-14.402-1.391-20.457-4.091-6.055-2.7-10.883-6.791-14.32-12.109-3.518-5.319-5.237-11.946-5.237-19.801 0-6.791 1.228-12.355 3.765-16.773 2.536-4.419 5.891-7.937 10.228-10.637 4.337-2.618 9.164-4.664 14.647-6.055 5.4-1.391 11.046-2.373 16.856-3.027 7.037-.737 12.683-1.391 17.102-1.964 4.337-.573 7.528-1.555 9.574-2.782 1.963-1.309 3.027-3.273 3.027-5.973v-.491c0-5.891-1.718-10.391-5.237-13.664-3.518-3.191-8.51-4.828-15.056-4.828-6.955 0-12.356 1.473-16.447 4.5-4.009 3.028-6.71 6.546-8.183 10.719l-26.348-3.764c2.046-7.282 5.483-13.336 10.31-18.328 4.746-4.909 10.638-8.59 17.511-11.045 6.955-2.455 14.565-3.682 22.912-3.682 5.809 0 11.537.654 17.265 2.045s10.965 3.6 15.711 6.71c4.746 3.109 8.51 7.282 11.455 12.6 2.864 5.318 4.337 11.946 4.337 19.883v80.184h-27.166v-16.446h-.9c-1.719 3.355-4.092 6.464-7.201 9.328-3.109 2.864-6.955 5.237-11.619 6.955-4.828 1.718-10.229 2.536-16.529 2.536Zm7.364-20.701c5.646 0 10.556-1.145 14.729-3.354 4.173-2.291 7.364-5.237 9.655-9.001 2.292-3.763 3.355-7.854 3.355-12.273v-14.155c-.9.737-2.373 1.391-4.5 2.046-2.128.654-4.419 1.145-7.037 1.636-2.619.491-5.155.9-7.692 1.227-2.537.328-4.746.655-6.628.901-4.173.572-8.019 1.472-11.292 2.781-3.355 1.31-5.973 3.11-7.855 5.401-1.964 2.291-2.864 5.318-2.864 8.918 0 5.237 1.882 9.164 5.728 11.782 3.682 2.782 8.51 4.091 14.401 4.091Zm64.643 18.328V71.839h27.412v19.965h1.227c2.21-6.955 5.974-12.274 11.292-16.038 5.319-3.763 11.456-5.645 18.329-5.645 1.555 0 3.355.082 5.237.163 1.964.164 3.601.328 4.91.573v25.938c-1.227-.41-3.109-.819-5.646-1.146a58.814 58.814 0 0 0-7.446-.49c-5.155 0-9.738 1.145-13.829 3.354-4.091 2.209-7.282 5.236-9.655 9.164-2.373 3.927-3.519 8.427-3.519 13.5v70.448h-28.312ZM222.077 39.192l-8.019 125.923L137.387 0l84.69 39.192Zm-53.105 162.825-57.933 33.056-57.934-33.056 11.783-28.556h92.301l11.783 28.556ZM111.039 62.675l30.357 73.803H80.681l30.358-73.803ZM7.937 165.115 0 39.192 84.69 0 7.937 165.115Z\"\n          />\n          <path\n            fill=\"url(#c)\"\n            d=\"M388.676 191.625h30.849L363.31 31.828h-35.758l-56.215 159.797h30.848l13.174-39.356h60.061l13.256 39.356Zm-65.461-62.675 21.602-64.311h1.227l21.602 64.311h-44.431Zm126.831-7.527v70.202h-28.23V71.839h27.002v20.374h1.392c2.782-6.71 7.2-12.028 13.255-15.956 6.056-3.927 13.584-5.89 22.503-5.89 8.264 0 15.465 1.8 21.684 5.318 6.137 3.518 10.964 8.673 14.319 15.382 3.437 6.71 5.074 14.81 4.992 24.383v76.175h-28.23v-71.92c0-8.019-2.046-14.237-6.219-18.819-4.173-4.5-9.819-6.791-17.102-6.791-4.91 0-9.328 1.063-13.174 3.272-3.846 2.128-6.792 5.237-9.001 9.328-2.046 4.009-3.191 8.918-3.191 14.728ZM589.233 239c-10.147 0-18.82-1.391-26.103-4.091-7.282-2.7-13.092-6.382-17.511-10.964-4.418-4.582-7.528-9.655-9.164-15.219l25.448-6.136c1.145 2.372 2.782 4.663 4.991 6.954 2.209 2.291 5.155 4.255 8.837 5.81 3.683 1.554 8.428 2.291 14.074 2.291 8.019 0 14.647-1.964 19.884-5.81 5.237-3.845 7.856-10.227 7.856-19.064v-22.665h-1.391c-1.473 2.946-3.601 5.892-6.383 9.001-2.782 3.109-6.464 5.645-10.965 7.691-4.582 2.046-10.228 3.109-17.101 3.109-9.165 0-17.511-2.209-25.039-6.545-7.446-4.337-13.42-10.883-17.757-19.474-4.418-8.673-6.628-19.473-6.628-32.565 0-13.091 2.21-24.301 6.628-33.383 4.419-9.082 10.311-15.955 17.839-20.7 7.528-4.746 15.874-7.037 25.039-7.037 7.037 0 12.846 1.145 17.347 3.518 4.582 2.373 8.182 5.236 10.883 8.51 2.7 3.272 4.746 6.382 6.137 9.327h1.554v-19.8h27.821v121.749c0 10.228-2.454 18.737-7.364 25.447-4.91 6.709-11.538 11.7-20.048 15.055-8.509 3.355-18.165 4.991-28.884 4.991Zm.245-71.266c5.974 0 11.047-1.473 15.302-4.337 4.173-2.945 7.446-7.118 9.573-12.519 2.21-5.482 3.274-12.027 3.274-19.637 0-7.609-1.064-14.155-3.274-19.8-2.127-5.646-5.318-10.064-9.491-13.255-4.174-3.11-9.329-4.746-15.384-4.746s-11.537 1.636-15.792 4.91c-4.173 3.272-7.365 7.772-9.492 13.418-2.128 5.727-3.191 12.191-3.191 19.392 0 7.2 1.063 13.745 3.273 19.228 2.127 5.482 5.318 9.736 9.573 12.764 4.174 3.027 9.41 4.582 15.629 4.582Zm141.56-26.51V71.839h28.23v119.786h-27.412v-21.273h-1.227c-2.7 6.709-7.119 12.191-13.338 16.446-6.137 4.255-13.747 6.382-22.748 6.382-7.855 0-14.81-1.718-20.783-5.237-5.974-3.518-10.72-8.591-14.075-15.382-3.355-6.709-5.073-14.891-5.073-24.464V71.839h28.312v71.921c0 7.609 2.046 13.664 6.219 18.083 4.173 4.5 9.655 6.709 16.365 6.709 4.173 0 8.183-.982 12.111-3.028 3.927-2.045 7.118-5.072 9.655-9.082 2.537-4.091 3.764-9.164 3.764-15.218Zm65.707-109.395v159.796h-28.23V31.828h28.23Zm44.841 162.169c-7.61 0-14.402-1.391-20.457-4.091-6.055-2.7-10.883-6.791-14.32-12.109-3.518-5.319-5.237-11.946-5.237-19.801 0-6.791 1.228-12.355 3.765-16.773 2.536-4.419 5.891-7.937 10.228-10.637 4.337-2.618 9.164-4.664 14.647-6.055 5.4-1.391 11.046-2.373 16.856-3.027 7.037-.737 12.683-1.391 17.102-1.964 4.337-.573 7.528-1.555 9.574-2.782 1.963-1.309 3.027-3.273 3.027-5.973v-.491c0-5.891-1.718-10.391-5.237-13.664-3.518-3.191-8.51-4.828-15.056-4.828-6.955 0-12.356 1.473-16.447 4.5-4.009 3.028-6.71 6.546-8.183 10.719l-26.348-3.764c2.046-7.282 5.483-13.336 10.31-18.328 4.746-4.909 10.638-8.59 17.511-11.045 6.955-2.455 14.565-3.682 22.912-3.682 5.809 0 11.537.654 17.265 2.045s10.965 3.6 15.711 6.71c4.746 3.109 8.51 7.282 11.455 12.6 2.864 5.318 4.337 11.946 4.337 19.883v80.184h-27.166v-16.446h-.9c-1.719 3.355-4.092 6.464-7.201 9.328-3.109 2.864-6.955 5.237-11.619 6.955-4.828 1.718-10.229 2.536-16.529 2.536Zm7.364-20.701c5.646 0 10.556-1.145 14.729-3.354 4.173-2.291 7.364-5.237 9.655-9.001 2.292-3.763 3.355-7.854 3.355-12.273v-14.155c-.9.737-2.373 1.391-4.5 2.046-2.128.654-4.419 1.145-7.037 1.636-2.619.491-5.155.9-7.692 1.227-2.537.328-4.746.655-6.628.901-4.173.572-8.019 1.472-11.292 2.781-3.355 1.31-5.973 3.11-7.855 5.401-1.964 2.291-2.864 5.318-2.864 8.918 0 5.237 1.882 9.164 5.728 11.782 3.682 2.782 8.51 4.091 14.401 4.091Zm64.643 18.328V71.839h27.412v19.965h1.227c2.21-6.955 5.974-12.274 11.292-16.038 5.319-3.763 11.456-5.645 18.329-5.645 1.555 0 3.355.082 5.237.163 1.964.164 3.601.328 4.91.573v25.938c-1.227-.41-3.109-.819-5.646-1.146a58.814 58.814 0 0 0-7.446-.49c-5.155 0-9.738 1.145-13.829 3.354-4.091 2.209-7.282 5.236-9.655 9.164-2.373 3.927-3.519 8.427-3.519 13.5v70.448h-28.312ZM222.077 39.192l-8.019 125.923L137.387 0l84.69 39.192Zm-53.105 162.825-57.933 33.056-57.934-33.056 11.783-28.556h92.301l11.783 28.556ZM111.039 62.675l30.357 73.803H80.681l30.358-73.803ZM7.937 165.115 0 39.192 84.69 0 7.937 165.115Z\"\n          />\n        </g>\n        <defs>\n          <radialGradient\n            id=\"c\"\n            cx=\"0\"\n            cy=\"0\"\n            r=\"1\"\n            gradientTransform=\"rotate(118.122 171.182 60.81) scale(205.794)\"\n            gradientUnits=\"userSpaceOnUse\"\n          >\n            <stop stop-color=\"#FF41F8\" />\n            <stop offset=\".707\" stop-color=\"#FF41F8\" stop-opacity=\".5\" />\n            <stop offset=\"1\" stop-color=\"#FF41F8\" stop-opacity=\"0\" />\n          </radialGradient>\n          <linearGradient\n            id=\"b\"\n            x1=\"0\"\n            x2=\"982\"\n            y1=\"192\"\n            y2=\"192\"\n            gradientUnits=\"userSpaceOnUse\"\n          >\n            <stop stop-color=\"#F0060B\" />\n            <stop offset=\"0\" stop-color=\"#F0070C\" />\n            <stop offset=\".526\" stop-color=\"#CC26D5\" />\n            <stop offset=\"1\" stop-color=\"#7702FF\" />\n          </linearGradient>\n          <clipPath id=\"a\"><path fill=\"#fff\" d=\"M0 0h982v239H0z\" /></clipPath>\n        </defs>\n      </svg>\n      <h1>Hello, {{ title }}</h1>\n      <p>Congratulations! Your app is running. 🎉</p>\n    </div>\n    <div class=\"divider\" role=\"separator\" aria-label=\"Divider\"></div>\n    <div class=\"right-side\">\n      <div class=\"pill-group\">\n        @for (item of [\n          { title: 'Explore the Docs', link: 'https://angular.dev' },\n          { title: 'Learn with Tutorials', link: 'https://angular.dev/tutorials' },\n          { title: 'CLI Docs', link: 'https://angular.dev/tools/cli' },\n          { title: 'Angular Language Service', link: 'https://angular.dev/tools/language-service' },\n          { title: 'Angular DevTools', link: 'https://angular.dev/tools/devtools' },\n        ]; track item.title) {\n          <a\n            class=\"pill\"\n            [href]=\"item.link\"\n            target=\"_blank\"\n            rel=\"noopener\"\n          >\n            <span>{{ item.title }}</span>\n            <svg\n              xmlns=\"http://www.w3.org/2000/svg\"\n              height=\"14\"\n              viewBox=\"0 -960 960 960\"\n              width=\"14\"\n              fill=\"currentColor\"\n            >\n              <path\n                d=\"M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z\"\n              />\n            </svg>\n          </a>\n        }\n      </div>\n      <div class=\"social-links\">\n        <a\n          href=\"https://github.com/angular/angular\"\n          aria-label=\"Github\"\n          target=\"_blank\"\n          rel=\"noopener\"\n        >\n          <svg\n            width=\"25\"\n            height=\"24\"\n            viewBox=\"0 0 25 24\"\n            fill=\"none\"\n            xmlns=\"http://www.w3.org/2000/svg\"\n            alt=\"Github\"\n          >\n            <path\n              d=\"M12.3047 0C5.50634 0 0 5.50942 0 12.3047C0 17.7423 3.52529 22.3535 8.41332 23.9787C9.02856 24.0946 9.25414 23.7142 9.25414 23.3871C9.25414 23.0949 9.24389 22.3207 9.23876 21.2953C5.81601 22.0377 5.09414 19.6444 5.09414 19.6444C4.53427 18.2243 3.72524 17.8449 3.72524 17.8449C2.61064 17.082 3.81137 17.0973 3.81137 17.0973C5.04697 17.1835 5.69604 18.3647 5.69604 18.3647C6.79321 20.2463 8.57636 19.7029 9.27978 19.3881C9.39052 18.5924 9.70736 18.0499 10.0591 17.7423C7.32641 17.4347 4.45429 16.3765 4.45429 11.6618C4.45429 10.3185 4.9311 9.22133 5.72065 8.36C5.58222 8.04931 5.16694 6.79833 5.82831 5.10337C5.82831 5.10337 6.85883 4.77319 9.2121 6.36459C10.1965 6.09082 11.2424 5.95546 12.2883 5.94931C13.3342 5.95546 14.3801 6.09082 15.3644 6.36459C17.7023 4.77319 18.7328 5.10337 18.7328 5.10337C19.3942 6.79833 18.9789 8.04931 18.8559 8.36C19.6403 9.22133 20.1171 10.3185 20.1171 11.6618C20.1171 16.3888 17.2409 17.4296 14.5031 17.7321C14.9338 18.1012 15.3337 18.8559 15.3337 20.0084C15.3337 21.6552 15.3183 22.978 15.3183 23.3779C15.3183 23.7009 15.5336 24.0854 16.1642 23.9623C21.0871 22.3484 24.6094 17.7341 24.6094 12.3047C24.6094 5.50942 19.0999 0 12.3047 0Z\"\n            />\n          </svg>\n        </a>\n        <a\n          href=\"https://twitter.com/angular\"\n          aria-label=\"Twitter\"\n          target=\"_blank\"\n          rel=\"noopener\"\n        >\n          <svg\n            width=\"24\"\n            height=\"24\"\n            viewBox=\"0 0 24 24\"\n            fill=\"none\"\n            xmlns=\"http://www.w3.org/2000/svg\"\n            alt=\"Twitter\"\n          >\n            <path\n              d=\"M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z\"\n            />\n          </svg>\n        </a>\n        <a\n          href=\"https://www.youtube.com/channel/UCbn1OgGei-DV7aSRo_HaAiw\"\n          aria-label=\"Youtube\"\n          target=\"_blank\"\n          rel=\"noopener\"\n        >\n          <svg\n            width=\"29\"\n            height=\"20\"\n            viewBox=\"0 0 29 20\"\n            fill=\"none\"\n            xmlns=\"http://www.w3.org/2000/svg\"\n            alt=\"Youtube\"\n          >\n            <path\n              fill-rule=\"evenodd\"\n              clip-rule=\"evenodd\"\n              d=\"M27.4896 1.52422C27.9301 1.96749 28.2463 2.51866 28.4068 3.12258C29.0004 5.35161 29.0004 10 29.0004 10C29.0004 10 29.0004 14.6484 28.4068 16.8774C28.2463 17.4813 27.9301 18.0325 27.4896 18.4758C27.0492 18.9191 26.5 19.2389 25.8972 19.4032C23.6778 20 14.8068 20 14.8068 20C14.8068 20 5.93586 20 3.71651 19.4032C3.11363 19.2389 2.56449 18.9191 2.12405 18.4758C1.68361 18.0325 1.36732 17.4813 1.20683 16.8774C0.613281 14.6484 0.613281 10 0.613281 10C0.613281 10 0.613281 5.35161 1.20683 3.12258C1.36732 2.51866 1.68361 1.96749 2.12405 1.52422C2.56449 1.08095 3.11363 0.76113 3.71651 0.596774C5.93586 0 14.8068 0 14.8068 0C14.8068 0 23.6778 0 25.8972 0.596774C26.5 0.76113 27.0492 1.08095 27.4896 1.52422ZM19.3229 10L11.9036 5.77905V14.221L19.3229 10Z\"\n            />\n          </svg>\n        </a>\n      </div>\n    </div>\n  </div>\n</main>\n\n<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->\n<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->\n<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->\n<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->\n<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->\n<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->\n<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->\n\n\n<router-outlet />\n"
+        },
+        {
+            "name": "CreateContributionComponent",
+            "id": "component-CreateContributionComponent-75813404712c144eee9633042332145f488d94a5fe17b95dcdc19a1ade10b9fb4dfe603db2b532530eaf8aa892d4c67f872049b34f8d62a8da87f45496c438cc",
+            "file": "src/app/modules/debate/components/create-contribution/create-contribution.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-create-contribution",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./create-contribution.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "allPoliticians",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "User[]",
+                    "decorators": []
+                },
+                {
+                    "name": "followedPoliticians",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "User[]",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "submitContributionText",
+                    "defaultValue": "new EventEmitter<string>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "submitMarkedPoliticians",
+                    "defaultValue": "new EventEmitter<User[]>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "submitSupport",
+                    "defaultValue": "new EventEmitter<boolean | null>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "contributionForm",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "FormGroup",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 20
+                },
+                {
+                    "name": "contributionText",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 24
+                },
+                {
+                    "name": "isBold",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 25
+                },
+                {
+                    "name": "isItalic",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 26
+                },
+                {
+                    "name": "isPulsing",
+                    "defaultValue": "{\n    support: false,\n    oppose: false\n  }",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 28
+                },
+                {
+                    "name": "isSupported",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean | null",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 27
+                },
+                {
+                    "name": "markedPoliticians",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "User[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 22
+                },
+                {
+                    "name": "searchTerm",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 33
+                },
+                {
+                    "name": "showSelectBox",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 32
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "handleContributionTextChange",
+                    "args": [
+                        {
+                            "name": "text",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 58,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "text",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "handleMarkedPoliticiansChange",
+                    "args": [
+                        {
+                            "name": "politicians",
+                            "type": "User[]",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 54,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "politicians",
+                            "type": "User[]",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 37,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "setSupport",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "boolean",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 43,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "boolean",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "submitContribution",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 62,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, ElementRef, Input, Output, EventEmitter, ViewChild, OnInit, AfterViewInit } from '@angular/core';\nimport { FormBuilder, FormGroup, Validators } from '@angular/forms';\nimport { User } from '../../../../core/models/user';\n\n@Component({\n  selector: 'app-create-contribution',\n  standalone: false,\n  templateUrl: './create-contribution.component.html',\n  styleUrl: './create-contribution.component.css'\n})\nexport class CreateContributionComponent implements OnInit {\n\n  @Input() allPoliticians: User[] = [];\n  @Input() followedPoliticians: User[] = [];\n\n  @Output() submitMarkedPoliticians = new EventEmitter<User[]>();\n  @Output() submitContributionText = new EventEmitter<string>();\n  @Output() submitSupport = new EventEmitter<boolean | null>();\n\n  contributionForm!: FormGroup;\n\n  markedPoliticians: User[] = [];\n\n  contributionText = '';\n  isBold = false;\n  isItalic = false;\n  isSupported: boolean | null = null;\n  isPulsing = {\n    support: false,\n    oppose: false\n  };\n  showSelectBox = false;\n  searchTerm: string = '';\n\n  constructor(private fb: FormBuilder) { }\n\n  ngOnInit() {\n    this.contributionForm = this.fb.group({\n      contributionText: ['', Validators.required],\n    });\n  }\n\n  setSupport(value: boolean) {\n    this.isSupported = value;\n\n    const key = value ? 'support' : 'oppose';\n    this.isPulsing[key] = true;\n\n    setTimeout(() => {\n      this.isPulsing[key] = false;\n    }, 300);\n  }\n\n  handleMarkedPoliticiansChange(politicians: User[]) {\n    this.markedPoliticians = politicians;\n  }\n\n  handleContributionTextChange(text: string) {\n    this.contributionText = text;\n  }\n\n  submitContribution() {\n    this.submitContributionText.emit(this.contributionText);\n    this.submitMarkedPoliticians.emit(this.markedPoliticians);\n    this.submitSupport.emit(this.isSupported);\n\n    this.markedPoliticians = [];\n    this.isSupported = null;\n    this.isBold = false;\n    this.isItalic = false;\n  }\n}\n",
+            "styleUrl": "./create-contribution.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "fb",
+                        "type": "FormBuilder",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 33,
+                "jsdoctags": [
+                    {
+                        "name": "fb",
+                        "type": "FormBuilder",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"d-flex justify-content-center px-3 py-5\">\n    <form [formGroup]=\"contributionForm\" class=\"w-100 d-flex flex-column justify-content-center\">\n        <h2 class=\"mb-3\">Sua Contribuição:</h2>\n        <div class=\"w-100 mb-3\">\n            <app-text-editor #editorComponent \n                [allPoliticians]=\"allPoliticians\"\n                [followedPoliticians]=\"followedPoliticians\" \n                (markedPoliticiansChange)=\"handleMarkedPoliticiansChange($event)\"\n                (contributionTextChange)=\"handleContributionTextChange($event)\"></app-text-editor>\n        </div>\n\n\n        <div class=\"justify-content-between d-flex flex-md-row mb-3\">\n            <button type=\"button\" class=\"like-button d-flex column-gap-2 align-items-center border-0\"\n                [ngClass]=\"{ active: isSupported === true, pulse: isPulsing.support }\" (click)=\"setSupport(true)\">\n                <i class=\"bi bi-hand-thumbs-up-fill primary-90\" style=\"font-size: 3rem;\"></i>\n                <h2 class=\"support-text pt-2 ms-1 mb-0 primary-90 fw-bold\">Apoia</h2>\n            </button>\n\n            <button type=\"button\" class=\"dislike-button d-flex column-gap-2 align-items-center border-0\"\n                [ngClass]=\"{ active: isSupported === false, pulse: isPulsing.oppose }\" (click)=\"setSupport(false)\">\n                <h2 class=\"support-text pt-2 ms-1 mb-0 primary-90 fw-bold\">Não Apoia</h2>\n                <i class=\"bi bi-hand-thumbs-down-fill primary-90\" style=\"font-size: 3rem;\"></i>\n            </button>\n        </div>\n\n        <div class=\"mb-5\">\n            <p *ngIf=\"markedPoliticians.length >= 1\" class=\"fs-6 mb-3\">Políticos marcados nesse debate</p>\n            <div class=\"d-flex flex-row flex-wrap gap-2\">\n                <div *ngFor=\"let politician of markedPoliticians\"\n                    class=\"d-flex flex-row align-items-center bg-gray me-3\">\n                    <button class=\"border-0 me-2 p-0 bg-gray\">\n                        <i class=\"bi bi-x fs-2\" (click)=\"editorComponent.removeMarkedPolitician(politician)\"></i>\n                    </button>\n                    <img class=\"rounded-circle me-1\" src={{politician.photo}} alt=\"\" style=\"height: 24px; width: 24px;\">\n                    <p class=\"mb-0 pe-3\" style=\"font-size: 0.8rem;\">{{politician.name}}\n                        ({{politician.partyPosition}})</p>\n                </div>\n            </div>\n        </div>\n\n        <div class=\"d-flex justify-content-center\">\n            <button type=\"button\" class=\"btn submit-button bg-green px-4 py-2 border-0 rounded-4 text-white\"\n                (click)=\"submitContribution()\">\n                Criar Contribuição</button>\n        </div>\n    </form>\n</div>"
+        },
+        {
+            "name": "DebateContributionComponent",
+            "id": "component-DebateContributionComponent-85472583fe00ce7fbbbce2db1a9493b5f27b7fbd9cdc58b0d5d1de778519e8f3aca1fa76339731c086a5bccd0a55a88d48d8805fdd8bcc0b651cc5e3e2db3ea4",
+            "file": "src/app/modules/debate/components/debate-contribution/debate-contribution.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-debate-contribution",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./debate-contribution.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "debateContribution",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "DebateContribution",
+                    "decorators": []
+                },
+                {
+                    "name": "small",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "boolean",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "reaction",
+                    "defaultValue": "new EventEmitter<string>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "showFullText",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 20
+                },
+                {
+                    "name": "tie",
+                    "defaultValue": "\"\"",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 19
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "onClickReact",
+                    "args": [
+                        {
+                            "name": "reaction",
+                            "type": "\"up\" | \"down\" | undefined",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 22,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "reaction",
+                            "type": "\"up\" | \"down\" | undefined",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "toggleText",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 45,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { DebateContribution } from '../../../../core/models/debate-contribution';\n\n@Component({\n  selector: 'app-debate-contribution',\n  standalone: false,\n  templateUrl: './debate-contribution.component.html',\n  styleUrl: './debate-contribution.component.css'\n})\nexport class DebateContributionComponent {\n  @Input()\n  debateContribution!: DebateContribution;\n  @Input()\n  small?: boolean = false;\n\n  @Output()\n  reaction = new EventEmitter<string>();\n\n  tie = \"\"\n  showFullText: boolean = false;\n\n  onClickReact(reaction: \"up\" | \"down\" | undefined) {\n    const currentReaction = this.debateContribution.userReaction;\n\n    if (currentReaction === reaction) {\n      this.reaction.emit(undefined);\n      if (reaction === \"up\") this.debateContribution.ups--;\n      if (reaction === \"down\") this.debateContribution.downs--;\n      this.debateContribution.userReaction = undefined;\n    } else {\n      if (currentReaction === \"up\") this.debateContribution.ups--;\n      if (currentReaction === \"down\") this.debateContribution.downs--;\n      if (reaction === \"up\") this.debateContribution.ups++;\n      if (reaction === \"down\") this.debateContribution.downs++;\n      this.reaction.emit(reaction);\n      this.debateContribution.userReaction = reaction;\n    }\n  }\n\n  get displayText(): string {\n    const text = this.debateContribution.text;\n    return this.showFullText || text.length <= 500 ? text : text.slice(0, 500) + '...';\n  }\n\n  toggleText(): void {\n    this.showFullText = !this.showFullText;\n  }\n}\n",
+            "styleUrl": "./debate-contribution.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "accessors": {
+                "displayText": {
+                    "name": "displayText",
+                    "getSignature": {
+                        "name": "displayText",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 40
+                    }
+                }
+            },
+            "templateData": "<div class=\"card\" [ngClass]=\"{ 'politic-background': debateContribution.userParty }\">\n    <div class=\"d-flex flex-row\">\n        <img *ngIf=\"debateContribution.userParty && !small\" class=\"d-none d-md-flex me-2 align-self-start\"\n            style=\"width: 5rem; margin-top: -8px;\" [src]=\"tie\" alt=\"Gravata\" />\n\n        <div class=\"d-flex flex-row w-100 justify-content-between align-items-center flex-wrap gap-3\"\n            style=\"margin-top: 16px;\">\n            <div class=\"d-flex flex-row align-items-center\">\n                <div class=\"d-flex flex-row align-items-center\">\n                    <img [src]=\"debateContribution.userPhoto\" [alt]=\"debateContribution.userName\"\n                        class=\"rounded-circle me-2\" />\n                    <div class=\"d-flex flex-column\">\n                        <span *ngIf=\"debateContribution.userParty\">\n                            {{debateContribution.userParty}} ({{debateContribution.userPosition}})\n                        </span>\n                        <div class=\"d-flex flex-row align-items-center gap-1\">\n                            <span class=\"m-0\">{{debateContribution.userName}}</span>\n                            <i class=\"bi bi-check-circle-fill\" *ngIf=\"debateContribution.userVerified\"></i>\n                        </div>\n                        <span class=\"text-muted form-text m-0\">{{debateContribution.openDate | date:\n                            'dd/MM/yyyy'}}</span>\n                    </div>\n                </div>\n            </div>\n\n            <div class=\"d-flex flex-row align-items-center gap-1\">\n                <button class=\"bg-transparent border-0\" aria-label=\"Subir contribuição\"\n                    [ngClass]=\"{ 'text-primary fw-bold': debateContribution.userReaction === 'up' }\"\n                    (click)=\"onClickReact('up')\">\n                    <i class=\"bi bi-arrow-up fs-4 me-1\"></i>\n                    <span>{{debateContribution.ups}}</span>\n                </button>\n                <button class=\"bg-transparent border-0\" aria-label=\"Descer contribuição\"\n                    [ngClass]=\"{ 'text-primary fw-bold': debateContribution.userReaction === 'down' }\"\n                    (click)=\"onClickReact('down')\">\n                    <i class=\"bi bi-arrow-down fs-4 me-1\"></i>\n                    <span>{{debateContribution.downs}}</span>\n                </button>\n            </div>\n        </div>\n    </div>\n\n    <div class=\"mt-4\">\n        <div class=\"d-flex flex-row align-items-center gap-2\">\n            <i class=\"fs-3\"\n                [ngClass]=\"debateContribution.opinion ? 'bi bi-hand-thumbs-up-fill' : 'bi bi-hand-thumbs-down-fill' \"></i>\n            <h3 class=\"m-0\">\n                {{ debateContribution.opinion ? 'Apoia' : 'Não apoia' }}\n            </h3>\n        </div>\n        <p class=\"mt-4\">\n            {{ displayText }}\n            <a *ngIf=\"debateContribution.text.length > 150\" (click)=\"toggleText()\" class=\"text-primary\"\n                style=\"cursor: pointer;\">\n                {{ showFullText ? 'Ler menos' : 'Ler mais' }}\n            </a>\n        </p>\n    </div>\n</div>"
+        },
+        {
+            "name": "DebateGroupComponent",
+            "id": "component-DebateGroupComponent-15368bbbcc713d95927ec2b867058f2cc06d1642475c036dd5702e95d43b01cfb38b353de525b060c94a86de92cbdc6644ca6c48f610f045b5f5fb5eb5eeb13c",
+            "file": "src/app/modules/debate/components/debate-group/debate-group.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-debate-group",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./debate-group.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "debateGroup",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "DebateGroup",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onSelectDebateGroup",
+                    "defaultValue": "new EventEmitter<Number>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "onSelectGroup",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 18,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { DebateGroup } from '../../../../core/models/debate-group';\n\n@Component({\n  selector: 'app-debate-group',\n  standalone: false,\n  templateUrl: './debate-group.component.html',\n  styleUrl: './debate-group.component.css'\n})\nexport class DebateGroupComponent {\n\n  @Input()\n  debateGroup?:DebateGroup;\n\n  @Output()\n  onSelectDebateGroup = new EventEmitter<Number>();\n\n  onSelectGroup(){\n    this.onSelectDebateGroup.emit(this.debateGroup?.id);\n  }\n\n}\n",
+            "styleUrl": "./debate-group.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div class=\"card\" [style.border-left]=\"'10px solid ' + (debateGroup?.color ?? '#f00')\"  (click)=\"onSelectGroup()\">\n    <div class=\"row align-items-center\">\n        <!-- Seção do texto -->\n        <div class=\"col-md-6\" >\n            <h5 class=\"fw-bold\">{{debateGroup?.name}}</h5>\n            <p class=\"text-muted\">\n                {{debateGroup?.description}}\n            </p>\n        </div>\n\n        <!-- Seção do número -->\n        <div class=\"col-md-2 text-start\">\n            <span class=\"fs-4 fw-bold\">{{debateGroup?.openDebates}}</span>\n        </div>\n\n        <!-- Seção do usuário -->\n        <div *ngIf=\"debateGroup?.openDebates !==0\" class=\"col-md-4 d-md-block d-none \">\n            <div class=\"row\">\n                <div class=\"d-flex align-items-center justify-content-center mb-2\">\n                    <img [src]=\"debateGroup?.lastContributionPhoto\" alt=\"Gabriela Silva\" class=\"rounded-circle user-image me-2\" />\n                    <p class=\"fw-semibold mb-0\">{{debateGroup?.lastContributionName}}</p>\n                </div>\n                <div class=\"d-flex align-items-center justify-content-center\">\n                        <p class=\"fw-bold\">{{debateGroup?.lastContributionDebateName}}</p>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>"
+        },
+        {
+            "name": "HomeComponent",
+            "id": "component-HomeComponent-4f4f5d4d9be60132ef7d3966bc026a38772a277efc597db2ee4d44e1d508dc4247814a517b285ab7f8b293ec57cb6c930aa728493deadd76516f79cd93592fce",
+            "file": "src/app/modules/debate/pages/home/home.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-home",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./home.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-home',\n  standalone: false,\n  templateUrl: './home.component.html',\n  styleUrl: './home.component.css'\n})\nexport class HomeComponent {\n\n}\n",
+            "styleUrl": "./home.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<p>home works!</p>\n"
+        },
+        {
+            "name": "MainTopicsComponent",
+            "id": "component-MainTopicsComponent-79438a6f664a85837d0776e43ecae4a7318bf4c1b4e0c80f56f9cab0fdeda810ed485b4dbf548e2b3e7e4959cbbce13df7aca323bc0f60988d4e3ba0718c9345",
+            "file": "src/app/modules/debate/components/main-topics/main-topics.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-main-topics",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./main-topics.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "aiText",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "AIText | null",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { AIText } from '../../../../core/models/aiext';\n\n@Component({\n  selector: 'app-main-topics',\n  standalone: false,\n  templateUrl: './main-topics.component.html',\n  styleUrl: './main-topics.component.css'\n})\nexport class MainTopicsComponent {\n  @Input()\n  aiText: AIText | null = null;\n}\n",
+            "styleUrl": "./main-topics.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div class=\"container col-12 col-md-6 col-lg-4\">\n    <h1 class=\"title fw-bold\">Pontos Principais</h1>\n    <div class=\"d-flex flex-row align-items-center mb-4\">\n        <i class=\"bi bi-stars txt-blue me-1 fs-4\"></i>\n        <p class=\"m-0\">Gerado por IA</p>\n    </div>\n\n    <div class=\"mb-4\">\n        <h2>Apoiadores:</h2>\n        <p>\n            {{aiText?.supporters}}\n        </p>\n    </div>\n\n    <div>\n        <h2>Não Apoiadores:</h2>\n        <p>\n            {{aiText?.nonSupporters}}\n        </p>\n    </div>\n</div>"
+        },
+        {
+            "name": "NavbarComponent",
+            "id": "component-NavbarComponent-ae26b5ccd29e6b43a459feb76db7fe6bb44b848288a0c69dc5b38770f4a490224211c7fd39280b29dab59e55d88955a09b9c7b47e1a2140474af677f84f947dc",
+            "file": "src/app/shared/components/navbar/navbar.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-navbar",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./navbar.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "user",
+                    "defaultValue": "{} as User",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "User",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "logo",
+                    "defaultValue": "\"\"",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                },
+                {
+                    "name": "searchInput",
+                    "defaultValue": "\"\"",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "onRedirectNotifications",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 21,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onSelectOption",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 25,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "search",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 17,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { User } from \"../../../core/models/user\";\n\n@Component({\n  selector: 'app-navbar',\n  standalone: false,\n  templateUrl: './navbar.component.html',\n  styleUrl: './navbar.component.css'\n})\nexport class NavbarComponent {\n  logo = \"\";\n  searchInput = \"\";\n\n  @Input()\n  user: User = {} as User;\n\n  search() {\n    console.log(this.searchInput);\n  }\n\n  onRedirectNotifications () {\n    window.location.href = \"/notifications\";\n  }\n\n  onSelectOption(event: Event) {\n    const target = event.target as HTMLSelectElement;\n    const page = target.value;\n\n    if (!page) {\n      return;\n    }\n\n    window.location.href = page;\n  }\n}\n",
+            "styleUrl": "./navbar.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<nav class=\"navbar navbar-expand-lg\" style=\"background-color: #14213D;\">\n    <div class=\"container-fluid d-flex justify-content-between align-items-center m-0\">\n        <div class=\"d-flex column gap-2\">\n            <a href=\"/\">\n                <img [src]=\"logo\" alt=\"logo\" width=\"50\" height=\"50\">\n            </a>\n            <div class=\"text-white fs-6 d-none d-md-block\">\n                <span class=\"d-block\">Bússola</span>\n                <span class=\"d-block\">Eleitoral</span>\n            </div>\n        </div>\n\n        <div class=\"align-items-center d-none d-lg-block \">\n            <ul class=\"list-unstyled mb-0 d-flex column-gap-4 align-items-center\">\n                <li class=\"fs-5\">\n                    <a class=\"nav-link\" href=\"#\">Início</a>\n                </li>\n                <li class=\"fs-5\">\n                    <a class=\"nav-link\" href=\"#\">Sobre</a>\n                </li>\n                <li class=\"fs-5\">\n                    <a class=\"nav-link\" href=\"#\">Notícias</a>\n                </li>\n            </ul>\n        </div>\n\n        <form class=\"d-flex align-items-center position-relative col-8 col-sm-6 col-md-3 col-lg-2\">\n            <input class=\"form-control ps-4 pe-5 py-1 rounded-pill border-0 bg-light fst-italic\" type=\"search\"\n                placeholder=\"Pesquisar\" aria-label=\"Pesquisar\" name=\"searchInput\" [(ngModel)]=\"searchInput\">\n\n            <button class=\"position-absolute btn p-0 m-0 border-0 bg-transparent\" style=\"right: 15px;\" type=\"button\" (click)=\"search()\">\n                <i class=\"bi bi-search position-absolute\"\n                style=\"top: 50%; transform: translate(-100% ,-50%); font-size: 20px; color: black;\"></i>\n            </button>\n        </form>\n\n        <div class=\"d-flex column-gap-2 align-items-center justify-content-center\">\n            <div class=\"notifications position-relative d-inline-block me-4 d-none d-md-block\">\n                <button (click)=\"onRedirectNotifications()\" class=\"btn p-0 m-0 border-0 bg-transparent\">\n                    <i class=\"bi bi-bell-fill\" style=\"font-size: 32px; color: #FCA311;\"></i>\n                </button>\n\n                <span *ngIf=\"user.unreadNotifications\"\n                    class=\"position-absolute top-0 start-100 badge rounded-circle bg-danger text-dark text-opacity-75\"\n                    style=\"transform: translate(-50%, -10%);\">\n                    {{user.unreadNotifications}}\n                </span>\n            </div>\n\n            <a class=\"d-none d-md-block\" href=\"#\">\n                <img [src]=\"user.photo\" alt=\"profilePicture\" width=\"50\" height=\"50\" class=\"rounded-circle me-2\">\n            </a>\n            <div class=\"d-none d-sm-flex align-items-center position-relative\">\n                <select class=\"form-select text-white fs-6 border-0 pe-4 me-2\" role=\"button\" (change)=\"onSelectOption($event)\">\n                    <option value=\"userName\" hidden selected>{{user.name}}</option>\n                    <option value=\"/pagina1\">Página 1</option>\n                    <option value=\"/pagina2\">Página 2</option>\n                    <option value=\"/pagina3\">Página 3</option>\n                </select>\n                <i class=\"bi bi-chevron-compact-down position-absolute end-0 me-2\"\n                    style=\"transform: scaleY(2); font-size: 16px; color: #FFF;\"></i>\n            </div>\n        </div>\n    </div>\n</nav>"
+        },
+        {
+            "name": "ShareButtonComponent",
+            "id": "component-ShareButtonComponent-6df99af65a68e4c4cbb1795c57c6660a503b47f36de7edd98e7820fbf716685d1c005884b139460e8bb7e20697e3318cae65dd09c344aaaf343b13ad4294cdf0",
+            "file": "src/app/shared/components/share-button/share-button.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-share-button",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./share-button.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "color",
+                    "defaultValue": "'#000'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "'1rem'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "modalService",
+                    "defaultValue": "inject(NgbModal)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 16,
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "open",
+                    "args": [
+                        {
+                            "name": "content",
+                            "type": "TemplateRef<any>",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 18,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "content",
+                            "type": "TemplateRef<any>",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, inject, Input, TemplateRef } from '@angular/core';\n\nimport { NgbModal } from '@ng-bootstrap/ng-bootstrap';\n\n@Component({\n  selector: 'app-share-button',\n  standalone: false,\n  templateUrl: './share-button.component.html',\n  styleUrl: './share-button.component.css'\n})\nexport class ShareButtonComponent {\n\t\n  @Input() size?: string = '1rem';\n  @Input() color?: string = '#000';\n\n  private modalService = inject(NgbModal);\n\n\topen(content: TemplateRef<any>) {\n\t\tthis.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', centered: true })\n\t}\n}\n",
+            "styleUrl": "./share-button.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<ng-template #content let-modal>\n\t<div class=\"modal-header\">\n\t\t<h4 class=\"modal-title\" id=\"modal-basic-title\">Compartilhamento</h4>\n\t\t<button type=\"button\" class=\"btn-close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\"></button>\n\t</div>\n\t<div class=\"modal-body\">\n\t\t<div class=\"d-flex flex-row gap-5 pt-3 flex-wrap justify-content-center\">\n            <a href=\"#\">\n                <i class=\"bi bi-whatsapp\" style=\"color: #198754; font-size: 3rem;\"></i>\n            </a>\n            <a href=\"#\">\n                <i class=\"bi bi-facebook\" style=\"color: #0D6EFD; font-size: 3rem;\"></i>\n            </a>\n            <a href=\"#\">\n                <i class=\"bi bi-instagram\" style=\"color: #000; font-size: 3rem;\"></i>\n            </a>\n            <a href=\"#\">\n                <i class=\"bi bi-telegram\" style=\"color: #259DE8; font-size: 3rem;\"></i>\n            </a>\n        </div>\n\t</div>\n</ng-template>\n\n<i class=\"bi bi-share-fill\" style=\"cursor: pointer;\" [style]=\"'font-size: ' + size + '; color: ' + color\" (click)=\"open(content)\"></i>\n"
+        },
+        {
+            "name": "ShareComponent",
+            "id": "component-ShareComponent-15cacb55cc4b78f20ca5e44a42b3798aa1c3eb0d79d99a6576084203f487470c4f25bc76879968134ad5aca311cb86e0e53a23b89c98b9032d8d6cf967c63481",
+            "file": "src/app/shared/components/share/share.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-share",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./share.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-share',\n  standalone: false,\n  templateUrl: './share.component.html',\n  styleUrl: './share.component.css'\n})\nexport class ShareComponent {\n\n}\n",
+            "styleUrl": "./share.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div class=\"border px-4 py-2 rounded-3\">\n    <p class=\"fs-4 fw-bold\">Compartilhamento</p>\n\n    <div class=\"d-flex flex-row gap-5 border-top pt-3 flex-wrap justify-content-center\">\n        <a href=\"#\">\n            <i class=\"bi bi-whatsapp\" style=\"color: #198754; font-size: 3rem;\"></i>\n        </a>\n        <a href=\"#\">\n            <i class=\"bi bi-facebook\" style=\"color: #0D6EFD; font-size: 3rem;\"></i>\n        </a>\n        <a href=\"#\">\n            <i class=\"bi bi-instagram\" style=\"color: #000; font-size: 3rem;\"></i>\n        </a>\n        <a href=\"#\">\n            <i class=\"bi bi-telegram\" style=\"color: #259DE8; font-size: 3rem;\"></i>\n        </a>\n    </div>\n</div>"
+        },
+        {
+            "name": "TextEditorComponent",
+            "id": "component-TextEditorComponent-406b91f85bad543b9767da0b5b6d7475d961839f0c650fcc2ad6f97db181f1e30c0755bc8b42f42af686b83f42ae6e11a762e50a07c9b98c7cc6edd6d9c32569",
+            "file": "src/app/shared/components/text-editor/text-editor.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-text-editor",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./text-editor.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "allPoliticians",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "User[]",
+                    "decorators": []
+                },
+                {
+                    "name": "followedPoliticians",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
+                    "type": "User[]",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "contributionTextChange",
+                    "defaultValue": "new EventEmitter<string>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "markedPoliticiansChange",
+                    "defaultValue": "new EventEmitter<User[]>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "dropdownPosition",
+                    "defaultValue": "{}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "literal type",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
+                },
+                {
+                    "name": "editorText",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                },
+                {
+                    "name": "markedPoliticians",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "User[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 22
+                },
+                {
+                    "name": "originalFollowedIds",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 23
+                },
+                {
+                    "name": "quillConfig",
+                    "defaultValue": "{\n    toolbar: {\n      container: [\n        ['bold', 'italic', 'politicianTag']\n      ]\n    }\n  }",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 134
+                },
+                {
+                    "name": "resizeListener",
+                    "defaultValue": "this.onWindowResize.bind(this)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 28
+                },
+                {
+                    "name": "searchTerm",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 26
+                },
+                {
+                    "name": "showSelectBox",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 25
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "addMarkedPolitician",
+                    "args": [
+                        {
+                            "name": "politician",
+                            "type": "User",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 111,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "politician",
+                            "type": "User",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "emitTextChange",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 94,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 38,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnDestroy",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 59,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 33,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onWindowResize",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 88,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "removeMarkedPolitician",
+                    "args": [
+                        {
+                            "name": "politician",
+                            "type": "User",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 120,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "politician",
+                            "type": "User",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "toggleSelectBox",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 63,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "updateDropdownPosition",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 75,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild, OnDestroy, OnInit } from '@angular/core';\nimport { ChangeDetectorRef } from '@angular/core';\nimport { User } from '../../../core/models/user';\n\n@Component({\n  selector: 'app-text-editor',\n  standalone: false,\n  templateUrl: './text-editor.component.html',\n  styleUrl: './text-editor.component.css'\n})\nexport class TextEditorComponent implements OnInit, AfterViewInit, OnDestroy {\n  dropdownPosition: { top?: string; left?: string } = {};\n\n  editorText = '';\n\n  @Input() allPoliticians: User[] = [];\n  @Input() followedPoliticians: User[] = [];\n\n  @Output() markedPoliticiansChange = new EventEmitter<User[]>();\n  @Output() contributionTextChange = new EventEmitter<string>();\n\n  markedPoliticians: User[] = [];\n  originalFollowedIds: number[] = [];\n\n  showSelectBox = false;\n  searchTerm: string = '';\n\n  resizeListener = this.onWindowResize.bind(this);\n\n  constructor(private elem: ElementRef, private cdr: ChangeDetectorRef) { }\n\n\n  ngOnInit() {\n    window.addEventListener('resize', this.resizeListener);\n    this.originalFollowedIds = this.followedPoliticians.map(p => p.id);\n  }\n\n  ngAfterViewInit() {\n    // Polling até o botão ser carregado pelo Quill\n    const interval = setInterval(() => {\n      const markBtn = this.elem.nativeElement.querySelector('.ql-politicianTag') as HTMLElement;\n\n      if (markBtn) {\n        markBtn.innerText = '@';\n\n        markBtn.addEventListener('click', (e) => {\n          e.preventDefault();\n          e.stopPropagation();\n          this.toggleSelectBox();\n        });\n\n        clearInterval(interval);\n      }\n    }, 50);\n\n    window.addEventListener('resize', this.onWindowResize.bind(this));\n  }\n\n  ngOnDestroy() {\n    window.removeEventListener('resize', this.resizeListener);\n  }\n\n  toggleSelectBox() {\n    this.showSelectBox = !this.showSelectBox;\n\n    this.cdr.detectChanges();\n\n    if (this.showSelectBox) {\n      setTimeout(() => {\n        this.updateDropdownPosition();\n      }, 0);\n    }\n  }\n\n  private updateDropdownPosition() {\n    const button = document.querySelector('.ql-politicianTag') as HTMLElement;\n\n    if (button) {\n      const rect = button.getBoundingClientRect();\n      this.dropdownPosition = {\n        top: `${rect.bottom + 5}px`,\n        left: `${rect.left}px`\n      };\n      this.cdr.detectChanges();\n    }\n  }\n\n  onWindowResize() {\n    if (this.showSelectBox) {\n      this.updateDropdownPosition();\n    }\n  }\n\n  emitTextChange(value: string) {\n    this.editorText = value;\n    this.contributionTextChange.emit(value);\n  }\n\n  get filteredPoliticians(): User[] {\n    const term = this.searchTerm.trim().toLowerCase();\n\n    if (!term) {\n      return this.followedPoliticians;\n    }\n\n    return this.allPoliticians.filter(p =>\n      p.name.toLowerCase().includes(term)\n    );\n  }\n\n  addMarkedPolitician(politician: User) {\n    this.markedPoliticians.push(politician);\n    this.markedPoliticiansChange.emit(this.markedPoliticians);\n\n    this.allPoliticians = this.allPoliticians.filter(p => p.id !== politician.id);\n    this.followedPoliticians = this.followedPoliticians.filter(p => p.id !== politician.id);\n    this.showSelectBox = false;\n  }\n\n  removeMarkedPolitician(politician: User) {\n    this.markedPoliticians = this.markedPoliticians.filter(p => p.id !== politician.id);\n    this.markedPoliticiansChange.emit(this.markedPoliticians);\n\n    if (!this.allPoliticians.find(p => p.id === politician.id)) {\n      this.allPoliticians.push(politician);\n    }\n\n    if (this.originalFollowedIds.includes(politician.id) &&\n      !this.followedPoliticians.find(p => p.id === politician.id)) {\n      this.followedPoliticians.push(politician);\n    }\n  }\n\n  quillConfig = {\n    toolbar: {\n      container: [\n        ['bold', 'italic', 'politicianTag']\n      ]\n    }\n  };\n}",
+            "styleUrl": "./text-editor.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "elem",
+                        "type": "ElementRef",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "cdr",
+                        "type": "ChangeDetectorRef",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 28,
+                "jsdoctags": [
+                    {
+                        "name": "elem",
+                        "type": "ElementRef",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "cdr",
+                        "type": "ChangeDetectorRef",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "implements": [
+                "OnInit",
+                "AfterViewInit",
+                "OnDestroy"
+            ],
+            "accessors": {
+                "filteredPoliticians": {
+                    "name": "filteredPoliticians",
+                    "getSignature": {
+                        "name": "filteredPoliticians",
+                        "type": "[]",
+                        "returnType": "User[]",
+                        "line": 99
+                    }
+                }
+            },
+            "templateData": "<quill-editor #editor class=\"w-100 h-100\" \n  [(ngModel)]=\"editorText\" \n  (ngModelChange)=\"emitTextChange($event)\"\n  placeholder=\"Escreva sua contribuição...\"\n  [modules]=\"quillConfig\">\n</quill-editor>\n\n<div *ngIf=\"showSelectBox\" class=\"dropdown-politician shadow bg-white rounded p-2\" [ngStyle]=\"dropdownPosition\"\n  (click)=\"$event.stopPropagation()\">\n\n  <input type=\"text\" name=\"search\" class=\"form-control mb-2 border-primary-50\" placeholder=\"Buscar político...\"\n    [(ngModel)]=\"searchTerm\" />\n\n  <div *ngFor=\"let politician of filteredPoliticians\" (click)=\"addMarkedPolitician(politician)\"\n    class=\"dropdown-item d-flex align-items-center gap-2 py-1\">\n    <img [src]=\"politician.photo\" alt=\"\" class=\"rounded-circle\" style=\"width: 28px; height: 28px;\">\n    <span>{{ politician.name }} ({{ politician.partyPosition }})</span>\n  </div>\n</div>\n"
+        },
+        {
+            "name": "UserInformationComponent",
+            "id": "component-UserInformationComponent-630b4a9bef2c6d232d43f2d1a8481a445eea9294f71e9e2100ad073664aff6b484625bdb904223e18aa1c006f3fa5383dc23ab74c302096619ad987e62ab8f5a",
+            "file": "src/app/shared/components/user-information/user-information.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-user-information",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./user-information.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "actionDate",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "Date",
+                    "decorators": []
+                },
+                {
+                    "name": "isHorizontal",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "'md'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21,
+                    "type": "\"sm\" | \"md\" | \"lg\"",
+                    "decorators": []
+                },
+                {
+                    "name": "user",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "User",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core'\nimport { User } from '../../../core/models/user'\n\n@Component({\n  selector: 'app-user-information',\n  standalone: false,\n  templateUrl: './user-information.component.html',\n  styleUrl: './user-information.component.css'\n})\nexport class UserInformationComponent {\n  @Input()\n  user!: User;\n\n  @Input()\n  actionDate?: Date;\n\n  @Input()\n  isHorizontal: boolean = false;\n\n  @Input()\n  size: 'sm' | 'md' | 'lg' = 'md';\n\n  get timePassed(): string | undefined {\n    if (this.actionDate) {\n      const now = new Date();\n      const diffMs = now.getTime() - this.actionDate.getTime();\n      const diffMins = Math.floor(diffMs / (1000 * 60));\n      const diffHours = Math.floor(diffMins / 60);\n      const diffDays = Math.floor(diffHours / 24);\n      const diffMonths = now.getMonth() - this.actionDate.getMonth() +\n        (12 * (now.getFullYear() - this.actionDate.getFullYear()));\n\n      if (diffMins < 60) {\n        return `Há ${diffMins} minuto${diffMins === 1 ? '' : 's'}`;\n      }\n      if (diffHours < 24) {\n        return `Há ${diffHours} hora${diffHours === 1 ? '' : 's'}`;\n      }\n      if (diffDays < 30) {\n        return `Há ${diffDays} dia${diffDays === 1 ? '' : 's'}`;\n      }\n      if (now.getFullYear() === this.actionDate.getFullYear()) {\n        return `Há ${diffMonths} m${diffMonths === 1 ? 'ê' : 'e'}s${diffMonths === 1 ? '' : 'es'}`;\n      }\n\n      return this.actionDate.toLocaleDateString('pt-BR', {\n        year: 'numeric',\n        month: '2-digit',\n        day: '2-digit',\n      });\n    }\n\n    return undefined;\n  }\n}\n",
+            "styleUrl": "./user-information.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "accessors": {
+                "timePassed": {
+                    "name": "timePassed",
+                    "getSignature": {
+                        "name": "timePassed",
+                        "type": "",
+                        "returnType": "string | undefined",
+                        "line": 23
+                    }
+                }
+            },
+            "templateData": "<a href=\"\" class=\"text-decoration-none text-dark\" [ngClass]=\"{'md': size === 'md', 'lg': size === 'lg', 'sm': size === 'sm'}\">\n    <div class=\"d-flex flex-row align-items-center\">\n        <img [src]=\"user.photo\" [alt]=\"user.name\" class=\"rounded-circle me-2\"/>\n        <div class=\"d-flex\" [ngClass]=\"{'flex-row gap-4': isHorizontal, 'flex-column': !isHorizontal}\">\n            <p *ngIf=\"user.partyId\">\n                {{user.partyName}} ({{user.partyPosition}})\n            </p>\n            <div class=\"d-flex flex-row align-items-center gap-1\">\n                <p> {{isHorizontal ? 'Autor:' : ''}} {{user.name}}</p>\n                <i class=\"bi bi-check-circle-fill\" *ngIf=\"user.verified\"></i>\n            </div>\n            <div *ngIf=\"actionDate\" class=\"d-flex flex-row align-items-center gap-1\">\n                <i *ngIf=\"isHorizontal\" class=\"bi bi-calendar3\"></i>\n                <span class=\"text-muted form-text m-0\">{{timePassed}}</span>\n            </div>\n        </div>\n    </div>\n</a>"
+        }
+    ],
+    "modules": [
+        {
+            "name": "AppModule",
+            "id": "module-AppModule-810094a79f3686eda1b275f3222fa67486ad549a86a74bea0fdb7467a18bdbd73874de3438d6c47b907d37b3a57717d21bd47232c6b5c44ad0e7b89d0641bbe1",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/app.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\n\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\nimport { NgbModule } from '@ng-bootstrap/ng-bootstrap';\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    AppRoutingModule,\n    NgbModule,\n  ],\n  providers: [],\n  bootstrap: [AppComponent]\n})\nexport class AppModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "AppRoutingModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "AppRoutingModule",
+            "id": "module-AppRoutingModule-78922b3ae99d2c5249b333980bd5afde1b120b2cc6fedfd41b8b2cc90f279797cb4b22e183bf7e1d1dfab8c6100e77e7812c110234d81f866f544f28a3e18b15",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/app-routing.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { RouterModule, Routes } from '@angular/router';\n\nconst routes: Routes = [];\n\n@NgModule({\n  imports: [RouterModule.forRoot(routes)],\n  exports: [RouterModule]\n})\nexport class AppRoutingModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "DebateModule",
+            "id": "module-DebateModule-58ffb41f6a1a4505bd148b1bacd10a92dc19553804fc21783331a312843e89d23f640b80e72298b941524ecb769a9475d2528927406fb1b615f604e357efc23a",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/modules/debate/debate.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\n\nimport { DebateRoutingModule } from './debate-routing.module';\nimport { HomeComponent } from './pages/home/home.component';\nimport { DebateGroupComponent } from './components/debate-group/debate-group.component';\nimport { CreateContributionComponent } from './components/create-contribution/create-contribution.component';\nimport { MainTopicsComponent } from './components/main-topics/main-topics.component';\nimport { DebateContributionComponent } from './components/debate-contribution/debate-contribution.component';\nimport { SharedModule } from '../../shared/shared.module';\n\n\n@NgModule({\n  declarations: [\n    HomeComponent,\n    DebateGroupComponent,\n    CreateContributionComponent,\n    MainTopicsComponent,\n    DebateContributionComponent\n  ],\n  imports: [\n    CommonModule,\n    DebateRoutingModule,\n    FormsModule,\n    ReactiveFormsModule,\n    SharedModule\n  ]\n})\nexport class DebateModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "CreateContributionComponent"
+                        },
+                        {
+                            "name": "DebateContributionComponent"
+                        },
+                        {
+                            "name": "DebateGroupComponent"
+                        },
+                        {
+                            "name": "HomeComponent"
+                        },
+                        {
+                            "name": "MainTopicsComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "DebateRoutingModule"
+                        },
+                        {
+                            "name": "SharedModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "DebateRoutingModule",
+            "id": "module-DebateRoutingModule-1ea4a9312569f0d4ed079c33032d7c96d3c39a162ddda0ae0c8cbe7ea810cc790b4ce561bddafab8de734c3d3d6940af40762bbcaf7d0d9d3b599cd01c283d7c",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/modules/debate/debate-routing.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { RouterModule, Routes } from '@angular/router';\n\nconst routes: Routes = [];\n\n@NgModule({\n  imports: [RouterModule.forChild(routes)],\n  exports: [RouterModule]\n})\nexport class DebateRoutingModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "SharedModule",
+            "id": "module-SharedModule-261f4fc74f62a9d462ece977f3cd486c7cb75e8e781e43d3ffb919e83406c21a7d53d19a210690b1f53574c6be12bdba4b8d218cb0cc18fdc15b370999b16ace",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/shared/shared.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { FormsModule } from '@angular/forms';\nimport { QuillModule } from 'ngx-quill'\n\nimport { NavbarComponent } from './components/navbar/navbar.component';\nimport { ShareComponent } from './components/share/share.component';\nimport { ShareButtonComponent } from './components/share-button/share-button.component';\nimport { UserInformationComponent } from './components/user-information/user-information.component';\nimport { TextEditorComponent } from './components/text-editor/text-editor.component';\n\n@NgModule({\n  declarations: [\n    NavbarComponent,\n    ShareComponent,\n    ShareButtonComponent,\n    UserInformationComponent,\n    TextEditorComponent\n  ],\n  imports: [\n    CommonModule,\n    FormsModule,\n    QuillModule.forRoot()\n  ],\n  exports: [\n    NavbarComponent,\n    ShareButtonComponent,\n    ShareComponent,\n    UserInformationComponent,\n    TextEditorComponent\n  ]\n})\nexport class SharedModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "NavbarComponent"
+                        },
+                        {
+                            "name": "ShareButtonComponent"
+                        },
+                        {
+                            "name": "ShareComponent"
+                        },
+                        {
+                            "name": "TextEditorComponent"
+                        },
+                        {
+                            "name": "UserInformationComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "NavbarComponent"
+                        },
+                        {
+                            "name": "ShareButtonComponent"
+                        },
+                        {
+                            "name": "ShareComponent"
+                        },
+                        {
+                            "name": "TextEditorComponent"
+                        },
+                        {
+                            "name": "UserInformationComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
+    "miscellaneous": [],
+    "routes": {
+        "name": "<root>",
+        "kind": "module",
+        "className": "AppModule",
+        "children": [
+            {
+                "name": "routes",
+                "filename": "src/app/app-routing.module.ts",
+                "module": "AppRoutingModule",
+                "children": [],
+                "kind": "module"
+            }
+        ]
+    },
+    "coverage": {
+        "count": 0,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "src/app/app.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/models/aiext.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "AIText",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/models/debate-contribution.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "DebateContribution",
+                "coveragePercent": 0,
+                "coverageCount": "0/13",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/models/debate-group.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "DebateGroup",
+                "coveragePercent": 0,
+                "coverageCount": "0/9",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/models/user.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "User",
+                "coveragePercent": 0,
+                "coverageCount": "0/9",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/debate/components/create-contribution/create-contribution.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CreateContributionComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/21",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/debate/components/debate-contribution/debate-contribution.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "DebateContributionComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/8",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/debate/components/debate-group/debate-group.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "DebateGroupComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/debate/components/main-topics/main-topics.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "MainTopicsComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/debate/pages/home/home.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "HomeComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/navbar/navbar.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "NavbarComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/share-button/share-button.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ShareButtonComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/share/share.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ShareComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/text-editor/text-editor.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TextEditorComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/23",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/user-information/user-information.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "UserInformationComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            }
+        ]
+    }
+}

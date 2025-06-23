@@ -1,0 +1,103 @@
+<div class="container">
+    <form>
+        <div class="d-flex flex-row justify-content-between flex-wrap border-bottom border-black mb-3">
+            <h2 class="fw-bold me-4">Debates</h2>
+            <div class="d-flex gap-4">
+                <button type="button" (click)="submit()" class="btn btn-primary rounded-pill px-5 mb-2">Filtrar</button>
+                <button class="btn btn-success rounded-pill px-4 mb-2">Criar debate</button>
+            </div>
+        </div>
+
+        <div class="d-flex align-items-center gap-3 gap-sm-4 mb-3 col-12 col-md-10 col-lg-7">
+            <p class="fs-4 m-0">Pesquisa</p>
+            <div class="position-relative flex-grow-1">
+                <input class="form-control bg-gray ps-4 pe-5 py-1 rounded-pill border-primary-80 fst-italic w-100"
+                    type="search" placeholder="Pesquisar" aria-label="Pesquisar" name="searchInput"
+                    [(ngModel)]="searchInput" />
+
+                <button class="position-absolute btn p-0 m-0 border-0 bg-transparent"
+                    style="right: 15px; top: 50%; transform: translateY(-50%);" type="button" (click)="search()">
+                    <i class="bi bi-search" style="font-size: 20px; color: black;"></i>
+                </button>
+            </div>
+        </div>
+
+        <button type="button" class="d-flex flex-row align-items-center gap-2 border-0 p-0 mb-3"
+            (click)="toggleAdvanced()">
+            <p class="fs-4 m-0 text-start">Filtro Avançado</p>
+            <i class="bi fs-1" [ngClass]="isAdvanced ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+        </button>
+
+        <div *ngIf="isAdvanced" >
+            <div class="d-flex flex-row flex-wrap gap-4 mb-3">
+                <div class="d-flex flex-row align-items-center gap-3">
+                    <p class="m-0">Tópico</p>
+                    <div class="position-relative">
+                        <select name="select-topics"
+                            class="form-select custom-select bg-gray pe-5 border-primary-80 rounded-pill ps-3 py-1"
+                            [(ngModel)]="selectedTopic">
+                            <option *ngFor="let topic of topics" [ngValue]="topic" class="select-item">{{topic.name}}
+                            </option>
+                        </select>
+                        <i class="bi bi-chevron-down position-absolute top-50 translate-middle-y end-0 me-3"></i>
+                    </div>
+                </div>
+
+                <app-selection-date-range [isHorizontal]="true" (startDateChange)="handleStartDateChange($event)"
+                    (endDateChange)="handleEndDateChange($event)"></app-selection-date-range>
+
+                <div class="d-flex flex-row align-items-center gap-3 position-relative">
+                    <p class="m-0">Palavras-chave</p>
+
+                    <div class="position-relative">
+                        <button class="btn border-primary-80 bg-gray rounded-pill ps-3 py-1 pe-5 w-100 text-start"
+                            (click)="toggleSelectBox()" type="button">
+                            Selecione uma palavra
+                            <i class="bi bi-chevron-down position-absolute top-50 translate-middle-y end-0 me-3"></i>
+                        </button>
+
+                        <ul *ngIf="showSelectBox"
+                            class="list-group position-absolute bg-white border border-primary-80 rounded-2 mt-1 w-100 z-3"
+                            style="overflow-y: auto;">
+                            <li *ngFor="let keyword of keywords" class="list-group-item list-group-item-action"
+                                (click)="addMarkedKeyword(keyword)">
+                                {{ keyword.name }}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+
+                <div class="d-flex flex-row align-items-center gap-3">
+                    <p class="m-0">Mínimo de contribuições</p>
+                    <div class="position-relative">
+                        <select name="select-contributions"
+                            class="form-select custom-select bg-gray pe-5 border-primary-80 rounded-4 ps-3 py-1"
+                            [(ngModel)]="minContributions">
+                            <option [value]="1" class="select-item">1</option>
+                            <option [value]="10" class="select-item">10</option>
+                            <option [value]="50" class="select-item">50</option>
+                            <option [value]="100" class="select-item">100</option>
+                            <option [value]="500" class="select-item">500</option>
+                            <option [value]="1000" class="select-item">1000</option>
+                        </select>
+                        <i class="bi bi-chevron-down position-absolute top-50 translate-middle-y end-0 me-3"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex flex-wrap gap-3 mt-4">
+                    <div *ngFor="let keyword of markedKeywords" class="bg-secondary-80 rounded-5 ps-2 pe-1 py-1">
+                        <div class="d-flex align-items-center gap-2 ms-2">
+                            {{keyword.name}}
+                            <button class="btn border-0 p-0" (click)="removeMarkedKeyword(keyword)">
+                                <i class="bi bi-x fs-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+    </form>
+</div>

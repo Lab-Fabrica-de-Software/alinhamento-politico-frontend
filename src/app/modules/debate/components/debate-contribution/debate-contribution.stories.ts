@@ -11,7 +11,7 @@ const meta: Meta<DebateContributionComponent> = {
 export default meta;
 type Story = StoryObj<DebateContributionComponent>;
 
-export const Contribuição: Story = {
+export const Contribution: Story = {
   args: {
     debateContribution: {
       id: 1,
@@ -28,7 +28,7 @@ export const Contribuição: Story = {
   },
 };
 
-export const ContribuiçãoPolítico: Story = {
+export const PoliticContribution: Story = {
   args: {
     tie: "/tie.png",
     debateContribution: {

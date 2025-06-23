@@ -1,0 +1,17 @@
+.title {
+    font-size: 2rem !important;
+}
+
+.category-text {
+    font-size: 0.6rem;
+}
+
+.border-primary-80 {
+    border-color: rgba(20, 33, 61, 0.8);
+    border-width: 1px !important;
+    border-style: solid;
+}
+
+.bg-secondary-80 {
+    background-color: rgba(252, 163, 17, 0.8);
+}

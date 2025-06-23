@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MainTopicsComponent } from './main-topics.component';
+import { AiTextComponent } from './ai-text.component';
 
-describe('MainTopicsComponent', () => {
-  let component: MainTopicsComponent;
-  let fixture: ComponentFixture<MainTopicsComponent>;
+describe('AiTextComponent', () => {
+  let component: AiTextComponent;
+  let fixture: ComponentFixture<AiTextComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MainTopicsComponent]
+      declarations: [AiTextComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(MainTopicsComponent);
+    fixture = TestBed.createComponent(AiTextComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -8,7 +8,6 @@ import { HomeComponent } from './pages/home/home.component';
 import { DebateGroupComponent } from './components/debate-group/debate-group.component';
 import { DebateFilterComponent } from './components/debate-filter/debate-filter.component';
 import { DebateContributionComponent } from './components/debate-contribution/debate-contribution.component';
-import { AiTextComponent } from './components/ai-text/ai-text.component';
 
 
 @NgModule({
@@ -17,7 +16,6 @@ import { AiTextComponent } from './components/ai-text/ai-text.component';
     DebateGroupComponent,
     DebateFilterComponent,
     DebateContributionComponent,
-    AiTextComponent
   ],
   imports: [
     CommonModule,

@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { action } from '@storybook/addon-actions';
 
 const meta: Meta<AiTextComponent> = {
-    title: 'modules/debate/components/AiText',
+    title: 'shared/components/Ai-Text',
     component: AiTextComponent,
     excludeStories: /.*Data$/,
     tags: ['autodocs'],

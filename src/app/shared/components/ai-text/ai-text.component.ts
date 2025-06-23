@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { AiText } from '../../../../core/models/ai-text';
-import { AiFeedback } from '../../../../core/models/ai-feedback';
+import { AiText } from '../../../core/models/ai-text';
+import { AiFeedback } from '../../../core/models/ai-feedback';
 
 @Component({
   selector: 'app-ai-text',

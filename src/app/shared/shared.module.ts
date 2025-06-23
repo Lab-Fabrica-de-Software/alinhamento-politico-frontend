@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgClass } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import { ShareComponent } from './components/share/share.component';
@@ -8,6 +8,7 @@ import { UserInformationComponent } from './components/user-information/user-inf
 import { KeyWordsComponent } from './components/key-words/key-words.component';
 import { SelectionDateRangeComponent } from './components/selection-date-range/selection-date-range.component';
 import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
+import { AiTextComponent } from './components/ai-text/ai-text.component';
 
 @NgModule({
   declarations: [
@@ -16,11 +17,13 @@ import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
     ShareButtonComponent,
     UserInformationComponent,
     KeyWordsComponent,
-    SelectionDateRangeComponent
+    SelectionDateRangeComponent,
+    AiTextComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
+    NgClass,
     NgbDatepickerModule
   ],
   exports: [
@@ -29,7 +32,8 @@ import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
     ShareComponent,
     UserInformationComponent,
     KeyWordsComponent,
-    SelectionDateRangeComponent
+    SelectionDateRangeComponent,
+    AiTextComponent
   ]
 })
 export class SharedModule { }

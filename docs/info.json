@@ -1,0 +1,17 @@
+{
+  "images": [],
+  "title": " Alinhamento Político",
+  "description": "Uma plataforma digital que conecta eleitores e políticos, permitindo o posicionamento em temas relevantes e destacando o nível de alinhamento entre ambos.",
+  "status": "in-progress",
+  "stacks": [
+    "angular",
+    "typescript",
+    "storybook"
+  ],
+  "links": [
+    {
+      "name": "Github",
+      "url": "https://github.com/Lab-Fabrica-de-Software/alinhamento-politico-frontend"
+    }
+  ]
+}

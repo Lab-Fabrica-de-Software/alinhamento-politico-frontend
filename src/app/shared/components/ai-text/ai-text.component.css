@@ -1,0 +1,30 @@
+.title {
+    font-size: 2rem;
+}
+
+.txt-blue {
+    color: #0D6EFD;
+}
+
+.like-button, .dislike-button {
+    background: none;
+}
+
+.like-button:hover {
+    color: #198754;
+}
+
+.dislike-button:hover {
+    color: #DC3545;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1040;
+}
+
+textarea {
+  resize: none;
+}

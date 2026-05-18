@@ -1,0 +1,57 @@
+<div class="d-flex gap-4"
+     [ngClass]="!isHorizontal ? 'flex-column' : 'flex-row flex-wrap' ">
+  
+  <!-- Campo de Início -->
+  <div [ngClass]="{'d-flex flex-row align-items-center gap-4' : isHorizontal, 'w-100': !isHorizontal }">
+    <label for="startDate"
+           [ngClass]="!isHorizontal ? 'fs-2 fw-bold ms-2 mb-2' : 'fs-6 fw-normal' ">
+      Início
+    </label>
+    <div class="w-100 position-relative flex-grow-1">
+      <input
+        class="form-control rounded-pill border-primary-80"
+        name="startDate"
+        [(ngModel)]="startDate"
+        [minDate]="isHorizontal ? minStartDate : today"
+        [maxDate]="maxStartDate!"
+        ngbDatepicker
+        #start="ngbDatepicker"
+        readonly
+        (click)="start.toggle()"
+        (ngModelChange)="onStartDateChange()"
+        [ngClass]="{'py-1 bg-gray' : isHorizontal, 'py-2 bg-light': !isHorizontal }"
+      />
+      <div class="position-absolute top-50 end-0 translate-middle-y pe-3">
+        <i class="bi bi-calendar3 fs-5"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Campo de Término -->
+  <div [ngClass]="{'d-flex flex-row align-items-center gap-4' : isHorizontal, 'w-100': !isHorizontal }">
+    <label for="endDate"
+           [ngClass]="!isHorizontal ? 'fs-2 fw-bold ms-2 mb-2' : 'fs-6 fw-normal' ">
+      Término
+    </label>
+    <div class="form-container position-relative flex-grow-1">
+      <input
+        class="form-control rounded-pill border-primary-80"
+        name="endDate"
+        [(ngModel)]="endDate"
+        [minDate]="minEndDate!"
+        [maxDate]="maxEndDate!"
+        [disabled]="!startDate"
+        ngbDatepicker
+        #end="ngbDatepicker"
+        readonly
+        (click)="end.toggle()"
+        (ngModelChange)="onEndDateChange()"
+        [ngClass]="{'py-1 bg-gray' : isHorizontal, 'py-2 bg-light': !isHorizontal }"
+      />
+      <div class="position-absolute top-50 end-0 translate-middle-y pe-3">
+        <i class="bi bi-calendar3 fs-5"></i>
+      </div>
+    </div>
+  </div>
+
+</div>

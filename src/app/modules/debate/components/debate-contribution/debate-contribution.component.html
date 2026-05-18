@@ -1,0 +1,59 @@
+<div class="card" [ngClass]="{ 'politic-background': debateContribution.userParty }">
+    <div class="d-flex flex-row">
+        <img *ngIf="debateContribution.userParty && !small" class="d-none d-md-flex me-2 align-self-start"
+            style="width: 5rem; margin-top: -8px;" [src]="tie" alt="Gravata" />
+
+        <div class="d-flex flex-row w-100 justify-content-between align-items-center flex-wrap gap-3"
+            style="margin-top: 16px;">
+            <div class="d-flex flex-row align-items-center">
+                <div class="d-flex flex-row align-items-center">
+                    <img [src]="debateContribution.userPhoto" [alt]="debateContribution.userName"
+                        class="rounded-circle me-2" />
+                    <div class="d-flex flex-column">
+                        <span *ngIf="debateContribution.userParty">
+                            {{debateContribution.userParty}} ({{debateContribution.userPosition}})
+                        </span>
+                        <div class="d-flex flex-row align-items-center gap-1">
+                            <span class="m-0">{{debateContribution.userName}}</span>
+                            <i class="bi bi-check-circle-fill" *ngIf="debateContribution.userVerified"></i>
+                        </div>
+                        <span class="text-muted form-text m-0">{{debateContribution.openDate | date:
+                            'dd/MM/yyyy'}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex flex-row align-items-center gap-1">
+                <button class="bg-transparent border-0" aria-label="Subir contribuição"
+                    [ngClass]="{ 'text-primary fw-bold': debateContribution.userReaction === 'up' }"
+                    (click)="onClickReact('up')">
+                    <i class="bi bi-arrow-up fs-4 me-1"></i>
+                    <span>{{debateContribution.ups}}</span>
+                </button>
+                <button class="bg-transparent border-0" aria-label="Descer contribuição"
+                    [ngClass]="{ 'text-primary fw-bold': debateContribution.userReaction === 'down' }"
+                    (click)="onClickReact('down')">
+                    <i class="bi bi-arrow-down fs-4 me-1"></i>
+                    <span>{{debateContribution.downs}}</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <div class="d-flex flex-row align-items-center gap-2">
+            <i class="fs-3"
+                [ngClass]="debateContribution.opinion ? 'bi bi-hand-thumbs-up-fill' : 'bi bi-hand-thumbs-down-fill' "></i>
+            <h3 class="m-0">
+                {{ debateContribution.opinion ? 'Apoia' : 'Não apoia' }}
+            </h3>
+        </div>
+        <p class="mt-4">
+            {{ displayText }}
+            <a *ngIf="debateContribution.text.length > 150" (click)="toggleText()" class="text-primary"
+                style="cursor: pointer;">
+                {{ showFullText ? 'Ler menos' : 'Ler mais' }}
+            </a>
+        </p>
+    </div>
+</div>

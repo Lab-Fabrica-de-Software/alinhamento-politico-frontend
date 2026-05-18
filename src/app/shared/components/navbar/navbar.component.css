@@ -1,0 +1,18 @@
+.nav-link {
+    color: #E5E5E5;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    color: #adb5bd;
+}
+
+.form-select {
+    background-color: #14213d;
+    --bs-form-select-bg-img: none !important;
+}
+
+.notifications:hover {
+    transform: scale(1.1);
+}
+

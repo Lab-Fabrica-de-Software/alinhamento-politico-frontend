@@ -7,7 +7,7 @@ export const ActionsData = {
 };
 
 const meta: Meta<DebateGroupComponent> = {
-  title: 'modules/debate/components/Debate-Component',
+  title: 'modules/debate/components/Debate-Group',
   component: DebateGroupComponent,
   excludeStories: /.*Data$/,
   tags: ['autodocs'],
@@ -19,7 +19,7 @@ const meta: Meta<DebateGroupComponent> = {
 export default meta;
 type Story = StoryObj<DebateGroupComponent>;
 
-export const GrupoSaúde: Story = {
+export const HealthGroup: Story = {
     args: {
         debateGroup:{
             id: 1,
@@ -34,7 +34,7 @@ export const GrupoSaúde: Story = {
      },
 };
 
-export const GrupoEducação: Story = {
+export const EducationGroup: Story = {
     args: {
         debateGroup:{
             id: 2,

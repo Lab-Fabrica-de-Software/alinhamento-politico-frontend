@@ -7,6 +7,7 @@ import { PollFilterComponent } from './components/poll-filter/poll-filter.compon
 import { PollFormComponent } from './components/poll-form/poll-form.component';
 import { PollResponseComponent } from './components/poll-response/poll-response.component';
 import { PollResultsComponent } from './components/poll-results/poll-results.component';
+import { PollListComponent } from './components/poll-list/poll-list.component';
 
 
 @NgModule({
@@ -15,7 +16,7 @@ import { PollResultsComponent } from './components/poll-results/poll-results.com
     PollFormComponent,
     PollResponseComponent,
     PollResultsComponent,
-
+    PollListComponent,
   ],
   imports: [
     CommonModule,  // *ngIf, *ngFor
@@ -27,7 +28,7 @@ import { PollResultsComponent } from './components/poll-results/poll-results.com
     PollFormComponent,
     PollResponseComponent,
     PollResultsComponent,
-
+    PollListComponent,
   ]
 })
 export class PollModule { }

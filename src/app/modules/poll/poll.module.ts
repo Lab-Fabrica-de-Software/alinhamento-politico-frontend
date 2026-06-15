@@ -6,6 +6,7 @@ import { PollRoutingModule } from './poll-routing.module';
 import { PollFilterComponent } from './components/poll-filter/poll-filter.component';
 import { PollFormComponent } from './components/poll-form/poll-form.component';
 import { PollResponseComponent } from './components/poll-response/poll-response.component';
+import { PollResultsComponent } from './components/poll-results/poll-results.component';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { PollResponseComponent } from './components/poll-response/poll-response.
     PollFilterComponent,
     PollFormComponent,
     PollResponseComponent,
+    PollResultsComponent,
 
   ],
   imports: [
@@ -24,6 +26,8 @@ import { PollResponseComponent } from './components/poll-response/poll-response.
     PollFilterComponent,
     PollFormComponent,
     PollResponseComponent,
+    PollResultsComponent,
+
   ]
 })
 export class PollModule { }

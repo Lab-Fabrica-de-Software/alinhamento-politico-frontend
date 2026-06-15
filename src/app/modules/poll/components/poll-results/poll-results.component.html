@@ -1,0 +1,68 @@
+<div class="container py-4" *ngIf="poll">
+
+  <button class="btn btn-link text-dark text-decoration-none ps-0 mb-3" (click)="onBack()">
+    &lsaquo; Voltar
+  </button>
+
+  <!-- Card da enquete -->
+  <div class="poll-card mb-3">
+    <div class="d-flex">
+      <div class="poll-card__bar"></div>
+      <div class="poll-card__body w-100 p-3">
+
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <span class="poll-card__category">{{ poll.category.name }}</span>
+          <button class="btn btn-link p-0 text-muted">
+            <i class="bi bi-share"></i>
+          </button>
+        </div>
+
+        <h5 class="poll-card__title fw-bold mb-2">{{ poll.title }}</h5>
+        <p class="poll-card__description text-muted mb-3">{{ poll.description }}</p>
+
+        <div class="d-flex align-items-center gap-4">
+          <span class="poll-card__meta">
+            <i class="bi bi-clock me-1"></i>
+            {{ getDaysRemaining(poll.expiresAt) }} dias restantes
+          </span>
+          <span class="poll-card__meta">
+            <i class="bi bi-people me-1"></i>
+            {{ poll.totalVotes | number }} votos
+          </span>
+          <span class="poll-card__meta">
+            <i class="bi bi-person-badge me-1"></i>
+            {{ getTotalPoliticians() }} políticos votaram
+          </span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Resultado -->
+  <div class="border rounded-4 p-4">
+
+    <p class="fw-semibold mb-4">Resultado da enquete:</p>
+
+    <div *ngFor="let vote of poll.votes; let i = index; trackBy: trackByAnswer" class="mb-4">
+      <div class="d-flex justify-content-between mb-1">
+        <span class="result-label">{{ vote.answer }}</span>
+        <span class="result-percentage">{{ getPercentage(vote.count) }}%</span>
+      </div>
+
+
+      <div class="progress-track">
+        <div class="progress-fill" [style.width.%]="getPercentage(vote.count)"
+          [style.background-color]="getBarColor(vote)"></div>
+      </div>
+
+      <div class="d-flex gap-4 mt-1">
+        <span class="result-count">{{ vote.count | number }} votos</span>
+        <span class="result-count">{{ getPoliticiansPerVote(vote) }} Políticos votaram</span>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

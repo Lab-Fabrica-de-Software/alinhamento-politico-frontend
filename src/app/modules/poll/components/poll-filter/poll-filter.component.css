@@ -1,0 +1,21 @@
+.filter-btn {
+  border-radius: 99px;
+  border: 1px solid #dee2e6;
+  background: #fff;
+  color: #6c757d;
+  font-size: 0.875rem;
+  padding: 6px 18px;
+  transition: all 0.15s;
+
+  &:hover {
+    border-color: #adb5bd;
+    color: #212529;
+  }
+
+  &.active {
+    background: #0D6EFD;
+    border-color: #0D6EFD;
+    color: #fff;
+    font-weight: 500;
+  }
+}

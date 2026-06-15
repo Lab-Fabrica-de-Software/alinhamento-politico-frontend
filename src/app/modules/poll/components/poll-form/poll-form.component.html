@@ -1,0 +1,73 @@
+<div class="container py-4">
+
+  <div class="d-flex align-items-center justify-content-between mb-4">
+    <button class="btn btn-link text-dark text-decoration-none ps-0" (click)="onBack()">
+      &lsaquo; Voltar
+    </button>
+    <h2 class="fw-bold mb-0">Criar Enquete</h2>
+    <div style="width: 80px;"></div>
+  </div>
+
+  <!-- Mensagem de sucesso -->
+  <div *ngIf="submitted" class="alert alert-success text-center">
+    Enquete criada com sucesso!
+  </div>
+
+  <!-- Formulário -->
+  <div *ngIf="!submitted" class="border rounded-4 p-4">
+
+    <div class="mb-3">
+      <label class="form-label">Título da enquete:</label>
+      <input type="text" class="form-control rounded-pill" [(ngModel)]="form.title" name="title"
+        style="background-color: #EAEBEC;" />
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label">Descrição / contexto:</label>
+      <textarea class="form-control rounded-4" [(ngModel)]="form.description" name="description" rows="4"
+        style="background-color: #EAEBEC;"></textarea>
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-6">
+        <label class="form-label">Opções de resposta:</label>
+        <div *ngFor="let answer of answers" class="d-flex align-items-center gap-2 mb-2">
+
+          <span class="form-control rounded-pill text-center answer-label">
+            {{ answer }}
+          </span>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mb-4">
+          <label class="form-label">Categoria:</label>
+          <select class="form-select rounded-pill" [(ngModel)]="form.category" name="category">
+            <option [ngValue]="null" disabled></option>
+            <option *ngFor="let cat of categories" [ngValue]="cat">
+              {{ cat.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="mb-2">
+          <label class="form-label">Data de validade:</label>
+          <input type="date" class="form-control rounded-pill" [(ngModel)]="form.expiresAt" name="expiresAt" />
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Botões -->
+    <div class="d-flex gap-3 mt-4">
+      <button class="btn btn-success rounded-pill px-4" (click)="onSubmit()">
+        Criar enquete
+      </button>
+      <button class="btn btn-outline-danger rounded-pill px-4 cancel-btn" (click)="onCancel()">
+        Cancelar
+      </button>
+    </div>
+
+  </div>
+</div>

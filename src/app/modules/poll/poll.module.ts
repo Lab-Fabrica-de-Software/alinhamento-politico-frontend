@@ -4,11 +4,13 @@ import { FormsModule } from '@angular/forms';
 
 import { PollRoutingModule } from './poll-routing.module';
 import { PollFilterComponent } from './components/poll-filter/poll-filter.component';
+import { PollFormComponent } from './components/poll-form/poll-form.component';
 
 
 @NgModule({
   declarations: [
     PollFilterComponent,
+    PollFormComponent,
 
   ],
   imports: [
@@ -18,6 +20,7 @@ import { PollFilterComponent } from './components/poll-filter/poll-filter.compon
   ],
   exports: [
     PollFilterComponent,
+    PollFormComponent,
   ]
 })
 export class PollModule { }

@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="d-flex flex-row justify-content-between flex-wrap border-bottom border-black mb-3">
+
+    <h2 class="fw-bold me-4">Participe das Enquetes</h2>
+
+    <div class="d-flex gap-4">
+      <button class="btn btn-success rounded-pill px-4 mb-2" (click)="openForm.emit()">
+        Criar enquete
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- Filtro por categoria -->
+  <div class="d-flex flex-wrap gap-2">
+
+    <button
+      class="btn filter-btn"
+      [class.active]="activeCategoryId === null"
+      (click)="selectCategory(null)"
+    >
+      Todos
+    </button>
+
+    <button
+      *ngFor="let category of categories; trackBy: trackById"
+      class="btn filter-btn"
+      [class.active]="activeCategoryId === category.id"
+      (click)="selectCategory(category.id)"
+    >
+      {{ category.name }}
+    </button>
+
+  </div>
+
+</div>

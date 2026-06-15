@@ -1,0 +1,68 @@
+<div class="container py-4" *ngIf="poll">
+
+  <!-- Botão voltar -->
+  <button class="btn btn-link text-dark text-decoration-none ps-0 mb-3" (click)="onBack()">
+    &lsaquo; Voltar
+  </button>
+
+  <!-- Mensagem de sucesso -->
+  <div *ngIf="voted" class="alert alert-success text-center">
+    Voto registrado com sucesso! Redirecionando...
+  </div>
+
+  <!-- Card da enquete -->
+  <div class="poll-card mb-3" *ngIf="!voted">
+    <div class="d-flex">
+      <div class="poll-card__bar"></div>
+      <div class="poll-card__body w-100 p-3">
+
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <span class="poll-card__category">{{ poll.category.name }}</span>
+          <button class="btn btn-link p-0 text-muted">
+            <i class="bi bi-share"></i>
+          </button>
+        </div>
+
+        <h5 class="poll-card__title fw-bold mb-2">{{ poll.title }}</h5>
+        <p class="poll-card__description text-muted mb-3">{{ poll.description }}</p>
+
+        <div class="d-flex align-items-center gap-4">
+          <span class="poll-card__meta">
+            <i class="bi bi-clock me-1"></i>
+            {{ getDaysRemaining(poll.expiresAt) }} dias restantes
+          </span>
+          <span class="poll-card__meta">
+            <i class="bi bi-people me-1"></i>
+            {{ poll.totalVotes | number }} votos
+          </span>
+          <span class="poll-card__meta">
+            <i class="bi bi-person-badge me-1"></i>
+            {{ getTotalPoliticians() }} políticos votaram
+          </span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Seção de resposta -->
+  <div class="border rounded-4 p-4" *ngIf="!voted">
+
+    <p class="fw-semibold mb-3">Selecione sua resposta:</p>
+
+    <div *ngFor="let answer of answers" class="mb-3">
+      <button type="button" class="btn answer-btn w-100" [class.selected]="selectedAnswer === answer"
+        [disabled]="hasVoted" (click)="selectAnswer(answer)">
+        {{ answer }}
+      </button>
+    </div>
+
+    <div class="d-flex justify-content-center mt-4">
+      <button class="btn btn-success rounded-pill px-5" [disabled]="!selectedAnswer || hasVoted" (click)="onVote()">
+        Votar
+      </button>
+    </div>
+
+  </div>
+
+</div>

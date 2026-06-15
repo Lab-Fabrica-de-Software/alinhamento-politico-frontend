@@ -1,0 +1,12 @@
+.answer-label {
+  background-color: #EAEBEC;
+  border: 1px solid #dee2e6;
+  pointer-events: none;
+  color: #495057;
+}
+
+.cancel-btn:hover {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  color: #fff;
+}
